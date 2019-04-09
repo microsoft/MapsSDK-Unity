@@ -20,7 +20,7 @@ The wiki also contains documentation, an API reference, and an in-depth overview
 
 # What is in this repo?
 
-The core source code for the control is not part of this repository. The binary is available via a [NuGet package](link-TODO). For information on usage rights, see [Microsoft® Bing™ Map Platform APIs Terms of Use](https://www.microsoft.com/maps/product/terms.html).
+The core source code for the control is not part of this repository. The binary is available via a [NuGet package](https://www.nuget.org/packages/Microsoft.Maps.Unity/0.1.0). For information on usage rights, see [Microsoft® Bing™ Map Platform APIs Terms of Use](https://www.microsoft.com/maps/product/terms.html).
 
 This repository includes **samples**, **documentation** and **supporting scripts**.
 
