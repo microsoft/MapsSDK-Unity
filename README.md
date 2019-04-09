@@ -1,14 +1,30 @@
+<img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/Banner.png">
 
-# Contributing
+> The SDK is currently in preview: Feature requests and bug reports are very much welcome at the [issues page](https://github.com/Microsoft/MapsSDK-Unity/issues).
+>
+> We want to hear what features you want in order to accomplish mixed reality mapping scenarios!
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
-Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
-the rights to use your contribution. For details, visit https://cla.microsoft.com.
+# Overview
+**Maps SDK, a Microsoft Garage project** provides a control to visualize a 3D map in Unity. The map control handles streaming and rendering of 3D terrain data with world-wide coverage. Select cities are rendered at a very high level of detail. Data is provided by Bing Maps.
 
-When you submit a pull request, a CLA-bot will automatically determine whether you need to provide
-a CLA and decorate the PR appropriately (e.g., label, comment). Simply follow the instructions
-provided by the bot. You will only need to do this once across all repos using our CLA.
+The map control has been optimized for mixed reality applications and devices including the HoloLens, Windows Immersive headsets, HTC Vive, and Oculus Rift. Soon the SDK will also be provided as an extension to the [Mixed Reality Toolkit (MRTK)](https://github.com/Microsoft/MixedRealityToolkit-Unity).
 
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
-For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
-contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+| <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/BoulderBalloon.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/WeatherCube.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/MtFujiZoom.gif">
+| :--- | :--- | :--- |
+
+# Getting started
+
+For instructions to download and setup the control, check out the [Getting Started](https://github.com/Microsoft/MapsSDK-Unity/wiki/Getting-Started) page on the wiki.
+
+The wiki also contains documentation, an API reference, and an in-depth overview of the sample scene.
+
+# What is in this repo?
+
+The core source code for the control is not part of this repository. The binary is available via a [NuGet package](link-TODO). For information on usage rights, see [Microsoft® Bing™ Map Platform APIs Terms of Use](https://www.microsoft.com/maps/product/terms.html).
+
+This repository includes **samples**, **documentation** and **supporting scripts**.
+
+The **supporting scripts** are Unity C# scripts that extend or build on-top of the SDK. Because of their usefulness, these supporting scripts are also included in the NuGet package. The version of the supporting scripts in the repository reflects the latest version of the scripts in the NuGet package.
+
+Contributions to the supporting scripts are welcome, and approved changes will be folded back into the NuGet package. Refer to the [Contribution Process](CONTRIBUTING.md) for more details.
+
