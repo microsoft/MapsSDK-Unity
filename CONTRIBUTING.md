@@ -1,20 +1,18 @@
 # How to contribute
 
-This repository includes **samples**, **documentation** and **supporting scripts** for the Maps SDK. The core source code for the Maps SDK is not part of this repository. The binary is available via a [NuGet package](link-TODO). The supporting scripts are also published as part of this NuGet package.
+This repository includes **samples**, **documentation** and **supporting scripts** for the SDK. The core source code for the SDK is not part of this repository. The binary is available via a [NuGet package](https://www.nuget.org/packages/Microsoft.Maps.Unity). The supporting scripts are also published as part of this NuGet package.
 
 Contributions to the samples, documentation, and supporting scripts in this repository are welcome. Changes to the supporting scripts will be folded back into the NuGet package.
-
-Feature requests and bug reports for the Maps SDK are also welcome.
 
 Please refer to the following sections on what is expected of feature requests, bug reports, and code contributions.
 
 ## Submitting feature requests
-For feature requests and suggestions, please log a new issue in the [issue tracker](link-TODO). 
+For feature requests and suggestions, please log a new issue in the [issue tracker](https://github.com/Microsoft/MapsSDK-Unity/issues). 
 
 When creating a feature request or suggestion, please provide a clear desciption and any Unity version requirements or other relevant dependicies.
 
 ## Filing bugs
-For non-security related bugs please log a new issue in the [issue tracker](link-TODO). 
+For non-security related bugs please log a new issue in the [issue tracker](https://github.com/Microsoft/MapsSDK-Unity/issues). 
 
 When submitting a bug, please be sure to include a clear and concise description of the issue, Unity version, steps to repoduce, and any other relevant information like stack traces or screenshots.
 
