@@ -4,7 +4,7 @@ All notable changes to the Maps SDK NuGet package and it's supporting scripts wi
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the Maps SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## Unreleased
+## 0.1.0 - 2019-04-09
 
 ### Maps SDK
 #### Added
@@ -21,3 +21,4 @@ and the Maps SDK NuGet package adheres to [Semantic Versioning](http://semver.or
 - Shader for rendering terrain with support for shadows, heightmap offsets, and clipping to the MapRenderer's dimensions.
 - Shader for rendering side of map. Dynamically generates appropriate triangles by the geometry shader. Supports shadows.
 - Script with helper functions to navigate the MapRenderer, e.g. panning and zooming.
+- Script for animating map to the specified location and zoom level.
