@@ -7,7 +7,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.1.1 - 2019-4-16 
 ### Maps SDK
 #### Fixed
-- Elevation terrain tiles not fall back to lower LODs correctly
+- Elevation terrain tiles now fall back to lower LODs correctly
 - Seams between tiles should now be much less visible
 
 ## 0.1.0 - 2019-04-09
