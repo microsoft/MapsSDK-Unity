@@ -4,6 +4,12 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.1.1 - 2019-4-16 
+### Maps SDK
+#### Fixed
+- Elevation terrain tiles not fall back to lower LODs correctly
+- Seams between tiles should now be much less visible
+
 ## 0.1.0 - 2019-04-09
 
 ### Maps SDK
