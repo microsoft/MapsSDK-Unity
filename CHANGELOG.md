@@ -4,6 +4,11 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.1.3 - 2019-04-23
+### Maps SDK
+#### Fixed
+- Regression in MapPin size when using real-world scale.
+
 ## 0.1.2 - 2019-04-22
 ### Maps SDK
 #### Added
@@ -11,6 +16,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 - Maps SDK-related compnents will now have their help icons direct out to the relevant wiki doc page.
 #### Fixed
 - Custom Maps SDK component icons for the editor are now working again.
+- MapPins childed to MapRenderer are positioned correctly in editor after script reloading.
 
 ## 0.1.1 - 2019-04-16 
 ### Maps SDK
