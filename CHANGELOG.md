@@ -4,11 +4,19 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.1.2 - 2019-04-22
+### Maps SDK
+#### Added
+- Altitude can now be specified on MapPins.
+- Maps SDK-related compnents will now have their help icons direct out to the relevant wiki doc page.
+#### Fixed
+- Custom Maps SDK component icons for the editor are now working again.
+
 ## 0.1.1 - 2019-04-16 
 ### Maps SDK
 #### Fixed
-- Elevation terrain tiles now fall back to lower LODs correctly
-- Seams between tiles should now be much less visible
+- Elevation terrain tiles will now fall back to lower LODs correctly.
+- Seams between tiles should now be much less visible.
 
 ## 0.1.0 - 2019-04-09
 
