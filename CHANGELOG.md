@@ -7,7 +7,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.1.4 - 2019-04-30
 ### Maps SDK
 #### Fixed
-- Copyright TextMeshes are now positioned correctly when the map layout is not using the default.
+- Copyright TextMeshes are now positioned correctly when the map layout is not using the default dimensions.
 - Cleaned up the ClusterMapPin editor UI to remove unnecessary properties.
 
 ## 0.1.3 - 2019-04-23
