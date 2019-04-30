@@ -4,6 +4,12 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.1.4 - 2019-04-30
+### Maps SDK
+#### Fixed
+- Copyright TextMeshes are now positioned correctly when the map layout is not using the default.
+- Cleaned up the ClusterMapPin editor UI to remove unnecessary properties.
+
 ## 0.1.3 - 2019-04-23
 ### Maps SDK
 #### Fixed
