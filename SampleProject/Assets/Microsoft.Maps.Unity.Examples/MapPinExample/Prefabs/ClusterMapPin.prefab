@@ -10,11 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4839544136374242}
   - component: {fileID: 114898586744110094}
-  - component: {fileID: 114546364296244346}
   - component: {fileID: 114896553018143308}
   - component: {fileID: 114794147355131198}
-  - component: {fileID: 313079944766029609}
-  - component: {fileID: 119418302899602889}
+  - component: {fileID: 7016809361023031124}
   m_Layer: 0
   m_Name: ClusterMapPin
   m_TagString: Untagged
@@ -74,24 +72,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _location:
-    Latitude: 0
-    Longitude: 0
-  _altitudeReference: 2
-  LevelOfDetail: 0
-  Size: 0
---- !u!114 &114546364296244346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366522844636312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640888791a51286498b083b38ab9cc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114896553018143308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3c17acaaa42864793bde0dd12e0229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &313079944766029609
+--- !u!114 &7016809361023031124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,66 +105,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1366522844636312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18426312f6c6c96448fb4cc286fc958b, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e3ba42788f12af4db968c3e27bac5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetMeshRenderer: {fileID: 23765707816724906}
-  _animationDuration: 0.24
-  _focusColor: {r: 0.5568628, g: 0.73120147, b: 0.90588236, a: 1}
---- !u!114 &119418302899602889
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1366522844636312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70735d6526ec4903948e9cffe0a70f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFocusRequired: 1
-  onPointerUpActionEvent:
-    inputAction:
-      id: 0
-      description: 
-      axisConstraint: 0
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  onPointerDownActionEvent:
-    inputAction:
-      id: 0
-      description: 
-      axisConstraint: 0
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  onPointerClickedActionEvent:
-    inputAction:
-      id: 1
-      description: Select
-      axisConstraint: 2
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114546364296244346}
-          m_MethodName: Zoom
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
 --- !u!1 &1427262201316610
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +327,7 @@ GameObject:
   - component: {fileID: 33099829163808952}
   - component: {fileID: 23765707816724906}
   - component: {fileID: 64276341812420306}
+  - component: {fileID: 4675014315705061749}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -485,3 +409,50 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: c8bb0be50d3f7f7499b53dd95005ece3, type: 3}
+--- !u!114 &4675014315705061749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632364928461936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enabled: 1
+  States: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputAction:
+    id: 0
+    description: 
+    axisConstraint: 0
+  InputActionId: 0
+  IsGlobal: 0
+  Dimensions: 1
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  RequiresFocus: 1
+  Profiles:
+  - Target: {fileID: 1632364928461936}
+    Themes:
+    - {fileID: 11400000, guid: 3874b82a903073747850f1bf3c9464a5, type: 2}
+    HadDefaultTheme: 1
+  OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7016809361023031124}
+        m_MethodName: Zoom
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  Events: []

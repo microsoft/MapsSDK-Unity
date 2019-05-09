@@ -18,7 +18,7 @@ public class SeattleTour : MonoBehaviour
             new MapSceneOfLocationAndZoomLevel(new LatLon(47.626872, -122.336026), 17.0f),
             new MapSceneOfLocationAndZoomLevel(new LatLon(47.627584, -122.336609), 18.0f),
             new MapSceneOfLocationAndZoomLevel(new LatLon(47.628131, -122.336676), 19.0f),
-            //Gas Works
+            // Gas Works
             new MapSceneOfLocationAndZoomLevel(new LatLon(47.644556, -122.335012), 16.0f),
             new MapSceneOfLocationAndZoomLevel(new LatLon(47.645065, -122.334899), 18.0f),
             // St Marks

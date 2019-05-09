@@ -15,9 +15,9 @@ MonoBehaviour:
   isCustomProfile: 1
   renderMotionControllers: 1
   defaultControllerVisualizationType:
-    reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizer,
+    reference: Microsoft.MixedReality.Toolkit.Input.WindowsMixedRealityControllerVisualizer,
       Microsoft.MixedReality.Toolkit.SDK
-  useDefaultModels: 0
+  useDefaultModels: 1
   globalLeftControllerModel: {fileID: 1370450866519632, guid: 626257b1a6cd47c2a32a18cf75b2fb23,
     type: 3}
   globalRightControllerModel: {fileID: 1760394390528354, guid: 9ef0df44319c4fb4a05649e5b8ceb6d1,
@@ -35,7 +35,7 @@ MonoBehaviour:
     useDefaultModel: 1
     overrideModel: {fileID: 0}
     controllerVisualizationType:
-      reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizer,
+      reference: Microsoft.MixedReality.Toolkit.Input.WindowsMixedRealityControllerVisualizer,
         Microsoft.MixedReality.Toolkit.SDK
   - description: Windows Mixed Reality Controller
     controllerType:
@@ -45,5 +45,5 @@ MonoBehaviour:
     useDefaultModel: 1
     overrideModel: {fileID: 0}
     controllerVisualizationType:
-      reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizer,
+      reference: Microsoft.MixedReality.Toolkit.Input.WindowsMixedRealityControllerVisualizer,
         Microsoft.MixedReality.Toolkit.SDK

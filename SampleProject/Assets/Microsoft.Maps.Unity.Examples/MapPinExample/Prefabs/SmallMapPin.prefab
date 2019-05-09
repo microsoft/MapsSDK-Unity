@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 33290273293180674}
   - component: {fileID: 23169215748939422}
   - component: {fileID: 65459004412855290}
-  - component: {fileID: 4698567356697266583}
+  - component: {fileID: 7484646010849414981}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -169,7 +169,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4698567356697266583
+--- !u!114 &7484646010849414981
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,35 +178,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 1339640369366546}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
+  Enabled: 1
+  States: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  InputAction:
+    id: 0
+    description: 
+    axisConstraint: 0
+  InputActionId: 0
+  IsGlobal: 0
+  Dimensions: 1
+  CanSelect: 1
+  CanDeselect: 1
+  VoiceCommand: 
+  RequiresFocus: 1
+  Profiles:
+  - Target: {fileID: 1339640369366546}
+    Themes:
+    - {fileID: 11400000, guid: 3874b82a903073747850f1bf3c9464a5, type: 2}
+    HadDefaultTheme: 1
+  OnClick:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114340893652251646}
@@ -220,8 +213,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  Events: []
 --- !u!1 &1452448874978094
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,9 +227,6 @@ GameObject:
   - component: {fileID: 4545156311932626}
   - component: {fileID: 114401410002030188}
   - component: {fileID: 114340893652251646}
-  - component: {fileID: 6767605534721941006}
-  - component: {fileID: 5203629736485482993}
-  - component: {fileID: 559834590186046421}
   - component: {fileID: 8485608606784131832}
   m_Layer: 0
   m_Name: SmallMapPin
@@ -299,7 +290,8 @@ MonoBehaviour:
   _location:
     Latitude: 0
     Longitude: 0
-  _altitudeReference: 2
+  AltitudeReference: 2
+  Altitude: 0
 --- !u!114 &114340893652251646
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -312,90 +304,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 640888791a51286498b083b38ab9cc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6767605534721941006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452448874978094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70735d6526ec4903948e9cffe0a70f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isFocusRequired: 1
-  onPointerUpActionEvent:
-    inputAction:
-      id: 0
-      description: 
-      axisConstraint: 0
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  onPointerDownActionEvent:
-    inputAction:
-      id: 0
-      description: 
-      axisConstraint: 0
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-  onPointerClickedActionEvent:
-    inputAction:
-      id: 1
-      description: Select
-      axisConstraint: 2
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 114340893652251646}
-          m_MethodName: Zoom
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
---- !u!114 &5203629736485482993
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452448874978094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18426312f6c6c96448fb4cc286fc958b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetMeshRenderer: {fileID: 23169215748939422}
-  _animationDuration: 0.24
-  _focusColor: {r: 0, g: 0.550797, b: 1, a: 1}
---- !u!114 &559834590186046421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452448874978094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18426312f6c6c96448fb4cc286fc958b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _targetMeshRenderer: {fileID: 5834456297681937167}
-  _animationDuration: 0.24
-  _focusColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &8485608606784131832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -581,8 +489,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 4
-  m_fontSizeBase: 4
+  m_fontSize: 3.5
+  m_fontSizeBase: 3.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -630,7 +538,7 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
