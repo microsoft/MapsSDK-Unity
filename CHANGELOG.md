@@ -4,6 +4,15 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.2.0 - 2019-05-24
+### Maps SDK
+#### Added
+- Raycast API on MapRenderer to return hit point and corresponding LatLonAlt of a ray intersection with the map.
+#### Fixed
+- Perf improvement for rendering. Reduces number of vertices required in certain views.
+- Map edge no longer dissappears when the map surface is above the viewport.
+- Fallback to terrain-only rendering (no high-res meshes) for platforms that don't support the required texture format of BC1 (relevant to some Android, iOS devices)
+
 ## 0.1.5 - 2019-05-07
 ### Maps SDK
 #### Fixed
