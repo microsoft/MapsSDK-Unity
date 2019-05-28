@@ -4,6 +4,11 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.2.1 - 2019-05-24
+### Maps SDK
+#### Fixed
+- Rolled back elevation fallback logic which was based on BC1 texture support of the device. Unity is decoding BC1 to RGB automatically.
+
 ## 0.2.0 - 2019-05-24
 ### Maps SDK
 #### Added
