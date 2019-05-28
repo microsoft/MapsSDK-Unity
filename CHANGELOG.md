@@ -11,7 +11,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 #### Fixed
 - Perf improvement for rendering. Reduces number of vertices required in certain views.
 - Map edge no longer dissappears when the map surface is above the viewport.
-- Fallback to terrain-only rendering (no high-res meshes) for platforms that don't support the required texture format of BC1 (relevant to some Android, iOS devices)
+- High-res meshes would render incorrectly on devices that do not support the BC1 texture format. If the device lacks BC1 texture support, fall back to elevation-only rendering instead, which uses the widely supported RGB texture format.
 
 ## 0.1.5 - 2019-05-07
 ### Maps SDK
