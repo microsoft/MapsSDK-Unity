@@ -7,7 +7,7 @@
 # Overview
 **Maps SDK, a Microsoft Garage project** provides a control to visualize a 3D map in Unity. The map control handles streaming and rendering of 3D terrain data with world-wide coverage. Select cities are rendered at a very high level of detail. Data is provided by Bing Maps.
 
-The map control has been optimized for mixed reality applications and devices including the HoloLens, Windows Immersive headsets, HTC Vive, and Oculus Rift. Soon the SDK will also be provided as an extension to the [Mixed Reality Toolkit (MRTK)](https://github.com/Microsoft/MixedRealityToolkit-Unity).
+The map control has been optimized for mixed reality applications and devices including the HoloLens, HoloLens 2, Windows Immersive headsets, HTC Vive, and Oculus Rift. Soon the SDK will also be provided as an extension to the [Mixed Reality Toolkit (MRTK)](https://github.com/Microsoft/MixedRealityToolkit-Unity).
 
 | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/BoulderBalloon.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/WeatherCube.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/MtFujiZoom.gif">
 | :--- | :--- | :--- |
@@ -20,7 +20,7 @@ The wiki also contains documentation, an API reference, and an in-depth overview
 
 # What is in this repo?
 
-The core source code for the control is not part of this repository. The binary is available via a [NuGet package](https://www.nuget.org/packages/Microsoft.Maps.Unity). For information on usage rights, see [Microsoft® Bing™ Map Platform APIs Terms of Use](https://www.microsoft.com/maps/product/terms.html).
+The core source code for the control is not part of this repository. The binary is available via a [NuGet package](https://www.nuget.org/packages/Microsoft.Maps.Unity). See [Microsoft® Bing™ Map Platform APIs Terms of Use](https://www.microsoft.com/maps/product/terms.html) for information about the terms of use.
 
 This repository includes **samples**, **documentation** and **supporting scripts**.
 
