@@ -1,6 +1,7 @@
 ﻿using Microsoft.Geospatial;
 using Microsoft.Maps.Unity;
 using System;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 
@@ -34,7 +35,10 @@ public class MapPinProvider : MonoBehaviour
             var csvEntries = csvLine.Split(',');
 
             var mapPin = Instantiate(_mapPinPrefab);
-            mapPin.Location = new LatLon(double.Parse(csvEntries[0]), double.Parse(csvEntries[1]));
+            mapPin.Location =
+                new LatLon(
+                    double.Parse(csvEntries[0], NumberStyles.Number, CultureInfo.InvariantCulture),
+                    double.Parse(csvEntries[1], NumberStyles.Number, CultureInfo.InvariantCulture));
             _mapPinLayer.MapPins.Add(mapPin);
 
             mapPin.GetComponentInChildren<TextMeshPro>().text = csvEntries[2].ToLower() == "null" ? "" : csvEntries[2];
