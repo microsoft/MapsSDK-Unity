@@ -7,12 +7,12 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.2.2 - 2019-06-12
 ### Maps SDK
 #### Added
-- Max distance parameter to raycast API
-- Hit normal and distance to raycsat result.
+- Additional max distance parameter for the raycast API.
+- Provide normal and distance in the raycsat result.
 
 ### Supporting Scripts
 #### Added
-- Added extension methods to MapRenderer to transform points between Unity's world and local coordinate spaces to the map's geographic coordinate system (latitude, longitude, and altitude).
+- Extension class to MapRenderer for transforming points between Unity's world and local coordinate spaces to the map's geographic coordinate system (latitude, longitude, and altitude).
 
 ## 0.2.1 - 2019-05-28
 ### Maps SDK
