@@ -4,6 +4,16 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.2.2 - 2019-06-12
+### Maps SDK
+#### Added
+- Max distance parameter to raycast API
+- Hit normal and distance to raycsat result.
+
+### Supporting Scripts
+#### Added
+- Added extension methods to MapRenderer to transform points between Unity's world and local coordinate spaces to the map's geographic coordinate system (latitude, longitude, and altitude).
+
 ## 0.2.1 - 2019-05-28
 ### Maps SDK
 #### Fixed
