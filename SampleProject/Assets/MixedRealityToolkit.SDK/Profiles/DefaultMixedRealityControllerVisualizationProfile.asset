@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 514da61389c049c0bdaf31b7f6970d33, type: 3}
   m_Name: DefaultMixedRealityControllerVisualizationProfile
   m_EditorClassIdentifier: 
-  isCustomProfile: 1
+  isCustomProfile: 0
   renderMotionControllers: 1
   defaultControllerVisualizationType:
-    reference: Microsoft.MixedReality.Toolkit.Input.WindowsMixedRealityControllerVisualizer,
+    reference: Microsoft.MixedReality.Toolkit.Input.MixedRealityControllerVisualizer,
       Microsoft.MixedReality.Toolkit.SDK
   useDefaultModels: 1
   globalLeftControllerModel: {fileID: 1370450866519632, guid: 626257b1a6cd47c2a32a18cf75b2fb23,
