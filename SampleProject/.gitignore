@@ -36,3 +36,5 @@ Thumbs.db
 
 Packages_/
 !*.meta
+Assets/Packages.meta
+Assets/WSATestCertificate.pfx.*
