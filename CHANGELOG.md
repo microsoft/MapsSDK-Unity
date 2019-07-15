@@ -4,7 +4,7 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## 0.2.3 - 2019-06-12
+## 0.2.3 - 2019-07-15
 ### Maps SDK
 #### Added
 - ```MapScene``` animation-related logic has been modularized and is now customizable. Default implementation moved to supporting scripts.
