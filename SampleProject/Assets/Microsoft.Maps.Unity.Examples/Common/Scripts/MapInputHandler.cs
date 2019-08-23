@@ -6,6 +6,9 @@ using Microsoft.MixedReality.Toolkit;
 using Microsoft.MixedReality.Toolkit.Input;
 using UnityEngine;
 
+/// <summary>
+/// Handles input actions used to pan, rotate, and zoom a MapRenderer.
+/// </summary>
 public class MapInputHandler : MonoBehaviour, IMixedRealityInputHandler, IMixedRealityInputHandler<Vector2>
 {
     private const double JoystickDeadZone = 0.3;

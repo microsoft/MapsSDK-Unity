@@ -9,6 +9,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// Provides an implementation of MRTK's RaycastProvider which allows for MapRenderer surface geometry
+/// to be utilized during ray casts. Only MapRenderer's which are regsitered with this instance
+/// are considered for raycasting, see <see cref="MapRaycastProviderRegistration"/>.
+/// </summary>
 public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
 {
     private List<MapRenderer> _mapRenderers = new List<MapRenderer>();
@@ -39,7 +44,11 @@ public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
         out MixedRealityRaycastHit hitInfo)
     {
         var hasPhysicsHit =
-            MixedRealityRaycaster.RaycastSimplePhysicsStep(step, prioritizedLayerMasks, focusIndividualCompoundCollider, out RaycastHit physicsHit);
+            MixedRealityRaycaster.RaycastSimplePhysicsStep(
+                step,
+                prioritizedLayerMasks,
+                focusIndividualCompoundCollider,
+                out RaycastHit physicsHit);
 
         MapRendererRaycastHit? closerMapHitInfo = null;
         MapRenderer hitMapRenderer = null;
@@ -90,9 +99,24 @@ public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
         }
     }
 
-    public bool SphereCast(RayStep step, float radius, LayerMask[] prioritizedLayerMasks, bool focusIndividualCompoundCollider, out MixedRealityRaycastHit hitInfo)
+    public bool SphereCast(
+        RayStep step,
+        float radius,
+        LayerMask[] prioritizedLayerMasks,
+        bool focusIndividualCompoundCollider,
+        out MixedRealityRaycastHit hitInfo)
     {
-        var result = MixedRealityRaycaster.RaycastSpherePhysicsStep(step, radius, step.Length, prioritizedLayerMasks, focusIndividualCompoundCollider, out RaycastHit physicsHit);
+        // For now, this is just using the default behavior for sphere cast.
+        // Leaving MapRenderer integration for a future change.
+
+        var result =
+            MixedRealityRaycaster.RaycastSpherePhysicsStep(
+                step,
+                radius,
+                step.Length,
+                prioritizedLayerMasks,
+                focusIndividualCompoundCollider,
+                out RaycastHit physicsHit);
         hitInfo = new MixedRealityRaycastHit(result, physicsHit);
         return result;
     }

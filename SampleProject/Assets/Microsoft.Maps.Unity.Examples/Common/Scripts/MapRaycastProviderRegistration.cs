@@ -5,6 +5,9 @@ using Microsoft.Maps.Unity;
 using Microsoft.MixedReality.Toolkit;
 using UnityEngine;
 
+/// <summary>
+/// Registers the MapRenderer component with the MapRaycastProvider.
+/// </summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(MapRenderer))]
 public class MapRaycastProviderRegistration : MonoBehaviour
