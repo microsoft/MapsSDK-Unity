@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 
 /// <summary>
 /// Provides an implementation of MRTK's RaycastProvider which allows for MapRenderer surface geometry
-/// to be utilized during ray casts. Only MapRenderer's which are regsitered with this instance
+/// to be utilized during ray casts. Only MapRenderers which have been regsitered with this instance
 /// are considered for raycasting, see <see cref="MapRaycastProviderRegistration"/>.
 /// </summary>
 public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
@@ -50,8 +50,8 @@ public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
                 focusIndividualCompoundCollider,
                 out RaycastHit physicsHit);
 
-        MapRendererRaycastHit? closerMapHitInfo = null;
-        MapRenderer hitMapRenderer = null;
+        MapRendererRaycastHit? closestMapHitInfo = null;
+        MapRenderer closestMapRenderer = null;
         foreach (var mapRenderer in _mapRenderers)
         {
             if (
@@ -64,32 +64,32 @@ public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
                 {
                     if (physicsHit.distance > mapHitInfo.Distance)
                     {
-                        if (!closerMapHitInfo.HasValue || closerMapHitInfo.Value.Distance > mapHitInfo.Distance)
+                        if (!closestMapHitInfo.HasValue || closestMapHitInfo.Value.Distance > mapHitInfo.Distance)
                         {
-                            hitMapRenderer = mapRenderer;
-                            closerMapHitInfo = mapHitInfo;
+                            closestMapRenderer = mapRenderer;
+                            closestMapHitInfo = mapHitInfo;
                         }
                     }
                 }
                 else
                 {
-                    if (!closerMapHitInfo.HasValue || closerMapHitInfo.Value.Distance > mapHitInfo.Distance)
+                    if (!closestMapHitInfo.HasValue || closestMapHitInfo.Value.Distance > mapHitInfo.Distance)
                     {
-                        hitMapRenderer = mapRenderer;
-                        closerMapHitInfo = mapHitInfo;
+                        closestMapRenderer = mapRenderer;
+                        closestMapHitInfo = mapHitInfo;
                     }
                 }
             }
         }
 
-        if (closerMapHitInfo != null)
+        if (closestMapHitInfo != null)
         {
             hitInfo = new MixedRealityRaycastHit();
-            var mapRendererHitInfo = closerMapHitInfo.Value;
+            var mapRendererHitInfo = closestMapHitInfo.Value;
             hitInfo.distance = mapRendererHitInfo.Distance;
             hitInfo.point = mapRendererHitInfo.Point;
             hitInfo.normal = mapRendererHitInfo.Normal;
-            hitInfo.transform = hitMapRenderer.transform;
+            hitInfo.transform = closestMapRenderer.transform;
             return true;
         }
         else
