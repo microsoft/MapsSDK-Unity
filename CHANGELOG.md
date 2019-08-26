@@ -4,6 +4,25 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.3.0 - 2019-08-26
+### Maps SDK
+#### Added
+- Ability to increase or decrease the terrain quality of the `MapRenderer`.
+- Ability to disable high-res 3D terrain models, i.e. only use height-map based elevation.
+- Ability to render only a flat map surface by disabling aforementioned 3D terrain sources.
+- In-editor mouse controls to drage the center of the `MapRenderer` and adjust it's zoom level. Similar mouse controls added for `MapPins` to allow for adjusting a pin's position relative to the map.
+
+#### Changed
+- Copyright settings for `MapRenderer` now managed by separate component, `MapCopyrightLayer`. This component is auto-added to `GameObjects` with a `MapRenderer` component.
+
+### Supporting Scripts
+#### Added
+- Initial Bing Maps service API. Currently supports geocoding and reverse geocoding via the `LocationFinder`.
+- Editor scripts for various components have been moved out of the DLL and are now available in the supporting scripts.
+
+#### Changed
+- Editor UI refresh for MapRenderer. Among other visual improvements, the developer key field acts as a password field and the value is now hidden by asterisks.
+
 ## 0.2.3 - 2019-07-15
 ### Maps SDK
 #### Added
