@@ -11,9 +11,13 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 - Ability to disable high-res 3D terrain models, i.e. only use height-map based elevation.
 - Ability to render only a flat map surface by disabling aforementioned 3D terrain sources.
 - In-editor mouse controls to drag the center of the `MapRenderer` and adjust it's zoom level. Similar mouse controls added for `MapPins` to allow for adjusting a pin's position relative to the map.
+- `MapPinLayer` now supports serialization of it's children items, so `MapPins` can be added to the layer in the editor rather than strictly at runtime.
 
 #### Changed
 - Copyright settings for `MapRenderer` now managed by separate component, `MapCopyrightLayer`. This component is auto-added to `GameObjects` with a `MapRenderer` component.
+
+#### Fixed
+- Handle case when developer key isn't present more gracefully. Less console spam and `MapPins` will continue to position correctly.
 
 ### Supporting Scripts
 #### Added
