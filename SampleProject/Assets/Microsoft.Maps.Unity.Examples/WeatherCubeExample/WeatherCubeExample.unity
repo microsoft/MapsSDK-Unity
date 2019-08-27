@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 220598120}
   - component: {fileID: 220598123}
   - component: {fileID: 220598124}
+  - component: {fileID: 220598125}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -203,20 +204,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bingMapsKey: 
   _showMapDataInEditor: 1
-  _showDefaultCopyright: 1
-  _defaultCopyrightFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  _defaultCopyrightColor: {r: 1, g: 1, b: 1, a: 0.42}
   _mapEdgeColor: {r: 0.37019402, g: 0.39681298, b: 0.4433962, a: 1}
   _mapEdgeColorFadeDistance: 0
+  _detailOffset: 0
   _center:
     Latitude: 47.6205
     Longitude: -122.3493
   _zoomLevel: 18.24
   _minimumZoomLevel: 1
   _maximumZoomLevel: 20
+  _mapTerrainType: 0
   LocalMapDimension: {x: 1, y: 1}
   _localMapHeight: 0.3
-  _mapLayers: []
+  _mapLayers:
+  - {fileID: 220598125}
   _castShadows: 1
   _recieveShadows: 1
   _useCustomTerrainMaterial: 0
@@ -328,6 +329,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0597940101b394e4f8ca5a51f18854f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &220598125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220598119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerName: MapCopyrightLayer
+  _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  _textColor: {r: 0, g: 0, b: 0, a: 0.42}
 --- !u!1 &279380892
 GameObject:
   m_ObjectHideFlags: 0

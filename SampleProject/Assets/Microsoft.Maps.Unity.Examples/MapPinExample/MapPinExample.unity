@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 1276686189}
   - component: {fileID: 1276686188}
   - component: {fileID: 1276686196}
+  - component: {fileID: 1276686197}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -577,6 +578,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _layerName: MapPinLayer
+  _mapPins:
+    _list: []
   _isClusteringEnabled: 1
   _clusterThreshold: 5
   _clusterMapPinPrefab: {fileID: 114898586744110094, guid: f4116a2847277ca47b646c628588fbce,
@@ -608,22 +611,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bingMapsKey: 
   _showMapDataInEditor: 1
-  _showDefaultCopyright: 1
-  _defaultCopyrightFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  _defaultCopyrightColor: {r: 0, g: 0, b: 0, a: 0.38}
   _mapEdgeColor: {r: 0.30409837, g: 0.15686275, b: 0.3764706, a: 1}
   _mapEdgeColorFadeDistance: 0.01
+  _detailOffset: 0
   _center:
     Latitude: 38.585831474606
     Longitude: -120.805957681905
-  _zoomLevel: 5.505804
-  _minimumZoomLevel: 5.505804
+  _zoomLevel: 5.51
+  _minimumZoomLevel: 5.51
   _maximumZoomLevel: 20
+  _mapTerrainType: 0
   LocalMapDimension: {x: 1, y: 1}
   _localMapHeight: 0.07
   _mapLayers:
   - {fileID: 1276686192}
   - {fileID: 1276686190}
+  - {fileID: 1276686197}
   _castShadows: 1
   _recieveShadows: 1
   _useCustomTerrainMaterial: 0
@@ -657,6 +660,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0597940101b394e4f8ca5a51f18854f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1276686197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerName: MapCopyrightLayer
+  _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  _textColor: {r: 0, g: 0, b: 0, a: 0.42}
 --- !u!1 &1717244739
 GameObject:
   m_ObjectHideFlags: 0
