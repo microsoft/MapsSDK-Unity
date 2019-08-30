@@ -5,6 +5,7 @@
 
 sampler2D _ElevationTex;
 float4 _ElevationTexScaleAndOffset;
+float _ZComponent;
 
 float3 CalculateElevationOffset(sampler2D elevationTex, float2 uv, float scale, float2 offset, float elevationScale)
 {
@@ -24,12 +25,18 @@ float3 FilterNormal(sampler2D elevationTex, float2 uv, float scale, float2 offse
     // Elevation texture's origin is flipped. Fix it here.
     scaledAndOffsetUv.y = 1.0 - scaledAndOffsetUv.y;
 
-    float h0 = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(0, -texelSize), 0, 0)).r;
-    float h1 = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(-texelSize, 0), 0, 0)).r;
-    float h2 = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(texelSize,  0), 0, 0)).r;
-    float h3 = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(0,  texelSize), 0, 0)).r;
+    float xy = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(0, 0), 0, 0)).r;
+    float xy1 = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(0, texelSize), 0, 0)).r;
+    float x1y = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(texelSize, 0), 0, 0)).r;
+    float x1y1 = tex2Dlod(elevationTex, float4(scaledAndOffsetUv + float2(texelSize, texelSize), 0, 0)).r;
+    float averageLeftX = xy + x1y;
+    float averageRightX = xy1 + x1y1;
+    float averageTopY = xy + xy1;
+    float averageBottomY = x1y + x1y1;
+    float averageX = 0.5 * (averageLeftX - averageRightX);
+    float averageY = 0.5 * (averageTopY - averageBottomY);
 
-    return normalize(float3(h1 - h2, 2, h3 - h0));
+    return normalize(float3(averageX, _ZComponent, averageY));
 }
 
 #endif

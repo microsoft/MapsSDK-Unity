@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 
 // Properties for clipping. Set on MaterialPropertyBlock for each draw call.
-float4 _ClippingVolumePosition;
+float3 _ClippingVolumePosition;
 float4 _ClippingVolumeNormals[2];
 float3 _ClippingVolumeUp;
 fixed4 _ClippingVolumeColor;
@@ -15,14 +15,24 @@ float _ClippingVolumeFadeDistance;
 /// </summary>
 float ClipToVolume(float3 worldPosition)
 {
+    float3 planePosition = _ClippingVolumePosition;
+    float3 planePositionToWorldPosition = worldPosition - planePosition;
+
+    // Clip against the base of the map.
+    {
+        if (dot(_ClippingVolumeUp, planePositionToWorldPosition) < 0)
+        {
+            discard;
+        }
+    }
+
     // Clip to volume.
     float minDistanceToPlane = -100000000;
     for (uint planeId = 0; planeId < 2; planeId++)
     {
-        float3 planePosition = _ClippingVolumePosition;
         float3 planeNormal = _ClippingVolumeNormals[planeId].xyz;
 
-        float distanceToPlane = abs(dot(planeNormal, worldPosition - planePosition)) - _ClippingVolumeSize[planeId];
+        float distanceToPlane = abs(dot(planeNormal, planePositionToWorldPosition)) - _ClippingVolumeSize[planeId];
 
         if (distanceToPlane > 0)
         {

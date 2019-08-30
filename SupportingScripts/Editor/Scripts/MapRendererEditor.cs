@@ -1,0 +1,457 @@
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace Microsoft.Maps.Unity
+{
+    using Microsoft.Geospatial;
+    using Microsoft.Geospatial.VectorMath;
+    using System;
+    using UnityEditor;
+    using UnityEngine;
+
+    [CustomEditor(typeof(MapRenderer))]
+    [CanEditMultipleObjects]
+    internal class MapRendererEditor : Editor
+    {
+        private SerializedProperty _bingMapsKeyProperty;
+        private SerializedProperty _showMapDataInEditorProperty;
+        private static bool _showMapLocationOptions = true;
+        private SerializedProperty _centerProperty;
+        private SerializedProperty _zoomLevelProperty;
+        private SerializedProperty _minZoomLevelProperty;
+        private SerializedProperty _maxZoomLevelProperty;
+        private SerializedProperty _mapTerrainType;
+        private static bool _showMapSizingOptions = false;
+        private SerializedProperty _mapEdgeColorProperty;
+        private SerializedProperty _mapEdgeColorFadeDistanceProperty;
+        private SerializedProperty _localMapDimensionProperty;
+        private SerializedProperty _localMapHeightProperty;
+        private static bool _terrainOptions = true;
+        private SerializedProperty _castShadows;
+        private SerializedProperty _recieveShadows;
+        private SerializedProperty _useCustomTerrainMaterialProperty;
+        private SerializedProperty _customTerrainMaterialProperty;
+        private SerializedProperty _isClippingVolumeWallEnabledProperty;
+        private SerializedProperty _useCustomClippingVolumeMaterialProperty;
+        private SerializedProperty _customClippingVolumeMaterialProperty;
+        private SerializedProperty _mapLayersProperty;
+        private SerializedProperty _labelPrefabProperty;
+        private static bool _showQualityOptions = true;
+        private SerializedProperty _detailOffset;
+        private GUIStyle _baseStyle = null;
+        private GUIStyle _hyperlinkStyle = null;
+        private GUIStyle _errorIconStyle = null;
+        private GUIContent _errorIcon = null;
+        private GUIStyle _foldoutTitleStyle = null;
+        private GUIStyle _boxStyle = null;
+        private Texture2D _bannerWhite = null;
+        private Texture2D _bannerBlack = null;
+        private readonly GUIContent[] _layerOptions = new GUIContent[]
+        {
+            new GUIContent("Default", "The map terrain consists of either elevation data or high resolution 3D models."),
+            new GUIContent("Elevated", "The map terrain consists only of elevation data. No high resolution 3D models are used."),
+            new GUIContent("Flat", "Both elevation and high resolution 3D models are disabled. The map terrain surface will be flat.")
+        };
+        private readonly GUILayoutOption[] _minMaxLabelsLayoutOptions = new GUILayoutOption[]
+        {
+            GUILayout.MaxWidth(52.0f)
+        };
+        
+        private readonly Tuple<UnityEngine.Object, UnityEngine.Object>[] _terrainMaterials =
+            new Tuple<UnityEngine.Object, UnityEngine.Object>[3];
+
+        private static int ControlIdHint = "MapRendererEditor".GetHashCode();
+
+        internal void OnEnable()
+        {
+            _centerProperty = serializedObject.FindProperty("_center");
+            _bingMapsKeyProperty = serializedObject.FindProperty("_bingMapsKey");
+            _showMapDataInEditorProperty = serializedObject.FindProperty("_showMapDataInEditor");
+            _zoomLevelProperty = serializedObject.FindProperty("_zoomLevel");
+            _minZoomLevelProperty = serializedObject.FindProperty("_minimumZoomLevel");
+            _maxZoomLevelProperty = serializedObject.FindProperty("_maximumZoomLevel");
+            _mapTerrainType = serializedObject.FindProperty("_mapTerrainType");
+            _localMapDimensionProperty = serializedObject.FindProperty("LocalMapDimension");
+            _localMapHeightProperty = serializedObject.FindProperty("_localMapHeight");
+            _useCustomTerrainMaterialProperty = serializedObject.FindProperty("_useCustomTerrainMaterial");
+            _castShadows = serializedObject.FindProperty("_castShadows");
+            _recieveShadows = serializedObject.FindProperty("_recieveShadows");
+            _customTerrainMaterialProperty = serializedObject.FindProperty("_customTerrainMaterial");
+            _isClippingVolumeWallEnabledProperty = serializedObject.FindProperty("_isClippingVolumeWallEnabled");
+            _useCustomClippingVolumeMaterialProperty = serializedObject.FindProperty("_useCustomClippingVolumeMaterial");
+            _customClippingVolumeMaterialProperty = serializedObject.FindProperty("_customClippingVolumeMaterial");
+            _mapLayersProperty = serializedObject.FindProperty("_mapLayers");
+            _labelPrefabProperty = serializedObject.FindProperty("_labelPrefab");
+            _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
+            _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
+            _detailOffset = serializedObject.FindProperty("_detailOffset");
+            _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
+            _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
+        }
+
+        private bool _isDragging = false;
+        private Vector3 _startingHitPointInLocalSpace;
+        private Vector2D _startingCenterInMercatorSpace;
+
+        private void OnSceneGUI()
+        {
+            var mapRenderer = target as MapRenderer;
+            if (mapRenderer == null)
+            {
+                return;
+            }
+
+            if (Event.current.modifiers == EventModifiers.Control)
+            {
+                // Turn off the translation tool.
+                Tools.hidden = true;
+
+                // Change the cursor to make it obvious you can move the map around. Make the rect big enough to cover the scene view.
+                EditorGUIUtility.AddCursorRect(new Rect(0, 0, 999999, 999999), MouseCursor.MoveArrow);
+
+                var currentEvent = Event.current;
+                if (currentEvent.type == EventType.Layout)
+                {
+                    // Adding a control ID disables left-click-and-drag from creating a selection rect, rather than translating the map.
+                    int controlID = GUIUtility.GetControlID(ControlIdHint, FocusType.Passive);
+                    HandleUtility.AddDefaultControl(controlID);
+                }
+                else if (currentEvent.type == EventType.ScrollWheel)
+                {
+                    // Zoom map based on scroll wheel.
+                    var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+                    if (mapRenderer.Raycast(ray, out var hitInfo))
+                    {
+                        Undo.RecordObject(mapRenderer, "Change ZoomLevel.");
+                        var delta = -Event.current.delta;
+                        mapRenderer.ZoomLevel += (delta.y / 50);
+                        currentEvent.Use();
+                    }
+                }
+                else if (currentEvent.type == EventType.MouseDown)
+                {
+                    // Begin panning if the mouse ray hits the map.
+                    var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+                    if (mapRenderer.Raycast(ray, out var hitInfo))
+                    {
+                        _startingHitPointInLocalSpace = mapRenderer.transform.worldToLocalMatrix * hitInfo.Point;
+                        _startingCenterInMercatorSpace = mapRenderer.Center.ToMercatorPosition();
+                        _isDragging = true;
+                        currentEvent.Use();
+                    }
+                }
+                else if (_isDragging && currentEvent.type == EventType.MouseDrag)
+                {
+                    // Update center 
+                    var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
+                    var plane = new Plane(mapRenderer.transform.up, _startingHitPointInLocalSpace);
+                    if (plane.Raycast(ray, out var enter))
+                    {
+                        Vector3 updatedHitPointInLocalSpace = mapRenderer.transform.worldToLocalMatrix * ray.GetPoint(enter);
+                        var newDeltaInLocalSpace = updatedHitPointInLocalSpace - _startingHitPointInLocalSpace;
+                        var newDeltaInMercator = new Vector2D(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
+                        var newCenter = new LatLon(_startingCenterInMercatorSpace - newDeltaInMercator);
+
+                        Undo.RecordObject(mapRenderer, "Change Center.");
+                        mapRenderer.Center = newCenter;
+                    }
+
+                    currentEvent.Use();
+                }
+                else if (_isDragging && currentEvent.type == EventType.MouseUp)
+                {
+                    _isDragging = false;
+
+                    currentEvent.Use();
+                }
+            }
+            else
+            {
+                Tools.hidden = false;
+            }
+        }
+
+        public override void OnInspectorGUI()
+        {
+            Initialize();
+
+            var mapRenderer = (MapRenderer)target;
+
+            serializedObject.Update();
+
+            RenderBanner();
+
+            // Setup and key.
+            EditorGUILayout.BeginVertical(GUI.skin.box);
+            EditorGUILayout.LabelField("API Settings", EditorStyles.boldLabel);
+            EditorGUI.indentLevel++;
+            _bingMapsKeyProperty.stringValue = EditorGUILayout.PasswordField("Bing Maps Key", _bingMapsKeyProperty.stringValue);
+            if (string.IsNullOrWhiteSpace(_bingMapsKeyProperty.stringValue))
+            {
+                Help(
+                    "Provide a Bing Maps developer key to enable the map.",
+                    "Sign up for a key at the Bing Maps Dev Center.",
+                    "https://www.bingmapsportal.com/");
+            }
+
+            _showMapDataInEditorProperty.boolValue =
+                EditorGUILayout.Toggle(
+                    new GUIContent(
+                        "Show Map Data in Editor",
+                        "Map data usage in the editor will apply the specified Bing Maps key."),
+                    _showMapDataInEditorProperty.boolValue);
+            EditorGUILayout.EndVertical();
+
+            // Location Section
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _showMapLocationOptions = EditorGUILayout.Foldout(_showMapLocationOptions, "Location", true, _foldoutTitleStyle);
+            if (_showMapLocationOptions)
+            {
+                var latitudeProperty = _centerProperty.FindPropertyRelative("Latitude");
+                latitudeProperty.doubleValue = EditorGUILayout.DoubleField("Latitude", latitudeProperty.doubleValue);
+                var longitudeProperty = _centerProperty.FindPropertyRelative("Longitude");
+                longitudeProperty.doubleValue = EditorGUILayout.DoubleField("Longitude", longitudeProperty.doubleValue);
+
+                EditorGUILayout.Slider(_zoomLevelProperty, MapConstants.MinimumZoomLevel, MapConstants.MaximumZoomLevel);
+                // Get the zoomlevel values
+                var minZoomLevel = _minZoomLevelProperty.floatValue;
+                var maxZoomLevel = _maxZoomLevelProperty.floatValue;
+                
+                EditorGUILayout.BeginHorizontal();
+                EditorGUILayout.PrefixLabel("Zoom Level Range");
+                EditorGUI.indentLevel--;
+                minZoomLevel = EditorGUILayout.FloatField((float)Math.Round(minZoomLevel, 2), _minMaxLabelsLayoutOptions);
+                EditorGUILayout.MinMaxSlider(ref minZoomLevel, ref maxZoomLevel, MapConstants.MinimumZoomLevel, MapConstants.MaximumZoomLevel);
+                maxZoomLevel = EditorGUILayout.FloatField((float)Math.Round(maxZoomLevel, 2), _minMaxLabelsLayoutOptions);
+                EditorGUI.indentLevel++;
+                EditorGUILayout.EndHorizontal();
+            
+                // Update it back
+                _minZoomLevelProperty.floatValue = minZoomLevel;
+                _maxZoomLevelProperty.floatValue = maxZoomLevel;
+                GUILayout.Space(4);
+                
+            }
+            EditorGUILayout.EndVertical();
+
+            // Map Layout Section
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _showMapSizingOptions = EditorGUILayout.Foldout(_showMapSizingOptions, "Map Layout", true, _foldoutTitleStyle);
+            if (_showMapSizingOptions)
+            {
+                EditorGUILayout.PropertyField(_localMapDimensionProperty);
+                EditorGUILayout.LabelField("Scaled Map Dimension", ((MapRenderer)target).MapDimension.ToString());
+                EditorGUILayout.PropertyField(_localMapHeightProperty);
+                EditorGUILayout.LabelField("Scaled Map Height", ((MapRenderer)target).MapHeight.ToString());
+            }
+            EditorGUILayout.EndVertical();
+
+            // Render Settings Section
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _terrainOptions = EditorGUILayout.Foldout(_terrainOptions, "Render Settings", true, _foldoutTitleStyle);
+            if (_terrainOptions)
+            {
+                // Map Terrain Type Controls
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.PrefixLabel("Map Terrain Type");
+                _mapTerrainType.enumValueIndex = GUILayout.Toolbar(_mapTerrainType.enumValueIndex, _layerOptions);
+                GUILayout.EndHorizontal();
+
+                EditorGUILayout.PropertyField(_castShadows, new GUIContent("Cast Shadows"));
+                EditorGUILayout.PropertyField(_recieveShadows, new GUIContent("Recieve Shadows"));
+                EditorGUILayout.PropertyField(_useCustomTerrainMaterialProperty, new GUIContent("Use Custom Terrain Material"));
+                if (_useCustomTerrainMaterialProperty.boolValue)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUILayout.PropertyField(_customTerrainMaterialProperty, new GUIContent("Terrain Material"));
+                    EditorGUI.indentLevel--;
+                }
+
+                EditorGUILayout.PropertyField(_mapEdgeColorProperty, new GUIContent("Color"));
+                _mapEdgeColorFadeDistanceProperty.floatValue =
+                    EditorGUILayout.Slider(new GUIContent("Edge Fade"), _mapEdgeColorFadeDistanceProperty.floatValue, 0, 1);
+                EditorGUILayout.PropertyField(_isClippingVolumeWallEnabledProperty, new GUIContent("Render Clipping Volume Wall"));
+                if (_isClippingVolumeWallEnabledProperty.boolValue)
+                {
+                    EditorGUI.indentLevel++;
+                    EditorGUILayout.PropertyField(
+                        _useCustomClippingVolumeMaterialProperty,
+                        new GUIContent("Use Custom Clipping Volume Material"));
+                    if (_useCustomClippingVolumeMaterialProperty.boolValue)
+                    {
+                        EditorGUI.indentLevel++;
+                        EditorGUILayout.PropertyField(_customClippingVolumeMaterialProperty, new GUIContent("Clipping Volume Material"));
+                        EditorGUI.indentLevel--;
+                    }
+                    EditorGUI.indentLevel--;
+                }
+            }
+            EditorGUILayout.EndVertical();
+
+            // Map Layout Section
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _showQualityOptions = EditorGUILayout.Foldout(_showQualityOptions, "Quality", true, _foldoutTitleStyle);
+            if (_showQualityOptions)
+            {
+                var position = EditorGUILayout.GetControlRect(false, 2 * EditorGUIUtility.singleLineHeight);
+                position.height = EditorGUIUtility.singleLineHeight;
+
+                position = EditorGUI.PrefixLabel(position, new GUIContent("Detail Offset"));
+                EditorGUI.indentLevel--;
+
+                _detailOffset.floatValue = EditorGUI.Slider(position, _detailOffset.floatValue, -1f, 1f);
+                float labelWidth = position.width;
+
+                // Render the sub-text labels.
+                {
+                    position.y += EditorGUIUtility.singleLineHeight;
+                    position.width -= EditorGUIUtility.fieldWidth;
+
+                    var color = GUI.color;
+                    GUI.color = color * new Color(1f, 1f, 1f, 0.5f);
+
+                    GUIStyle style =
+                        new GUIStyle(GUI.skin.label)
+                        {
+                            alignment = TextAnchor.UpperLeft
+                        };
+
+                    EditorGUI.LabelField(position, "Low", style);
+
+                    style.alignment = TextAnchor.UpperCenter;
+                    EditorGUI.LabelField(position, "Default", style);
+
+                    style.alignment = TextAnchor.UpperRight;
+                    EditorGUI.LabelField(position, "High", style);
+
+                    GUI.color = color;
+                }
+
+                EditorGUI.indentLevel++;
+            }
+            EditorGUILayout.EndVertical();
+
+            // Map Layers Section
+            EditorGUILayout.BeginVertical(_boxStyle);
+            GUI.enabled = false;
+            EditorGUILayout.PropertyField(_mapLayersProperty, true);
+            GUI.enabled = true;
+            EditorGUILayout.EndVertical();
+
+            GUILayout.Space(12f);
+            serializedObject.ApplyModifiedProperties();
+            EditorUtility.SetDirty(target);
+        }
+
+        private void Initialize()
+        {
+            if (_baseStyle == null)
+            {
+                _baseStyle = new GUIStyle
+                {
+                    wordWrap = true,
+                    font = EditorStyles.helpBox.font,
+                    fontSize = EditorStyles.helpBox.fontSize,
+                    normal = EditorStyles.helpBox.normal
+                };
+                _baseStyle.normal.background = null;
+                _baseStyle.stretchWidth = false;
+                _baseStyle.stretchHeight = false;
+                _baseStyle.margin = new RectOffset();
+            }
+
+            if (_errorIcon == null)
+            {
+                _errorIcon = EditorGUIUtility.TrIconContent("console.erroricon");
+            }
+
+            if (_errorIconStyle == null)
+            {
+                _errorIconStyle =
+                    new GUIStyle(_baseStyle)
+                    {
+                        stretchHeight = false,
+                        alignment = TextAnchor.MiddleLeft,
+                        fixedWidth = _errorIcon.image.width,
+                        fixedHeight = 1.0f * _errorIcon.image.height,
+                        stretchWidth = false,
+                        wordWrap = false
+                    };
+            }
+
+            if (_hyperlinkStyle == null)
+            {
+                _hyperlinkStyle = new GUIStyle(_baseStyle);
+                _hyperlinkStyle.alignment = TextAnchor.UpperLeft;
+                _hyperlinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
+                _hyperlinkStyle.stretchWidth = false;
+                _hyperlinkStyle.padding = new RectOffset();
+                _hyperlinkStyle.alignment = TextAnchor.UpperLeft;
+            }
+
+            if (_foldoutTitleStyle == null)
+            { 
+                _foldoutTitleStyle = new GUIStyle(EditorStyles.foldout)
+                {
+                    fontStyle = UnityEngine.FontStyle.Bold
+                };
+            }
+
+            if (_boxStyle == null)
+            {
+                _boxStyle = new GUIStyle(GUI.skin.box);
+            }
+        }
+
+        private void RenderBanner()
+        {
+            GUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
+            GUILayout.Label(EditorGUIUtility.isProSkin ? _bannerWhite : _bannerBlack, GUILayout.MaxHeight(96f));
+            GUILayout.FlexibleSpace();
+            GUILayout.EndHorizontal();
+        }
+
+        private void Help(string message, string urlMessage, string url)
+        {
+            EditorGUI.indentLevel--;
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.PrefixLabel(" ");
+            var rect = EditorGUILayout.BeginHorizontal();
+            {
+                
+                var iconWidth = _errorIcon.image.width;
+                EditorGUILayout.LabelField(_errorIcon, _errorIconStyle, GUILayout.Width(iconWidth));
+
+                EditorGUILayout.BeginVertical();
+                {
+                    GUILayout.Space(8);
+                    EditorGUILayout.LabelField(message, _baseStyle);
+
+                    EditorGUILayout.BeginHorizontal();
+                    {
+                        EditorGUILayout.LabelField(urlMessage, _hyperlinkStyle);
+
+                        var linkRect = GUILayoutUtility.GetLastRect();
+
+                        if (Event.current.type == EventType.Repaint)
+                        {
+                            EditorGUIUtility.AddCursorRect(linkRect, MouseCursor.Link);
+                        }
+
+                        if (Event.current.type == EventType.MouseUp && linkRect.Contains(Event.current.mousePosition))
+                        {
+                            Application.OpenURL(url);
+                        }
+                    }
+                    EditorGUILayout.EndHorizontal();
+                    GUILayout.Space(4);
+                }
+                EditorGUILayout.EndVertical();
+            }
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.EndHorizontal();
+            EditorGUI.indentLevel++;
+        }
+    }
+}
