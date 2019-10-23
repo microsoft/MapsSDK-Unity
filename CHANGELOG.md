@@ -4,6 +4,23 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.4.0 - 2019-10-23
+### Maps SDK
+#### Added
+- `TextureTileLayer` class that can be extended to customize imagery used by the `MapRenderer`. Implementations can request data from other Web Mercator tile services, load texture data from disk, or generate textures on the fly. Multiple `TextureTileLayers` can be used and layered together, e.g. to overlay partially transparent textures like weather data.
+- `DefaultTextureTileLayer` is added automatically to the `MapRenderer`. Pulls sattelite aerial imagery from Bing Maps. 
+- Option to enable MRTK hoverlight functionality on the `MapRenderer` terrain.
+
+#### Fixed
+- Spammy error logging when key is invalid.
+- Inaccurate results when raycasting elevation data.
+- Inaccurate rendering of elevation data.
+
+### Supporting Scripts
+#### Added
+- `MapContourLineLayer` renders lines of constant elevation. Line interval and color can be changed dynamically.
+- Various editor scripts for modifying `TextureTileLayers`.
+
 ## 0.3.0 - 2019-08-26
 ### Maps SDK
 #### Added
