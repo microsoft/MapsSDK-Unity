@@ -1,4 +1,7 @@
-﻿using Microsoft.Geospatial;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Geospatial;
 using Microsoft.Maps.Unity;
 using System;
 using System.Globalization;
@@ -6,7 +9,7 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// Adds MapPins to the MapPinLayer based on the CSV file. Expected CSV file format is "Lat,Lon,Name,Type".
+/// Adds <see cref="MapPin"/>s to the <see cref="MapPinLayer"/> based on the CSV file. Expected CSV file format is "Lat,Lon,Name,Type".
 /// </summary>
 public class MapPinProvider : MonoBehaviour
 {

@@ -1,4 +1,7 @@
-﻿using Microsoft.Maps.Unity;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Maps.Unity;
 using Microsoft.Maps.Unity.Search;
 using Microsoft.Maps.Unity.Services;
 using Microsoft.MixedReality.Toolkit;
@@ -7,8 +10,8 @@ using TMPro;
 using UnityEngine;
 
 /// <summary>
-/// Instantiates a MapPin for each location that is reverse geocoded.
-/// The MapPin will display the address of the reverse geocoded location.
+/// Instantiates a <see cref="MapPin"/> for each location that is reverse geocoded.
+/// The <see cref="MapPin"/> will display the address of the reverse geocoded location.
 /// </summary>
 [RequireComponent(typeof(MapRenderer))]
 public class ReverseGeocodeOnClick : MonoBehaviour

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using UnityEngine;
 #if UNITY_WSA
 using UnityEngine.XR.WSA.Input;
     using Microsoft.Maps.Unity;

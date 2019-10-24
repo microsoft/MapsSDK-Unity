@@ -1,4 +1,7 @@
-﻿using Microsoft.Geospatial;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Geospatial;
 using Microsoft.Maps.Unity;
 using System.Collections;
 using System.Collections.Generic;

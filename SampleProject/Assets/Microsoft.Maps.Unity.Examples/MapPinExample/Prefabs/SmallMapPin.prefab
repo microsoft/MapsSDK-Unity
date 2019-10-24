@@ -190,6 +190,7 @@ MonoBehaviour:
   InputActionId: 0
   IsGlobal: 0
   Dimensions: 1
+  StartDimensionIndex: 0
   CanSelect: 1
   CanDeselect: 1
   VoiceCommand: 
@@ -202,7 +203,7 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114340893652251646}
+      - m_Target: {fileID: 5495726529044762292}
         m_MethodName: Zoom
         m_Mode: 1
         m_Arguments:
@@ -216,6 +217,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Events: []
+  dimensionIndex: 0
 --- !u!1 &1452448874978094
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,8 +228,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4545156311932626}
   - component: {fileID: 114401410002030188}
-  - component: {fileID: 114340893652251646}
   - component: {fileID: 8485608606784131832}
+  - component: {fileID: 5495726529044762292}
   m_Layer: 0
   m_Name: SmallMapPin
   m_TagString: Untagged
@@ -292,18 +294,6 @@ MonoBehaviour:
     Longitude: 0
   AltitudeReference: 2
   Altitude: 0
---- !u!114 &114340893652251646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452448874978094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640888791a51286498b083b38ab9cc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8485608606784131832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +304,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23862c6b28b2c4e4da5cb1c1f3bb0e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5495726529044762292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452448874978094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3ba42788f12af4db968c3e27bac5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1748168262977102
@@ -497,7 +499,6 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_textAlignment: 1025
-  m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -524,6 +525,7 @@ MonoBehaviour:
   m_verticalMapping: 0
   m_uvLineOffset: 0
   m_geometrySortingOrder: 0
+  m_VertexBufferAutoSizeReduction: 1
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
@@ -538,12 +540,9 @@ MonoBehaviour:
     lineCount: 0
     pageCount: 0
     materialCount: 1
-  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
-  m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 5834456297681937167}
   m_subTextObjects:
