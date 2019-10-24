@@ -408,28 +408,28 @@ PrefabInstance:
       value: "This scene uses California's fish barrier dataset to display the locations
         of all barriers to fish migration in California's water sheds.\n\nThis is
         a data set with 5,363 points.\n\nFeatures:\n* MapPinLayer with clustering\n*
-        Zoom and pan restrictions\n* Customized input profile\n* Labeling\n\nNavigation
-        (WMR):\n * Right thumbstick: Pan\n * Right touchpad: Zoom/Rotate"
+        Zoom and pan restrictions\n* Customized input profile\n* Labeling\n* Contour
+        Lines\n\nNavigation (WMR):\n * Right thumbstick: Pan\n * Right touchpad: Zoom/Rotate"
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 358
+      value: 374
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 59
+      value: 62
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 51
+      value: 53
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -444,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 328
+      value: 319
       objectReference: {fileID: 0}
     - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -499,6 +499,8 @@ GameObject:
   - component: {fileID: 1276686188}
   - component: {fileID: 1276686196}
   - component: {fileID: 1276686197}
+  - component: {fileID: 1276686198}
+  - component: {fileID: 1276686199}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -609,14 +611,15 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 1
   _bingMapsKey: 
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.30409837, g: 0.15686275, b: 0.3764706, a: 1}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
   _center:
-    Latitude: 38.585831474606
-    Longitude: -120.805957681905
+    Latitude: 37.2779714028801
+    Longitude: -121.219809007815
   _zoomLevel: 5.51
   _minimumZoomLevel: 5.51
   _maximumZoomLevel: 20
@@ -627,13 +630,19 @@ MonoBehaviour:
   - {fileID: 1276686192}
   - {fileID: 1276686190}
   - {fileID: 1276686197}
+  - {fileID: 1276686199}
   _castShadows: 1
   _recieveShadows: 1
+  _enableMrtkMaterialIntegration: 0
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
   _useCustomClippingVolumeMaterial: 0
   _customClippingVolumeMaterial: {fileID: 0}
+  _textureTileLayers:
+    _list:
+    - {fileID: 1276686198}
+  _hideTileLayerComponents: 1
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
@@ -675,6 +684,37 @@ MonoBehaviour:
   _layerName: MapCopyrightLayer
   _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   _textColor: {r: 0, g: 0, b: 0, a: 0.42}
+--- !u!114 &1276686198
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1276686199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb9f4b757370104dbd60b156fe6ee6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerName: MapContourLineLayer
+  _majorIntervalAltitudeInMeters: 5
+  _numMinorIntervalSections: 5
+  _majorColor: {r: 0.92294896, g: 0.43921566, b: 1, a: 0.39215687}
+  _minorColor: {r: 0.501958, g: 0.21938412, b: 0.5471698, a: 0.29411766}
+  _majorLinePixelSize: 2
+  _minorLinePixelSize: 1
 --- !u!1 &1717244739
 GameObject:
   m_ObjectHideFlags: 0
