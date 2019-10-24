@@ -6,7 +6,10 @@ Shader "MapsSDK/StandardTerrainShader"
     Properties
     {
         _Color("Color", Color) = (1,1,1,1)
-        _MainTex("Albedo (RGB)", 2D) = "white" {}
+        _MainTex0("Albedo (RGB)", 2D) = "white" {}
+        _MainTex1("Color", Color) = (1,1,1,1)
+        _MainTex2("Color", Color) = (1,1,1,1)
+        _MainTex3("Color", Color) = (1,1,1,1)
     }
 
     SubShader
@@ -16,12 +19,13 @@ Shader "MapsSDK/StandardTerrainShader"
             Tags{ "RenderType" = "Opaque" "LightMode" = "ForwardBase" }
 
             CGPROGRAM
-
             #pragma vertex vert
             #pragma fragment frag
 
             // These are the maps specific keywords...
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
+            #pragma multi_compile __ ENABLE_CONTOUR_LINES
+            #pragma multi_compile __ ENABLE_MRTK_INTEGRATION
 
             // Support the various Unity keywords...
             #pragma multi_compile_fog
@@ -34,11 +38,17 @@ Shader "MapsSDK/StandardTerrainShader"
             #include "Lighting.cginc"
             #include "AutoLight.cginc"
             #include "ClippingVolume-MapsSDK.cginc"
+            #include "ContourLines-MapsSDK.cginc"
             #include "ElevationOffset-MapsSDK.cginc"
+            #include "MRTKIntegration-MapsSDK.cginc"
 
-            sampler2D _MainTex;
+            int _MainTexCount;
+            sampler2D _MainTex0;
+            sampler2D _MainTex1;
+            sampler2D _MainTex2;
+            sampler2D _MainTex3;
+            float4 _TexScaleAndOffset[4];
             fixed4 _Color;
-            float4 _TexScaleAndOffset;
 
             struct appdata
             {
@@ -52,10 +62,15 @@ Shader "MapsSDK/StandardTerrainShader"
             {
                 float4 pos : SV_POSITION;
                 float3 worldPosition : POSITION1;
-                float2 texcoord : TEXCOORD0;
-                
-                SHADOW_COORDS(1)
-                UNITY_FOG_COORDS(2)
+                float2 uv : TEXCOORD0;
+                float2 uv2 : TEXCOORD1;
+                float2 uv3 : TEXCOORD2;
+                float2 uv4 : TEXCOORD3;
+#if ENABLE_ELEVATION_TEXTURE && ENABLE_CONTOUR_LINES
+                float elevation : TEXCOORD4;
+#endif
+                SHADOW_COORDS(5)
+                UNITY_FOG_COORDS(6)
 
                 UNITY_VERTEX_OUTPUT_STEREO
             };
@@ -64,23 +79,30 @@ Shader "MapsSDK/StandardTerrainShader"
             {
                 UNITY_SETUP_INSTANCE_ID(v);
 
-#if defined(ENABLE_ELEVATION_TEXTURE)
-                float elevationOffset =
+                v2f o;
+
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+#if ENABLE_ELEVATION_TEXTURE
+                float2 elevationOffset =
                     CalculateElevationOffset(
                         _ElevationTex,
                         v.uv,
                         _ElevationTexScaleAndOffset.x,
                         _ElevationTexScaleAndOffset.yz,
                         _ElevationTexScaleAndOffset.w);
-                v.vertex.y += elevationOffset;
+                v.vertex.y += elevationOffset.x;
+#if ENABLE_CONTOUR_LINES
+                o.elevation = elevationOffset.y;
+#endif
 #endif
 
-                v2f o;
-                UNITY_INITIALIZE_OUTPUT(v2f, o);
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.texcoord = _TexScaleAndOffset.x * v.uv + _TexScaleAndOffset.yz;
+                if (_MainTexCount > 0) { o.uv = _TexScaleAndOffset[0].x * v.uv + _TexScaleAndOffset[0].yz; }
+                if (_MainTexCount > 1) { o.uv2 = _TexScaleAndOffset[1].x * v.uv + _TexScaleAndOffset[1].yz; }
+                if (_MainTexCount > 2) { o.uv3 = _TexScaleAndOffset[2].x * v.uv + _TexScaleAndOffset[2].yz; }
+                if (_MainTexCount > 3) { o.uv4 = _TexScaleAndOffset[3].x * v.uv + _TexScaleAndOffset[3].yz; }
 
                 float3 worldPosition = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1.0)).xyz;
                 o.worldPosition = worldPosition;
@@ -91,6 +113,11 @@ Shader "MapsSDK/StandardTerrainShader"
                 return o;
             }
 
+            fixed4 blend(fixed4 dst, fixed4 src)
+            {
+                return fixed4(src.rgb * src.a + dst.rgb * (1.0 - src.a), 1);
+            }
+
             fixed4 frag(v2f i) : SV_Target
             {
                 // Because we sample from a fullscreen texture (the shadow map), don't forget to setup the eye index.
@@ -99,14 +126,27 @@ Shader "MapsSDK/StandardTerrainShader"
                 float minDistanceToPlane = ClipToVolume(i.worldPosition);
 
                 // Albedo comes from a texture tinted by color
-                fixed4 color = tex2D(_MainTex, i.texcoord) * _Color;
-    
+                fixed4 color = fixed4(0.5, 0.5, 0.5, 1);
+                if (_MainTexCount > 0) { color = blend(color, tex2D(_MainTex0, i.uv)); }
+                if (_MainTexCount > 1) { color = blend(color, tex2D(_MainTex1, i.uv2)); }
+                if (_MainTexCount > 2) { color = blend(color, tex2D(_MainTex2, i.uv3)); }
+                if (_MainTexCount > 3) { color = blend(color, tex2D(_MainTex3, i.uv4)); }
+                color *= _Color;
+
+                // Apply contours.
+#if ENABLE_ELEVATION_TEXTURE && ENABLE_CONTOUR_LINES
+                color = ApplyContourLines(color, i.elevation);
+#endif
+
                 float lerpAmount = saturate(1.0 + minDistanceToPlane / _ClippingVolumeFadeDistance);
                 color = lerp(color, _ClippingVolumeColor, lerpAmount);
 
                 // Apply shadow.
                 fixed shadow = SHADOW_ATTENUATION(i);
                 color.rgb *= saturate(shadow + 0.33);
+
+                // MRTK hover light.
+                color = ApplyHoverLight(i.worldPosition.xyz, color);
 
                 // Apply fog.
                 UNITY_APPLY_FOG(i.fogCoord, color);
@@ -140,6 +180,7 @@ Shader "MapsSDK/StandardTerrainShader"
                 float4 vertex : POSITION;
                 float2 uv: TEXCOORD;
                 float3 normal : NORMAL;
+
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
 
@@ -147,6 +188,7 @@ Shader "MapsSDK/StandardTerrainShader"
             {
                 V2F_SHADOW_CASTER;
                 float3 worldPosition : POSITION1;
+
                 UNITY_VERTEX_OUTPUT_STEREO
             };
 
@@ -154,7 +196,7 @@ Shader "MapsSDK/StandardTerrainShader"
             {
                 UNITY_SETUP_INSTANCE_ID(v);
 
-#if defined(ENABLE_ELEVATION_TEXTURE)
+#if ENABLE_ELEVATION_TEXTURE
                 float elevationOffset =
                     CalculateElevationOffset(
                         _ElevationTex,

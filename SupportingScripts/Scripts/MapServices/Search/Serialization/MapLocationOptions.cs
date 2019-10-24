@@ -3,6 +3,9 @@
 
 namespace Microsoft.Maps.Unity.Search
 {
+    /// <summary>
+    /// Encapsulates various options related to finding locations.
+    /// </summary>
     public class MapLocationOptions
     {
         /// <summary>

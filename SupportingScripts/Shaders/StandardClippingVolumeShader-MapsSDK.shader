@@ -26,6 +26,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             #pragma geometry geom
 
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
+            #pragma multi_compile __ ENABLE_MRTK_INTEGRATION
 
             #pragma multi_compile_fog
             #pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
@@ -40,11 +41,12 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             #include "Lighting.cginc"
             #include "ClippingVolume-MapsSDK.cginc"
             #include "ElevationOffset-MapsSDK.cginc"
+            #include "MRTKIntegration-MapsSDK.cginc"
 
             struct appdata
             {
                 float3 vertex : POSITION;
-#if defined(ENABLE_ELEVATION_TEXTURE)
+#if ENABLE_ELEVATION_TEXTURE
                 float2 texcoord : TEXCOORD;
 #endif
 
@@ -86,7 +88,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             {
                 UNITY_SETUP_INSTANCE_ID(v);
 
-#if defined(ENABLE_ELEVATION_TEXTURE)
+#if ENABLE_ELEVATION_TEXTURE
                 float elevationOffset =
                     CalculateElevationOffset(
                         _ElevationTex,
@@ -268,6 +270,9 @@ Shader "MapsSDK/StandardClippingVolumeShader"
 
                 fixed4 finalColor = fixed4(_ClippingVolumeColor.rgb * shadeFactor, _ClippingVolumeColor.a);
 
+                // MRTK hover light.
+                finalColor = ApplyHoverLight(i.worldPosition.xyz, finalColor);
+
                 // Apply fog.
                 UNITY_APPLY_FOG(i.fogCoord, finalColor);
 
@@ -303,7 +308,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             struct appdata
             {
                 float3 vertex : POSITION;
-#if defined(ENABLE_ELEVATION_TEXTURE)
+#if ENABLE_ELEVATION_TEXTURE
                 float2 texcoord: TEXCOORD;
 #endif
 
@@ -344,7 +349,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             {
                 UNITY_SETUP_INSTANCE_ID(v);
 
-#if defined(ENABLE_ELEVATION_TEXTURE)
+#if ENABLE_ELEVATION_TEXTURE
                 float elevationOffset =
                     CalculateElevationOffset(
                         _ElevationTex,

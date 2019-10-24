@@ -27,8 +27,9 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _localMapDimensionProperty;
         private SerializedProperty _localMapHeightProperty;
         private static bool _terrainOptions = true;
-        private SerializedProperty _castShadows;
-        private SerializedProperty _recieveShadows;
+        private SerializedProperty _castShadowsProperty;
+        private SerializedProperty _recieveShadowsProperty;
+        private SerializedProperty _enableMrtkMaterialIntegrationProperty;
         private SerializedProperty _useCustomTerrainMaterialProperty;
         private SerializedProperty _customTerrainMaterialProperty;
         private SerializedProperty _isClippingVolumeWallEnabledProperty;
@@ -38,6 +39,9 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _labelPrefabProperty;
         private static bool _showQualityOptions = true;
         private SerializedProperty _detailOffset;
+        private static bool _showTileLayers = true;
+        private SerializedProperty _textureTileLayersProperty;
+        private SerializedProperty _hideTileLayerComponentsProperty;
         private GUIStyle _baseStyle = null;
         private GUIStyle _hyperlinkStyle = null;
         private GUIStyle _errorIconStyle = null;
@@ -50,17 +54,22 @@ namespace Microsoft.Maps.Unity
         {
             new GUIContent("Default", "The map terrain consists of either elevation data or high resolution 3D models."),
             new GUIContent("Elevated", "The map terrain consists only of elevation data. No high resolution 3D models are used."),
-            new GUIContent("Flat", "Both elevation and high resolution 3D models are disabled. The map terrain surface will be flat.")
+            new GUIContent("Flat", "Both elevation and high resolution 3D models are disabled. The map will be flat.")
         };
-        private readonly GUILayoutOption[] _minMaxLabelsLayoutOptions = new GUILayoutOption[]
-        {
-            GUILayout.MaxWidth(52.0f)
-        };
+        private readonly GUILayoutOption[] _minMaxLabelsLayoutOptions =
+            new GUILayoutOption[]
+            {
+                GUILayout.MaxWidth(52.0f)
+            };
         
         private readonly Tuple<UnityEngine.Object, UnityEngine.Object>[] _terrainMaterials =
             new Tuple<UnityEngine.Object, UnityEngine.Object>[3];
 
         private static int ControlIdHint = "MapRendererEditor".GetHashCode();
+
+        private bool _isDragging = false;
+        private Vector3 _startingHitPointInWorldSpace;
+        private Vector2D _startingCenterInMercatorSpace;
 
         internal void OnEnable()
         {
@@ -74,8 +83,9 @@ namespace Microsoft.Maps.Unity
             _localMapDimensionProperty = serializedObject.FindProperty("LocalMapDimension");
             _localMapHeightProperty = serializedObject.FindProperty("_localMapHeight");
             _useCustomTerrainMaterialProperty = serializedObject.FindProperty("_useCustomTerrainMaterial");
-            _castShadows = serializedObject.FindProperty("_castShadows");
-            _recieveShadows = serializedObject.FindProperty("_recieveShadows");
+            _castShadowsProperty = serializedObject.FindProperty("_castShadows");
+            _recieveShadowsProperty = serializedObject.FindProperty("_recieveShadows");
+            _enableMrtkMaterialIntegrationProperty = serializedObject.FindProperty("_enableMrtkMaterialIntegration");
             _customTerrainMaterialProperty = serializedObject.FindProperty("_customTerrainMaterial");
             _isClippingVolumeWallEnabledProperty = serializedObject.FindProperty("_isClippingVolumeWallEnabled");
             _useCustomClippingVolumeMaterialProperty = serializedObject.FindProperty("_useCustomClippingVolumeMaterial");
@@ -87,11 +97,9 @@ namespace Microsoft.Maps.Unity
             _detailOffset = serializedObject.FindProperty("_detailOffset");
             _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
+            _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
+            _hideTileLayerComponentsProperty = serializedObject.FindProperty("_hideTileLayerComponents");
         }
-
-        private bool _isDragging = false;
-        private Vector3 _startingHitPointInLocalSpace;
-        private Vector2D _startingCenterInMercatorSpace;
 
         private void OnSceneGUI()
         {
@@ -134,7 +142,7 @@ namespace Microsoft.Maps.Unity
                     var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
                     if (mapRenderer.Raycast(ray, out var hitInfo))
                     {
-                        _startingHitPointInLocalSpace = mapRenderer.transform.worldToLocalMatrix * hitInfo.Point;
+                        _startingHitPointInWorldSpace = hitInfo.Point;
                         _startingCenterInMercatorSpace = mapRenderer.Center.ToMercatorPosition();
                         _isDragging = true;
                         currentEvent.Use();
@@ -144,11 +152,12 @@ namespace Microsoft.Maps.Unity
                 {
                     // Update center 
                     var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
-                    var plane = new Plane(mapRenderer.transform.up, _startingHitPointInLocalSpace);
+                    var plane = new Plane(mapRenderer.transform.up, _startingHitPointInWorldSpace);
                     if (plane.Raycast(ray, out var enter))
                     {
-                        Vector3 updatedHitPointInLocalSpace = mapRenderer.transform.worldToLocalMatrix * ray.GetPoint(enter);
-                        var newDeltaInLocalSpace = updatedHitPointInLocalSpace - _startingHitPointInLocalSpace;
+                        var updatedHitPointInWorldSpace = ray.GetPoint(enter);
+                        var newDeltaInWorldSpace = updatedHitPointInWorldSpace - _startingHitPointInWorldSpace;
+                        var newDeltaInLocalSpace = mapRenderer.transform.worldToLocalMatrix * newDeltaInWorldSpace;
                         var newDeltaInMercator = new Vector2D(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
                         var newCenter = new LatLon(_startingCenterInMercatorSpace - newDeltaInMercator);
 
@@ -240,9 +249,9 @@ namespace Microsoft.Maps.Unity
             if (_showMapSizingOptions)
             {
                 EditorGUILayout.PropertyField(_localMapDimensionProperty);
-                EditorGUILayout.LabelField("Scaled Map Dimension", ((MapRenderer)target).MapDimension.ToString());
+                EditorGUILayout.LabelField(" ", "Scaled Map Dimension: " + ((MapRenderer)target).MapDimension.ToString());
                 EditorGUILayout.PropertyField(_localMapHeightProperty);
-                EditorGUILayout.LabelField("Scaled Map Height", ((MapRenderer)target).MapHeight.ToString());
+                EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
             }
             EditorGUILayout.EndVertical();
 
@@ -257,8 +266,9 @@ namespace Microsoft.Maps.Unity
                 _mapTerrainType.enumValueIndex = GUILayout.Toolbar(_mapTerrainType.enumValueIndex, _layerOptions);
                 GUILayout.EndHorizontal();
 
-                EditorGUILayout.PropertyField(_castShadows, new GUIContent("Cast Shadows"));
-                EditorGUILayout.PropertyField(_recieveShadows, new GUIContent("Recieve Shadows"));
+                EditorGUILayout.PropertyField(_castShadowsProperty, new GUIContent("Cast Shadows"));
+                EditorGUILayout.PropertyField(_recieveShadowsProperty, new GUIContent("Recieve Shadows"));
+                EditorGUILayout.PropertyField(_enableMrtkMaterialIntegrationProperty, new GUIContent("Enable MRTK Integration"));
                 EditorGUILayout.PropertyField(_useCustomTerrainMaterialProperty, new GUIContent("Use Custom Terrain Material"));
                 if (_useCustomTerrainMaterialProperty.boolValue)
                 {
@@ -337,6 +347,18 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.PropertyField(_mapLayersProperty, true);
             GUI.enabled = true;
             EditorGUILayout.EndVertical();
+
+            // Texture Tile Providers
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _showTileLayers = EditorGUILayout.Foldout(_showTileLayers, "Tile Layers", true, _foldoutTitleStyle);
+            if (_showTileLayers)
+            {
+                EditorGUILayout.PropertyField(_textureTileLayersProperty, true);
+                EditorGUILayout.PropertyField(_hideTileLayerComponentsProperty);
+                GUILayout.Space(12f);
+            }
+            EditorGUILayout.EndVertical();
+
 
             GUILayout.Space(12f);
             serializedObject.ApplyModifiedProperties();

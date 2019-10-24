@@ -46,7 +46,7 @@ namespace Microsoft.Maps.Unity.Search
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 Status = MapLocationFinderStatus.BadResponse;
                 return; // Early out.
