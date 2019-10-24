@@ -179,6 +179,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.15
       objectReference: {fileID: 0}
+    - target: {fileID: 102667059822850586, guid: 6f89876ff9050224f949c0490969219d,
+        type: 3}
+      propertyPath: m_Text
+      value: Weather Layer
+      objectReference: {fileID: 0}
     - target: {fileID: 114359879210576386, guid: 6f89876ff9050224f949c0490969219d,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -224,10 +229,10 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 102667059822850586, guid: 6f89876ff9050224f949c0490969219d,
+    - target: {fileID: 114359879210576386, guid: 6f89876ff9050224f949c0490969219d,
         type: 3}
-      propertyPath: m_Text
-      value: Weather Layer
+      propertyPath: startDimensionIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f89876ff9050224f949c0490969219d, type: 3}
@@ -515,45 +520,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.15
       objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 102355601117475586, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: VoiceCommand
-      value: Select
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1276686189}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Animate
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      propertyPath: m_Text
       value: North America
+      objectReference: {fileID: 0}
+    - target: {fileID: 102741463006760918, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: m_Text
+      value: Caribbean
+      objectReference: {fileID: 0}
+    - target: {fileID: 102888677059595956, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: m_Text
+      value: Alaska
       objectReference: {fileID: 0}
     - target: {fileID: 114200093395354822, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
@@ -595,45 +575,45 @@ PrefabInstance:
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Alaska
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: VoiceCommand
       value: Select
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1276686189}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Animate
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114214013505314002, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Caribbean
+      value: North America
       objectReference: {fileID: 0}
     - target: {fileID: 114437542460993462, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
@@ -685,20 +665,45 @@ PrefabInstance:
       propertyPath: ToggleList.Array.data[4]
       value: 
       objectReference: {fileID: 767665973}
-    - target: {fileID: 102741463006760918, guid: 8b83134143223104c9bc3865a565cab3,
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
         type: 3}
-      propertyPath: m_Text
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: VoiceCommand
+      value: Select
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1276686189}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Animate
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 114560737601403782, guid: 8b83134143223104c9bc3865a565cab3,
+        type: 3}
+      propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Caribbean
-      objectReference: {fileID: 0}
-    - target: {fileID: 102888677059595956, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: m_Text
-      value: Alaska
-      objectReference: {fileID: 0}
-    - target: {fileID: 102355601117475586, guid: 8b83134143223104c9bc3865a565cab3,
-        type: 3}
-      propertyPath: m_Text
-      value: North America
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b83134143223104c9bc3865a565cab3, type: 3}
@@ -1397,13 +1402,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventsToReceive: 0
-  pokeThreshold: 0.25
   debounceThreshold: 0.01
-  touchableCollider: {fileID: 767665974}
   localForward: {x: 0, y: 0, z: -1}
   localUp: {x: 0, y: 1, z: 0}
   localCenter: {x: 0.08, y: 0, z: -0.0125}
   bounds: {x: 0.22, y: 0.05}
+  touchableCollider: {fileID: 767665974}
 --- !u!114 &767665973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1416,41 +1420,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled: 1
-  States: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
-  InputAction:
-    id: 0
-    description: 
-    axisConstraint: 0
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
   InputActionId: 0
-  IsGlobal: 0
+  isGlobal: 0
   Dimensions: 2
-  StartDimensionIndex: 0
+  dimensionIndex: 0
+  startDimensionIndex: 0
   CanSelect: 1
   CanDeselect: 0
   VoiceCommand: Select
-  RequiresFocus: 1
-  Profiles:
+  voiceRequiresFocus: 1
+  profiles:
   - Target: {fileID: 1041148914}
     Themes:
     - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
     - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
-    HadDefaultTheme: 1
   - Target: {fileID: 464771768}
     Themes:
     - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
     - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
-    HadDefaultTheme: 1
   - Target: {fileID: 1976126560}
     Themes:
     - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
     - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
-    HadDefaultTheme: 1
   - Target: {fileID: 1508103317}
     Themes:
     - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
     - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
-    HadDefaultTheme: 1
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1468,7 +1464,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Events: []
-  dimensionIndex: 0
+  enabledOnStart: 1
 --- !u!65 &767665974
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1727,13 +1723,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   eventsToReceive: 0
-  pokeThreshold: 0.25
   debounceThreshold: 0.01
-  touchableCollider: {fileID: 908599247}
   localForward: {x: 0, y: 0, z: -1}
   localUp: {x: 0, y: 1, z: 0}
   localCenter: {x: 0.08, y: 0, z: -0.0125}
   bounds: {x: 0.22, y: 0.05}
+  touchableCollider: {fileID: 908599247}
 --- !u!114 &908599246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,41 +1741,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled: 1
-  States: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
-  InputAction:
-    id: 0
-    description: 
-    axisConstraint: 0
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
   InputActionId: 0
-  IsGlobal: 0
+  isGlobal: 0
   Dimensions: 2
-  StartDimensionIndex: 0
+  dimensionIndex: 0
+  startDimensionIndex: 0
   CanSelect: 1
   CanDeselect: 0
   VoiceCommand: Select
-  RequiresFocus: 1
-  Profiles:
+  voiceRequiresFocus: 1
+  profiles:
   - Target: {fileID: 2088533284}
     Themes:
     - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
     - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
-    HadDefaultTheme: 1
   - Target: {fileID: 1712754259}
     Themes:
     - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
     - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
-    HadDefaultTheme: 1
   - Target: {fileID: 269463104}
     Themes:
     - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
     - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
-    HadDefaultTheme: 1
   - Target: {fileID: 147523361}
     Themes:
     - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
     - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
-    HadDefaultTheme: 1
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1798,7 +1785,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   Events: []
-  dimensionIndex: 0
+  enabledOnStart: 1
 --- !u!65 &908599247
 BoxCollider:
   m_ObjectHideFlags: 0
