@@ -218,8 +218,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Test
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -418,25 +416,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled: 1
-  States: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
-  InputAction:
-    id: 0
-    description: 
-    axisConstraint: 0
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
   InputActionId: 0
-  IsGlobal: 0
+  isGlobal: 0
   Dimensions: 1
-  StartDimensionIndex: 0
+  dimensionIndex: 0
+  startDimensionIndex: 0
   CanSelect: 1
   CanDeselect: 1
   VoiceCommand: 
-  RequiresFocus: 1
-  Profiles:
+  voiceRequiresFocus: 1
+  profiles:
   - Target: {fileID: 1632364928461936}
     Themes:
     - {fileID: 11400000, guid: 3874b82a903073747850f1bf3c9464a5, type: 2}
-    HadDefaultTheme: 1
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -451,7 +444,5 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Events: []
-  dimensionIndex: 0
+  enabledOnStart: 1

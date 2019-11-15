@@ -82,7 +82,7 @@ PluginImporter:
   - first:
       Windows Store Apps: WindowsStoreApps
     second:
-      enabled: 1
+      enabled: 0
       settings:
         CPU: AnyCPU
         DontProcess: false

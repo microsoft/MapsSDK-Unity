@@ -51,7 +51,7 @@ public class ReverseGeocodeOnClick : MonoBehaviour
         var focusProvider = CoreServices.InputSystem.FocusProvider;
         if (focusProvider.TryGetFocusDetails(mixedRealityPointerEventData.Pointer, out var focusDetails))
         {
-            var location = _mapRenderer.TransformWorldToLatLon(focusDetails.Point);
+            var location = _mapRenderer.TransformWorldPointToLatLon(focusDetails.Point);
             var finderResult = await MapLocationFinder.FindLocationsAt(location);
 
             string formattedAddressString = null;

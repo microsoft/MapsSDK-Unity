@@ -87,8 +87,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4545156311932626}
   - component: {fileID: 114401410002030188}
-  - component: {fileID: 114340893652251646}
   - component: {fileID: 8485608606784131832}
+  - component: {fileID: 114895339250888638}
   m_Layer: 0
   m_Name: AddressMapPin
   m_TagString: Untagged
@@ -153,18 +153,6 @@ MonoBehaviour:
     Longitude: 0
   AltitudeReference: 2
   Altitude: 0
---- !u!114 &114340893652251646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1452448874978094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 640888791a51286498b083b38ab9cc57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8485608606784131832
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +163,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23862c6b28b2c4e4da5cb1c1f3bb0e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114895339250888638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1452448874978094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e3ba42788f12af4db968c3e27bac5d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1748168262977102
@@ -319,8 +319,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

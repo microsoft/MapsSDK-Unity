@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 1488338481}
   - component: {fileID: 1488338472}
   - component: {fileID: 1488338473}
+  - component: {fileID: 1488338474}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -462,6 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 1
   _bingMapsKey: 
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.27450982, g: 0.33333334, b: 0.5529412, a: 1}
@@ -481,11 +483,16 @@ MonoBehaviour:
   - {fileID: 1488338473}
   _castShadows: 1
   _recieveShadows: 1
+  _enableMrtkMaterialIntegration: 0
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
   _useCustomClippingVolumeMaterial: 0
   _customClippingVolumeMaterial: {fileID: 0}
+  _textureTileLayers:
+    _list:
+    - {fileID: 1488338474}
+  _hideTileLayerComponents: 1
 --- !u!4 &1488338471
 Transform:
   m_ObjectHideFlags: 0
@@ -528,6 +535,23 @@ MonoBehaviour:
   _layerName: MapCopyrightLayer
   _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   _textColor: {r: 0, g: 0, b: 0, a: 0.42}
+--- !u!114 &1488338474
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488338469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageryType: 1
+  _areRoadsEnabled: 0
+  _areLabelsEnabled: 0
+  _isHillShadingEnabled: 1
+  _imageryStyle: 0
 --- !u!65 &1488338476
 BoxCollider:
   m_ObjectHideFlags: 0

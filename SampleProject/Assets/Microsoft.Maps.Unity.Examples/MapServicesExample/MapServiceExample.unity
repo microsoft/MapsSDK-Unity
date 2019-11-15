@@ -527,6 +527,7 @@ GameObject:
   - component: {fileID: 1276686189}
   - component: {fileID: 1276686197}
   - component: {fileID: 1276686190}
+  - component: {fileID: 1276686199}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -636,6 +637,7 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 1
   _bingMapsKey: 
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
@@ -656,11 +658,16 @@ MonoBehaviour:
   - {fileID: 1276686190}
   _castShadows: 1
   _recieveShadows: 1
+  _enableMrtkMaterialIntegration: 0
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
   _useCustomClippingVolumeMaterial: 0
   _customClippingVolumeMaterial: {fileID: 0}
+  _textureTileLayers:
+    _list:
+    - {fileID: 1276686199}
+  _hideTileLayerComponents: 1
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
@@ -719,13 +726,9 @@ MonoBehaviour:
   OnPointerDown:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Microsoft.MixedReality.Toolkit.Input.PointerUnityEvent, Microsoft.MixedReality.Toolkit.SDK,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnPointerUp:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Microsoft.MixedReality.Toolkit.Input.PointerUnityEvent, Microsoft.MixedReality.Toolkit.SDK,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnPointerClicked:
     m_PersistentCalls:
       m_Calls:
@@ -740,13 +743,26 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Microsoft.MixedReality.Toolkit.Input.PointerUnityEvent, Microsoft.MixedReality.Toolkit.SDK,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnPointerDragged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: Microsoft.MixedReality.Toolkit.Input.PointerUnityEvent, Microsoft.MixedReality.Toolkit.SDK,
-      Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1276686199
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageryType: 1
+  _areRoadsEnabled: 0
+  _areLabelsEnabled: 0
+  _isHillShadingEnabled: 1
+  _imageryStyle: 0
 --- !u!1 &1717244739
 GameObject:
   m_ObjectHideFlags: 0

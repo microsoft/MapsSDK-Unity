@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 220598123}
   - component: {fileID: 220598124}
   - component: {fileID: 220598125}
+  - component: {fileID: 220598126}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -202,6 +203,7 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _version: 1
   _bingMapsKey: 
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.37019402, g: 0.39681298, b: 0.4433962, a: 1}
@@ -220,11 +222,16 @@ MonoBehaviour:
   - {fileID: 220598125}
   _castShadows: 1
   _recieveShadows: 1
+  _enableMrtkMaterialIntegration: 0
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
   _useCustomClippingVolumeMaterial: 0
   _customClippingVolumeMaterial: {fileID: 0}
+  _textureTileLayers:
+    _list:
+    - {fileID: 220598126}
+  _hideTileLayerComponents: 1
 --- !u!4 &220598122
 Transform:
   m_ObjectHideFlags: 0
@@ -300,23 +307,15 @@ MonoBehaviour:
   RotateStarted:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   RotateStopped:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ScaleStarted:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   ScaleStopped:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!114 &220598124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +343,23 @@ MonoBehaviour:
   _layerName: MapCopyrightLayer
   _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   _textColor: {r: 0, g: 0, b: 0, a: 0.42}
+--- !u!114 &220598126
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220598119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _imageryType: 1
+  _areRoadsEnabled: 0
+  _areLabelsEnabled: 0
+  _isHillShadingEnabled: 1
+  _imageryStyle: 0
 --- !u!1 &279380892
 GameObject:
   m_ObjectHideFlags: 0
@@ -655,8 +671,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: Seattle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -859,8 +873,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: "62\xB0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1094,8 +1106,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: partly cloudy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
