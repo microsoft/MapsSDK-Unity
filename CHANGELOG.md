@@ -4,13 +4,24 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.4.1 - 2019-11-15
+### Maps SDK
+#### Added
+- The `DefaultTextureTileLayer` now supports Bing Maps symbolic imagery as well as aerial imagery with road and label overlays. Previously aerial imagery (without road overlays or labels) was the only imagery type supported.
+
+### Supporting Scripts
+#### Added
+- `HttpTextureTileLayer` component that makes it easy to stream texture tiles by specifying a formatted URL.
+- More Editor UI improvements around `TextureTileLayer`. Right-clicking a tile layer in list now brings up option to edit the underlying script.
+#### Changed
+- `MapRendererTransformExtension` APIs renamed to more closely follow Unity's transformation-related methods.
+
 ## 0.4.0 - 2019-10-23
 ### Maps SDK
 #### Added
 - `TextureTileLayer` class that can be extended to customize imagery used by the `MapRenderer`. Implementations can request data from other Web Mercator tile services, load texture data from disk, or generate textures on the fly. Multiple `TextureTileLayers` can be used and layered together, e.g. to overlay partially transparent textures like weather data.
 - `DefaultTextureTileLayer` is added automatically to the `MapRenderer`. Pulls sattelite aerial imagery from Bing Maps. 
 - Option to enable MRTK hoverlight functionality on the `MapRenderer` terrain.
-
 #### Fixed
 - Spammy error logging when key is invalid.
 - Inaccurate results when raycasting elevation data.
@@ -29,10 +40,8 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 - Ability to render only a flat map surface by disabling aforementioned 3D terrain sources.
 - In-editor mouse controls to drag the center of the `MapRenderer` and adjust it's zoom level. Similar mouse controls added for `MapPins` to allow for adjusting a pin's position relative to the map.
 - `MapPinLayer` now supports serialization of it's children items, so `MapPins` can be added to the layer in the editor rather than strictly at runtime.
-
 #### Changed
 - Copyright settings for `MapRenderer` now managed by separate component, `MapCopyrightLayer`. This component is auto-added to `GameObjects` with a `MapRenderer` component.
-
 #### Fixed
 - Handle case when developer key isn't present more gracefully. Less console spam and `MapPins` will continue to position correctly.
 
@@ -40,23 +49,21 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 #### Added
 - Initial Bing Maps service API. Currently supports geocoding and reverse geocoding via the `LocationFinder`.
 - Editor scripts for various components have been moved out of the DLL and are now available in the supporting scripts.
-
 #### Changed
 - Editor UI refresh for MapRenderer. Among other visual improvements, the developer key field acts as a password field and the value is now hidden by asterisks.
 
 ## 0.2.3 - 2019-07-15
 ### Maps SDK
 #### Added
-- ```MapScene``` animation-related logic has been modularized and is now customizable. Default implementation moved to supporting scripts.
-- Refreshed editor UI for the ```MapRenderer```.
-
+- `MapScene` animation-related logic has been modularized and is now customizable. Default implementation moved to supporting scripts.
+- Refreshed editor UI for the `MapRenderer`.
 #### Fixed
 - Clamp boundary values for various ```MapRenderer``` properties like center and zoom level.
 
 ### Supporting Scripts
 #### Added
 - Method to calculate scale ratio between the map and Unity's world space.
-- ```DefaultAnimationController``` implementation used for animating ```MapScenes```. This implementation improves the animation speed to account for the logarithmic scaling of zoom level.
+- `DefaultAnimationController` implementation used for animating `MapScenes`. This implementation improves the animation speed to account for the logarithmic scaling of zoom level.
 
 ## 0.2.2 - 2019-06-12
 ### Maps SDK
@@ -66,7 +73,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 ### Supporting Scripts
 #### Added
-- Extension class to ```MapRenderer``` for transforming points between Unity's world and local coordinate spaces to the map's geographic coordinate system (latitude, longitude, and altitude).
+- Extension class to `MapRenderer` for transforming points between Unity's world and local coordinate spaces to the map's geographic coordinate system (latitude, longitude, and altitude).
 
 ## 0.2.1 - 2019-05-28
 ### Maps SDK
@@ -76,11 +83,11 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.2.0 - 2019-05-24
 ### Maps SDK
 #### Added
-- Raycast API on ```MapRenderer``` to return hit point and corresponding LatLonAlt of a ray intersection with the map.
+- Raycast API on `MapRenderer` to return hit point and corresponding LatLonAlt of a ray intersection with the map.
 #### Fixed
 - Perf improvement for rendering. Reduces number of vertices required in certain views.
-- Map edge no longer dissappears when the map surface is above the viewport.
-- Android/iOS compatability improvements: High-res meshes would render incorrectly on devices that do not support the BC1 texture format. If the device lacks BC1 texture support, fall back to elevation-only rendering instead, which uses the widely supported RGB texture format.
+- Map edge no longer disappears when the map surface is above the viewport.
+- Android/iOS compatibility improvements: High-res meshes would render incorrectly on devices that do not support the BC1 texture format. If the device lacks BC1 texture support, fall back to elevation-only rendering instead, which uses the widely supported RGB texture format.
 
 ## 0.1.5 - 2019-05-07
 ### Maps SDK
@@ -102,32 +109,32 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ### Maps SDK
 #### Added
 - Altitude can now be specified on MapPins.
-- Maps SDK-related compnents will now have their help icons direct out to the relevant wiki doc page.
+- Maps SDK-related components will now have their help icons direct out to the relevant wiki doc page.
+
 #### Fixed
 - Custom Maps SDK component icons for the editor are now working again.
-- ```MapPins``` childed to ```MapRenderer``` are positioned correctly in editor after script reloading.
+- `MapPins` childed to `MapRenderer` are positioned correctly in editor after script reloading.
 
-## 0.1.1 - 2019-04-16 
+## 0.1.1 - 2019-04-16
 ### Maps SDK
 #### Fixed
 - Elevation terrain tiles will now fall back to lower LODs correctly.
 - Seams between tiles should now be much less visible.
 
 ## 0.1.0 - 2019-04-09
-
 ### Maps SDK
 #### Added
-- ```MapRenderer``` component that handles streaming and rendering of 3D terrain data.
-- ```MapPinLayer``` that allows for positioning ```GameObjects``` on the ```MapRenderer``` at a specified LatLon.
-- Ability to cluster ```MapPins``` per ```MapPinLayer```. This allows for efficiently rendering large data sets.
-- Ability to animate the position and zoom level of the map via the ```SetMapScene``` API.
-- ```MapLabelLayer``` for displaying city labels.
-- Support for shadow casting and recieving of the map.
+- `MapRenderer` component that handles streaming and rendering of 3D terrain data.
+- `MapPinLayer` that allows for positioning `GameObjects` on the ```MapRenderer``` at a specified LatLon.
+- Ability to cluster `MapPins` per `MapPinLayer`. This allows for efficiently rendering large data sets.
+- Ability to animate the position and zoom level of the map via the `SetMapScene` API.
+- `MapLabelLayer` for displaying city labels.
+- Support for shadow casting and receiving of the map.
 - Option to use a custom material for terrain.
 
 ### Supporting Scripts
 #### Added
-- Shader for rendering terrain with support for shadows, heightmap offsets, and clipping to the MapRenderer's dimensions.
+- Shader for rendering terrain with support for shadows, heightmap offsets, and clipping to the `MapRenderer`'s dimensions.
 - Shader for rendering side of map. Dynamically generates appropriate triangles by the geometry shader. Supports shadows.
 - Script with helper functions to navigate the MapRenderer, e.g. panning and zooming.
 - Script for animating map to the specified location and zoom level.
