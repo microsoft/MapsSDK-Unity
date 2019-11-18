@@ -408,13 +408,13 @@ PrefabInstance:
       value: "This scene uses California's fish barrier dataset to display the locations
         of all barriers to fish migration in California's water sheds.\n\nThis is
         a data set with 5,363 points.\n\nFeatures:\n* MapPinLayer with clustering\n*
-        Zoom and pan restrictions\n* Customized input profile\n* Labeling\n* Contour
-        Lines\n\nNavigation (WMR):\n * Right thumbstick: Pan\n * Right touchpad: Zoom/Rotate"
+        Zoom and pan restrictions\n* Labeling\n* Contour Lines\n\nNavigation:\n *
+        Pan and drag with controller ray.\n * Zoom with right thumbstick. "
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 374
+      value: 354
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -424,12 +424,12 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 53
+      value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -444,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_firstOverflowCharacterIndex
-      value: 319
+      value: 323
       objectReference: {fileID: 0}
     - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -494,13 +494,12 @@ GameObject:
   - component: {fileID: 1276686193}
   - component: {fileID: 1276686192}
   - component: {fileID: 1276686190}
-  - component: {fileID: 1276686189}
   - component: {fileID: 1276686197}
   - component: {fileID: 1276686199}
   - component: {fileID: 1276686191}
-  - component: {fileID: 1276686188}
   - component: {fileID: 1276686196}
   - component: {fileID: 1276686198}
+  - component: {fileID: 1276686188}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -517,25 +516,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e1298df6bcd6a44bd8701d3ae43c22, type: 3}
+  m_Script: {fileID: 11500000, guid: ebca30a924623a649b656cbbd4710be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mapNavigation: {fileID: 1276686189}
---- !u!114 &1276686189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276686187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b303ffbed90191b4dbbf76b03bf83d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _map: {fileID: 1276686194}
-  _rotationSpeed: 3.5
-  _panSpeed: 0.5
 --- !u!114 &1276686190
 MonoBehaviour:
   m_ObjectHideFlags: 0

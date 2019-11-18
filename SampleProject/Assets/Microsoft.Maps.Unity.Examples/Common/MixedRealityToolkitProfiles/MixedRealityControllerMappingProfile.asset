@@ -294,8 +294,8 @@ MonoBehaviour:
       axisType: 4
       inputType: 17
       inputAction:
-        id: 15
-        description: Rotate Zoom Map
+        id: 5
+        description: Teleport Direction
         axisConstraint: 4
       keyCode: 0
       axisCodeX: 
@@ -456,7 +456,7 @@ MonoBehaviour:
       inputType: 17
       inputAction:
         id: 14
-        description: Pan Map
+        description: Zoom Map
         axisConstraint: 4
       keyCode: 0
       axisCodeX: 
@@ -952,8 +952,8 @@ MonoBehaviour:
       axisType: 2
       inputType: 7
       inputAction:
-        id: 0
-        description: None
+        id: 14
+        description: Zoom Map
         axisConstraint: 0
       keyCode: 333
       axisCodeX: 
@@ -1209,8 +1209,8 @@ MonoBehaviour:
       axisType: 2
       inputType: 30
       inputAction:
-        id: 0
-        description: None
+        id: 14
+        description: Zoom Map
         axisConstraint: 0
       keyCode: 348
       axisCodeX: 
@@ -1319,7 +1319,7 @@ MonoBehaviour:
       inputType: 17
       inputAction:
         id: 14
-        description: Pan Map
+        description: Zoom Map
         axisConstraint: 4
       keyCode: 0
       axisCodeX: AXIS_4
@@ -1435,8 +1435,8 @@ MonoBehaviour:
       axisType: 2
       inputType: 31
       inputAction:
-        id: 0
-        description: None
+        id: 14
+        description: Zoom Map
         axisConstraint: 0
       keyCode: 0
       axisCodeX: AXIS_18
@@ -2199,8 +2199,8 @@ MonoBehaviour:
       axisType: 4
       inputType: 17
       inputAction:
-        id: 15
-        description: Rotate Zoom Map
+        id: 5
+        description: Teleport Direction
         axisConstraint: 4
       keyCode: 0
       axisCodeX: AXIS_1
@@ -2361,7 +2361,7 @@ MonoBehaviour:
       inputType: 17
       inputAction:
         id: 14
-        description: Pan Map
+        description: Zoom Map
         axisConstraint: 4
       keyCode: 0
       axisCodeX: AXIS_4
@@ -2829,7 +2829,7 @@ MonoBehaviour:
       inputType: 21
       inputAction:
         id: 14
-        description: Pan Map
+        description: Zoom Map
         axisConstraint: 4
       keyCode: 0
       axisCodeX: AXIS_4
