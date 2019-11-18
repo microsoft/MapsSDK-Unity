@@ -28,6 +28,14 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
     private Vector2D _startingMapCenterInMercator;
     private Vector2 _currentZoomValue;
 
+    [SerializeField]
+    [Range(0, 1)]
+    private float _zoomSpeed = 0.5f;
+
+    [SerializeField]
+    [Range(0, 1)]
+    private float _panSmoothness = 0.5f;
+
     private void Awake()
     {
         _mapRenderer = GetComponent<MapRenderer>();
@@ -101,7 +109,8 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
             var zoomLevelToUseForInteraction = _mapRenderer.ZoomLevel;
             if (directionalZoomAmount != 0)
             {
-                var zoomToApply = 0.04f * directionalZoomAmount;
+                var zoomSpeed = Mathf.Lerp(0.01f, 0.045f, _zoomSpeed);
+                var zoomToApply = zoomSpeed * directionalZoomAmount;
                 var oldZoomLevel = _mapRenderer.ZoomLevel;
                 var newZoomLevel =
                     Math.Min(
@@ -124,15 +133,16 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
 
             // Now we can raycast an imaginary plane orignating from the updated _startingPointInLocalSpace.
             var rayPositionInMapLocalSpace = _mapRenderer.transform.InverseTransformPoint(_panningPointer.Position);
-            var rayDirectionInMapLocalSpace = _mapRenderer.transform.InverseTransformDirection(_panningPointer.Rotation * Vector3.forward).normalized;
+            var rayDirectionInMapLocalSpace =_mapRenderer.transform.InverseTransformDirection(_panningPointer.Rotation * Vector3.forward).normalized;
             var rayInMapLocalSpace = new Ray(rayPositionInMapLocalSpace, rayDirectionInMapLocalSpace.normalized);
             var hitPlaneInMapLocalSpace = new Plane(Vector3.up, _startingPointInLocalSpace);
             if (hitPlaneInMapLocalSpace.Raycast(rayInMapLocalSpace, out float enter))
             {
                 // This point will be used to determine how much to translate the map.
                 // Decaying the resulting position applies some smoothing to the input.
+                var panSmoothness = Mathf.Lerp(0.0f, 0.5f, _panSmoothness);
                 _currentPointInLocalSpace =
-                    DynamicExpDecay(_currentPointInLocalSpace, rayInMapLocalSpace.GetPoint(enter), 0.1f);
+                    DynamicExpDecay(_currentPointInLocalSpace, rayInMapLocalSpace.GetPoint(enter), panSmoothness);
 
                 // Also override the FocusDetails so that the pointer ray tracks with the map.
                 // Otherwise, it would remain fixed in world space.
