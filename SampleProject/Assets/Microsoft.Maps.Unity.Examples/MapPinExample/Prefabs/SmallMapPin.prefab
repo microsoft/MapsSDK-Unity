@@ -181,29 +181,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enabled: 1
-  States: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
-  InputAction:
-    id: 0
-    description: 
-    axisConstraint: 0
+  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
   InputActionId: 0
-  IsGlobal: 0
+  isGlobal: 0
   Dimensions: 1
-  StartDimensionIndex: 0
+  dimensionIndex: 0
+  startDimensionIndex: 0
   CanSelect: 1
   CanDeselect: 1
   VoiceCommand: 
-  RequiresFocus: 1
-  Profiles:
+  voiceRequiresFocus: 1
+  profiles:
   - Target: {fileID: 1339640369366546}
     Themes:
     - {fileID: 11400000, guid: 3874b82a903073747850f1bf3c9464a5, type: 2}
-    HadDefaultTheme: 1
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5495726529044762292}
+      - m_Target: {fileID: 114958452540144576}
         m_MethodName: Zoom
         m_Mode: 1
         m_Arguments:
@@ -214,10 +209,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
   Events: []
-  dimensionIndex: 0
+  enabledOnStart: 1
 --- !u!1 &1452448874978094
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,7 +222,7 @@ GameObject:
   - component: {fileID: 4545156311932626}
   - component: {fileID: 114401410002030188}
   - component: {fileID: 8485608606784131832}
-  - component: {fileID: 5495726529044762292}
+  - component: {fileID: 114958452540144576}
   m_Layer: 0
   m_Name: SmallMapPin
   m_TagString: Untagged
@@ -306,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23862c6b28b2c4e4da5cb1c1f3bb0e95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5495726529044762292
+--- !u!114 &114958452540144576
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,7 +308,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1452448874978094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3ba42788f12af4db968c3e27bac5d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 640888791a51286498b083b38ab9cc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1748168262977102
@@ -461,8 +454,6 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
