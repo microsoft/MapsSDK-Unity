@@ -54,11 +54,5 @@ MonoBehaviour:
     description: Index Finger Pose
     axisConstraint: 7
   - id: 14
-    description: Pan Map
+    description: Zoom Map
     axisConstraint: 4
-  - id: 15
-    description: Rotate Zoom Map
-    axisConstraint: 4
-  - id: 16
-    description: Rotate Zoom Pressed
-    axisConstraint: 2

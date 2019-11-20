@@ -520,13 +520,11 @@ GameObject:
   - component: {fileID: 1276686194}
   - component: {fileID: 1276686193}
   - component: {fileID: 1276686192}
+  - component: {fileID: 1276686197}
+  - component: {fileID: 1276686190}
   - component: {fileID: 1276686191}
   - component: {fileID: 1276686198}
   - component: {fileID: 1276686196}
-  - component: {fileID: 1276686188}
-  - component: {fileID: 1276686189}
-  - component: {fileID: 1276686197}
-  - component: {fileID: 1276686190}
   - component: {fileID: 1276686199}
   m_Layer: 0
   m_Name: Map
@@ -535,34 +533,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1276686188
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276686187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41e1298df6bcd6a44bd8701d3ae43c22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mapNavigation: {fileID: 1276686189}
---- !u!114 &1276686189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276686187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b303ffbed90191b4dbbf76b03bf83d80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _map: {fileID: 1276686194}
-  _rotationSpeed: 3.5
-  _panSpeed: 0.5
 --- !u!114 &1276686190
 MonoBehaviour:
   m_ObjectHideFlags: 0

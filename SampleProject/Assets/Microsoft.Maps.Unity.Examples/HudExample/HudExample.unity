@@ -2102,41 +2102,31 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_text
-      value: 'Demonstrates how to use the map in a HUD scenario. Here the MapRenderer
-        is using Flat mode.
-
-
-        A custom TextureTileLayer is being used to display weather radar data over
-        North America.
-
-
-        Features:
-
-        * TextureTileLayer customization
-
-        * Flat map mode
-
-'
+      value: "Demonstrates how to use the map in a HUD scenario. Here the MapRenderer
+        is using Flat mode.\n\nA custom TextureTileLayer is being used to display
+        weather radar data over North America.\n\nFeatures:\n* TextureTileLayer customization\n*
+        Flat map mode\n\nNavigation:\n * Pan and drag with controller ray.\n * Zoom
+        with right thumbstick. "
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 243
+      value: 324
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 41
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 37
+      value: 48
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 11
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -2204,12 +2194,13 @@ GameObject:
   - component: {fileID: 1276686195}
   - component: {fileID: 1276686194}
   - component: {fileID: 1276686193}
-  - component: {fileID: 1276686196}
   - component: {fileID: 1276686189}
   - component: {fileID: 1276686199}
   - component: {fileID: 1276686190}
   - component: {fileID: 1276686188}
   - component: {fileID: 1276686191}
+  - component: {fileID: 1276686192}
+  - component: {fileID: 1276686196}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -2265,6 +2256,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13db1fa4705930f4a89a53e8455bd12b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1276686192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebca30a924623a649b656cbbd4710be4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoomSpeed: 0.5
+  _panSmoothness: 0.5
 --- !u!65 &1276686193
 BoxCollider:
   m_ObjectHideFlags: 0
