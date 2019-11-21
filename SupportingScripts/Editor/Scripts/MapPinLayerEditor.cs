@@ -24,7 +24,7 @@ namespace Microsoft.Maps.Unity
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            serializedObject.UpdateIfRequiredOrScript();
 
             EditorGUILayout.PropertyField(_layerNameProperty);
             EditorGUILayout.PropertyField(_isClusteringEnabledProperty);
@@ -37,7 +37,6 @@ namespace Microsoft.Maps.Unity
             }
 
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(target);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Microsoft.Maps.Unity
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            serializedObject.UpdateIfRequiredOrScript();
 
             var mapCopyrightLayer = (MapCopyrightLayer)target;
             if (!mapCopyrightLayer.enabled)
@@ -37,7 +37,6 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.PropertyField(_textColorProperty);
 
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(target);
         }
     }
 }

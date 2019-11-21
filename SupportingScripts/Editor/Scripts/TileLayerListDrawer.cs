@@ -36,7 +36,7 @@ namespace Microsoft.Maps.Unity
         /// <inheritdoc />
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            GetList(property).DoList(position);
+            GetList(property).DoList(EditorGUI.IndentedRect(position));
         }
 
         private ReorderableList GetList(SerializedProperty tileLayerListProperty)
@@ -77,21 +77,7 @@ namespace Microsoft.Maps.Unity
                                 EditorGUI.PropertyField(rect, serializedElement);
                             },
 
-                        onReorderCallbackWithDetails =
-                            (ReorderableList list, int oldIndex, int newIndex) =>
-                            {
-                                // ReorderableList does the reorder on the underlying list automatically, so notify the TileLayerList
-                                // that it happened. The TileLayerList will then raise events.
-                                tileLayerList.ReorderHappened(oldIndex, newIndex);
-                            },
-
-                        // Handled by onReorderCallbackWithDetails
-                        onReorderCallback = (ReorderableList reorderableList) => { },
-
                         onCanAddCallback = (ReorderableList reorderableList) => reorderableList.count < MaximumCount,
-
-                        // Handled by onAddDropdownCallback
-                        onAddCallback = (ReorderableList list) => { },
 
                         onRemoveCallback =
                             (ReorderableList reorderableList) =>
@@ -110,7 +96,7 @@ namespace Microsoft.Maps.Unity
                                     tileLayerInternalList.RemoveAt(reorderableList.index);
                                 }
 
-                                // Commit observableList class to serialized object.
+                                // Commit changes to the MapRenderer back to the SerializedObject.
                                 ownerObject.Update();
                             },
 
@@ -138,7 +124,8 @@ namespace Microsoft.Maps.Unity
                                                 // happen though since we already filter out types that have already been added with
                                                 // DisallowMultipleComponent. But maybe there are other reasons component creation fails?
                                             }
-                                            // Commit observableList class to serialized object.
+
+                                            // Commit changes to the MapRenderer back to the SerializedObject.
                                             ownerObject.Update();
                                         },
                                         userData: typeIndex);

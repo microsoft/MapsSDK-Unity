@@ -35,16 +35,13 @@ namespace Microsoft.Maps.Unity
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            serializedObject.UpdateIfRequiredOrScript();
 
             EditorGUILayout.PropertyField(_locationProperty, true);
             EditorGUILayout.PropertyField(_altitude, new GUIContent("Altitude (meters)"));
             EditorGUILayout.PropertyField(_altitudeReferenceProperty);
             EditorGUILayout.PropertyField(_useRealworldScaleProperty);
             EditorGUILayout.PropertyField(_scaleCurveProperty);
-
-            serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(target);
 
             // If childed to a MapRenderer, don't show the transform component since the MapRenderer is constantly overriding it.
             var mapPin = (MapPin)target;
@@ -56,6 +53,8 @@ namespace Microsoft.Maps.Unity
             {
                 mapPin.transform.hideFlags = HideFlags.None;
             }
+
+            serializedObject.ApplyModifiedProperties();
         }
 
         private void OnSceneGUI()

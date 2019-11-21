@@ -71,7 +71,7 @@ namespace Microsoft.Maps.Unity
         private Vector3 _startingHitPointInWorldSpace;
         private Vector2D _startingCenterInMercatorSpace;
 
-        internal void OnEnable()
+        private void OnEnable()
         {
             _centerProperty = serializedObject.FindProperty("_center");
             _bingMapsKeyProperty = serializedObject.FindProperty("_bingMapsKey");
@@ -99,6 +99,13 @@ namespace Microsoft.Maps.Unity
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
             _hideTileLayerComponentsProperty = serializedObject.FindProperty("_hideTileLayerComponents");
+
+            EditorApplication.update += QueuePlayerLoopUpdate;
+        }
+
+        private void OnDisable()
+        {
+            EditorApplication.update -= QueuePlayerLoopUpdate;
         }
 
         private void OnSceneGUI()
@@ -132,8 +139,10 @@ namespace Microsoft.Maps.Unity
                     {
                         Undo.RecordObject(mapRenderer, "Change ZoomLevel.");
                         var delta = -Event.current.delta;
-                        mapRenderer.ZoomLevel += (delta.y / 50);
+                        mapRenderer.ZoomLevel += delta.y / 50;
                         currentEvent.Use();
+
+                        EditorApplication.QueuePlayerLoopUpdate();
                     }
                 }
                 else if (currentEvent.type == EventType.MouseDown)
@@ -163,6 +172,8 @@ namespace Microsoft.Maps.Unity
 
                         Undo.RecordObject(mapRenderer, "Change Center.");
                         mapRenderer.Center = newCenter;
+
+                        EditorApplication.QueuePlayerLoopUpdate();
                     }
 
                     currentEvent.Use();
@@ -186,7 +197,7 @@ namespace Microsoft.Maps.Unity
 
             var mapRenderer = (MapRenderer)target;
 
-            serializedObject.Update();
+            serializedObject.UpdateIfRequiredOrScript();
 
             RenderBanner();
 
@@ -362,7 +373,6 @@ namespace Microsoft.Maps.Unity
 
             GUILayout.Space(12f);
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(target);
         }
 
         private void Initialize()
@@ -474,6 +484,11 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.EndHorizontal();
             EditorGUILayout.EndHorizontal();
             EditorGUI.indentLevel++;
+        }
+
+        private void QueuePlayerLoopUpdate()
+        {
+            EditorApplication.QueuePlayerLoopUpdate();
         }
     }
 }

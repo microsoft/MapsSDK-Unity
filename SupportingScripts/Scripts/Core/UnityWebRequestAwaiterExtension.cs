@@ -1,9 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-namespace Microsoft.Maps.Unity.Services
+namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Maps.Unity;
     using UnityEngine.Networking;
 
     internal static class UnityWebRequestAwaiterExtension

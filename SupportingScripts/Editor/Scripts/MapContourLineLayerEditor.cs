@@ -28,7 +28,7 @@ namespace Microsoft.Maps.Unity
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            serializedObject.UpdateIfRequiredOrScript();
 
             EditorGUILayout.LabelField("Interval", EditorStyles.boldLabel);
             EditorGUI.indentLevel++;
@@ -45,7 +45,6 @@ namespace Microsoft.Maps.Unity
             EditorGUI.indentLevel--;
 
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(target);
         }
     }
 }

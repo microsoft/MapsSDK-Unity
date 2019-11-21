@@ -20,7 +20,7 @@ namespace Microsoft.Maps.Unity
 
         public override void OnInspectorGUI()
         {
-            serializedObject.Update();
+            serializedObject.UpdateIfRequiredOrScript();
 
             EditorGUILayout.PropertyField(_useRealworldScaleProperty);
             EditorGUILayout.PropertyField(_scaleCurveProperty);
@@ -32,7 +32,6 @@ namespace Microsoft.Maps.Unity
             EditorGUI.EndDisabledGroup();
 
             serializedObject.ApplyModifiedProperties();
-            EditorUtility.SetDirty(target);
         }
     }
 }
