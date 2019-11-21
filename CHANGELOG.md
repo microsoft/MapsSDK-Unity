@@ -7,11 +7,11 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.4.1 - 2019-11-15
 ### Maps SDK
 #### Added
-- The `DefaultTextureTileLayer` now supports Bing Maps symbolic imagery as well as aerial imagery with road and label overlays. Previously aerial imagery (without road overlays or labels) was the only imagery type supported.
+- The [`DefaultTextureTileLayer`](https://github.com/microsoft/MapsSDK-Unity/wiki/Configuring-the-MapRenderer#defaulttexturetilelayer) now supports Bing Maps symbolic imagery as well as aerial imagery with road and label overlays. Previously aerial imagery (without road overlays or labels) was the only imagery type supported.
 
 ### Supporting Scripts
 #### Added
-- `HttpTextureTileLayer` component that makes it easy to stream texture tiles by specifying a formatted URL.
+- [`HttpTextureTileLayer`](https://github.com/microsoft/MapsSDK-Unity/wiki/Customizing-map-textures#httptexturetilelayer) component that makes it easy to stream texture tiles by specifying a formatted URL.
 - More Editor UI improvements around `TextureTileLayer`. Right-clicking a tile layer in list now brings up option to edit the underlying script.
 #### Changed
 - `MapRendererTransformExtension` APIs renamed to more closely follow Unity's transformation-related methods.
