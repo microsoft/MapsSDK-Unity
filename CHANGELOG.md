@@ -4,6 +4,18 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## 0.4.2 - 2019-12-11
+### Maps SDK
+#### Added
+- The maximum cache size used for storing map data is now configurable. See the _Quality Settings_ section of the MapRenderer's editor. [(#35)](https://github.com/microsoft/MapsSDK-Unity/issues/35)
+
+#### Changed
+- The default MapRenderer cache size has been lowered. Currently the cache size uses 1/3 of system memory, but can be no larger than 2GB. The maximum size is now configurable. [(#35)](https://github.com/microsoft/MapsSDK-Unity/issues/35)
+
+#### Fixed
+- Intermittent exception message related to TextureTileLayers. [(#35)](https://github.com/microsoft/MapsSDK-Unity/issues/35)
+- The MapRenderer now respects layer setting of the GameObject. MapPins and MapLabels automatically use same layer as parent MapRenderer. [(#32)](https://github.com/microsoft/MapsSDK-Unity/issues/32)
+
 ## 0.4.1 - 2019-11-15
 ### Maps SDK
 #### Added
