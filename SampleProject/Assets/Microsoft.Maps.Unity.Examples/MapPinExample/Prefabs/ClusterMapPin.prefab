@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 114898586744110094}
   - component: {fileID: 114896553018143308}
   - component: {fileID: 114794147355131198}
-  - component: {fileID: 4675607836832998741}
+  - component: {fileID: 114290005320365110}
   m_Layer: 0
   m_Name: ClusterMapPin
   m_TagString: Untagged
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: -2137691127, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsLayerSynchronized: 1
   UseRealWorldScale: 0
   ScaleCurve:
     serializedVersion: 2
@@ -96,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3c17acaaa42864793bde0dd12e0229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4675607836832998741
+--- !u!114 &114290005320365110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,7 +106,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1366522844636312}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3ba42788f12af4db968c3e27bac5d0, type: 3}
+  m_Script: {fileID: 11500000, guid: 640888791a51286498b083b38ab9cc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1427262201316610
@@ -433,7 +434,7 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4675607836832998741}
+      - m_Target: {fileID: 114290005320365110}
         m_MethodName: Zoom
         m_Mode: 1
         m_Arguments:

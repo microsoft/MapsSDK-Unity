@@ -1979,6 +1979,75 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_text
+      value: "Demonstrates how to use the map in a HUD scenario. Here the MapRenderer
+        is using Flat mode.\n\nA custom TextureTileLayer is being used to display
+        weather radar data over North America.\n\nFeatures:\n* TextureTileLayer customization\n*
+        Flat map mode\n\nNavigation:\n * Pan and drag with controller ray.\n * Zoom
+        with right thumbstick. "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 324
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_isRichText
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_firstOverflowCharacterIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Data Viz: CA Fish Passage Barriers'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7293562428497237004, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 05e85a7417d3a3b4ba352a4da6627b33, type: 2}
     - target: {fileID: 7306429974960097550, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_Name
@@ -2039,10 +2108,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
+    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
-      propertyPath: m_Text
-      value: 'Data Viz: CA Fish Passage Barriers'
+      propertyPath: m_LocalScale.y
+      value: 0.7671705
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.118
       objectReference: {fileID: 0}
     - target: {fileID: 8880113822231988905, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -2089,80 +2163,6 @@ PrefabInstance:
       propertyPath: m_fontSizeMax
       value: 100
       objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_text
-      value: "Demonstrates how to use the map in a HUD scenario. Here the MapRenderer
-        is using Flat mode.\n\nA custom TextureTileLayer is being used to display
-        weather radar data over North America.\n\nFeatures:\n* TextureTileLayer customization\n*
-        Flat map mode\n\nNavigation:\n * Pan and drag with controller ray.\n * Zoom
-        with right thumbstick. "
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 324
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 48
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_isRichText
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_firstOverflowCharacterIndex
-      value: -1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.pageCount
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.7671705
-      objectReference: {fileID: 0}
-    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.118
-      objectReference: {fileID: 0}
-    - target: {fileID: 7293562428497237004, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 05e85a7417d3a3b4ba352a4da6627b33, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27b61b9d6ab998c44a776ef01ce35298, type: 3}
 --- !u!1 &1153356969 stripped
@@ -2279,7 +2279,7 @@ BoxCollider:
   m_GameObject: {fileID: 1276686187}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.05, z: 0.5}
   m_Center: {x: 0, y: 0.025, z: 0}
@@ -2313,7 +2313,7 @@ MonoBehaviour:
   _mapLayers: []
   _castShadows: 0
   _recieveShadows: 0
-  _enableMrtkMaterialIntegration: 0
+  _enableMrtkMaterialIntegration: 1
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 0
@@ -2324,6 +2324,7 @@ MonoBehaviour:
     - {fileID: 1276686199}
     - {fileID: 1276686190}
   _hideTileLayerComponents: 1
+  _maxCacheSizeInBytes: 2147483648
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
@@ -2650,11 +2651,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 671051969600022713, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
-        type: 3}
-      propertyPath: m_Name
-      value: Floor
-      objectReference: {fileID: 0}
     - target: {fileID: 671051969600022693, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2710,10 +2706,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 671051970045378799, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
+    - target: {fileID: 671051969600022713, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 10
+      propertyPath: m_Name
+      value: Floor
       objectReference: {fileID: 0}
     - target: {fileID: 671051969840049980, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
         type: 3}
@@ -2725,6 +2721,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 8e9b42d58d89ac34ea01f080cefbd443, type: 2}
+    - target: {fileID: 671051970045378799, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 671051970355484150, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2964,6 +2965,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 102895803057417886, guid: a0dc4a34875700c4aba845405dc43a89,
+        type: 3}
+      propertyPath: m_Text
+      value: Symbolic
+      objectReference: {fileID: 0}
     - target: {fileID: 114402419347283100, guid: a0dc4a34875700c4aba845405dc43a89,
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -2998,11 +3004,6 @@ PrefabInstance:
         type: 3}
       propertyPath: OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 102895803057417886, guid: a0dc4a34875700c4aba845405dc43a89,
-        type: 3}
-      propertyPath: m_Text
-      value: Symbolic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0dc4a34875700c4aba845405dc43a89, type: 3}

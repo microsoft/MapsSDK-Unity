@@ -483,7 +483,7 @@ MonoBehaviour:
   - {fileID: 1488338473}
   _castShadows: 1
   _recieveShadows: 1
-  _enableMrtkMaterialIntegration: 0
+  _enableMrtkMaterialIntegration: 1
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
@@ -493,6 +493,7 @@ MonoBehaviour:
     _list:
     - {fileID: 1488338474}
   _hideTileLayerComponents: 1
+  _maxCacheSizeInBytes: 2147483648
 --- !u!4 &1488338471
 Transform:
   m_ObjectHideFlags: 0
@@ -643,11 +644,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 671051969600022713, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
-        type: 3}
-      propertyPath: m_Name
-      value: Floor
-      objectReference: {fileID: 0}
     - target: {fileID: 671051969600022693, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -703,6 +699,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 671051969600022713, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
+        type: 3}
+      propertyPath: m_Name
+      value: Floor
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5, type: 3}
 --- !u!1001 &7305763481289300844
@@ -712,6 +713,63 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_havePropertiesChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_isInputParsingRequired
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_text
+      value: "This scene animates between various landmarks in Seattle.\n\nWhile the
+        SetMapScene API can be easily used outside of a coroutine, the SeattleTour
+        script shows how a coroutine can be used to wait for the animation to complete,
+        allowing for multiple animations to be chained together.\n\nFeatures:\n *
+        SetMapScene with animation\n * Labeling\n "
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 335
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 57
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_Text
+      value: 'City Tour: Seattle'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7276626364913152418, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_Text
+      value: 'This sample scene demonstrates how to use the MapRenderer''s SetMapScene
+        API.
+
+
+        The SetMapScene API is used to chain together a series of animations which
+        will fly you through a handful of Seattle''s famous landmarks!
+
+
+        Refer to SeattleTour.cs for the code.'
+      objectReference: {fileID: 0}
     - target: {fileID: 7306429974960097550, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_Name
@@ -772,10 +830,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
+    - target: {fileID: 7384121537761719684, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
-      propertyPath: m_Text
-      value: 'City Tour: Seattle'
+      propertyPath: m_Camera
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8880113822231988905, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -806,63 +864,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.wordCount
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_text
-      value: "This scene animates between various landmarks in Seattle.\n\nWhile the
-        SetMapScene API can be easily used outside of a coroutine, the SeattleTour
-        script shows how a coroutine can be used to wait for the animation to complete,
-        allowing for multiple animations to be chained together.\n\nFeatures:\n *
-        SetMapScene with animation\n * Labeling\n "
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.characterCount
-      value: 335
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.spaceCount
-      value: 57
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.wordCount
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_textInfo.lineCount
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7384121537761719684, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7276626364913152418, guid: 27b61b9d6ab998c44a776ef01ce35298,
-        type: 3}
-      propertyPath: m_Text
-      value: 'This sample scene demonstrates how to use the MapRenderer''s SetMapScene
-        API.
-
-
-        The SetMapScene API is used to chain together a series of animations which
-        will fly you through a handful of Seattle''s famous landmarks!
-
-
-        Refer to SeattleTour.cs for the code.'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27b61b9d6ab998c44a776ef01ce35298, type: 3}

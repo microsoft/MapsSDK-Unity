@@ -222,7 +222,7 @@ MonoBehaviour:
   - {fileID: 220598125}
   _castShadows: 1
   _recieveShadows: 1
-  _enableMrtkMaterialIntegration: 0
+  _enableMrtkMaterialIntegration: 1
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
@@ -232,6 +232,7 @@ MonoBehaviour:
     _list:
     - {fileID: 220598126}
   _hideTileLayerComponents: 1
+  _maxCacheSizeInBytes: 2147483648
 --- !u!4 &220598122
 Transform:
   m_ObjectHideFlags: 0

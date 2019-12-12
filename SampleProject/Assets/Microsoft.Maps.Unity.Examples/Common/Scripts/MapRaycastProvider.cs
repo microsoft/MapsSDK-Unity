@@ -18,9 +18,7 @@ public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
 {
     private List<MapRenderer> _mapRenderers = new List<MapRenderer>();
 
-    public MapRaycastProvider(
-        IMixedRealityServiceRegistrar registrar,
-        MixedRealityInputSystemProfile profile) : base(registrar, profile)
+    public MapRaycastProvider(MixedRealityInputSystemProfile profile) : base(profile)
     {
     }
 
