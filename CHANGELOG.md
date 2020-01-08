@@ -4,6 +4,15 @@ All notable changes to the SDK NuGet package and it's supporting scripts will be
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+## 0.5.0 - 2020-01-08
+### Maps SDK
+#### Added
+- Circular map shape option.
+
+#### Changed
+- New approach for rendering side walls of map. Does not rely on geometry shaders.
+
 ## 0.4.2 - 2019-12-11
 ### Maps SDK
 #### Added
