@@ -8,7 +8,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.5.0 - 2020-01-08
 ### Maps SDK
 #### Added
-- Circular map shape option.
+- Circular [`MapShape`](https://github.com/microsoft/MapsSDK-Unity/wiki/Configuring-the-MapRenderer#map-layout) option.
 
 #### Changed
 - New approach for rendering side walls of map. Does not rely on geometry shaders.
