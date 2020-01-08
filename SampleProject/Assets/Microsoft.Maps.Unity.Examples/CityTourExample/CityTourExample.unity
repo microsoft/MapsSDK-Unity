@@ -181,6 +181,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 42.998, y: 40.45, z: 6.6260004}
+--- !u!84 &176447608
+RenderTexture:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_ImageContentsHash:
+    serializedVersion: 2
+    Hash: 00000000000000000000000000000000
+  m_ForcedFallbackFormat: 4
+  m_DownscaleFallback: 0
+  m_Width: 2048
+  m_Height: 2048
+  m_AntiAliasing: 1
+  m_DepthFormat: 2
+  m_ColorFormat: 14
+  m_MipMap: 0
+  m_GenerateMips: 1
+  m_SRGB: 0
+  m_UseDynamicScale: 0
+  m_BindMS: 0
+  m_TextureSettings:
+    serializedVersion: 2
+    m_FilterMode: 1
+    m_Aniso: 1
+    m_MipBias: 0
+    m_WrapU: 1
+    m_WrapV: 1
+    m_WrapW: 1
+  m_Dimension: 2
+  m_VolumeDepth: 1
 --- !u!1 &272529145
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,24 +508,29 @@ MonoBehaviour:
   _minimumZoomLevel: 1
   _maximumZoomLevel: 20
   _mapTerrainType: 0
+  _mapShape: 1
   LocalMapDimension: {x: 1, y: 1}
-  _localMapHeight: 0.05
+  LocalMapRadius: 0.5
+  _localMapHeight: 0.1
   _mapLayers:
   - {fileID: 1488338480}
   - {fileID: 1488338473}
   _castShadows: 1
-  _recieveShadows: 1
+  _receiveShadows: 1
   _enableMrtkMaterialIntegration: 1
   _useCustomTerrainMaterial: 0
   _customTerrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
   _useCustomClippingVolumeMaterial: 0
   _customClippingVolumeMaterial: {fileID: 0}
+  _clippingVolumeDistanceTextureResolution: 2
   _textureTileLayers:
     _list:
     - {fileID: 1488338474}
   _hideTileLayerComponents: 1
   _maxCacheSizeInBytes: 2147483648
+  _clippingDistanceCameraGameObject: {fileID: 0}
+  _renderTexture: {fileID: 176447608}
 --- !u!4 &1488338471
 Transform:
   m_ObjectHideFlags: 0
@@ -536,6 +573,7 @@ MonoBehaviour:
   _layerName: MapCopyrightLayer
   _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   _textColor: {r: 0, g: 0, b: 0, a: 0.42}
+  _mapCopyrightAlignment: 0
 --- !u!114 &1488338474
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -562,10 +600,10 @@ BoxCollider:
   m_GameObject: {fileID: 1488338469}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.05, z: 1}
-  m_Center: {x: 0, y: 0.025, z: 0}
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!114 &1488338480
 MonoBehaviour:
   m_ObjectHideFlags: 0
