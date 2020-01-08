@@ -110,6 +110,11 @@ namespace Microsoft.Maps.Unity
                 url = url.Replace("{zoomLevel}", tilePosition.LevelOfDetail.Value.ToString());
             }
 
+            if (url.Contains("{z}"))
+            {
+                url = url.Replace("{z}", tilePosition.LevelOfDetail.Value.ToString());
+            }
+
             if (url.Contains("{quadKey}"))
             {
                 url = url.Replace("{quadKey}", tileId.ToKey());

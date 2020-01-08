@@ -21,24 +21,28 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _minZoomLevelProperty;
         private SerializedProperty _maxZoomLevelProperty;
         private SerializedProperty _mapTerrainType;
-        private static bool _showMapSizingOptions = false;
+        private SerializedProperty _mapShapeProperty;
+        private static bool _showMapSizingOptions = true;
         private SerializedProperty _mapEdgeColorProperty;
         private SerializedProperty _mapEdgeColorFadeDistanceProperty;
         private SerializedProperty _localMapDimensionProperty;
+        private SerializedProperty _localMapRadiusProperty;
         private SerializedProperty _localMapHeightProperty;
         private static bool _terrainOptions = true;
         private SerializedProperty _castShadowsProperty;
-        private SerializedProperty _recieveShadowsProperty;
+        private SerializedProperty _receiveShadowsProperty;
         private SerializedProperty _enableMrtkMaterialIntegrationProperty;
         private SerializedProperty _useCustomTerrainMaterialProperty;
         private SerializedProperty _customTerrainMaterialProperty;
         private SerializedProperty _isClippingVolumeWallEnabledProperty;
         private SerializedProperty _useCustomClippingVolumeMaterialProperty;
         private SerializedProperty _customClippingVolumeMaterialProperty;
+        private SerializedProperty _clippingVolumeDistanceTextureResolution;
         private SerializedProperty _mapLayersProperty;
         private SerializedProperty _labelPrefabProperty;
         private static bool _showQualityOptions = true;
-        private SerializedProperty _detailOffset;
+        private SerializedProperty _detailOffsetProperty;
+        private SerializedProperty _maxCacheSizeInBytesProperty;
         private static bool _showTileLayers = true;
         private SerializedProperty _textureTileLayersProperty;
         private SerializedProperty _hideTileLayerComponentsProperty;
@@ -50,12 +54,26 @@ namespace Microsoft.Maps.Unity
         private GUIStyle _boxStyle = null;
         private Texture2D _bannerWhite = null;
         private Texture2D _bannerBlack = null;
-        private readonly GUIContent[] _layerOptions = new GUIContent[]
-        {
-            new GUIContent("Default", "The map terrain consists of either elevation data or high resolution 3D models."),
-            new GUIContent("Elevated", "The map terrain consists only of elevation data. No high resolution 3D models are used."),
-            new GUIContent("Flat", "Both elevation and high resolution 3D models are disabled. The map will be flat.")
-        };
+        private readonly GUIContent[] _layerOptions =
+            new GUIContent[]
+            {
+                new GUIContent("Default", "The map terrain consists of either elevation data or high resolution 3D models."),
+                new GUIContent("Elevated", "The map terrain consists only of elevation data. No high resolution 3D models are used."),
+                new GUIContent("Flat", "Both elevation and high resolution 3D models are disabled. The map will be flat.")
+            };
+        private readonly GUIContent[] _shapeOptions =
+            new GUIContent[]
+            {
+                new GUIContent("Block", "Default shape. The map is rendered on a rectangular block."),
+                new GUIContent("Cylinder", "Map is rendered on a cylinder."),
+            };
+        private readonly GUIContent[] _clippingVolumeDistanceTextureResolutionOptions =
+            new GUIContent[]
+            {
+                new GUIContent("Low", "Low quality texture size. Uses less memory."),
+                new GUIContent("Medium", "Medium quality texture size."),
+                new GUIContent("High", "High quality texture size. Uses more memory.")
+            };
         private readonly GUILayoutOption[] _minMaxLabelsLayoutOptions =
             new GUILayoutOption[]
             {
@@ -80,21 +98,25 @@ namespace Microsoft.Maps.Unity
             _minZoomLevelProperty = serializedObject.FindProperty("_minimumZoomLevel");
             _maxZoomLevelProperty = serializedObject.FindProperty("_maximumZoomLevel");
             _mapTerrainType = serializedObject.FindProperty("_mapTerrainType");
+            _mapShapeProperty = serializedObject.FindProperty("_mapShape");
             _localMapDimensionProperty = serializedObject.FindProperty("LocalMapDimension");
+            _localMapRadiusProperty = serializedObject.FindProperty("LocalMapRadius");
             _localMapHeightProperty = serializedObject.FindProperty("_localMapHeight");
             _useCustomTerrainMaterialProperty = serializedObject.FindProperty("_useCustomTerrainMaterial");
             _castShadowsProperty = serializedObject.FindProperty("_castShadows");
-            _recieveShadowsProperty = serializedObject.FindProperty("_recieveShadows");
+            _receiveShadowsProperty = serializedObject.FindProperty("_receiveShadows");
             _enableMrtkMaterialIntegrationProperty = serializedObject.FindProperty("_enableMrtkMaterialIntegration");
             _customTerrainMaterialProperty = serializedObject.FindProperty("_customTerrainMaterial");
             _isClippingVolumeWallEnabledProperty = serializedObject.FindProperty("_isClippingVolumeWallEnabled");
             _useCustomClippingVolumeMaterialProperty = serializedObject.FindProperty("_useCustomClippingVolumeMaterial");
             _customClippingVolumeMaterialProperty = serializedObject.FindProperty("_customClippingVolumeMaterial");
+            _clippingVolumeDistanceTextureResolution = serializedObject.FindProperty("_clippingVolumeDistanceTextureResolution");
             _mapLayersProperty = serializedObject.FindProperty("_mapLayers");
             _labelPrefabProperty = serializedObject.FindProperty("_labelPrefab");
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
-            _detailOffset = serializedObject.FindProperty("_detailOffset");
+            _detailOffsetProperty = serializedObject.FindProperty("_detailOffset");
+            _maxCacheSizeInBytesProperty = serializedObject.FindProperty("_maxCacheSizeInBytes");
             _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
@@ -259,10 +281,28 @@ namespace Microsoft.Maps.Unity
             _showMapSizingOptions = EditorGUILayout.Foldout(_showMapSizingOptions, "Map Layout", true, _foldoutTitleStyle);
             if (_showMapSizingOptions)
             {
-                EditorGUILayout.PropertyField(_localMapDimensionProperty);
-                EditorGUILayout.LabelField(" ", "Scaled Map Dimension: " + ((MapRenderer)target).MapDimension.ToString());
-                EditorGUILayout.PropertyField(_localMapHeightProperty);
-                EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
+                // Map Shape Controls
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.PrefixLabel("Map Shape");
+                _mapShapeProperty.enumValueIndex = GUILayout.Toolbar(_mapShapeProperty.enumValueIndex, _shapeOptions);
+                GUILayout.EndHorizontal();
+
+                GUILayout.Space(6f);
+
+                if (_mapShapeProperty.enumValueIndex == (int)MapShape.Block)
+                {
+                    EditorGUILayout.PropertyField(_localMapDimensionProperty);
+                    EditorGUILayout.LabelField(" ", "Scaled Map Dimension: " + ((MapRenderer)target).MapDimension.ToString());
+                    EditorGUILayout.PropertyField(_localMapHeightProperty);
+                    EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
+                }
+                else if (_mapShapeProperty.enumValueIndex == (int)MapShape.Cylinder)
+                {
+                    EditorGUILayout.PropertyField(_localMapRadiusProperty);
+                    EditorGUILayout.LabelField(" ", "Scaled Map Radius: " + (((MapRenderer)target).MapDimension.x / 2.0f).ToString());
+                    EditorGUILayout.PropertyField(_localMapHeightProperty);
+                    EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
+                }
             }
             EditorGUILayout.EndVertical();
 
@@ -278,7 +318,7 @@ namespace Microsoft.Maps.Unity
                 GUILayout.EndHorizontal();
 
                 EditorGUILayout.PropertyField(_castShadowsProperty, new GUIContent("Cast Shadows"));
-                EditorGUILayout.PropertyField(_recieveShadowsProperty, new GUIContent("Recieve Shadows"));
+                EditorGUILayout.PropertyField(_receiveShadowsProperty, new GUIContent("Receive Shadows"));
                 EditorGUILayout.PropertyField(_enableMrtkMaterialIntegrationProperty, new GUIContent("Enable MRTK Integration"));
                 EditorGUILayout.PropertyField(_useCustomTerrainMaterialProperty, new GUIContent("Use Custom Terrain Material"));
                 if (_useCustomTerrainMaterialProperty.boolValue)
@@ -304,23 +344,41 @@ namespace Microsoft.Maps.Unity
                         EditorGUILayout.PropertyField(_customClippingVolumeMaterialProperty, new GUIContent("Clipping Volume Material"));
                         EditorGUI.indentLevel--;
                     }
+
+                    // Texture Camera Resolution
+                    GUILayout.BeginHorizontal();
+                    EditorGUILayout.PrefixLabel("Clipping Edge Resolution");
+                    _clippingVolumeDistanceTextureResolution.enumValueIndex = GUILayout.Toolbar(
+                        _clippingVolumeDistanceTextureResolution.enumValueIndex, _clippingVolumeDistanceTextureResolutionOptions);
+                    GUILayout.EndHorizontal();
+
                     EditorGUI.indentLevel--;
                 }
             }
+            GUILayout.Space(6f);
             EditorGUILayout.EndVertical();
 
-            // Map Layout Section
+            // Quality options.
             EditorGUILayout.BeginVertical(_boxStyle);
             _showQualityOptions = EditorGUILayout.Foldout(_showQualityOptions, "Quality", true, _foldoutTitleStyle);
             if (_showQualityOptions)
             {
+                EditorGUI.BeginDisabledGroup(Application.isPlaying);
+                _maxCacheSizeInBytesProperty.longValue =
+                    1024 *
+                    1024 *
+                    EditorGUILayout.LongField(
+                        new GUIContent("Max Cache Size (MB)"),
+                        _maxCacheSizeInBytesProperty.longValue / 1024 / 1024);
+                EditorGUI.EndDisabledGroup();
+
                 var position = EditorGUILayout.GetControlRect(false, 2 * EditorGUIUtility.singleLineHeight);
                 position.height = EditorGUIUtility.singleLineHeight;
 
                 position = EditorGUI.PrefixLabel(position, new GUIContent("Detail Offset"));
                 EditorGUI.indentLevel--;
 
-                _detailOffset.floatValue = EditorGUI.Slider(position, _detailOffset.floatValue, -1f, 1f);
+                _detailOffsetProperty.floatValue = EditorGUI.Slider(position, _detailOffsetProperty.floatValue, -1f, 1f);
                 float labelWidth = position.width;
 
                 // Render the sub-text labels.
@@ -371,7 +429,7 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.EndVertical();
 
 
-            GUILayout.Space(12f);
+            GUILayout.Space(4);
             serializedObject.ApplyModifiedProperties();
         }
 
@@ -451,7 +509,6 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.PrefixLabel(" ");
             var rect = EditorGUILayout.BeginHorizontal();
             {
-                
                 var iconWidth = _errorIcon.image.width;
                 EditorGUILayout.LabelField(_errorIcon, _errorIconStyle, GUILayout.Width(iconWidth));
 

@@ -26,6 +26,7 @@ Shader "MapsSDK/StandardTerrainShader"
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
             #pragma multi_compile __ ENABLE_CONTOUR_LINES
             #pragma multi_compile __ ENABLE_MRTK_INTEGRATION
+            #pragma multi_compile __ ENABLE_CIRCULAR_CLIPPING
 
             // Support the various Unity keywords...
             #pragma multi_compile_fog
@@ -53,7 +54,7 @@ Shader "MapsSDK/StandardTerrainShader"
             struct appdata
             {
                 float4 vertex : POSITION;
-                float2 uv : TEXCOORD;
+                float3 uv : TEXCOORD;
 
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };
@@ -66,11 +67,12 @@ Shader "MapsSDK/StandardTerrainShader"
                 float2 uv2 : TEXCOORD1;
                 float2 uv3 : TEXCOORD2;
                 float2 uv4 : TEXCOORD3;
+                float isSkirt : TEXCOORD4;
 #if ENABLE_ELEVATION_TEXTURE && ENABLE_CONTOUR_LINES
-                float elevation : TEXCOORD4;
+                float elevation : TEXCOORD5;
 #endif
-                SHADOW_COORDS(5)
-                UNITY_FOG_COORDS(6)
+                SHADOW_COORDS(6)
+                UNITY_FOG_COORDS(7)
 
                 UNITY_VERTEX_OUTPUT_STEREO
             };
@@ -83,6 +85,9 @@ Shader "MapsSDK/StandardTerrainShader"
 
                 UNITY_INITIALIZE_OUTPUT(v2f, o);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+                // Extract skirt indicator from the third item in uv
+                o.isSkirt = v.uv.z;
 
 #if ENABLE_ELEVATION_TEXTURE
                 float2 elevationOffset =
@@ -123,11 +128,11 @@ Shader "MapsSDK/StandardTerrainShader"
                 // Because we sample from a fullscreen texture (the shadow map), don't forget to setup the eye index.
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 
-                float minDistanceToPlane = ClipToVolume(i.worldPosition);
+                // Clip to ClippingVolume
+                float minDistanceToPlane = ClipToVolume(i.worldPosition, i.isSkirt);
 
                 // Albedo comes from a texture tinted by color
-                fixed4 color = fixed4(0.5, 0.5, 0.5, 1);
-                if (_MainTexCount > 0) { color = blend(color, tex2D(_MainTex0, i.uv)); }
+                fixed4 color = tex2D(_MainTex0, i.uv);
                 if (_MainTexCount > 1) { color = blend(color, tex2D(_MainTex1, i.uv2)); }
                 if (_MainTexCount > 2) { color = blend(color, tex2D(_MainTex2, i.uv3)); }
                 if (_MainTexCount > 3) { color = blend(color, tex2D(_MainTex3, i.uv4)); }
@@ -168,6 +173,7 @@ Shader "MapsSDK/StandardTerrainShader"
 
             // These are the map specific keywords...
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
+            #pragma multi_compile __ ENABLE_CIRCULAR_CLIPPING
 
             #pragma multi_compile_shadowcaster
 
@@ -178,7 +184,7 @@ Shader "MapsSDK/StandardTerrainShader"
             struct appdata
             {
                 float4 vertex : POSITION;
-                float2 uv: TEXCOORD;
+                float3 uv: TEXCOORD;
                 float3 normal : NORMAL;
 
                 UNITY_VERTEX_INPUT_INSTANCE_ID
@@ -188,6 +194,7 @@ Shader "MapsSDK/StandardTerrainShader"
             {
                 V2F_SHADOW_CASTER;
                 float3 worldPosition : POSITION1;
+                float isSkirt : TEXCOORD1;
 
                 UNITY_VERTEX_OUTPUT_STEREO
             };
@@ -212,6 +219,7 @@ Shader "MapsSDK/StandardTerrainShader"
 
                 float3 worldPosition = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1.0)).xyz;
                 o.worldPosition = worldPosition;
+                o.isSkirt = v.uv.z;
 
                 TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
                 
@@ -220,7 +228,7 @@ Shader "MapsSDK/StandardTerrainShader"
 
             float4 frag(v2f i) : SV_Target
             {
-                ClipToVolume(i.worldPosition);
+                ClipToVolume(i.worldPosition, i.isSkirt);
                 SHADOW_CASTER_FRAGMENT(i)
             }
             ENDCG

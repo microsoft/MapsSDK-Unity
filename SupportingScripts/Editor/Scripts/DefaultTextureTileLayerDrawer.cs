@@ -24,7 +24,7 @@ namespace Microsoft.Maps.Unity
             }
 
             return
-                // At a minimum, show 3 fields.
+                // At a minimum, show 3 lines.
                 3 * (EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing) +
                 // Additionally, we may show 2 more fields and a header for symbolic specific options.
                 (isSymbolic ?
@@ -47,7 +47,6 @@ namespace Microsoft.Maps.Unity
 
                 if (imageryTypeProperty.enumValueIndex == 0)
                 {
-
                     // This is symbolic imagery. Show additional options.
                     EditorGUI.LabelField(position, "Additional Options", EditorStyles.boldLabel);
 
@@ -59,6 +58,8 @@ namespace Microsoft.Maps.Unity
                     EditorGUI.PropertyField(position, serializedObject.FindProperty("_imageryStyle"));
 
                     EditorGUI.indentLevel--;
+
+                    position.y += EditorGUIUtility.singleLineHeight + EditorGUIUtility.standardVerticalSpacing;
                 }
 
                 serializedObject.ApplyModifiedProperties();

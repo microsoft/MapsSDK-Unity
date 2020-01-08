@@ -9,13 +9,15 @@ namespace Microsoft.Maps.Unity
     [CanEditMultipleObjects]
     class MapClusterPinEditor : Editor
     {
-        private SerializedProperty _scaleCurveProperty;
         private SerializedProperty _useRealworldScaleProperty;
+        private SerializedProperty _scaleCurveProperty;
+        private SerializedProperty _isLayerSynchronizedProperty;
 
         internal void OnEnable()
         {
             _scaleCurveProperty = serializedObject.FindProperty("ScaleCurve");
             _useRealworldScaleProperty = serializedObject.FindProperty("UseRealWorldScale");
+            _isLayerSynchronizedProperty = serializedObject.FindProperty("IsLayerSynchronized");
         }
 
         public override void OnInspectorGUI()
@@ -24,6 +26,7 @@ namespace Microsoft.Maps.Unity
 
             EditorGUILayout.PropertyField(_useRealworldScaleProperty);
             EditorGUILayout.PropertyField(_scaleCurveProperty);
+            EditorGUILayout.PropertyField(_isLayerSynchronizedProperty);
 
             EditorGUI.BeginDisabledGroup(true);
             var clusterMapPin = (ClusterMapPin)target;

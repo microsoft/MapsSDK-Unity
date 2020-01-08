@@ -16,8 +16,9 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _locationProperty;
         private SerializedProperty _altitude;
         private SerializedProperty _altitudeReferenceProperty;
-        private SerializedProperty _scaleCurveProperty;
         private SerializedProperty _useRealworldScaleProperty;
+        private SerializedProperty _scaleCurveProperty;
+        private SerializedProperty _isLayerSynchronizedProperty;
 
         private Vector3 _mouseDownMapPinPlanePositionInMapLocalSpace;
         private Vector2D _mouseDownMapPinPositionInMercatorSpace;
@@ -29,8 +30,9 @@ namespace Microsoft.Maps.Unity
             _locationProperty = serializedObject.FindProperty("_location");
             _altitude = serializedObject.FindProperty("Altitude");
             _altitudeReferenceProperty = serializedObject.FindProperty("AltitudeReference");
-            _scaleCurveProperty = serializedObject.FindProperty("ScaleCurve");
             _useRealworldScaleProperty = serializedObject.FindProperty("UseRealWorldScale");
+            _scaleCurveProperty = serializedObject.FindProperty("ScaleCurve");
+            _isLayerSynchronizedProperty = serializedObject.FindProperty("IsLayerSynchronized");
         }
 
         public override void OnInspectorGUI()
@@ -42,6 +44,7 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.PropertyField(_altitudeReferenceProperty);
             EditorGUILayout.PropertyField(_useRealworldScaleProperty);
             EditorGUILayout.PropertyField(_scaleCurveProperty);
+            EditorGUILayout.PropertyField(_isLayerSynchronizedProperty);
 
             // If childed to a MapRenderer, don't show the transform component since the MapRenderer is constantly overriding it.
             var mapPin = (MapPin)target;
