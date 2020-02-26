@@ -1,0 +1,7 @@
+<Project ToolsVersion="15.0">
+  <Import Project="Sdk.targets" Sdk="Microsoft.Build.NoTargets" Version="1.0.85" />
+
+  <PropertyGroup>
+    <_GenerateRestoreGraphProjectEntryInputProperties>UnityConfiguration=$(UnityConfiguration);UnityPlatform=$(UnityPlatform);$(_MSB4UPropagateProperties);$(_GenerateRestoreGraphProjectEntryInputProperties)</_GenerateRestoreGraphProjectEntryInputProperties>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,34 @@
+<Project ToolsVersion="15.0">
+  <PropertyGroup>
+	<UnityPlatform>$(UnityCurrentPlatform)</UnityPlatform>
+    <ProjectGuid>58912D4D-AC47-4B8A-9A72-3C6389940704</ProjectGuid>
+    <UnityConfiguration>InEditor</UnityConfiguration>
+    <!-- Make sure Unity ignores the contents of the intermediate output path. -->
+    <BaseIntermediateOutputPath>$(MSBuildForUnityBuildOutputDirectory)\obj\Dependencies</BaseIntermediateOutputPath>
+    <OutputPath>Dependencies</OutputPath>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <!--Copy the NuGet package reference dlls as well.-->
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="MSBuildForUnity" Version="[0.9.1-*, 0.9.1]">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
+  <!-- Note that this is the special "NoTarget" SDK to prevent this project from producing a dll. -->
+  <Import Project="Sdk.props" Sdk="Microsoft.Build.NoTargets" Version="1.0.85" />
+
+  <!-- Add support for Unix based systems (OSX, Linux) that have dotnet core and mono but not netframework. -->
+  <Import Project="UnixNetSupport.props" />
+
+  <ItemGroup>
+    <!--PROJECT_REFERENCE_TEMPLATE_START-->
+    <ProjectReference Include="D:\MapsSDK-Unity\SampleProject\Assets\MixedRealityToolkit.Providers\WindowsMixedReality\Shared\DotNetAdapter\DotNetAdapter.csproj" Condition="">
+        <!--PRIVATE_REFERENCE_TEMPLATE_START--><!--PRIVATE_REFERENCE_TEMPLATE_END-->
+    </ProjectReference>
+    <!--PROJECT_REFERENCE_TEMPLATE_END-->
+  </ItemGroup>
+</Project>
