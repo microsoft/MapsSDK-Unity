@@ -5,6 +5,23 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## 0.5.1 - 2020-03-03
+### Maps SDK
+#### Added
+- [`TextureTile.FromUrl`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Maps.Unity#texturetile) API to simplify requesting images (JPEG/PNG) from the web. Custom implementations of `TextureTileLayer` will no longer need to interact with UnityWebRequest or HttpClient to request imagery.
+- [`UnityTaskFactory`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Maps.Unity#unitytaskfactory) provides some utility APIs to run async tasks on Unity's main thread.
+
+#### Changed
+- `TextureTileLayer` API return type has been changed to a `Nullable<TextureTile>`. This is a breaking change if you have implemented a custom `TextureTileLayer`.
+
+#### Fixed
+- Empty textures on iOS caused by DXT1 texture format. Any DXT1 texture will now be transcoded to RGB24 (on iOS only). 
+- Large reduction in overall size and frequency of GC allocations caused by the MapRenderer.
+
+### Supporting Scripts
+#### Changed
+- `HttpTextureTileLayer` updated to leverage `TextureTile.FromUrl` API.
+
 ## 0.5.0 - 2020-01-08
 ### Maps SDK
 #### Added
