@@ -17,12 +17,12 @@ Shader "MapsSDK/ClippingDistanceShader"
 
             // These are the maps specific keywords...
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
+            #pragma multi_compile __ USE_R16_FOR_ELEVATION_TEXTURE
 
             #include "UnityCG.cginc"
             #include "ClippingVolume-MapsSDK.cginc"
             #include "ElevationOffset-MapsSDK.cginc"
 
-            // Need to be set through MaterialPropertyBlock.
             float3 _CameraPosition;
             float3 _CameraNormal;
 
@@ -43,7 +43,6 @@ Shader "MapsSDK/ClippingDistanceShader"
 #if ENABLE_ELEVATION_TEXTURE
                 float elevationOffset =
                     CalculateElevationOffset(
-                        _ElevationTex,
                         v.uv,
                         _ElevationTexScaleAndOffset.x,
                         _ElevationTexScaleAndOffset.yz,

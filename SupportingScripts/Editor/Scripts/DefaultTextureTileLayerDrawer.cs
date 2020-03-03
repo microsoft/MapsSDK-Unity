@@ -7,7 +7,7 @@ namespace Microsoft.Maps.Unity
     using UnityEngine;
 
     /// <summary>
-    /// A custom editor for the <see cref="DefaultTextureTileLayerDrawer"/> which will be displayhed within
+    /// A custom editor for the <see cref="DefaultTextureTileLayerDrawer"/> which will be displayed within
     /// the <see cref="TextureTileLayerListDrawer"/>.
     /// </summary>
     [CustomTileLayerDrawer(typeof(DefaultTextureTileLayer))]

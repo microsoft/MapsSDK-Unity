@@ -38,7 +38,6 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _useCustomClippingVolumeMaterialProperty;
         private SerializedProperty _customClippingVolumeMaterialProperty;
         private SerializedProperty _clippingVolumeDistanceTextureResolution;
-        private SerializedProperty _mapLayersProperty;
         private SerializedProperty _labelPrefabProperty;
         private static bool _showQualityOptions = true;
         private SerializedProperty _detailOffsetProperty;
@@ -111,7 +110,6 @@ namespace Microsoft.Maps.Unity
             _useCustomClippingVolumeMaterialProperty = serializedObject.FindProperty("_useCustomClippingVolumeMaterial");
             _customClippingVolumeMaterialProperty = serializedObject.FindProperty("_customClippingVolumeMaterial");
             _clippingVolumeDistanceTextureResolution = serializedObject.FindProperty("_clippingVolumeDistanceTextureResolution");
-            _mapLayersProperty = serializedObject.FindProperty("_mapLayers");
             _labelPrefabProperty = serializedObject.FindProperty("_labelPrefab");
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
@@ -408,13 +406,6 @@ namespace Microsoft.Maps.Unity
 
                 EditorGUI.indentLevel++;
             }
-            EditorGUILayout.EndVertical();
-
-            // Map Layers Section
-            EditorGUILayout.BeginVertical(_boxStyle);
-            GUI.enabled = false;
-            EditorGUILayout.PropertyField(_mapLayersProperty, true);
-            GUI.enabled = true;
             EditorGUILayout.EndVertical();
 
             // Texture Tile Providers

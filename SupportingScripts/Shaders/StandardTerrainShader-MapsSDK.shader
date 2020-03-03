@@ -24,6 +24,7 @@ Shader "MapsSDK/StandardTerrainShader"
 
             // These are the maps specific keywords...
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
+            #pragma multi_compile __ USE_R16_FOR_ELEVATION_TEXTURE
             #pragma multi_compile __ ENABLE_CONTOUR_LINES
             #pragma multi_compile __ ENABLE_MRTK_INTEGRATION
             #pragma multi_compile __ ENABLE_CIRCULAR_CLIPPING
@@ -92,7 +93,6 @@ Shader "MapsSDK/StandardTerrainShader"
 #if ENABLE_ELEVATION_TEXTURE
                 float2 elevationOffset =
                     CalculateElevationOffset(
-                        _ElevationTex,
                         v.uv,
                         _ElevationTexScaleAndOffset.x,
                         _ElevationTexScaleAndOffset.yz,
@@ -173,6 +173,7 @@ Shader "MapsSDK/StandardTerrainShader"
 
             // These are the map specific keywords...
             #pragma multi_compile __ ENABLE_ELEVATION_TEXTURE
+            #pragma multi_compile __ USE_R16_FOR_ELEVATION_TEXTURE
             #pragma multi_compile __ ENABLE_CIRCULAR_CLIPPING
 
             #pragma multi_compile_shadowcaster
@@ -206,7 +207,6 @@ Shader "MapsSDK/StandardTerrainShader"
 #if ENABLE_ELEVATION_TEXTURE
                 float elevationOffset =
                     CalculateElevationOffset(
-                        _ElevationTex,
                         v.uv,
                         _ElevationTexScaleAndOffset.x,
                         _ElevationTexScaleAndOffset.yz,

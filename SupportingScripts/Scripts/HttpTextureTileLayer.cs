@@ -4,10 +4,10 @@
 namespace Microsoft.Maps.Unity
 {
     using Microsoft.Geospatial;
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
-    using UnityEngine.Networking;
 
     /// <summary>
     /// Provides tiles for a <see cref="TextureTileLayer"/>. The tiles are fetched by using the HTTP or HTTPS protocol.
@@ -41,18 +41,6 @@ namespace Microsoft.Maps.Unity
             }
         }
 
-        private TaskScheduler _unityTaskScheduler;
-
-        /// <summary>
-        /// Overriden from base class. Because it is called on Unity main thread, it is used to cache the Unity TaskScheduler.
-        /// </summary>
-        protected override void OnEnable()
-        {
-            base.Awake();
-
-            _unityTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
-        }
-
         private void OnValidate()
         {
             SetDirty();
@@ -61,28 +49,17 @@ namespace Microsoft.Maps.Unity
         /// <summary>
         /// Retrieves the texture data that will be rendered for the specified <see cref="TileId"/>.
         /// </summary>
-        public async override Task<TextureTile> GetTexture(
+        public override Task<TextureTile?> GetTexture(
             TileId tileId,
             CancellationToken cancellationToken = default(CancellationToken))
         {
             if (string.IsNullOrWhiteSpace(_urlFormatString))
             {
-                return null;
+                return Task.FromResult<TextureTile?>(null);
             }
 
             var url = FormatUrl(tileId);
-            var data =
-                await
-                    // Get the request initiated on Unity thread since this is required by the UnityWebRequest API.
-                    await Task.Factory.StartNew(
-                        async () => await Request(url).ConfigureAwait(false),
-                        cancellationToken,
-                        TaskCreationOptions.None,
-                        _unityTaskScheduler);
-
-            // We should be on the Unity main thread now, but we don't need to be.
-            // Return the result on a background thread to get it off the Unity main thread.
-            return await Task.Run(() => Task.FromResult(TextureTile.FromImageData(data))).ConfigureAwait(false);
+            return Task.FromResult<TextureTile?>(TextureTile.FromUrl(new Uri(url)));
         }
 
         /// <summary>
@@ -121,45 +98,6 @@ namespace Microsoft.Maps.Unity
             }
 
             return url;
-        }
-
-        private async Task<byte[]> Request(string url)
-        {
-            var webRequest = UnityWebRequest.Get(url);
-            await webRequest.SendWebRequest();
-
-            // Check error codes and parse the data. Note, we're on the Unity main thread here.
-
-            if (webRequest.isNetworkError)
-            {
-#if DEBUG
-                Debug.LogError(nameof(HttpTextureTileLayer) + ": Network error - " + url);
-#endif
-                return null;
-            }
-            else if (webRequest.isHttpError)
-            {
-#if DEBUG
-                Debug.LogError(nameof(HttpTextureTileLayer) + ": HTTP error " + webRequest.responseCode + " - " + url);
-#endif
-
-                if (webRequest.responseCode == 401)
-                {
-                    return null;
-                }
-                else if (webRequest.responseCode >= 500)
-                {
-                    return null;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            else
-            {
-                return webRequest.downloadHandler.data;
-            }
         }
     }
 }
