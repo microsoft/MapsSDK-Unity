@@ -1,20 +1,20 @@
 {
-    "scopedRegistries": [
-        {
-            "name": "MS Build for Unity",
-            "url": "https://pkgs.dev.azure.com/UnityDeveloperTools/MSBuildForUnity/_packaging/UnityDeveloperTools/npm/registry",
-            "scopes": [
-                "com.microsoft"
-            ]
-        }
-    ],
+  "scopedRegistries": [
+    {
+      "name": "MS Build for Unity",
+      "url": "https://pkgs.dev.azure.com/UnityDeveloperTools/MSBuildForUnity/_packaging/UnityDeveloperTools/npm/registry",
+      "scopes": [
+        "com.microsoft"
+      ]
+    }
+  ],
   "dependencies": {
     "com.microsoft.msbuildforunity": "0.9.1-20200131.14",
     "com.unity.package-manager-ui": "2.0.8",
     "com.unity.textmeshpro": "1.4.1",
     "com.unity.xr.oculus.standalone": "1.38.4",
     "com.unity.xr.openvr.standalone": "1.0.5",
-    "com.unity.xr.windowsmr.metro": "1.0.18",
+    "com.unity.xr.windowsmr.metro": "1.0.19",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
     "com.unity.modules.assetbundle": "1.0.0",

@@ -974,8 +974,8 @@ Transform:
   m_Children:
   - {fileID: 639538390}
   - {fileID: 784204300}
-  - {fileID: 4894033657079523}
   - {fileID: 1666124615}
+  - {fileID: 4894033657079523}
   - {fileID: 803507375}
   m_Father: {fileID: 1276686195}
   m_RootOrder: 0
@@ -1979,6 +1979,7 @@ GameObject:
   - component: {fileID: 1276686192}
   - component: {fileID: 1276686196}
   - component: {fileID: 1276686190}
+  - component: {fileID: 1276686197}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -2074,7 +2075,7 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 1
+  _version: 2
   _bingMapsKey: 
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
@@ -2104,6 +2105,8 @@ MonoBehaviour:
     _list:
     - {fileID: 1276686199}
     - {fileID: 1276686190}
+  _elevationTileLayers:
+    _list: []
   _hideTileLayerComponents: 1
   _maxCacheSizeInBytes: 2147483648
   _clippingDistanceCameraGameObject: {fileID: 0}
@@ -2136,6 +2139,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0597940101b394e4f8ca5a51f18854f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1276686197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerName: MapCopyrightLayer
+  _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  _textColor: {r: 0, g: 0, b: 0, a: 0.42}
+  _mapCopyrightAlignment: 0
 --- !u!114 &1276686199
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -3536,7 +3555,7 @@ Transform:
   - {fileID: 908599243}
   - {fileID: 767665970}
   m_Father: {fileID: 618692630}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23028649013417923
 MeshRenderer:

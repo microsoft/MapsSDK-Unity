@@ -23,7 +23,7 @@
     
     <UnityMajorVersion>2018</UnityMajorVersion>
     <UnityMinorVersion>4</UnityMinorVersion>
-    <UnityEditorInstallPath>C:\Program Files\Unity\Hub\Editor\2018.4.18f1\Editor</UnityEditorInstallPath>
+    <UnityEditorInstallPath>C:\Program Files\Unity\Hub\Editor\2018.4.21f1\Editor</UnityEditorInstallPath>
   </PropertyGroup>
   
   <PropertyGroup>

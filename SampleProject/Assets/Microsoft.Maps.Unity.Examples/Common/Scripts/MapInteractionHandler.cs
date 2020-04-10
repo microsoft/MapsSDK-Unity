@@ -166,7 +166,7 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
             var newCenterInMercator = _startingMapCenterInMercator - deltaInMercatorSpace;
             newCenterInMercator.Y = Math.Max(Math.Min(0.5, newCenterInMercator.Y), -0.5);
 
-            _mapRenderer.Center = new LatLon(newCenterInMercator);
+            _mapRenderer.Center = LatLon.FromMercatorPosition(newCenterInMercator);
         }
     }
 
