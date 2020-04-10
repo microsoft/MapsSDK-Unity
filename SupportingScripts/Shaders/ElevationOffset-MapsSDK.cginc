@@ -25,31 +25,55 @@ float UnpackElevation(float2 scaledAndOffsetUv)
 
 float2 CalculateElevationOffset(float2 uv, float scale, float2 offset, float elevationScale)
 {
-    float2 scaledAndOffsetUv = (uv * scale) + offset; 
-
-    // Elevation texture's origin is flipped. Fix it here.
-    scaledAndOffsetUv.y = 1.0 - scaledAndOffsetUv.y;
+    float2 scaledAndOffsetUv = (uv * scale) + offset;
 
     float elevation = UnpackElevation(scaledAndOffsetUv);
     return float2(elevation * elevationScale, elevation);
 }
 
-float3 FilterNormal(float2 uv, float scale, float2 offset, float elevationScale, float texelSize)
+float3 FilterNormal(float2 uv, float scale, float2 offset, float elevationScale, float texelSize, float texelScale)
 {
-    // Elevation texture's origin is flipped. Fix it here.
+    texelSize *= texelScale;
+
     float2 scaledAndOffsetUv = (uv * scale) + offset;
-    scaledAndOffsetUv.y = 1.0 - scaledAndOffsetUv.y;
 
-    float minusX = UnpackElevation(scaledAndOffsetUv + float2(-texelSize, 0));
-    float plusX = UnpackElevation(scaledAndOffsetUv + float2(texelSize, 0));
-    float minusY = UnpackElevation(scaledAndOffsetUv + float2(0, -texelSize));
-    float plusY = UnpackElevation(scaledAndOffsetUv + float2(0, texelSize));
+#if LOW_QUALITY_ELEVATION_TEXTURE_NORMALS
 
-    float averageX = 0.5 * (plusX - minusX);
-    float averageY = 0.5 * (plusY - minusY);
+    float center = UnpackElevation(scaledAndOffsetUv);
+    float right = UnpackElevation(scaledAndOffsetUv + float2(texelSize, 0));
+    float up = UnpackElevation(scaledAndOffsetUv + float2(0, texelSize));
+    float averageX = center - right;
+    float averageY = center - up;
 
-    return normalize(float3(-averageX, _ZComponent, averageY));
+#elif HIGH_QUALITY_ELEVATION_TEXTURE_NORMALS
+
+    // Sobel filter.
+
+    float upperLeft = UnpackElevation(scaledAndOffsetUv + float2(-texelSize, texelSize));
+    float left = UnpackElevation(scaledAndOffsetUv - float2(texelSize, 0));
+    float lowerLeft = UnpackElevation(scaledAndOffsetUv - float2(texelSize, texelSize));
+    float upperRight = UnpackElevation(scaledAndOffsetUv + float2(texelSize, texelSize));
+    float right = UnpackElevation(scaledAndOffsetUv + float2(texelSize, 0));
+    float lowerRight = UnpackElevation(scaledAndOffsetUv + float2(texelSize, -texelSize));
+    float down = UnpackElevation(scaledAndOffsetUv - float2(0, texelSize));
+    float up = UnpackElevation(scaledAndOffsetUv + float2(0, texelSize));
+    float averageX = 0.125 * (upperLeft + 2.0 * left + lowerLeft - upperRight - 2.0 * right - lowerRight);
+    float averageY = 0.125 * (lowerLeft + 2.0 * down + lowerRight - upperLeft - 2.0 * up - upperRight);
+
+#else // MEDIUM_QUALITY_ELEVATION_TEXTURE_NORMALS
+
+    float left = UnpackElevation(scaledAndOffsetUv - float2(texelSize, 0));
+    float right = UnpackElevation(scaledAndOffsetUv + float2(texelSize, 0));
+    float down = UnpackElevation(scaledAndOffsetUv - float2(0, texelSize));
+    float up = UnpackElevation(scaledAndOffsetUv + float2(0, texelSize));
+    float averageX = 0.5 * (left - right);
+    float averageY = 0.5 * (down - up);
+
+#endif
+
+    return normalize(float3(averageX / texelScale, _ZComponent, averageY / texelScale));
 }
+
 #endif
 
 #endif

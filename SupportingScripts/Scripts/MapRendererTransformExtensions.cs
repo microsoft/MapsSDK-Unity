@@ -119,7 +119,7 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         public static LatLon TransformWorldPointToLatLon(this MapRenderer mapRenderer, Vector3 pointInWorldSpace)
         {
-            return new LatLon(mapRenderer.TransformWorldPointToMercator(pointInWorldSpace));
+            return LatLon.FromMercatorPosition(mapRenderer.TransformWorldPointToMercator(pointInWorldSpace));
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Microsoft.Maps.Unity
                     out var altitudeInMeters,
                     out var mercatorScale);
 
-            var latLon = new LatLon(mercatorPosition);
+            var latLon = LatLon.FromMercatorPosition(mercatorPosition);
             return new LatLonAlt(ref latLon, altitudeInMeters);
         }
 

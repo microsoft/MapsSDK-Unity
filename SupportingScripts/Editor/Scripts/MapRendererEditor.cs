@@ -44,6 +44,7 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _maxCacheSizeInBytesProperty;
         private static bool _showTileLayers = true;
         private SerializedProperty _textureTileLayersProperty;
+        private SerializedProperty _elevationTileLayersProperty;
         private SerializedProperty _hideTileLayerComponentsProperty;
         private GUIStyle _baseStyle = null;
         private GUIStyle _hyperlinkStyle = null;
@@ -118,6 +119,7 @@ namespace Microsoft.Maps.Unity
             _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
+            _elevationTileLayersProperty = serializedObject.FindProperty("_elevationTileLayers");
             _hideTileLayerComponentsProperty = serializedObject.FindProperty("_hideTileLayerComponents");
 
             EditorApplication.update += QueuePlayerLoopUpdate;
@@ -188,7 +190,7 @@ namespace Microsoft.Maps.Unity
                         var newDeltaInWorldSpace = updatedHitPointInWorldSpace - _startingHitPointInWorldSpace;
                         var newDeltaInLocalSpace = mapRenderer.transform.worldToLocalMatrix * newDeltaInWorldSpace;
                         var newDeltaInMercator = new Vector2D(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
-                        var newCenter = new LatLon(_startingCenterInMercatorSpace - newDeltaInMercator);
+                        var newCenter = LatLon.FromMercatorPosition(_startingCenterInMercatorSpace - newDeltaInMercator);
 
                         Undo.RecordObject(mapRenderer, "Change Center.");
                         mapRenderer.Center = newCenter;
@@ -414,6 +416,7 @@ namespace Microsoft.Maps.Unity
             if (_showTileLayers)
             {
                 EditorGUILayout.PropertyField(_textureTileLayersProperty, true);
+                EditorGUILayout.PropertyField(_elevationTileLayersProperty, true);
                 EditorGUILayout.PropertyField(_hideTileLayerComponentsProperty);
                 GUILayout.Space(12f);
             }

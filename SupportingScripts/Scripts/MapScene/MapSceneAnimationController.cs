@@ -121,17 +121,17 @@ namespace Microsoft.Maps.Unity
                     // match how zoom level is being calculated.
                     var adjustedT = (_startHeightInMercator - ZoomLevelToMercatorAltitude(zoomLevel)) / (_startHeightInMercator - _endHeightInMercator);
                     var mercatorPosition = Interpolate(_startMercatorCenter, _endMercatorCenter, Math.Pow(adjustedT, 0.8));
-                    location = new LatLon(mercatorPosition);
+                    location = LatLon.FromMercatorPosition(mercatorPosition);
                 }
                 else
                 {
                     var mercatorPosition = Interpolate(_startMercatorCenter, _endMercatorCenter, t);
-                    location = new LatLon(mercatorPosition);
+                    location = LatLon.FromMercatorPosition(mercatorPosition);
                 }
             }
             else
             {
-                location = new LatLon(_endMercatorCenter);
+                location = LatLon.FromMercatorPosition(_endMercatorCenter);
             }
         }
 
@@ -192,7 +192,7 @@ namespace Microsoft.Maps.Unity
             u = Math.Max(0, Math.Min(u / _u1, 1.0));
 
             zoomLevel = (float)MercatorAltitudeToZoomLevel(w);
-            location = new LatLon(Vector2D.Lerp(_startMercatorCenter, _endMercatorCenter, u));
+            location = LatLon.FromMercatorPosition(Vector2D.Lerp(_startMercatorCenter, _endMercatorCenter, u));
         }
 
         /// <summary>

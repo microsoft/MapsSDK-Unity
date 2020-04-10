@@ -132,7 +132,7 @@ namespace Microsoft.Maps.Unity
                                 Vector3 updatedHitPointInLocalSpace = mapRenderer.transform.worldToLocalMatrix * ray.GetPoint(enter);
                                 var newDeltaInLocalSpace = updatedHitPointInLocalSpace - _mouseDownMapPinPlanePositionInMapLocalSpace;
                                 var newDeltaInMercator = new Vector2D(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
-                                var newLocation = new LatLon(_mouseDownMapPinPositionInMercatorSpace + newDeltaInMercator);
+                                var newLocation = LatLon.FromMercatorPosition(_mouseDownMapPinPositionInMercatorSpace + newDeltaInMercator);
 
                                 Undo.RecordObject(target, "Changed Location");
                                 mapPin.Location = newLocation;

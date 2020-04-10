@@ -178,7 +178,7 @@ namespace Microsoft.Maps.Unity
             var mercatorBox = _map.Bounds.ToMercatorBoundingBox();
             var mercatorX = mercatorBox.BottomLeft.X + (0.5F + limitedSurfaceCoordinate.x) * (mercatorBox.TopRight.X - mercatorBox.BottomLeft.X);
             var mercatorY = mercatorBox.BottomLeft.Y + (0.5F + limitedSurfaceCoordinate.y) * (mercatorBox.TopRight.Y - mercatorBox.BottomLeft.Y);
-            return new LatLon(new Vector2D(mercatorX, mercatorY));
+            return LatLon.FromMercatorPosition(new Vector2D(mercatorX, mercatorY));
         }
 
         /// <summary>
@@ -277,7 +277,7 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         private void Translate(Vector2D amount)
         {
-            _map.Center = new LatLon(_map.Center.ToMercatorPosition() + amount);
+            _map.Center = LatLon.FromMercatorPosition(_map.Center.ToMercatorPosition() + amount);
         }
 
         private static float MercatorAltitudeToZoomLevel(double mercatorAltitude)

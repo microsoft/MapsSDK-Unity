@@ -55,7 +55,7 @@ namespace Microsoft.Maps.Unity
         {
             if (string.IsNullOrWhiteSpace(_urlFormatString))
             {
-                return Task.FromResult<TextureTile?>(null);
+                return TextureTile.FromNull();
             }
 
             var url = FormatUrl(tileId);
