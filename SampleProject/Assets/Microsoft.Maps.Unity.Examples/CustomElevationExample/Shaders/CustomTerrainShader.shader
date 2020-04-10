@@ -127,7 +127,7 @@ Shader "MapsSDK/CustomTerrainShader"
             o.Specular = 0;
 
 #if ENABLE_ELEVATION_TEXTURE
-            float3 worldNormal =
+            float3 localNormal =
                 FilterNormal(
                     IN.elevationTex,
                     _ElevationTexScaleAndOffset.x,
@@ -135,6 +135,7 @@ Shader "MapsSDK/CustomTerrainShader"
                     _ElevationTexScaleAndOffset.w,
                     1.0 / 257.0,
                     1.0);
+            float3 worldNormal = UnityObjectToWorldNormal(localNormal);
 
             // Construct world space to tangent space matrix.
             half3 worldT = WorldNormalVector(IN, half3(1, 0, 0));
