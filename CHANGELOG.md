@@ -8,6 +8,15 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 ## 0.5.1 - 2020-03-03
 ### Maps SDK
 #### Added
+- [`ElevationTileLayer`](https://github.com/microsoft/MapsSDK-Unity/wiki/ElevationTileLayer) to enable rendering custom elevation data sources.
+
+#### Fixed
+- More reduction of GC allocations. There are no longer allocations when the map is idle. 
+- Copyright text not being culled and showing through map.
+- Copyright text misaligned in certain rotations.
+
+### Maps SDK
+#### Added
 - [`TextureTile.FromUrl`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Maps.Unity#texturetile) API to simplify requesting images (JPEG/PNG) from the web. Custom implementations of `TextureTileLayer` will no longer need to interact with UnityWebRequest or HttpClient to request imagery.
 - [`UnityTaskFactory`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Maps.Unity#unitytaskfactory) provides some utility APIs to run async tasks on Unity's main thread.
 
