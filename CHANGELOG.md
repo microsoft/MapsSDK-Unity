@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## 0.5.1 - 2020-03-03
+## 0.6.0 - 2020-04-09
 ### Maps SDK
 #### Added
 - [`ElevationTileLayer`](https://github.com/microsoft/MapsSDK-Unity/wiki/ElevationTileLayer) to enable rendering custom elevation data sources.
@@ -15,6 +15,8 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 - Copyright text not being culled and showing through map.
 - Copyright text misaligned in certain rotations.
 
+
+## 0.5.1 - 2020-03-03
 ### Maps SDK
 #### Added
 - [`TextureTile.FromUrl`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Maps.Unity#texturetile) API to simplify requesting images (JPEG/PNG) from the web. Custom implementations of `TextureTileLayer` will no longer need to interact with UnityWebRequest or HttpClient to request imagery.
