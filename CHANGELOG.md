@@ -5,6 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## 0.6.1 - 2020-04-17
+### Maps SDK
+#### Changed
+- Removed 257x257 dimension restriction of `ElevationTiles`.
+#### Fixed
+- Threading issue causing map data to not load. [(#40)](https://github.com/microsoft/MapsSDK-Unity/issues/40)
+- Further reduced large temporary GC allocations on background threads.
+
+### Supporting Scripts
+#### Added
+- `UnityWebRequestAwaiterExtensionMethods` to enable UnityWebRequests to be used with async/await.
+
 ## 0.6.0 - 2020-04-09
 ### Maps SDK
 #### Added
