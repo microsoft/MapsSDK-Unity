@@ -6,6 +6,9 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 
 ## 0.6.1 - 2020-04-17
+
+**The SDK's support for the _.NET scripting backend on UWP_ will be deprecated.** This change will happen in a future version. The IL2CPP scripting backend for UWP will continue to be supported.
+
 ### Maps SDK
 #### Changed
 - Removed 257x257 dimension restriction of `ElevationTiles`.
