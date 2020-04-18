@@ -17,6 +17,8 @@ Shader "MapsSDK/StandardClippingVolumeShader"
 
             #pragma multi_compile_fog
             #pragma multi_compile_fwdbase nolightmap nodirlightmap nodynlightmap novertexlight
+            #pragma multi_compile __ ENABLE_MRTK_INTEGRATION
+            #pragma multi_compile __ ENABLE_CLIPPING // We'll skip the clipping when rendering the base of the map.
 
             // Use shader model 3.0 target to get nicer looking lighting.
             #pragma target 3.0
@@ -84,6 +86,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
                 // Because we sample from a fullscreen texture (the shadow map), don't forget to setup the eye index.
                 UNITY_SETUP_STEREO_EYE_INDEX_POST_VERTEX(i);
 
+#if ENABLE_CLIPPING
                 // Clip the walls to the terrain.
                 float2 distanceToMapUV = i.cameraPosition.xy / _MapDimension + float2(0.5, 0.5);
                 float distanceToMapSurface = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
@@ -92,6 +95,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
                 {
                     discard;
                 }
+#endif
 
                 // Add a small amount of shading based on the light direction.
                 float shadeFactor = min(0.5 * saturate(dot(normalize(_WorldSpaceLightPos0.xyz), i.normal)) + 0.5, max(SHADOW_ATTENUATION(i), 0.5));
@@ -121,6 +125,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             #pragma fragment frag
 
             #pragma multi_compile_shadowcaster
+            #pragma multi_compile __ ENABLE_CLIPPING // We'll skip the clipping when rendering the base of the map.
 
             #include "UnityCG.cginc"
             #include "ClippingVolume-MapsSDK.cginc"
@@ -159,6 +164,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
 
             float4 frag(v2f i) : SV_Target
             {
+#if ENABLE_CLIPPING
                 // Clip the walls to the terrain
                 float2 distanceToMapUV = i.cameraPosition.xy / _MapDimension + float2(0.5, 0.5);
                 float distanceToMapSurface = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
@@ -167,7 +173,8 @@ Shader "MapsSDK/StandardClippingVolumeShader"
                 {
                     discard;
                 }
-                
+#endif
+
                 SHADOW_CASTER_FRAGMENT(i)
             }
             ENDCG

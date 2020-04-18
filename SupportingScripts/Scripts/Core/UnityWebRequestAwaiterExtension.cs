@@ -5,8 +5,14 @@ namespace Microsoft.Maps.Unity
 {
     using UnityEngine.Networking;
 
-    internal static class UnityWebRequestAwaiterExtension
+    /// <summary>
+    /// Provides the ability to use await keyword with <see cref="UnityWebRequestAsyncOperation"/>.
+    /// </summary>
+    public static class UnityWebRequestAwaiterExtensionMethods
     {
+        /// <summary>
+        /// Provides the ability to use await keyword with <see cref="UnityWebRequestAsyncOperation"/>.
+        /// </summary>
         public static UnityWebRequestAwaiter GetAwaiter(this UnityWebRequestAsyncOperation webRequestAsyncOperation)
         {
             return new UnityWebRequestAwaiter(webRequestAsyncOperation);
