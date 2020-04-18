@@ -143,7 +143,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!84 &320322521
+--- !u!84 &161063352
 RenderTexture:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -532,6 +532,7 @@ GameObject:
   - component: {fileID: 1276686196}
   - component: {fileID: 1276686198}
   - component: {fileID: 1276686188}
+  - component: {fileID: 1276686189}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -553,6 +554,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _zoomSpeed: 0.5
   _panSmoothness: 0.5
+--- !u!114 &1276686189
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 243684798, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1276686190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -628,7 +641,7 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 1
+  _version: 2
   _bingMapsKey: 
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.30409837, g: 0.15686275, b: 0.3764706, a: 1}
@@ -657,10 +670,13 @@ MonoBehaviour:
   _textureTileLayers:
     _list:
     - {fileID: 1276686198}
+  _elevationTileLayers:
+    _list:
+    - {fileID: 1276686189}
   _hideTileLayerComponents: 1
   _maxCacheSizeInBytes: 2147483648
   _clippingDistanceCameraGameObject: {fileID: 0}
-  _renderTexture: {fileID: 320322521}
+  _renderTexture: {fileID: 161063352}
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
