@@ -41,52 +41,16 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
         _mapRenderer = GetComponent<MapRenderer>();
     }
 
-    public void OnPointerClicked(MixedRealityPointerEventData eventData)
+    private void OnEnable()
     {
-    }
-
-    public void OnPointerDown(MixedRealityPointerEventData eventData)
-    {
-        if (CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(eventData.Pointer, out FocusDetails focusDetails) &&
-            focusDetails.Object == gameObject)
+        if (CoreServices.InputSystem != null)
         {
-            _panningPointer = eventData.Pointer;
-            _startingPointInLocalSpace = focusDetails.PointLocalSpace;
-            _startingPointInMercatorSpace =
-                _mapRenderer.TransformLocalPointToMercatorWithAltitude(
-                    _startingPointInLocalSpace,
-                    out _startingAltitudeInMeters,
-                    out _startingMercatorScale);
-            _currentPointInLocalSpace = _startingPointInLocalSpace;
-            _startingMapCenterInMercator = _mapRenderer.Center.ToMercatorPosition();
-
-            eventData.Use();
+            CoreServices.InputSystem.RegisterHandler<IMixedRealityInputHandler<Vector2>>(this);
+            CoreServices.InputSystem.RegisterHandler<IMixedRealityPointerHandler>(this);
         }
     }
 
-    public void OnPointerDragged(MixedRealityPointerEventData eventData)
-    {
-        if (_panningPointer == eventData.Pointer)
-        {
-            eventData.Use();
-        }
-    }
-
-    public void OnPointerUp(MixedRealityPointerEventData eventData)
-    {
-        _panningPointer = null;
-    }
-
-    public void OnInputChanged(InputEventData<Vector2> eventData)
-    {
-        if (eventData.MixedRealityInputAction.Description == "Zoom Map")
-        {
-            _currentZoomValue = eventData.InputData;
-            eventData.Use();
-        }
-    }
-
-    void Update()
+    private void Update()
     {
         var isInteractingWithMap = _panningPointer != null;
         if (isInteractingWithMap &&
@@ -167,6 +131,60 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
             newCenterInMercator.Y = Math.Max(Math.Min(0.5, newCenterInMercator.Y), -0.5);
 
             _mapRenderer.Center = LatLon.FromMercatorPosition(newCenterInMercator);
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (CoreServices.InputSystem != null)
+        {
+            CoreServices.InputSystem.UnregisterHandler<IMixedRealityInputHandler<Vector2>>(this);
+            CoreServices.InputSystem.UnregisterHandler<IMixedRealityPointerHandler>(this);
+        }
+    }
+
+    public void OnPointerClicked(MixedRealityPointerEventData eventData)
+    {
+    }
+
+    public void OnPointerDown(MixedRealityPointerEventData eventData)
+    {
+        if (CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(eventData.Pointer, out FocusDetails focusDetails) &&
+            focusDetails.Object == gameObject)
+        {
+            _panningPointer = eventData.Pointer;
+            _startingPointInLocalSpace = focusDetails.PointLocalSpace;
+            _startingPointInMercatorSpace =
+                _mapRenderer.TransformLocalPointToMercatorWithAltitude(
+                    _startingPointInLocalSpace,
+                    out _startingAltitudeInMeters,
+                    out _startingMercatorScale);
+            _currentPointInLocalSpace = _startingPointInLocalSpace;
+            _startingMapCenterInMercator = _mapRenderer.Center.ToMercatorPosition();
+
+            eventData.Use();
+        }
+    }
+
+    public void OnPointerDragged(MixedRealityPointerEventData eventData)
+    {
+        if (_panningPointer == eventData.Pointer)
+        {
+            eventData.Use();
+        }
+    }
+
+    public void OnPointerUp(MixedRealityPointerEventData eventData)
+    {
+        _panningPointer = null;
+    }
+
+    public void OnInputChanged(InputEventData<Vector2> eventData)
+    {
+        if (eventData.MixedRealityInputAction.Description == "Zoom Map")
+        {
+            _currentZoomValue = eventData.InputData;
+            eventData.Use();
         }
     }
 
