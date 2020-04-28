@@ -36,6 +36,7 @@ Thumbs.db
 
 # MSBuild for Unity
 *.g.props
+*.g.targets
 
 Packages_/
 !*.meta
