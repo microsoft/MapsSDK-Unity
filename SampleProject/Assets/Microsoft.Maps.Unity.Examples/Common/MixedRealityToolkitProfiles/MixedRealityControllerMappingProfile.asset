@@ -2815,8 +2815,8 @@ MonoBehaviour:
       axisType: 3
       inputType: 10
       inputAction:
-        id: 7
-        description: Grip Press
+        id: 6
+        description: Trigger
         axisConstraint: 3
       keyCode: 0
       axisCodeX: AXIS_12
