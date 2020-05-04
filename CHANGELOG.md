@@ -5,9 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
-## 0.6.1 - 2020-04-17
+## 0.7.0 - 2020-05-04
 
-**The SDK's support for the _.NET scripting backend on UWP_ will be deprecated.** This change will happen in a future version. The IL2CPP scripting backend for UWP will continue to be supported.
+### Maps SDK
+#### Added
+- Native plugin that improves the efficiency of decoding map data and signifcantly reduces GC usage. Supported platforms: Android/iOS/Windows.
+- Compressed texture formats for model data on Android/iOS, reducing memory usage on these platforms.
+- Elevation scale API that can be used to exaggerate or flatten terrain. [#50](https://github.com/microsoft/MapsSDK-Unity/issues/50)
+
+#### Removed
+- Removed support for the deprecated UWP .NET scripting backend.
+
+## 0.6.1 - 2020-04-17
 
 ### Maps SDK
 #### Changed
