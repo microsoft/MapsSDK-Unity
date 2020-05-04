@@ -29,6 +29,7 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _localMapRadiusProperty;
         private SerializedProperty _localMapHeightProperty;
         private static bool _terrainOptions = true;
+        private SerializedProperty _elevationScaleProperty;
         private SerializedProperty _castShadowsProperty;
         private SerializedProperty _receiveShadowsProperty;
         private SerializedProperty _enableMrtkMaterialIntegrationProperty;
@@ -103,6 +104,7 @@ namespace Microsoft.Maps.Unity
             _localMapRadiusProperty = serializedObject.FindProperty("LocalMapRadius");
             _localMapHeightProperty = serializedObject.FindProperty("_localMapHeight");
             _useCustomTerrainMaterialProperty = serializedObject.FindProperty("_useCustomTerrainMaterial");
+            _elevationScaleProperty = serializedObject.FindProperty("_elevationScale");
             _castShadowsProperty = serializedObject.FindProperty("_castShadows");
             _receiveShadowsProperty = serializedObject.FindProperty("_receiveShadows");
             _enableMrtkMaterialIntegrationProperty = serializedObject.FindProperty("_enableMrtkMaterialIntegration");
@@ -317,6 +319,7 @@ namespace Microsoft.Maps.Unity
                 _mapTerrainType.enumValueIndex = GUILayout.Toolbar(_mapTerrainType.enumValueIndex, _layerOptions);
                 GUILayout.EndHorizontal();
 
+                EditorGUILayout.PropertyField(_elevationScaleProperty);
                 EditorGUILayout.PropertyField(_castShadowsProperty, new GUIContent("Cast Shadows"));
                 EditorGUILayout.PropertyField(_receiveShadowsProperty, new GUIContent("Receive Shadows"));
                 EditorGUILayout.PropertyField(_enableMrtkMaterialIntegrationProperty, new GUIContent("Enable MRTK Integration"));

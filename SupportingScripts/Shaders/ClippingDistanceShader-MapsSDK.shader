@@ -46,24 +46,31 @@ Shader "MapsSDK/ClippingDistanceShader"
                         v.uv,
                         _ElevationTexScaleAndOffset.x,
                         _ElevationTexScaleAndOffset.yz,
-                        _ElevationTexScaleAndOffset.w);
+                        _ElevationTexScaleAndOffset.w).x;
                 v.vertex.y += elevationOffset;
 #endif
                 v2f o;
                 UNITY_INITIALIZE_OUTPUT(v2f, o);
-
+                  
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.cameraPosition = UnityObjectToViewPos(v.vertex);
+                o.cameraPosition = UnityObjectToViewPos(v.vertex).xyz;
 
                 return o;
             }
-
+#if SHADER_API_GLES
+            // Cannot return float directly in GLES API because float to fixed4 conversion fails.
+            fixed4 frag(v2f i) : SV_Target
+            {
+                // Calculate distance by using camera position/plane and the input worldSpacePosition.
+                return -i.cameraPosition.zzzz;
+            }
+#else
             float frag(v2f i) : SV_Target
             {
                 // Calculate distance by using camera position/plane and the input worldSpacePosition.
-                float distanceToCameraPlane = -i.cameraPosition.z;
-                return distanceToCameraPlane;
+                return -i.cameraPosition.z;
             }
+#endif
             ENDCG
         }
     }

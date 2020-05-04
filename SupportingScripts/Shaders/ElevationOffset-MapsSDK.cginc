@@ -8,10 +8,9 @@
 
 sampler2D _ElevationTex;
 float4 _ElevationTexScaleAndOffset;
-float _ZComponent;
-float _MinElevationInMetersForTile;
-float _ElevationRangeInMetersForTile;
+float4 _ElevationTileData; // x = min elevation for tile scaled; y = elevation range for tile scaled; z = elevation scale; w = z normal component.
 
+// Unpacks the elevation stored in _ElevationTex to raw meters. Elevation scaling is also applied to the result.
 float UnpackElevation(float2 scaledAndOffsetUv)
 {
 #if USE_R16_FOR_ELEVATION_TEXTURE
@@ -20,15 +19,19 @@ float UnpackElevation(float2 scaledAndOffsetUv)
     float2 rgNormalizedHeight = tex2Dlod(_ElevationTex, float4(scaledAndOffsetUv, 0, 0)).rg;
     float normalizedHeight = (rgNormalizedHeight.r + rgNormalizedHeight.g * 256.0f) / 257.0f;
 #endif
-    return _MinElevationInMetersForTile + _ElevationRangeInMetersForTile * normalizedHeight;
+    return _ElevationTileData.x + _ElevationTileData.y * normalizedHeight;
 }
 
-float2 CalculateElevationOffset(float2 uv, float scale, float2 offset, float elevationScale)
+// Returns the elevation offset to apply in local space for the current tile. Second value returned is the actual elevation in meters.
+float2 CalculateElevationOffset(float2 uv, float scale, float2 offset, float elevationScaleForZoomLevel)
 {
     float2 scaledAndOffsetUv = (uv * scale) + offset;
 
     float elevation = UnpackElevation(scaledAndOffsetUv);
-    return float2(elevation * elevationScale, elevation);
+    return
+        float2(
+            elevation * elevationScaleForZoomLevel, // The vertex offset in local space
+            elevation / _ElevationTileData.z /* The actual elevation in meters. */);
 }
 
 float3 FilterNormal(float2 uv, float scale, float2 offset, float elevationScale, float texelSize, float texelScale)
@@ -71,7 +74,7 @@ float3 FilterNormal(float2 uv, float scale, float2 offset, float elevationScale,
 
 #endif
 
-    return normalize(float3(averageX / texelScale, _ZComponent, averageY / texelScale));
+    return normalize(float3(averageX / texelScale, _ElevationTileData.w, averageY / texelScale));
 }
 
 #endif
