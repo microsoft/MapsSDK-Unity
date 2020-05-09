@@ -5,6 +5,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 
+## 0.7.1 - 2020-05-08
+
+### Maps SDK
+#### Fixed
+- Meta files used for native plugins are now compatible with Unity 2018.4+. [#52](https://github.com/microsoft/MapsSDK-Unity/issues/52)
+- Fixed bug that caused raycast to fail in some conditions.
+- Reduced overhead of clipping distance render pass.
+
 ## 0.7.0 - 2020-05-04
 
 ### Maps SDK
