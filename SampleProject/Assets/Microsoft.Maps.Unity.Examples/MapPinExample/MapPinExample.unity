@@ -491,41 +491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff4e3b9019304b5aaec5664de0778d21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!84 &1240530552
-RenderTexture:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_ImageContentsHash:
-    serializedVersion: 2
-    Hash: 00000000000000000000000000000000
-  m_ForcedFallbackFormat: 4
-  m_DownscaleFallback: 0
-  serializedVersion: 3
-  m_Width: 2048
-  m_Height: 2048
-  m_AntiAliasing: 1
-  m_MipCount: -1
-  m_DepthFormat: 2
-  m_ColorFormat: 49
-  m_MipMap: 0
-  m_GenerateMips: 1
-  m_SRGB: 0
-  m_UseDynamicScale: 0
-  m_BindMS: 0
-  m_EnableCompatibleFormat: 1
-  m_TextureSettings:
-    serializedVersion: 2
-    m_FilterMode: 1
-    m_Aniso: 1
-    m_MipBias: 0
-    m_WrapU: 1
-    m_WrapV: 1
-    m_WrapW: 1
-  m_Dimension: 2
-  m_VolumeDepth: 1
 --- !u!1 &1276686187
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,6 +636,7 @@ MonoBehaviour:
   LocalMapDimension: {x: 1, y: 1}
   LocalMapRadius: 0.5
   _localMapHeight: 0.07
+  _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
   _enableMrtkMaterialIntegration: 1
@@ -688,8 +654,6 @@ MonoBehaviour:
     - {fileID: 1276686189}
   _hideTileLayerComponents: 1
   _maxCacheSizeInBytes: 2147483648
-  _clippingDistanceCameraGameObject: {fileID: 0}
-  _renderTexture: {fileID: 1240530552}
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
