@@ -23,9 +23,6 @@ Shader "MapsSDK/ClippingDistanceShader"
             #include "ClippingVolume-MapsSDK.cginc"
             #include "ElevationOffset-MapsSDK.cginc"
 
-            float3 _CameraPosition;
-            float3 _CameraNormal;
-
             struct appdata
             {
                 float4 vertex : POSITION;
@@ -35,7 +32,6 @@ Shader "MapsSDK/ClippingDistanceShader"
             struct v2f
             {
                 float4 pos : SV_POSITION;
-                float3 cameraPosition : POSITION1;
             };
 
             v2f vert(appdata v)
@@ -51,24 +47,31 @@ Shader "MapsSDK/ClippingDistanceShader"
 #endif
                 v2f o;
                 UNITY_INITIALIZE_OUTPUT(v2f, o);
-                  
+                
                 o.pos = UnityObjectToClipPos(v.vertex);
-                o.cameraPosition = UnityObjectToViewPos(v.vertex).xyz;
 
                 return o;
             }
+
+            // Writes the linear, normalized depth of the pixel to the render texture.
 #if SHADER_API_GLES
             // Cannot return float directly in GLES API because float to fixed4 conversion fails.
             fixed4 frag(v2f i) : SV_Target
             {
-                // Calculate distance by using camera position/plane and the input worldSpacePosition.
-                return -i.cameraPosition.zzzz;
+#if UNITY_REVERSED_Z
+                return 1 - i.pos.zzzz;
+#else
+                return i.pos.zzzz;
+#endif
             }
 #else
             float frag(v2f i) : SV_Target
             {
-                // Calculate distance by using camera position/plane and the input worldSpacePosition.
-                return -i.cameraPosition.z;
+#if UNITY_REVERSED_Z
+                return 1 - i.pos.z;
+#else
+                return i.pos.z;
+#endif
             }
 #endif
             ENDCG

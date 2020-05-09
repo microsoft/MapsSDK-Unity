@@ -32,6 +32,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             sampler2D _TerrainDistanceTex;
             float2 _MapDimension;
             float4x4 _WorldToDistanceCameraMatrix;
+            float _MapCurrentHeight;
 
             struct appdata
             {
@@ -89,9 +90,10 @@ Shader "MapsSDK/StandardClippingVolumeShader"
 #if ENABLE_CLIPPING
                 // Clip the walls to the terrain.
                 float2 distanceToMapUV = i.cameraPosition.xy / _MapDimension + float2(0.5, 0.5);
-                float distanceToMapSurface = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
+                float normalizedDistanceToMapSurface  = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
+                normalizedDistanceToMapSurface  *= _MapCurrentHeight;
                 float distanceToCurrentPoint = -i.cameraPosition.z;
-                if (distanceToCurrentPoint >= distanceToMapSurface)
+                if (distanceToCurrentPoint >= normalizedDistanceToMapSurface )
                 {
                     discard;
                 }
@@ -133,6 +135,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
             sampler2D _TerrainDistanceTex;
             float2 _MapDimension;
             float4x4 _WorldToDistanceCameraMatrix;
+            float _MapCurrentHeight;
 
             struct appdata
             {
@@ -167,9 +170,10 @@ Shader "MapsSDK/StandardClippingVolumeShader"
 #if ENABLE_CLIPPING
                 // Clip the walls to the terrain
                 float2 distanceToMapUV = i.cameraPosition.xy / _MapDimension + float2(0.5, 0.5);
-                float distanceToMapSurface = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
+                float normalizedDistanceToMapSurface  = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
+                normalizedDistanceToMapSurface  *= _MapCurrentHeight;
                 float distanceToCurrentPoint = -i.cameraPosition.z;
-                if (distanceToCurrentPoint >= distanceToMapSurface)
+                if (distanceToCurrentPoint >= normalizedDistanceToMapSurface )
                 {
                     discard;
                 }
