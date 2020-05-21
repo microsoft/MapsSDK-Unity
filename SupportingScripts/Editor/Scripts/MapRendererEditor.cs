@@ -43,10 +43,13 @@ namespace Microsoft.Maps.Unity
         private static bool _showQualityOptions = true;
         private SerializedProperty _detailOffsetProperty;
         private SerializedProperty _maxCacheSizeInBytesProperty;
+        private SerializedProperty _mapColliderTypeProperty;
         private static bool _showTileLayers = true;
         private SerializedProperty _textureTileLayersProperty;
         private SerializedProperty _elevationTileLayersProperty;
         private SerializedProperty _hideTileLayerComponentsProperty;
+        private static bool _showLocalizationOptions = true;
+        private SerializedProperty _languageOverrideProperty;
         private GUIStyle _baseStyle = null;
         private GUIStyle _hyperlinkStyle = null;
         private GUIStyle _errorIconStyle = null;
@@ -74,6 +77,13 @@ namespace Microsoft.Maps.Unity
                 new GUIContent("Low", "Low quality texture size. Uses less memory."),
                 new GUIContent("Medium", "Medium quality texture size."),
                 new GUIContent("High", "High quality texture size. Uses more memory.")
+            };
+        private readonly GUIContent[] _colliderOptions =
+            new GUIContent[]
+            {
+                new GUIContent("No Collider", "No map collider."),
+                new GUIContent("Base Only", "Collider covering the base of the map."),
+                new GUIContent("Full Extents", "Collider covering the full extents of the map."),
             };
         private readonly GUILayoutOption[] _minMaxLabelsLayoutOptions =
             new GUILayoutOption[]
@@ -117,12 +127,14 @@ namespace Microsoft.Maps.Unity
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
             _detailOffsetProperty = serializedObject.FindProperty("_detailOffset");
+            _mapColliderTypeProperty = serializedObject.FindProperty("_mapColliderType");
             _maxCacheSizeInBytesProperty = serializedObject.FindProperty("_maxCacheSizeInBytes");
             _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
             _elevationTileLayersProperty = serializedObject.FindProperty("_elevationTileLayers");
             _hideTileLayerComponentsProperty = serializedObject.FindProperty("_hideTileLayerComponents");
+            _languageOverrideProperty = serializedObject.FindProperty("_languageOverride");
 
             EditorApplication.update += QueuePlayerLoopUpdate;
         }
@@ -295,6 +307,7 @@ namespace Microsoft.Maps.Unity
                 {
                     EditorGUILayout.PropertyField(_localMapDimensionProperty);
                     EditorGUILayout.LabelField(" ", "Scaled Map Dimension: " + ((MapRenderer)target).MapDimension.ToString());
+                    GUILayout.Space(6f);
                     EditorGUILayout.PropertyField(_localMapHeightProperty);
                     EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
                 }
@@ -302,9 +315,19 @@ namespace Microsoft.Maps.Unity
                 {
                     EditorGUILayout.PropertyField(_localMapRadiusProperty);
                     EditorGUILayout.LabelField(" ", "Scaled Map Radius: " + (((MapRenderer)target).MapDimension.x / 2.0f).ToString());
+                    GUILayout.Space(6f);
                     EditorGUILayout.PropertyField(_localMapHeightProperty);
                     EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
                 }
+                GUILayout.Space(6f);
+
+                // Map Collider Type Controls
+                GUILayout.BeginHorizontal();
+                EditorGUILayout.PrefixLabel("Map Collider Type");
+                _mapColliderTypeProperty.enumValueIndex = GUILayout.Toolbar(_mapColliderTypeProperty.enumValueIndex, _colliderOptions);
+                GUILayout.EndHorizontal();
+
+                GUILayout.Space(6f);
             }
             EditorGUILayout.EndVertical();
 
@@ -331,13 +354,15 @@ namespace Microsoft.Maps.Unity
                     EditorGUI.indentLevel--;
                 }
 
-                EditorGUILayout.PropertyField(_mapEdgeColorProperty, new GUIContent("Color"));
-                _mapEdgeColorFadeDistanceProperty.floatValue =
-                    EditorGUILayout.Slider(new GUIContent("Edge Fade"), _mapEdgeColorFadeDistanceProperty.floatValue, 0, 1);
                 EditorGUILayout.PropertyField(_isClippingVolumeWallEnabledProperty, new GUIContent("Render Clipping Volume Wall"));
                 if (_isClippingVolumeWallEnabledProperty.boolValue)
                 {
                     EditorGUI.indentLevel++;
+
+                    EditorGUILayout.PropertyField(_mapEdgeColorProperty, new GUIContent("Color"));
+                    _mapEdgeColorFadeDistanceProperty.floatValue =
+                        EditorGUILayout.Slider(new GUIContent("Edge Fade"), _mapEdgeColorFadeDistanceProperty.floatValue, 0, 1);
+
                     EditorGUILayout.PropertyField(
                         _useCustomClippingVolumeMaterialProperty,
                         new GUIContent("Use Custom Clipping Volume Material"));
@@ -422,6 +447,40 @@ namespace Microsoft.Maps.Unity
                 EditorGUILayout.PropertyField(_elevationTileLayersProperty, true);
                 EditorGUILayout.PropertyField(_hideTileLayerComponentsProperty);
                 GUILayout.Space(12f);
+            }
+            EditorGUILayout.EndVertical();
+
+            // Localization
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _showLocalizationOptions = EditorGUILayout.Foldout(_showTileLayers, "Localization", true, _foldoutTitleStyle);
+            if (_showLocalizationOptions)
+            {
+                var previousIsLanguageAutoDetected = _languageOverrideProperty.intValue == (int)SystemLanguage.Unknown;
+                var newIsLanguageAutoDetected = EditorGUILayout.Toggle("Autodetect Language", previousIsLanguageAutoDetected);
+
+                // If we are switching from autodetected to override, initialize override property with the current system language.
+                if (!newIsLanguageAutoDetected && previousIsLanguageAutoDetected)
+                {
+                    _languageOverrideProperty.intValue = (int)Application.systemLanguage;
+                }
+
+                // If we are switching from overridden to autodetected, clear the override property to unknown.
+                if (newIsLanguageAutoDetected && !previousIsLanguageAutoDetected)
+                {
+                    _languageOverrideProperty.intValue = (int)SystemLanguage.Unknown;
+                }
+
+                if (newIsLanguageAutoDetected)
+                {
+                    EditorGUI.BeginDisabledGroup(true);
+                    EditorGUILayout.EnumPopup("Language", Application.systemLanguage);
+                    EditorGUI.EndDisabledGroup();
+                }
+                else
+                {
+                    EditorGUILayout.PropertyField(_languageOverrideProperty, new GUIContent("Language"));
+                }
+
             }
             EditorGUILayout.EndVertical();
 

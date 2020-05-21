@@ -21,7 +21,7 @@ namespace Microsoft.Maps.Unity.Search
         public string Culture { get; set; } = null;
 
         /// <summary>
-        /// A string that an ISO 3166-1 Alpha-2 region/country code. This will alter Geopolitical disputed results to align with the specified region.
+        /// A string that an ISO 3166-1 Alpha-2 region/country code. This will alter geopolitically disputed results to align with the specified region.
         /// https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
         /// </summary>
         public string Region { get; set; } = null;
