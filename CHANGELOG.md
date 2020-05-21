@@ -6,6 +6,18 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.8.0 - 2020-05-20
+
+
+### Maps SDK
+#### Added
+ - Localization improvements. The `MapRenderer` automatically detects device language and culture settings to localize map content. See the _Localization_ section of the MapRenderer's settings.
+ - Helper class to convert Unity `SystemLanguage` enumerations to LCIDs or culture codes.
+ - Ability to modify or disable the collider being used for rough collisions.
+ 
+#### Fixed
+ - Enabled options in the `DefaultTextureTileLayer` to provide raster imagery with roads, borders, and labels. [#34](https://github.com/microsoft/MapsSDK-Unity/issues/34)
+ 
 ## 0.7.1 - 2020-05-08
 
 ### Maps SDK
