@@ -6,8 +6,13 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
-## 0.8.0 - 2020-05-20
+## 0.8.1 - 2020-05-27
 
+### Maps SDK
+#### Fixed
+ - Adds dependencies to fix linker error when building iOS applications.
+
+## 0.8.0 - 2020-05-20
 
 ### Maps SDK
 #### Added
