@@ -2,9 +2,9 @@
   
   <!-- These are specific to this Unity project and can't be overridden -->
   <PropertyGroup>
-    <UnityProjectAssetsPath>D:\MapsSDK-Unity\SampleProject\Assets</UnityProjectAssetsPath>
+    <UnityProjectAssetsPath>C:\New\MapsSDK-Unity\SampleProject\Assets</UnityProjectAssetsPath>
     
-    <_MSBuildForUnityGeneratedOutputDirectory>D:\MapsSDK-Unity\SampleProject\MSBuild</_MSBuildForUnityGeneratedOutputDirectory>
+    <_MSBuildForUnityGeneratedOutputDirectory>C:\New\MapsSDK-Unity\SampleProject\MSBuild</_MSBuildForUnityGeneratedOutputDirectory>
     <MSBuildForUnityGeneratedProjectDirectory>$(_MSBuildForUnityGeneratedOutputDirectory)\Projects</MSBuildForUnityGeneratedProjectDirectory>
   </PropertyGroup>
   
@@ -18,12 +18,12 @@
     
     <MSBuildForUnityDefaultOutputPath>$(UnityProjectAssetsPath)\Dependencies</MSBuildForUnityDefaultOutputPath>
     
-    <UnityCurrentPlatform>WSA</UnityCurrentPlatform>
+    <UnityCurrentPlatform>WindowsStandalone64</UnityCurrentPlatform>
     <UnityCurrentTargetFramework>net46</UnityCurrentTargetFramework>
     
     <UnityMajorVersion>2019</UnityMajorVersion>
     <UnityMinorVersion>3</UnityMinorVersion>
-    <UnityEditorInstallPath>C:\Program Files\Unity\Hub\Editor\2019.3.14f1\Editor</UnityEditorInstallPath>
+    <UnityEditorInstallPath>C:\Program Files\Unity\Hub\Editor\2019.3.15f1\Editor</UnityEditorInstallPath>
   </PropertyGroup>
   
   <PropertyGroup>
