@@ -27,10 +27,9 @@ Shader "MapsSDK/CustomTerrainShader"
         #pragma multi_compile __ ENABLE_MRTK_INTEGRATION
         #pragma multi_compile __ ENABLE_CIRCULAR_CLIPPING
 
-        // Shader paths are non-ideal and will need to be udpated on each version change.
-        #include "..\..\..\Packages\Microsoft.Maps.Unity.0.8.1\lib\unity\Map\SupportingScripts\Shaders\ClippingVolume-MapsSDK.cginc"
-        #include "..\..\..\Packages\Microsoft.Maps.Unity.0.8.1\lib\unity\Map\SupportingScripts\Shaders\ContourLines-MapsSDK.cginc"
-        #include "..\..\..\Packages\Microsoft.Maps.Unity.0.8.1\lib\unity\Map\SupportingScripts\Shaders\ElevationOffset-MapsSDK.cginc"
+        #include "Packages/com.microsoft.maps.unity/Runtime/Shaders/ClippingVolume-MapsSDK.cginc"
+        #include "Packages/com.microsoft.maps.unity/Runtime/Shaders/ContourLines-MapsSDK.cginc"
+        #include "Packages/com.microsoft.maps.unity/Runtime/Shaders/ElevationOffset-MapsSDK.cginc"
 
         #pragma surface surf StandardSpecular vertex:vert addshadow
 

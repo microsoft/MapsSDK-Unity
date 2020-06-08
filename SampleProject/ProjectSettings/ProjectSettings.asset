@@ -433,7 +433,6 @@ PlayerSettings:
     m_Enabled: 1
     m_Devices:
     - OpenVR
-    - Oculus
   - m_BuildTarget: Metro
     m_Enabled: 1
     m_Devices:

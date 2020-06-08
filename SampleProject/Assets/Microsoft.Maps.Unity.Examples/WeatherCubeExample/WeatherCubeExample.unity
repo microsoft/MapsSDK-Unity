@@ -237,7 +237,7 @@ MonoBehaviour:
   targetObject: {fileID: 220598119}
   boundsOverride: {fileID: 220598120}
   boundsCalculationMethod: 0
-  activation: 1
+  activation: 3
   scaleMinimum: 0.2
   scaleMaximum: 2
   flattenAxis: 0
