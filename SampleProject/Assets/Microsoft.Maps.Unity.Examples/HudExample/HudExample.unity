@@ -1477,8 +1477,8 @@ Camera:
   m_GameObject: {fileID: 928159965}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1492,7 +1492,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1765,6 +1765,26 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_margin.w
+      value: 0.11743654
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 69.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_margin.y
+      value: -332.30118
+      objectReference: {fileID: 0}
     - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_Text
@@ -1788,7 +1808,7 @@ PrefabInstance:
     - target: {fileID: 7310373757289826114, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.28
+      value: 1.61
       objectReference: {fileID: 0}
     - target: {fileID: 7310373757289826114, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -1838,12 +1858,37 @@ PrefabInstance:
     - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7671705
+      value: 0.95722485
       objectReference: {fileID: 0}
     - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.118
+      value: 0.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.80000037
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385307134050987966, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385307134050987966, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385307134050987966, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.17500001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7385647967683790632, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8880113822231988905, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -2055,9 +2100,8 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 3
+  _version: 2
   _bingMapsKey: 
-  _languageOverride: 42
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
   _mapEdgeColorFadeDistance: 0
@@ -2070,8 +2114,6 @@ MonoBehaviour:
   _maximumZoomLevel: 20
   _mapTerrainType: 2
   _mapShape: 0
-  _mapColliderType: 1
-  _mapCollider: {fileID: 1276686193}
   LocalMapDimension: {x: 0.7, y: 0.5}
   LocalMapRadius: 0.5
   _localMapHeight: 0.05
