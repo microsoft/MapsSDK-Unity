@@ -2,9 +2,10 @@
     "name": "Microsoft.MixedReality.Toolkit.Providers.UnityAR",
     "references": [
         "Microsoft.MixedReality.Toolkit",
-        "Microsoft.MixedReality.Toolkit.Async"
+        "Microsoft.MixedReality.Toolkit.Async",
+        "Unity.XR.ARFoundation",
+        "UnityEngine.SpatialTracking"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Android",
         "Editor",
@@ -15,5 +16,7 @@
     "overrideReferences": false,
     "precompiledReferences": [],
     "autoReferenced": true,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

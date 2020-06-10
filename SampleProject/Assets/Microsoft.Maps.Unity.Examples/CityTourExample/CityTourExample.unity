@@ -310,8 +310,8 @@ Camera:
   m_GameObject: {fileID: 760717504}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -325,7 +325,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 1000
+  far clip plane: 50
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -453,9 +453,8 @@ MonoBehaviour:
   m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 3
+  _version: 2
   _bingMapsKey: 
-  _languageOverride: 42
   _showMapDataInEditor: 1
   _mapEdgeColor: {r: 0.27450982, g: 0.33333334, b: 0.5529412, a: 1}
   _mapEdgeColorFadeDistance: 0
@@ -468,8 +467,6 @@ MonoBehaviour:
   _maximumZoomLevel: 20
   _mapTerrainType: 0
   _mapShape: 1
-  _mapColliderType: 1
-  _mapCollider: {fileID: 1488338476}
   LocalMapDimension: {x: 1, y: 1}
   LocalMapRadius: 0.5
   _localMapHeight: 0.1
@@ -838,7 +835,7 @@ PrefabInstance:
     - target: {fileID: 7310373757289826114, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.28
+      value: 1.46
       objectReference: {fileID: 0}
     - target: {fileID: 7310373757289826114, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -884,6 +881,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0513
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.89744973
+      objectReference: {fileID: 0}
+    - target: {fileID: 7310394250510914426, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8000007
       objectReference: {fileID: 0}
     - target: {fileID: 7384121537761719684, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
