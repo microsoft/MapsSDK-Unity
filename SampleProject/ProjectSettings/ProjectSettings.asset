@@ -49,7 +49,7 @@ PlayerSettings:
   defaultScreenHeight: 768
   defaultScreenWidthWeb: 960
   defaultScreenHeightWeb: 600
-  m_StereoRenderingPath: 1
+  m_StereoRenderingPath: 2
   m_ActiveColorSpace: 0
   m_MTRendering: 1
   m_StackTraceTypes: 010000000100000001000000010000000100000001000000
@@ -430,15 +430,17 @@ PlayerSettings:
     m_Automatic: 1
   m_BuildTargetVRSettings:
   - m_BuildTarget: Standalone
-    m_Enabled: 0
-    m_Devices: []
+    m_Enabled: 1
+    m_Devices:
+    - OpenVR
   - m_BuildTarget: Metro
     m_Enabled: 1
     m_Devices:
     - WindowsMR
   - m_BuildTarget: Windows Store Apps
-    m_Enabled: 0
-    m_Devices: []
+    m_Enabled: 1
+    m_Devices:
+    - WindowsMR
   - m_BuildTarget: Android
     m_Enabled: 1
     m_Devices: []
@@ -717,7 +719,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 00c249ff6c5ad601
+  metroCertificateNotAfter: 0070ed24645ed701
   metroApplicationDescription: Template_3D
   wsaImages:
     2031816: Assets/Microsoft.Maps.Unity.Examples/Icon_88x88.png
