@@ -6,6 +6,35 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.9.0 - 2020-06-11
+This release consists of a large number of breaking changes. Various components have been moved out of the core DLL to the Supporting Scripts. See the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started#migrating-to-090) page for information on how to migrate from previous versions.
+
+### Maps SDK
+#### Added
+ - `MapSession` component manages developer key for associated `MapRenderer`s and map services.
+ - `MapRendererBase` provides an abstract base class component which includes the core map rendering functionality.
+ - `IPinnable` interface is used for types that need to be geospatially anchored to the map, e.g. `MapPin`, `ClusterMapPin`.
+#### Changed
+ - `MercatorBoundingCircle` moved to Microsoft.Geospatial namespace.
+ - `MapRendererBase.LocalMapHeight` now represents the total height extent of the map, which varies based on content.
+ - `MapRendererBase.LocalMapBaseHeight` provides the height offset where map content begins rendering. 
+ - `MapRendererBase.Language` property can be changed at runtime.
+#### Removed
+ - `MapRenderer`, `MapPinLayer`, `MapPin`, `ClusterMapPin`, `MapPinSpatialIndex`, `MapDataCache`. These classes, or portions of, have been moved to the Supporting Scripts.
+ - Removed `Vector2D`. Use `MercatorCoordinate` instead.
+ - Removed `LatLon.FromMercatorPosition`. Use `MercatorCoordinate.ToLatLonAlt` instead.
+ 
+### Supporting Scripts
+#### Added
+ - `MapRenderer` component. Extends from `MapRendererBase`. Handles tracking children `MapPin`s, managing the extents of the `MapCollider`, and managing map animations.
+ - `MapPin` related scripts and implementation for indexing and clustering.
+ - `MapScene` related scripts for animations.
+ - `MapDataCache` determines cache size to use. On Android, this uses platform specific APIs to find a cache size that accounts for the application's memory limit. This class could be extended with improved implementations for other platforms.
+ - Editor utlity to help migrate old component GUIDs to the updated values. The option is in `Assets -> Maps SDK for Unity -> Upgrade Component GUIDs`.
+#### Fixed
+ - Fixed bug preventing correct results from `TransformWorldPointToLatLonAlt` when the map object had scaling, translation, or rotation.
+ - Fixed related issue where `MapRendererBase.ElevationScale` was not being applied to the transformations.
+ 
 ## 0.8.1 - 2020-05-27
 
 ### Maps SDK
