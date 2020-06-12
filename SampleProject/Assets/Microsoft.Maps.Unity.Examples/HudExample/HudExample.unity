@@ -597,7 +597,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: "\xA9 2020 Microsoft"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -625,7 +625,7 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
+  m_fontSize: 0.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -666,13 +666,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 611363898}
-    characterCount: 0
+    characterCount: 16
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -1477,8 +1477,8 @@ Camera:
   m_GameObject: {fileID: 928159965}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1492,7 +1492,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1995,16 +1995,18 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276686195}
+  - component: {fileID: 1276686200}
   - component: {fileID: 1276686194}
   - component: {fileID: 1276686193}
-  - component: {fileID: 1276686189}
   - component: {fileID: 1276686199}
+  - component: {fileID: 1276686189}
   - component: {fileID: 1276686188}
   - component: {fileID: 1276686191}
   - component: {fileID: 1276686192}
-  - component: {fileID: 1276686196}
   - component: {fileID: 1276686190}
+  - component: {fileID: 1276686196}
   - component: {fileID: 1276686197}
+  - component: {fileID: 1276686198}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -2097,12 +2099,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cf6985fc3c122a4193d16fdcfb59784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 2
-  _bingMapsKey: 
-  _showMapDataInEditor: 1
+  _version: 3
+  _mapSession: {fileID: 1276686200}
+  _languageOverride: 42
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
@@ -2116,7 +2121,7 @@ MonoBehaviour:
   _mapShape: 0
   LocalMapDimension: {x: 0.7, y: 0.5}
   LocalMapRadius: 0.5
-  _localMapHeight: 0.05
+  _localMapBaseHeight: 0.05
   _elevationScale: 1
   _castShadows: 0
   _receiveShadows: 0
@@ -2134,7 +2139,8 @@ MonoBehaviour:
   _elevationTileLayers:
     _list: []
   _hideTileLayerComponents: 1
-  _maxCacheSizeInBytes: 2147483648
+  _mapColliderType: 1
+  _mapCollider: {fileID: 1276686193}
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
@@ -2172,13 +2178,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c7d1b323594a144ac9b98fd93e0f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layerName: MapCopyrightLayer
   _font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   _textColor: {r: 0, g: 0, b: 0, a: 0.42}
   _mapCopyrightAlignment: 0
+--- !u!114 &1276686198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef50f6f9318ded40b230c1eefb7f968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _percentUtilization: 0.3
+  _maxCacheSizeInBytes: 2147483648
 --- !u!114 &1276686199
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -2196,6 +2216,20 @@ MonoBehaviour:
   _areLabelsEnabled: 1
   _isHillShadingEnabled: 1
   _imageryStyle: 0
+--- !u!114 &1276686200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -837401356, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerKey: 
+  _showMapDataInEditor: 1
 --- !u!1 &1397724739
 GameObject:
   m_ObjectHideFlags: 0

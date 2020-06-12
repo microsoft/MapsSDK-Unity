@@ -360,6 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1276686195}
+  - component: {fileID: 1276686200}
   - component: {fileID: 1276686194}
   - component: {fileID: 1276686193}
   - component: {fileID: 1276686192}
@@ -367,9 +368,10 @@ GameObject:
   - component: {fileID: 1276686190}
   - component: {fileID: 1276686191}
   - component: {fileID: 1276686198}
-  - component: {fileID: 1276686196}
   - component: {fileID: 1276686199}
   - component: {fileID: 1276686188}
+  - component: {fileID: 1276686196}
+  - component: {fileID: 1276686189}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -389,6 +391,20 @@ MonoBehaviour:
   m_Script: {fileID: 243684798, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1276686189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef50f6f9318ded40b230c1eefb7f968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _percentUtilization: 0.3
+  _maxCacheSizeInBytes: 2147483648
 --- !u!114 &1276686190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -401,7 +417,6 @@ MonoBehaviour:
   m_Script: {fileID: -1161150876, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerName: MapLabelLayer
   _mapLabelPrefab: {fileID: 114148349346486096, guid: a494b8aecfc807443808f5b198ba0365,
     type: 3}
 --- !u!114 &1276686191
@@ -428,7 +443,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1083584769, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d8a6459eb3010b4f9751de03dca135a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layerName: AddressMapPinLayer
@@ -449,8 +464,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.4, z: 1}
-  m_Center: {x: 0, y: 0.2, z: 0}
+  m_Size: {x: 1, y: 0.3, z: 1}
+  m_Center: {x: 0, y: 0.15, z: 0}
 --- !u!114 &1276686194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -460,12 +475,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cf6985fc3c122a4193d16fdcfb59784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 2
-  _bingMapsKey: 
-  _showMapDataInEditor: 1
+  _version: 3
+  _mapSession: {fileID: 1276686200}
+  _languageOverride: 42
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
@@ -479,7 +497,7 @@ MonoBehaviour:
   _mapShape: 0
   LocalMapDimension: {x: 1, y: 1}
   LocalMapRadius: 0.5
-  _localMapHeight: 0.4
+  _localMapBaseHeight: 0.4
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
@@ -497,7 +515,8 @@ MonoBehaviour:
     _list:
     - {fileID: 1276686188}
   _hideTileLayerComponents: 1
-  _maxCacheSizeInBytes: 2147483648
+  _mapColliderType: 1
+  _mapCollider: {fileID: 1276686193}
 --- !u!4 &1276686195
 Transform:
   m_ObjectHideFlags: 0
@@ -533,7 +552,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c7d1b323594a144ac9b98fd93e0f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layerName: MapCopyrightLayer
@@ -594,6 +613,20 @@ MonoBehaviour:
   _areLabelsEnabled: 0
   _isHillShadingEnabled: 1
   _imageryStyle: 0
+--- !u!114 &1276686200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -837401356, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerKey: 
+  _showMapDataInEditor: 1
 --- !u!1 &1387145239
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,8 +736,8 @@ Camera:
   m_GameObject: {fileID: 1387145239}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -718,7 +751,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5

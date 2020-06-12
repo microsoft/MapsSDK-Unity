@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44886458, g: 0.49892712, b: 0.57570386, a: 1}
+  m_IndirectSpecularColor: {r: 0.4488644, g: 0.49892676, b: 0.5757037, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1124,8 +1124,8 @@ Camera:
   m_GameObject: {fileID: 1447468423}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1139,7 +1139,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -1198,17 +1198,19 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1886841728}
+  - component: {fileID: 1886841733}
   - component: {fileID: 1886841727}
   - component: {fileID: 1886841726}
   - component: {fileID: 1886841725}
   - component: {fileID: 1886841723}
-  - component: {fileID: 1886841722}
   - component: {fileID: 1886841721}
   - component: {fileID: 1886841720}
   - component: {fileID: 1886841729}
+  - component: {fileID: 1886841722}
   - component: {fileID: 1886841731}
   - component: {fileID: 1886841724}
   - component: {fileID: 1886841730}
+  - component: {fileID: 1886841732}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -1254,7 +1256,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886841719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c7d1b323594a144ac9b98fd93e0f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layerName: MapCopyrightLayer
@@ -1297,7 +1299,6 @@ MonoBehaviour:
   m_Script: {fileID: -1161150876, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _layerName: MapLabelLayer
   _mapLabelPrefab: {fileID: 114148349346486096, guid: a494b8aecfc807443808f5b198ba0365,
     type: 3}
 --- !u!65 &1886841726
@@ -1322,12 +1323,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886841719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cf6985fc3c122a4193d16fdcfb59784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _version: 2
-  _bingMapsKey: 
-  _showMapDataInEditor: 1
+  _version: 3
+  _mapSession: {fileID: 1886841733}
+  _languageOverride: 42
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _mapEdgeColor: {r: 0.6381288, g: 0.643, b: 0.61864394, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 1
@@ -1341,7 +1345,7 @@ MonoBehaviour:
   _mapShape: 1
   LocalMapDimension: {x: 1.5, y: 1.5}
   LocalMapRadius: 0.75
-  _localMapHeight: 0.1
+  _localMapBaseHeight: 0.1
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
@@ -1361,7 +1365,8 @@ MonoBehaviour:
     - {fileID: 1886841720}
     - {fileID: 1886841729}
   _hideTileLayerComponents: 1
-  _maxCacheSizeInBytes: 2147483648
+  _mapColliderType: 1
+  _mapCollider: {fileID: 1886841726}
 --- !u!4 &1886841728
 Transform:
   m_ObjectHideFlags: 0
@@ -1417,6 +1422,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _customTerrainMaterial: {fileID: 2100000, guid: 83179a805729e3549961f35ded58435a,
     type: 2}
+--- !u!114 &1886841732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886841719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef50f6f9318ded40b230c1eefb7f968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _percentUtilization: 0.3
+  _maxCacheSizeInBytes: 2147483648
+--- !u!114 &1886841733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886841719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -837401356, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerKey: 
+  _showMapDataInEditor: 1
 --- !u!1 &1947735018
 GameObject:
   m_ObjectHideFlags: 0

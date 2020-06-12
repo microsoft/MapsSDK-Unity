@@ -130,13 +130,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 220598122}
+  - component: {fileID: 220598129}
   - component: {fileID: 220598121}
   - component: {fileID: 220598124}
-  - component: {fileID: 220598125}
   - component: {fileID: 220598126}
   - component: {fileID: 220598127}
+  - component: {fileID: 220598125}
   - component: {fileID: 220598120}
   - component: {fileID: 220598123}
+  - component: {fileID: 220598128}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -155,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1575, z: 1}
-  m_Center: {x: 0, y: 0.07875, z: 0}
+  m_Size: {x: 1, y: 0.315, z: 1}
+  m_Center: {x: 0, y: 0.1575, z: 0}
 --- !u!114 &220598121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,13 +168,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 220598119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -194183520, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cf6985fc3c122a4193d16fdcfb59784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _version: 3
-  _bingMapsKey: 
+  _mapSession: {fileID: 220598129}
   _languageOverride: 42
-  _showMapDataInEditor: 1
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
   _mapEdgeColor: {r: 0.37019402, g: 0.39681298, b: 0.4433962, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
@@ -184,11 +188,9 @@ MonoBehaviour:
   _maximumZoomLevel: 20
   _mapTerrainType: 0
   _mapShape: 0
-  _mapColliderType: 2
-  _mapCollider: {fileID: 220598120}
   LocalMapDimension: {x: 1, y: 1}
   LocalMapRadius: 0.5
-  _localMapHeight: 0.15
+  _localMapBaseHeight: 0.15
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
@@ -206,7 +208,8 @@ MonoBehaviour:
     _list:
     - {fileID: 220598127}
   _hideTileLayerComponents: 1
-  _maxCacheSizeInBytes: 2147483648
+  _mapColliderType: 2
+  _mapCollider: {fileID: 220598120}
 --- !u!4 &220598122
 Transform:
   m_ObjectHideFlags: 0
@@ -264,9 +267,9 @@ MonoBehaviour:
   rotateHandleColliderPadding: {x: 0.016, y: 0.016, z: 0.016}
   rotationHandlePrefabColliderType: 1
   showScaleHandles: 1
-  showRotationHandleForX: 1
+  showRotationHandleForX: 0
   showRotationHandleForY: 1
-  showRotationHandleForZ: 1
+  showRotationHandleForZ: 0
   drawTetherWhenManipulating: 1
   proximityEffectActive: 1
   handleMediumProximity: 0.1
@@ -313,7 +316,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 220598119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1914003294, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 02c7d1b323594a144ac9b98fd93e0f7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _layerName: MapCopyrightLayer
@@ -349,6 +352,34 @@ MonoBehaviour:
   m_Script: {fileID: 243684798, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &220598128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220598119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ef50f6f9318ded40b230c1eefb7f968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _percentUtilization: 0.3
+  _maxCacheSizeInBytes: 2147483648
+--- !u!114 &220598129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220598119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -837401356, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _developerKey: 
+  _showMapDataInEditor: 1
 --- !u!1 &389057855
 GameObject:
   m_ObjectHideFlags: 0

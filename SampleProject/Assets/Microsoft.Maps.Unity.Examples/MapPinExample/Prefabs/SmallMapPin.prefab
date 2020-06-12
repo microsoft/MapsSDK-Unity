@@ -254,7 +254,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1452448874978094}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -404975296, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bb87916f59f52349b237e7ce66a84a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IsLayerSynchronized: 1

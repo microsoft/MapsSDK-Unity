@@ -21,11 +21,11 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
     private MapRenderer _mapRenderer;
     private IMixedRealityPointer _panningPointer = null;
     private Vector3 _startingPointInLocalSpace;
-    private Vector2D _startingPointInMercatorSpace;
+    private MercatorCoordinate _startingPointInMercator;
     private double _startingMercatorScale;
     private double _startingAltitudeInMeters;
     private Vector3 _currentPointInLocalSpace;
-    private Vector2D _startingMapCenterInMercator;
+    private MercatorCoordinate _startingMapCenterInMercator;
     private Vector2 _currentZoomValue;
 
     [SerializeField]
@@ -93,7 +93,7 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
                 offsetAltitudeInMeters *
                 _startingMercatorScale *
                 (equatorialCircumferenceInLocalSpace / MapRendererTransformExtensions.EquatorialCircumferenceInWgs84Meters);
-            _startingPointInLocalSpace.y = (float)(_mapRenderer.LocalMapHeight + altitudeInLocalSpace);
+            _startingPointInLocalSpace.y = (float)(_mapRenderer.LocalMapBaseHeight + altitudeInLocalSpace);
 
             // Now we can raycast an imaginary plane orignating from the updated _startingPointInLocalSpace.
             var rayPositionInMapLocalSpace = _mapRenderer.transform.InverseTransformPoint(_panningPointer.Position);
@@ -119,18 +119,18 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
             if (directionalZoomAmount != 0)
             {
                 _mapRenderer.ZoomLevel = zoomLevelToUseForInteraction;
-                var deltaToCenterInMercatorSpace = _startingPointInMercatorSpace - _startingMapCenterInMercator;
+                var deltaToCenterInMercatorSpace = _startingPointInMercator - _startingMapCenterInMercator;
                 var adjustedDeltaToCenterInMercatorSpace = zoomRatio * deltaToCenterInMercatorSpace;
-                _startingMapCenterInMercator = _startingPointInMercatorSpace - adjustedDeltaToCenterInMercatorSpace;
+                _startingMapCenterInMercator = _startingPointInMercator - adjustedDeltaToCenterInMercatorSpace;
             }
 
             // Apply pan translation.
             var deltaInLocalSpace = _currentPointInLocalSpace - _startingPointInLocalSpace;
             var deltaInMercatorSpace = MapRendererTransformExtensions.TransformLocalDirectionToMercator(deltaInLocalSpace, zoomLevelToUseForInteraction);
             var newCenterInMercator = _startingMapCenterInMercator - deltaInMercatorSpace;
-            newCenterInMercator.Y = Math.Max(Math.Min(0.5, newCenterInMercator.Y), -0.5);
+            var newClampedCenterInMercator = new MercatorCoordinate(newCenterInMercator.X, Math.Max(Math.Min(0.5, newCenterInMercator.Y), -0.5));
 
-            _mapRenderer.Center = LatLon.FromMercatorPosition(newCenterInMercator);
+            _mapRenderer.Center = newClampedCenterInMercator.ToLatLon();
         }
     }
 
@@ -154,13 +154,13 @@ public class MapInteractionHandler : MonoBehaviour, IMixedRealityPointerHandler,
         {
             _panningPointer = eventData.Pointer;
             _startingPointInLocalSpace = focusDetails.PointLocalSpace;
-            _startingPointInMercatorSpace =
+            _startingPointInMercator =
                 _mapRenderer.TransformLocalPointToMercatorWithAltitude(
                     _startingPointInLocalSpace,
                     out _startingAltitudeInMeters,
                     out _startingMercatorScale);
             _currentPointInLocalSpace = _startingPointInLocalSpace;
-            _startingMapCenterInMercator = _mapRenderer.Center.ToMercatorPosition();
+            _startingMapCenterInMercator = _mapRenderer.Center.ToMercatorCoordinate();
 
             eventData.Use();
         }

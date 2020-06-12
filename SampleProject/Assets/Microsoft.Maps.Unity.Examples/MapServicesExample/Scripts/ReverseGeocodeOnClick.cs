@@ -40,11 +40,11 @@ public class ReverseGeocodeOnClick : MonoBehaviour
 
     public async void OnMapClick(MixedRealityPointerEventData mixedRealityPointerEventData)
     {
-        if (string.IsNullOrEmpty(MapServices.BingMapsKey))
+        if (ReferenceEquals(MapSession.Current, null) || string.IsNullOrEmpty(MapSession.Current.DeveloperKey))
         {
             Debug.LogError(
                 "Provide a Bing Maps key to use the map services. " +
-                "This key can either be set on the MapRenderer or directly in code through MapServices.BingMapsKey property.");
+                "This key can be set on a MapSession component.");
             return;
         }
 
