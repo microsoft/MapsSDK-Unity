@@ -30,6 +30,8 @@ namespace Microsoft.Maps.Unity
 
             EditorGUI.BeginDisabledGroup(true);
             var clusterMapPin = (ClusterMapPin)target;
+            var latLon = clusterMapPin.MercatorCoordinate.ToLatLon();
+            EditorGUILayout.TextField("Location", latLon.LatitudeInDegrees + ", " + latLon.LongitudeInDegrees);
             EditorGUILayout.IntField("Size", clusterMapPin.Size);
             EditorGUILayout.IntField("Level Of Detail", clusterMapPin.LevelOfDetail);
             EditorGUI.EndDisabledGroup();

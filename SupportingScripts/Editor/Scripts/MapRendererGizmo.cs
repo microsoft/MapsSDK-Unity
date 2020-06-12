@@ -20,8 +20,8 @@ namespace Microsoft.Maps.Unity
             Gizmos.matrix = mapRenderer.gameObject.transform.localToWorldMatrix;
             Gizmos.color = color;
             Gizmos.DrawCube(
-                new Vector3(0, mapRenderer.LocalMapHeight / 2, 0),
-                new Vector3(mapRenderer.LocalMapDimension.x, mapRenderer.LocalMapHeight, mapRenderer.LocalMapDimension.y));
+                new Vector3(0, mapRenderer.LocalMapBaseHeight / 2, 0),
+                new Vector3(mapRenderer.LocalMapDimension.x, mapRenderer.LocalMapBaseHeight, mapRenderer.LocalMapDimension.y));
         }
     }
 }

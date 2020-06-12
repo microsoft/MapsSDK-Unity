@@ -1,0 +1,19 @@
+{
+    "name": "Microsoft.Maps.Unity.Editor",
+    "references": [
+        "Microsoft.Maps.Unity.SupportingScripts"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "Microsoft.Maps.Unity.dll"
+    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

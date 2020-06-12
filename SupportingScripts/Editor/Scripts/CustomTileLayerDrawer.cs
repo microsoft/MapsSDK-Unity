@@ -23,7 +23,7 @@ namespace Microsoft.Maps.Unity
         /// <param name="targetType">The type to use the drawer for.</param>
         public CustomTileLayerDrawer(Type targetType)
         {
-            this.TargetType = targetType;
+            TargetType = targetType;
         }
     }
 }

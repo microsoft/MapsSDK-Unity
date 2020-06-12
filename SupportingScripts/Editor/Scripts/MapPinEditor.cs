@@ -21,15 +21,15 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _isLayerSynchronizedProperty;
 
         private Vector3 _mouseDownMapPinPlanePositionInMapLocalSpace;
-        private Vector2D _mouseDownMapPinPositionInMercatorSpace;
+        private MercatorCoordinate _mouseDownMapPinPositionInMercatorSpace;
         private bool _isHovered;
         private bool _isDragging;
 
         private void OnEnable()
         {
             _locationProperty = serializedObject.FindProperty("_location");
-            _altitude = serializedObject.FindProperty("Altitude");
-            _altitudeReferenceProperty = serializedObject.FindProperty("AltitudeReference");
+            _altitude = serializedObject.FindProperty("_altitude");
+            _altitudeReferenceProperty = serializedObject.FindProperty("_altitudeReference");
             _useRealworldScaleProperty = serializedObject.FindProperty("UseRealWorldScale");
             _scaleCurveProperty = serializedObject.FindProperty("ScaleCurve");
             _isLayerSynchronizedProperty = serializedObject.FindProperty("IsLayerSynchronized");
@@ -70,9 +70,8 @@ namespace Microsoft.Maps.Unity
                 var transform = mapPin.transform;
 
                 Tools.hidden = true;
-                
+
                 var controlId = GUIUtility.GetControlID("MapPinEditorHandle".GetHashCode(), FocusType.Passive);
-                var screenPosition = Handles.matrix.MultiplyPoint(transform.position);
                 var size = 0.025f;
 
                 switch (Event.current.GetTypeForControl(controlId))
@@ -105,7 +104,7 @@ namespace Microsoft.Maps.Unity
                             {
                                 // Respond to a press on this handle. Drag starts automatically.
                                 _mouseDownMapPinPlanePositionInMapLocalSpace = mapRenderer.transform.worldToLocalMatrix * ray.GetPoint(enter);
-                                _mouseDownMapPinPositionInMercatorSpace = mapPin.Location.ToMercatorPosition();
+                                _mouseDownMapPinPositionInMercatorSpace = mapPin.Location.ToMercatorCoordinate();
                                 _isDragging = true;
                                 GUIUtility.hotControl = controlId;
                                 Event.current.Use();
@@ -131,8 +130,8 @@ namespace Microsoft.Maps.Unity
                             {
                                 Vector3 updatedHitPointInLocalSpace = mapRenderer.transform.worldToLocalMatrix * ray.GetPoint(enter);
                                 var newDeltaInLocalSpace = updatedHitPointInLocalSpace - _mouseDownMapPinPlanePositionInMapLocalSpace;
-                                var newDeltaInMercator = new Vector2D(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
-                                var newLocation = LatLon.FromMercatorPosition(_mouseDownMapPinPositionInMercatorSpace + newDeltaInMercator);
+                                var newDeltaInMercator = new MercatorCoordinate(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
+                                var newLocation = (_mouseDownMapPinPositionInMercatorSpace + newDeltaInMercator).ToLatLon();
 
                                 Undo.RecordObject(target, "Changed Location");
                                 mapPin.Location = newLocation;

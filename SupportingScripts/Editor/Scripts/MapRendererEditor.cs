@@ -13,22 +13,21 @@ namespace Microsoft.Maps.Unity
     [CanEditMultipleObjects]
     internal class MapRendererEditor : Editor
     {
-        private SerializedProperty _bingMapsKeyProperty;
-        private SerializedProperty _showMapDataInEditorProperty;
-        private static bool _showMapLocationOptions = true;
+        private static bool _showLocationOptions = true;
         private SerializedProperty _centerProperty;
         private SerializedProperty _zoomLevelProperty;
         private SerializedProperty _minZoomLevelProperty;
         private SerializedProperty _maxZoomLevelProperty;
         private SerializedProperty _mapTerrainType;
         private SerializedProperty _mapShapeProperty;
-        private static bool _showMapSizingOptions = true;
-        private SerializedProperty _mapEdgeColorProperty;
-        private SerializedProperty _mapEdgeColorFadeDistanceProperty;
+
+        private static bool _showLayoutOptions = true;
         private SerializedProperty _localMapDimensionProperty;
         private SerializedProperty _localMapRadiusProperty;
-        private SerializedProperty _localMapHeightProperty;
-        private static bool _terrainOptions = true;
+        private SerializedProperty _localMapBaseHeightProperty;
+        private SerializedProperty _mapColliderTypeProperty;
+
+        private static bool _showRenderingOptions = true;
         private SerializedProperty _elevationScaleProperty;
         private SerializedProperty _castShadowsProperty;
         private SerializedProperty _receiveShadowsProperty;
@@ -36,28 +35,29 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _useCustomTerrainMaterialProperty;
         private SerializedProperty _customTerrainMaterialProperty;
         private SerializedProperty _isClippingVolumeWallEnabledProperty;
+        private SerializedProperty _mapEdgeColorProperty;
+        private SerializedProperty _mapEdgeColorFadeDistanceProperty;
         private SerializedProperty _useCustomClippingVolumeMaterialProperty;
         private SerializedProperty _customClippingVolumeMaterialProperty;
         private SerializedProperty _clippingVolumeDistanceTextureResolution;
-        private SerializedProperty _labelPrefabProperty;
+
         private static bool _showQualityOptions = true;
         private SerializedProperty _detailOffsetProperty;
-        private SerializedProperty _maxCacheSizeInBytesProperty;
-        private SerializedProperty _mapColliderTypeProperty;
-        private static bool _showTileLayers = true;
+
+        private static bool _showTileLayerOptions = true;
         private SerializedProperty _textureTileLayersProperty;
         private SerializedProperty _elevationTileLayersProperty;
         private SerializedProperty _hideTileLayerComponentsProperty;
+
         private static bool _showLocalizationOptions = true;
         private SerializedProperty _languageOverrideProperty;
-        private GUIStyle _baseStyle = null;
-        private GUIStyle _hyperlinkStyle = null;
-        private GUIStyle _errorIconStyle = null;
-        private GUIContent _errorIcon = null;
+        private SerializedProperty _languageChangedProperty;
+
+        private SerializedProperty _mapSessionProperty;
+
         private GUIStyle _foldoutTitleStyle = null;
         private GUIStyle _boxStyle = null;
-        private Texture2D _bannerWhite = null;
-        private Texture2D _bannerBlack = null;
+
         private readonly GUIContent[] _layerOptions =
             new GUIContent[]
             {
@@ -65,12 +65,14 @@ namespace Microsoft.Maps.Unity
                 new GUIContent("Elevated", "The map terrain consists only of elevation data. No high resolution 3D models are used."),
                 new GUIContent("Flat", "Both elevation and high resolution 3D models are disabled. The map will be flat.")
             };
+
         private readonly GUIContent[] _shapeOptions =
             new GUIContent[]
             {
                 new GUIContent("Block", "Default shape. The map is rendered on a rectangular block."),
                 new GUIContent("Cylinder", "Map is rendered on a cylinder."),
             };
+
         private readonly GUIContent[] _clippingVolumeDistanceTextureResolutionOptions =
             new GUIContent[]
             {
@@ -78,6 +80,7 @@ namespace Microsoft.Maps.Unity
                 new GUIContent("Medium", "Medium quality texture size."),
                 new GUIContent("High", "High quality texture size. Uses more memory.")
             };
+
         private readonly GUIContent[] _colliderOptions =
             new GUIContent[]
             {
@@ -85,26 +88,22 @@ namespace Microsoft.Maps.Unity
                 new GUIContent("Base Only", "Collider covering the base of the map."),
                 new GUIContent("Full Extents", "Collider covering the full extents of the map."),
             };
+
         private readonly GUILayoutOption[] _minMaxLabelsLayoutOptions =
             new GUILayoutOption[]
             {
                 GUILayout.MaxWidth(52.0f)
             };
-        
-        private readonly Tuple<UnityEngine.Object, UnityEngine.Object>[] _terrainMaterials =
-            new Tuple<UnityEngine.Object, UnityEngine.Object>[3];
 
-        private static int ControlIdHint = "MapRendererEditor".GetHashCode();
+        private readonly static int ControlIdHint = "MapRendererEditor".GetHashCode();
 
         private bool _isDragging = false;
         private Vector3 _startingHitPointInWorldSpace;
-        private Vector2D _startingCenterInMercatorSpace;
+        private MercatorCoordinate _startingCenterInMercator;
 
         private void OnEnable()
         {
             _centerProperty = serializedObject.FindProperty("_center");
-            _bingMapsKeyProperty = serializedObject.FindProperty("_bingMapsKey");
-            _showMapDataInEditorProperty = serializedObject.FindProperty("_showMapDataInEditor");
             _zoomLevelProperty = serializedObject.FindProperty("_zoomLevel");
             _minZoomLevelProperty = serializedObject.FindProperty("_minimumZoomLevel");
             _maxZoomLevelProperty = serializedObject.FindProperty("_maximumZoomLevel");
@@ -112,7 +111,7 @@ namespace Microsoft.Maps.Unity
             _mapShapeProperty = serializedObject.FindProperty("_mapShape");
             _localMapDimensionProperty = serializedObject.FindProperty("LocalMapDimension");
             _localMapRadiusProperty = serializedObject.FindProperty("LocalMapRadius");
-            _localMapHeightProperty = serializedObject.FindProperty("_localMapHeight");
+            _localMapBaseHeightProperty = serializedObject.FindProperty("_localMapBaseHeight");
             _useCustomTerrainMaterialProperty = serializedObject.FindProperty("_useCustomTerrainMaterial");
             _elevationScaleProperty = serializedObject.FindProperty("_elevationScale");
             _castShadowsProperty = serializedObject.FindProperty("_castShadows");
@@ -123,18 +122,16 @@ namespace Microsoft.Maps.Unity
             _useCustomClippingVolumeMaterialProperty = serializedObject.FindProperty("_useCustomClippingVolumeMaterial");
             _customClippingVolumeMaterialProperty = serializedObject.FindProperty("_customClippingVolumeMaterial");
             _clippingVolumeDistanceTextureResolution = serializedObject.FindProperty("_clippingVolumeDistanceTextureResolution");
-            _labelPrefabProperty = serializedObject.FindProperty("_labelPrefab");
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
             _detailOffsetProperty = serializedObject.FindProperty("_detailOffset");
             _mapColliderTypeProperty = serializedObject.FindProperty("_mapColliderType");
-            _maxCacheSizeInBytesProperty = serializedObject.FindProperty("_maxCacheSizeInBytes");
-            _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
-            _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
             _elevationTileLayersProperty = serializedObject.FindProperty("_elevationTileLayers");
             _hideTileLayerComponentsProperty = serializedObject.FindProperty("_hideTileLayerComponents");
             _languageOverrideProperty = serializedObject.FindProperty("_languageOverride");
+            _languageChangedProperty = serializedObject.FindProperty("_languageChanged");
+            _mapSessionProperty = serializedObject.FindProperty("_mapSession");
 
             EditorApplication.update += QueuePlayerLoopUpdate;
         }
@@ -188,7 +185,7 @@ namespace Microsoft.Maps.Unity
                     if (mapRenderer.Raycast(ray, out var hitInfo))
                     {
                         _startingHitPointInWorldSpace = hitInfo.Point;
-                        _startingCenterInMercatorSpace = mapRenderer.Center.ToMercatorPosition();
+                        _startingCenterInMercator = mapRenderer.Center.ToMercatorCoordinate();
                         _isDragging = true;
                         currentEvent.Use();
                     }
@@ -203,8 +200,8 @@ namespace Microsoft.Maps.Unity
                         var updatedHitPointInWorldSpace = ray.GetPoint(enter);
                         var newDeltaInWorldSpace = updatedHitPointInWorldSpace - _startingHitPointInWorldSpace;
                         var newDeltaInLocalSpace = mapRenderer.transform.worldToLocalMatrix * newDeltaInWorldSpace;
-                        var newDeltaInMercator = new Vector2D(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
-                        var newCenter = LatLon.FromMercatorPosition(_startingCenterInMercatorSpace - newDeltaInMercator);
+                        var newDeltaInMercator = new MercatorCoordinate(newDeltaInLocalSpace.x, newDeltaInLocalSpace.z) / Math.Pow(2, mapRenderer.ZoomLevel - 1);
+                        var newCenter = (_startingCenterInMercator - newDeltaInMercator).ToLatLon();
 
                         Undo.RecordObject(mapRenderer, "Change Center.");
                         mapRenderer.Center = newCenter;
@@ -235,33 +232,11 @@ namespace Microsoft.Maps.Unity
 
             serializedObject.UpdateIfRequiredOrScript();
 
-            RenderBanner();
-
-            // Setup and key.
-            EditorGUILayout.BeginVertical(GUI.skin.box);
-            EditorGUILayout.LabelField("API Settings", EditorStyles.boldLabel);
             EditorGUI.indentLevel++;
-            _bingMapsKeyProperty.stringValue = EditorGUILayout.PasswordField("Bing Maps Key", _bingMapsKeyProperty.stringValue);
-            if (string.IsNullOrWhiteSpace(_bingMapsKeyProperty.stringValue))
-            {
-                Help(
-                    "Provide a Bing Maps developer key to enable the map.",
-                    "Sign up for a key at the Bing Maps Dev Center.",
-                    "https://www.bingmapsportal.com/");
-            }
-
-            _showMapDataInEditorProperty.boolValue =
-                EditorGUILayout.Toggle(
-                    new GUIContent(
-                        "Show Map Data in Editor",
-                        "Map data usage in the editor will apply the specified Bing Maps key."),
-                    _showMapDataInEditorProperty.boolValue);
-            EditorGUILayout.EndVertical();
-
             // Location Section
             EditorGUILayout.BeginVertical(_boxStyle);
-            _showMapLocationOptions = EditorGUILayout.Foldout(_showMapLocationOptions, "Location", true, _foldoutTitleStyle);
-            if (_showMapLocationOptions)
+            _showLocationOptions = EditorGUILayout.Foldout(_showLocationOptions, "Location", true, _foldoutTitleStyle);
+            if (_showLocationOptions)
             {
                 var latitudeProperty = _centerProperty.FindPropertyRelative("Latitude");
                 latitudeProperty.doubleValue = EditorGUILayout.DoubleField("Latitude", latitudeProperty.doubleValue);
@@ -272,7 +247,7 @@ namespace Microsoft.Maps.Unity
                 // Get the zoomlevel values
                 var minZoomLevel = _minZoomLevelProperty.floatValue;
                 var maxZoomLevel = _maxZoomLevelProperty.floatValue;
-                
+
                 EditorGUILayout.BeginHorizontal();
                 EditorGUILayout.PrefixLabel("Zoom Level Range");
                 EditorGUI.indentLevel--;
@@ -281,19 +256,18 @@ namespace Microsoft.Maps.Unity
                 maxZoomLevel = EditorGUILayout.FloatField((float)Math.Round(maxZoomLevel, 2), _minMaxLabelsLayoutOptions);
                 EditorGUI.indentLevel++;
                 EditorGUILayout.EndHorizontal();
-            
+
                 // Update it back
                 _minZoomLevelProperty.floatValue = minZoomLevel;
                 _maxZoomLevelProperty.floatValue = maxZoomLevel;
                 GUILayout.Space(4);
-                
             }
             EditorGUILayout.EndVertical();
 
             // Map Layout Section
             EditorGUILayout.BeginVertical(_boxStyle);
-            _showMapSizingOptions = EditorGUILayout.Foldout(_showMapSizingOptions, "Map Layout", true, _foldoutTitleStyle);
-            if (_showMapSizingOptions)
+            _showLayoutOptions = EditorGUILayout.Foldout(_showLayoutOptions, "Map Layout", true, _foldoutTitleStyle);
+            if (_showLayoutOptions)
             {
                 // Map Shape Controls
                 GUILayout.BeginHorizontal();
@@ -306,19 +280,16 @@ namespace Microsoft.Maps.Unity
                 if (_mapShapeProperty.enumValueIndex == (int)MapShape.Block)
                 {
                     EditorGUILayout.PropertyField(_localMapDimensionProperty);
-                    EditorGUILayout.LabelField(" ", "Scaled Map Dimension: " + ((MapRenderer)target).MapDimension.ToString());
-                    GUILayout.Space(6f);
-                    EditorGUILayout.PropertyField(_localMapHeightProperty);
-                    EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
+                    EditorGUILayout.LabelField(" ", "Scaled Map Dimension: " + mapRenderer.MapDimension.ToString());
                 }
                 else if (_mapShapeProperty.enumValueIndex == (int)MapShape.Cylinder)
                 {
                     EditorGUILayout.PropertyField(_localMapRadiusProperty);
-                    EditorGUILayout.LabelField(" ", "Scaled Map Radius: " + (((MapRenderer)target).MapDimension.x / 2.0f).ToString());
-                    GUILayout.Space(6f);
-                    EditorGUILayout.PropertyField(_localMapHeightProperty);
-                    EditorGUILayout.LabelField(" ", "Scaled Map Height: " + ((MapRenderer)target).MapHeight.ToString());
+                    EditorGUILayout.LabelField(" ", "Scaled Map Radius: " + (mapRenderer.MapDimension.x / 2.0f).ToString());
                 }
+                GUILayout.Space(6f);
+                EditorGUILayout.PropertyField(_localMapBaseHeightProperty);
+                EditorGUILayout.LabelField(" ", "Scaled Map Base Height: " + mapRenderer.MapBaseHeight.ToString());
                 GUILayout.Space(6f);
 
                 // Map Collider Type Controls
@@ -333,8 +304,8 @@ namespace Microsoft.Maps.Unity
 
             // Render Settings Section
             EditorGUILayout.BeginVertical(_boxStyle);
-            _terrainOptions = EditorGUILayout.Foldout(_terrainOptions, "Render Settings", true, _foldoutTitleStyle);
-            if (_terrainOptions)
+            _showRenderingOptions = EditorGUILayout.Foldout(_showRenderingOptions, "Render Settings", true, _foldoutTitleStyle);
+            if (_showRenderingOptions)
             {
                 // Map Terrain Type Controls
                 GUILayout.BeginHorizontal();
@@ -382,8 +353,9 @@ namespace Microsoft.Maps.Unity
 
                     EditorGUI.indentLevel--;
                 }
+
+                GUILayout.Space(6f);
             }
-            GUILayout.Space(6f);
             EditorGUILayout.EndVertical();
 
             // Quality options.
@@ -391,15 +363,6 @@ namespace Microsoft.Maps.Unity
             _showQualityOptions = EditorGUILayout.Foldout(_showQualityOptions, "Quality", true, _foldoutTitleStyle);
             if (_showQualityOptions)
             {
-                EditorGUI.BeginDisabledGroup(Application.isPlaying);
-                _maxCacheSizeInBytesProperty.longValue =
-                    1024 *
-                    1024 *
-                    EditorGUILayout.LongField(
-                        new GUIContent("Max Cache Size (MB)"),
-                        _maxCacheSizeInBytesProperty.longValue / 1024 / 1024);
-                EditorGUI.EndDisabledGroup();
-
                 var position = EditorGUILayout.GetControlRect(false, 2 * EditorGUIUtility.singleLineHeight);
                 position.height = EditorGUIUtility.singleLineHeight;
 
@@ -440,8 +403,8 @@ namespace Microsoft.Maps.Unity
 
             // Texture Tile Providers
             EditorGUILayout.BeginVertical(_boxStyle);
-            _showTileLayers = EditorGUILayout.Foldout(_showTileLayers, "Tile Layers", true, _foldoutTitleStyle);
-            if (_showTileLayers)
+            _showTileLayerOptions = EditorGUILayout.Foldout(_showTileLayerOptions, "Tile Layers", true, _foldoutTitleStyle);
+            if (_showTileLayerOptions)
             {
                 EditorGUILayout.PropertyField(_textureTileLayersProperty, true);
                 EditorGUILayout.PropertyField(_elevationTileLayersProperty, true);
@@ -452,7 +415,7 @@ namespace Microsoft.Maps.Unity
 
             // Localization
             EditorGUILayout.BeginVertical(_boxStyle);
-            _showLocalizationOptions = EditorGUILayout.Foldout(_showTileLayers, "Localization", true, _foldoutTitleStyle);
+            _showLocalizationOptions = EditorGUILayout.Foldout(_showLocalizationOptions, "Localization", true, _foldoutTitleStyle);
             if (_showLocalizationOptions)
             {
                 var previousIsLanguageAutoDetected = _languageOverrideProperty.intValue == (int)SystemLanguage.Unknown;
@@ -481,62 +444,26 @@ namespace Microsoft.Maps.Unity
                     EditorGUILayout.PropertyField(_languageOverrideProperty, new GUIContent("Language"));
                 }
 
+                GUILayout.Space(4);
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(12);
+                EditorGUILayout.PropertyField(_languageChangedProperty);
+                EditorGUILayout.EndHorizontal();
             }
             EditorGUILayout.EndVertical();
 
 
             GUILayout.Space(4);
+
+            EditorGUILayout.PropertyField(_mapSessionProperty);
+
             serializedObject.ApplyModifiedProperties();
         }
 
         private void Initialize()
         {
-            if (_baseStyle == null)
-            {
-                _baseStyle = new GUIStyle
-                {
-                    wordWrap = true,
-                    font = EditorStyles.helpBox.font,
-                    fontSize = EditorStyles.helpBox.fontSize,
-                    normal = EditorStyles.helpBox.normal
-                };
-                _baseStyle.normal.background = null;
-                _baseStyle.stretchWidth = false;
-                _baseStyle.stretchHeight = false;
-                _baseStyle.margin = new RectOffset();
-            }
-
-            if (_errorIcon == null)
-            {
-                _errorIcon = EditorGUIUtility.TrIconContent("console.erroricon");
-            }
-
-            if (_errorIconStyle == null)
-            {
-                _errorIconStyle =
-                    new GUIStyle(_baseStyle)
-                    {
-                        stretchHeight = false,
-                        alignment = TextAnchor.MiddleLeft,
-                        fixedWidth = _errorIcon.image.width,
-                        fixedHeight = 1.0f * _errorIcon.image.height,
-                        stretchWidth = false,
-                        wordWrap = false
-                    };
-            }
-
-            if (_hyperlinkStyle == null)
-            {
-                _hyperlinkStyle = new GUIStyle(_baseStyle);
-                _hyperlinkStyle.alignment = TextAnchor.UpperLeft;
-                _hyperlinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
-                _hyperlinkStyle.stretchWidth = false;
-                _hyperlinkStyle.padding = new RectOffset();
-                _hyperlinkStyle.alignment = TextAnchor.UpperLeft;
-            }
-
             if (_foldoutTitleStyle == null)
-            { 
+            {
                 _foldoutTitleStyle = new GUIStyle(EditorStyles.foldout)
                 {
                     fontStyle = UnityEngine.FontStyle.Bold
@@ -547,56 +474,6 @@ namespace Microsoft.Maps.Unity
             {
                 _boxStyle = new GUIStyle(GUI.skin.box);
             }
-        }
-
-        private void RenderBanner()
-        {
-            GUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
-            GUILayout.Label(EditorGUIUtility.isProSkin ? _bannerWhite : _bannerBlack, GUILayout.MaxHeight(96f));
-            GUILayout.FlexibleSpace();
-            GUILayout.EndHorizontal();
-        }
-
-        private void Help(string message, string urlMessage, string url)
-        {
-            EditorGUI.indentLevel--;
-            EditorGUILayout.BeginHorizontal();
-            EditorGUILayout.PrefixLabel(" ");
-            var rect = EditorGUILayout.BeginHorizontal();
-            {
-                var iconWidth = _errorIcon.image.width;
-                EditorGUILayout.LabelField(_errorIcon, _errorIconStyle, GUILayout.Width(iconWidth));
-
-                EditorGUILayout.BeginVertical();
-                {
-                    GUILayout.Space(8);
-                    EditorGUILayout.LabelField(message, _baseStyle);
-
-                    EditorGUILayout.BeginHorizontal();
-                    {
-                        EditorGUILayout.LabelField(urlMessage, _hyperlinkStyle);
-
-                        var linkRect = GUILayoutUtility.GetLastRect();
-
-                        if (Event.current.type == EventType.Repaint)
-                        {
-                            EditorGUIUtility.AddCursorRect(linkRect, MouseCursor.Link);
-                        }
-
-                        if (Event.current.type == EventType.MouseUp && linkRect.Contains(Event.current.mousePosition))
-                        {
-                            Application.OpenURL(url);
-                        }
-                    }
-                    EditorGUILayout.EndHorizontal();
-                    GUILayout.Space(4);
-                }
-                EditorGUILayout.EndVertical();
-            }
-            EditorGUILayout.EndHorizontal();
-            EditorGUILayout.EndHorizontal();
-            EditorGUI.indentLevel++;
         }
 
         private void QueuePlayerLoopUpdate()
