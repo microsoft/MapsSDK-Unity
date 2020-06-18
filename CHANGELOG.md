@@ -6,6 +6,16 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.9.1 - 2020-06-18
+### Supporting Scripts
+#### Added
+ - Remaining types of `MapRenderer` transformations: `TransformMercatorWithAltitudeToLocalPoint`, `TransformMercatorWithAltitudeToWorldPoint`, `TransformLatLonAltToWorldPoint`
+####  Changed
+ - Renamed `MapNavigation` to `MapInteractionController`. Added APIs for panning and zooming to a specified coordinate/ray.
+#### Fixed
+ - `MapPin` location could not be changed once initialized. [#66](https://github.com/microsoft/MapsSDK-Unity/issues/66)
+ - `MapLabel` scaling was incorrect on first frame. [#68](https://github.com/microsoft/MapsSDK-Unity/issues/68)
+
 ## 0.9.0 - 2020-06-11
 This release consists of a large number of breaking changes. Various components have been moved out of the core DLL to the Supporting Scripts. See the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started#migrating-to-090) page for information on how to migrate from previous versions.
 
