@@ -2003,6 +2003,7 @@ GameObject:
   - component: {fileID: 1276686188}
   - component: {fileID: 1276686191}
   - component: {fileID: 1276686192}
+  - component: {fileID: 1276686201}
   - component: {fileID: 1276686190}
   - component: {fileID: 1276686196}
   - component: {fileID: 1276686197}
@@ -2230,6 +2231,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerKey: 
   _showMapDataInEditor: 1
+--- !u!114 &1276686201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b303ffbed90191b4dbbf76b03bf83d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 3.5
+  _panSpeed: 0.5
 --- !u!1 &1397724739
 GameObject:
   m_ObjectHideFlags: 0

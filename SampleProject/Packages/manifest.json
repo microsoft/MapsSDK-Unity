@@ -9,7 +9,7 @@
     }
   ],
   "dependencies": {
-    "com.microsoft.maps.unity": "0.9.0",
+    "com.microsoft.maps.unity": "0.9.1",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ide.rider": "1.1.4",

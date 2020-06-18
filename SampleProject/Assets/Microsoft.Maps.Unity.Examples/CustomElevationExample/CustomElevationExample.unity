@@ -1211,6 +1211,7 @@ GameObject:
   - component: {fileID: 1886841724}
   - component: {fileID: 1886841730}
   - component: {fileID: 1886841732}
+  - component: {fileID: 1886841734}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -1450,6 +1451,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerKey: 
   _showMapDataInEditor: 1
+--- !u!114 &1886841734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1886841719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b303ffbed90191b4dbbf76b03bf83d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 3.5
+  _panSpeed: 0.5
 --- !u!1 &1947735018
 GameObject:
   m_ObjectHideFlags: 0
