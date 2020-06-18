@@ -46,6 +46,9 @@ namespace Microsoft.Maps.Unity
                     "fileID: 11500000, guid: 10142379db1f9994e9e1ea54ee0ceb78, type: 3")
             };
 
+        /// <summary>
+        /// Provides a menu item to automatically update component GUIDs from their old version to their new version.
+        /// </summary>
         [MenuItem("Assets/Maps SDK for Unity/Upgrade Component GUIDs")]
         public static void UpgradeScenes()
         {

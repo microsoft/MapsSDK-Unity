@@ -138,27 +138,54 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         public static Vector3 TransformLatLonAltToWorldPoint(this MapRenderer mapRenderer, LatLonAlt location)
         {
+            var pointInLocalSpace = mapRenderer.TransformLatLonAltToLocalPoint(location);
+            return mapRenderer.transform.TransformPoint(pointInLocalSpace);
+        }
+
+        /// <summary>
+        /// Transforms a <see cref="LatLonAlt"/> to an XYZ point in local space.
+        /// </summary>
+        public static Vector3 TransformLatLonAltToLocalPoint(this MapRenderer mapRenderer, LatLonAlt location)
+        {
             // Can compute XZ coords in local space from the Mercator coordinate of  thie location and the map center.
             var mercatorCoordinate = location.LatLon.ToMercatorCoordinate();
+            return mapRenderer.TransformMercatorWithAltitudeToLocalPoint(mercatorCoordinate, location.AltitudeInMeters);
+        }
+
+        /// <summary>
+        /// Transforms a <see cref="MercatorCoordinate"/> to an XYZ point in local space.
+        /// </summary>
+        public static Vector3 TransformMercatorWithAltitudeToLocalPoint(
+            this MapRenderer mapRenderer,
+            in MercatorCoordinate mercatorCoordinate,
+            double altitudeInMeters)
+        {
             var mercatorCoordinateRelativeToCenter = mercatorCoordinate - mapRenderer.Center.ToMercatorCoordinate();
             var equatorialCircumferenceInLocalSpace = Math.Pow(2, mapRenderer.ZoomLevel - 1);
             var localSpaceXZ = equatorialCircumferenceInLocalSpace * mercatorCoordinateRelativeToCenter;
 
             // Altitude to local y value.
-            var offsetMapAltitudeInMeters = location.AltitudeInMeters - mapRenderer.ElevationBaseline;
+            var offsetMapAltitudeInMeters = altitudeInMeters - mapRenderer.ElevationBaseline;
             var mercatorScale = MercatorScale.AtMercatorLatitude(mercatorCoordinate.Y);
             var altitudeInLocalSpace =
                 mapRenderer.ElevationScale *
                 offsetMapAltitudeInMeters *
                 mercatorScale *
                 (equatorialCircumferenceInLocalSpace / EquatorialCircumferenceInWgs84Meters);
+            altitudeInLocalSpace += mapRenderer.LocalMapBaseHeight;
 
-            var pointInLocalSpace =
-                new Vector3(
-                    (float)localSpaceXZ.X,
-                    (float)(altitudeInLocalSpace + mapRenderer.LocalMapBaseHeight),
-                    (float)localSpaceXZ.Y);
+            return new Vector3((float)localSpaceXZ.X, (float)altitudeInLocalSpace, (float)localSpaceXZ.Y);
+        }
 
+        /// <summary>
+        /// Transforms a <see cref="MercatorCoordinate"/> to an XYZ point in world space.
+        /// </summary>
+        public static Vector3 TransformMercatorWithAltitudeToWorldPoint(
+            this MapRenderer mapRenderer,
+            in MercatorCoordinate mercatorCoordinate,
+            double altitudeInMeters)
+        {
+            var pointInLocalSpace = mapRenderer.TransformMercatorWithAltitudeToLocalPoint(mercatorCoordinate, altitudeInMeters);
             return mapRenderer.transform.TransformPoint(pointInLocalSpace);
         }
     }

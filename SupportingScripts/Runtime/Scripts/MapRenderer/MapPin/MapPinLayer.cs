@@ -271,15 +271,16 @@ namespace Microsoft.Maps.Unity
                             return !clusterMapPin.HasBeenFullyPositioned;
                         });
 
-                    // Assign to the active properties.
+                    // Assign collections to layer properties.
+                    {
+                        _activeMapPins.Clear();
+                        _activeMapPins.UnionWith(_mapPinsInViewThisFrame);
+                        _mapPinsInViewThisFrame.Clear();
 
-                    _activeMapPins.Clear();
-                    _activeMapPins.UnionWith(_mapPinsInViewThisFrame);
-                    _mapPinsInViewThisFrame.Clear();
-
-                    _activeClusterMapPins.Clear();
-                    _activeClusterMapPins.UnionWith(_clusterMapPinsInViewThisFrame);
-                    _clusterMapPinsInViewThisFrame.Clear();
+                        _activeClusterMapPins.Clear();
+                        _activeClusterMapPins.UnionWith(_clusterMapPinsInViewThisFrame);
+                        _clusterMapPinsInViewThisFrame.Clear();
+                    }
                 }
             }
 

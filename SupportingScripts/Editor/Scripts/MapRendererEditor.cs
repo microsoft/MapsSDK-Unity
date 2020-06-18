@@ -4,7 +4,6 @@
 namespace Microsoft.Maps.Unity
 {
     using Microsoft.Geospatial;
-    using Microsoft.Geospatial.VectorMath;
     using System;
     using UnityEditor;
     using UnityEngine;
