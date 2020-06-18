@@ -9,7 +9,7 @@ Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/G
 ## 0.9.1 - 2020-06-18
 ### Supporting Scripts
 #### Added
- - Remaining types of `MapRenderer` transformations: `TransformMercatorWithAltitudeToLocalPoint`, `TransformMercatorWithAltitudeToWorldPoint`, `TransformLatLonAltToWorldPoint`
+ - Remaining types of `MapRenderer` transformations: `TransformMercatorWithAltitudeToLocalPoint`, `TransformMercatorWithAltitudeToWorldPoint`, `TransformLatLonAltToLocalPoint`
 ####  Changed
  - Renamed `MapNavigation` to `MapInteractionController`. Added APIs for panning and zooming to a specified coordinate/ray.
 #### Fixed
