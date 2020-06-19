@@ -522,7 +522,7 @@ MonoBehaviour:
   _languageChanged:
     m_PersistentCalls:
       m_Calls: []
-  _mapEdgeColor: {r: 0.30409837, g: 0.15686275, b: 0.3764706, a: 1}
+  _mapEdgeColor: {r: 0.17615402, g: 0.2, b: 0.1432, a: 1}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
   _center:
@@ -629,8 +629,8 @@ MonoBehaviour:
   _layerName: MapContourLineLayer
   _majorIntervalAltitudeInMeters: 5
   _numMinorIntervalSections: 5
-  _majorColor: {r: 0.92294896, g: 0.43921566, b: 1, a: 0.39215687}
-  _minorColor: {r: 0.501958, g: 0.21938412, b: 0.5471698, a: 0.29411766}
+  _majorColor: {r: 0.73, g: 0.9643802, b: 1, a: 0.39215687}
+  _minorColor: {r: 0.4756141, g: 0.5822727, b: 0.6037736, a: 0.49411765}
   _majorLinePixelSize: 2
   _minorLinePixelSize: 1
 --- !u!114 &1276686200
