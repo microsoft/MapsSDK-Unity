@@ -4912,8 +4912,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.3, z: 1}
-  m_Center: {x: 0, y: 0.15, z: 0}
+  m_Size: {x: 1, y: 0.105, z: 1}
+  m_Center: {x: 0, y: 0.0525, z: 0}
 --- !u!114 &2026101497
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4990,7 +4990,7 @@ MonoBehaviour:
   _mapShape: 1
   LocalMapDimension: {x: 1, y: 1}
   LocalMapRadius: 0.5
-  _localMapBaseHeight: 0.3
+  _localMapBaseHeight: 0.1
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
@@ -5008,7 +5008,7 @@ MonoBehaviour:
     _list:
     - {fileID: 2026101497}
   _hideTileLayerComponents: 1
-  _mapColliderType: 1
+  _mapColliderType: 2
   _mapCollider: {fileID: 2026101496}
 --- !u!4 &2026101501
 Transform:
