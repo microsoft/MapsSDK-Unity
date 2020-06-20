@@ -522,7 +522,7 @@ MonoBehaviour:
   _languageChanged:
     m_PersistentCalls:
       m_Calls: []
-  _mapEdgeColor: {r: 0.17615402, g: 0.2, b: 0.1432, a: 1}
+  _mapEdgeColor: {r: 0.31842372, g: 0.44599998, b: 0.264924, a: 1}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
   _center:

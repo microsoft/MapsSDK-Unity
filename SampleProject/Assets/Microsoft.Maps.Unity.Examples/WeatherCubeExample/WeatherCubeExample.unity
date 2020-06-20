@@ -157,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.315, z: 1}
-  m_Center: {x: 0, y: 0.1575, z: 0}
+  m_Size: {x: 1, y: 0.1575, z: 1}
+  m_Center: {x: 0, y: 0.07875, z: 0}
 --- !u!114 &220598121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   _languageChanged:
     m_PersistentCalls:
       m_Calls: []
-  _mapEdgeColor: {r: 0.37019402, g: 0.39681298, b: 0.4433962, a: 1}
+  _mapEdgeColor: {r: 0.31468502, g: 0.4076432, b: 0.56700003, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
   _center:
