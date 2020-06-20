@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4488644, g: 0.49892676, b: 0.5757037, a: 1}
+  m_IndirectSpecularColor: {r: 0.44886458, g: 0.49892712, b: 0.57570386, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -374,7 +374,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 0.881, g: 0.8115084, b: 0.621986, a: 1}
+  m_Color: {r: 0.78473, g: 0.796865, b: 0.809, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1333,7 +1333,7 @@ MonoBehaviour:
   _languageChanged:
     m_PersistentCalls:
       m_Calls: []
-  _mapEdgeColor: {r: 0.6381288, g: 0.643, b: 0.61864394, a: 1}
+  _mapEdgeColor: {r: 0.39168903, g: 0.44490546, b: 0.48900002, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 1
   _center:
