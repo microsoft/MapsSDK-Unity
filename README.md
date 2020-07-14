@@ -5,11 +5,17 @@
 > We want to hear what features you want in order to accomplish mixed reality mapping scenarios!
 
 # Overview
-**Maps SDK, a Microsoft Garage project** provides a control to visualize a 3D map in Unity. The map control handles streaming and rendering of 3D terrain data with world-wide coverage. Select cities are rendered at a very high level of detail. Data is provided by Bing Maps.
+**Maps SDK, a Microsoft Garage project** provides the ability to visualize a 3D map within Unity-based projects. The SDK handles streaming and rendering of 3D terrain data with world-wide coverage.
 
-The map control has been optimized for mixed reality applications and devices including the HoloLens, HoloLens 2, Windows Immersive headsets, HTC Vive, and Oculus Rift. Soon the SDK will also be provided as an extension to the [Mixed Reality Toolkit (MRTK)](https://github.com/Microsoft/MixedRealityToolkit-Unity).
+Select cities and regions are rendered at a very high level of detail.
 
-| <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/BoulderBalloon.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/WeatherCube.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/MtFujiZoom.gif">
+Maps SDK, a Microsoft Garage project has been optimized for mixed reality applications and devices including the HoloLens, HoloLens 2, Windows Immersive headsets, HTC Vive, and Oculus Rift.
+
+The SDK also provides APIs for services like geocoding as well as utility classes for working with geospatial data.
+
+See [Microsoft® Bing™ Map Platform APIs Terms of Use](https://www.microsoft.com/maps/product/terms.html) for information about the terms of use for the SDK.
+
+| <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/FeatureGuides/BoulderBalloon.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/FeatureGuides/WeatherCube.gif"> | <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/FeatureGuides/MtFujiZoom.gif">
 | :--- | :--- | :--- |
 
 # Getting started
