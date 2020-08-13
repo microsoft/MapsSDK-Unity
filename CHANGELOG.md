@@ -11,6 +11,7 @@ Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/G
 ### Maps SDK
 #### Added
  - `IsLoaded` property on `MapRendererBase` to detect when map has completed loading all data for the current view. [#31](https://github.com/microsoft/MapsSDK-Unity/issues/31)
+ - `DefaultTrafficTextureTileLayer` to visualize traffic flow.
 #### Changed
  - The language used for localiztaion of map content is now a property on the `MapSession`.
 #### Fixed
