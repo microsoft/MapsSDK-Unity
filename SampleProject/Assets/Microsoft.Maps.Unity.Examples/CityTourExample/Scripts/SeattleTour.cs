@@ -63,14 +63,14 @@ public class SeattleTour : MonoBehaviour
 
     private IEnumerator RunTour()
     {
-        yield return new WaitForSeconds(5.0f);
+        yield return _map.WaitForLoad();
 
         while (isActiveAndEnabled) // loop the tour as long as we are running.
         {
             foreach (var scene in MapScenes)
             {
                 yield return _map.SetMapScene(scene);
-
+                yield return _map.WaitForLoad();
                 yield return new WaitForSeconds(3.0f);
             }
         }
