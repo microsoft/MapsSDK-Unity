@@ -1,20 +1,20 @@
 # How to contribute
 
-This repository includes **samples**, **documentation** and **supporting scripts** for the SDK. The core source code for the SDK is not part of this repository. The binary is available via a [NuGet package](https://www.nuget.org/packages/Microsoft.Maps.Unity). The supporting scripts are also published as part of this NuGet package.
+This repository includes **samples**, **documentation** and **supporting scripts**. The core source code for the SDK is not part of this repository.
 
-Contributions to the samples, documentation, and supporting scripts in this repository are welcome. Changes to the supporting scripts will be folded back into the NuGet package.
+Contributions to the sample project, documentation, or supporting scripts are welcome, and if applicable, approved changes will be included in the next release of the SDK package. 
 
 Please refer to the following sections on what is expected of feature requests, bug reports, and code contributions.
 
 ## Submitting feature requests
 For feature requests and suggestions, please log a new issue in the [issue tracker](https://github.com/Microsoft/MapsSDK-Unity/issues). 
 
-When creating a feature request or suggestion, please provide a clear desciption and any Unity version requirements or other relevant dependicies.
+When creating a feature request or suggestion, please provide a clear description and any Unity version requirements or other relevant dependencies.
 
 ## Filing bugs
 For non-security related bugs please log a new issue in the [issue tracker](https://github.com/Microsoft/MapsSDK-Unity/issues). 
 
-When submitting a bug, please be sure to include a clear and concise description of the issue, Unity version, steps to repoduce, and any other relevant information like stack traces or screenshots.
+When submitting a bug, please be sure to include a clear and concise description of the issue, Unity version, steps to reproduce, and any other relevant information like stack traces or screenshots.
 
 ## Reporting security issues
 Security issues and bugs should be reported privately, via email, to the Microsoft Security
@@ -32,7 +32,7 @@ the [Security TechCenter](https://technet.microsoft.com/en-us/security/default).
 If you would like to contribute a small bug fix to the supporting scripts, a documentation improvement, or contribution to the sample projects, feel free to start working on the change and to submit a pull request at any time.
 
 If you would like to contribute a significant bug fix or new feature to the supporting scripts, please discuss the change with the team by starting a discussion on the issues page.
-Pull requests are welcome and encouraged for the supporting scripts, but these changes must meet a high bar since the scripts are distributed as part of the NuGet package.
+Pull requests are welcome and encouraged for the supporting scripts, but these changes must meet a high bar since the scripts are distributed as part of the SDK package.
 
 ### Submitting a pull request
 
@@ -51,9 +51,9 @@ Your pull request will go through review by the team. We will attempt to review 
 
 ### Publishing
 
-For changes to the supporting scripts, once a pull request has been approved and merged to master, we will schedule it for release in the next NuGet package update. We will provide an ETA on the NuGet package release.
+For changes to the supporting scripts, once a pull request has been approved and merged to master, we will schedule it for release in the next SDK package update. We will provide an ETA on the SDK package release.
 
-Changes to documentation and samples don't need to be published to a NuGet package, so once a pull request is complete, the changes will be immediately reflected in the master branch.
+Changes to documentation and samples don't need to be published to the SDK package, so once a pull request is complete, the changes will be immediately reflected in the master branch.
 
 ## Code of conduct
 
