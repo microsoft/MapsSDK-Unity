@@ -28,7 +28,7 @@ The version of the supporting scripts in the repository reflects the latest vers
 
 Contributions to the sample project, documentation, or supporting scripts are welcome, and where applicable, approved changes will be included in the next release of the SDK. Refer to the [Contribution Process](CONTRIBUTING.md) for more details.
 
-## Feature Guides
+# Feature Guides
 
 | <a href="https://github.com/microsoft/MapsSDK-Unity/wiki/Configuring-the-MapRenderer"><img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/FeatureGuides/WeatherCube.gif" width="280"></a> [Configuring the map](https://github.com/microsoft/MapsSDK-Unity/wiki/Configuring-the-MapRenderer) | <a href="https://github.com/microsoft/MapsSDK-Unity/wiki/Attaching-GameObjects-to-the-map"><img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/FeatureGuides/MtFujiZoom.gif" width="280"></a> [Attaching GameObjects](https://github.com/microsoft/MapsSDK-Unity/wiki/Attaching-GameObjects-to-the-map) | <a href="https://github.com/microsoft/MapsSDK-Unity/wiki/Adding-labels-to-the-map"><img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/FeatureGuides/MapLabels-NewYorkCity-English.png" width="280"></a> [Adding labels](https://github.com/microsoft/MapsSDK-Unity/wiki/Adding-labels-to-the-map) |
 | :--- | :--- | :--- |
