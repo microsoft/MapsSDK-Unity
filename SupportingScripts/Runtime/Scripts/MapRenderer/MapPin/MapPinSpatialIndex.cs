@@ -36,7 +36,7 @@ namespace Microsoft.Maps.Unity
 
         private readonly TileLevelOfDetail _maxLod = new TileLevelOfDetail(18);
 
-        private readonly bool _isClusteringEnabled = false;
+        private readonly bool _isClusteringEnabled;
 
         private readonly List<ClusterMapPin> _clusterMapPins = new List<ClusterMapPin>();
 
@@ -46,7 +46,7 @@ namespace Microsoft.Maps.Unity
 
             if (clusterThreshold < 2)
             {
-                throw new ArgumentException(nameof(clusterThreshold), "clusterThreshold should be greater than 1.");
+                throw new ArgumentException("clusterThreshold should be greater than 1.", nameof(clusterThreshold));
             }
 
             ClusterThreshold = clusterThreshold;

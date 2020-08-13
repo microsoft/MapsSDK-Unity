@@ -47,6 +47,16 @@ namespace Microsoft.Maps.Unity
             float animationTimeScale,
             MapSceneAnimationKind mapSceneAnimationKind)
         {
+            if (mapRenderer == null)
+            {
+                throw new ArgumentNullException(nameof(mapRenderer));
+            }
+
+            if (mapScene == null)
+            {
+                throw new ArgumentNullException(nameof(mapScene));
+            }
+
             _runningTime = 0;
 
             _startMercatorCenter = mapRenderer.Center.ToMercatorCoordinate();
@@ -97,7 +107,7 @@ namespace Microsoft.Maps.Unity
             }
             else
             {
-                BowAnimation(t, currentZoomLevel, currentLocation, out zoomLevel, out location);
+                BowAnimation(t, out zoomLevel, out location);
             }
 
             if (t >= 1)
@@ -181,7 +191,7 @@ namespace Microsoft.Maps.Unity
         /// <remarks>
         /// This fails if u0 == u1, but in that case, the class should already be using linear animation and not bow animation.
         /// </remarks>
-        private void BowAnimation(double t, float currentZoomLevel, LatLon currentLocation, out float zoomLevel, out LatLon location)
+        private void BowAnimation(double t, out float zoomLevel, out LatLon location)
         {
             var s = Math.Max(t * _S, 0);
 

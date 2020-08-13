@@ -2,7 +2,6 @@
 
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial.VectorMath;
     using System;
     using System.Collections.Generic;
     using UnityEngine;
@@ -126,7 +125,7 @@ namespace Microsoft.Maps.Unity
 
         private void Awake()
         {
-            if (string.IsNullOrEmpty(LayerName))
+            if (string.IsNullOrWhiteSpace(LayerName))
             {
                 LayerName = "MapPinLayer";
             }
@@ -339,7 +338,8 @@ namespace Microsoft.Maps.Unity
             if (_containerGo == null)
             {
                 // Create a GO to hold the pins if one doesn't already exist.
-                var mapPinContainerName = string.IsNullOrEmpty(LayerName) ? "Unnamed MapPinLayer Container" : LayerName + " Container";
+                var mapPinContainerName =
+                    string.IsNullOrWhiteSpace(LayerName) ? "Unnamed MapPinLayer Container" : LayerName + " Container";
                 _containerGo = new GameObject(mapPinContainerName);
                 _containerGo.transform.SetParent(transform, false);
             }

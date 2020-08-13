@@ -44,9 +44,9 @@ namespace Microsoft.Maps.Unity
         // Reload these fields lazily...
         // The corresponding text GameObjects will be marked HideAndDontSave, i.e. purely temporary.
 
-        private TextMesh _copyrightText1 = null;
-        private TextMesh _copyrightText2 = null;
-        private Shader _occludable3DTextShader = null;
+        private TextMesh _copyrightText1;
+        private TextMesh _copyrightText2;
+        private Shader _occludable3DTextShader;
 
         private void Awake()
         {
@@ -220,7 +220,7 @@ namespace Microsoft.Maps.Unity
             textMesh.transform.localScale = new Vector3(localScale, localScale, localScale);
         }
 
-        private bool IsVectorNegative(Vector3 v)
+        private static bool IsVectorNegative(Vector3 v)
         {
             return v.x < 0 || v.z < 0;
         }

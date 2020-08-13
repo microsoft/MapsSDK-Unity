@@ -7,7 +7,7 @@ namespace Microsoft.Maps.Unity.Search
     using System.Collections.Generic;
 
     /// <summary>
-    /// Contains status code and result location data for a MapLocationFinder request.
+    /// Contains status code and result location data for a <see cref="MapLocationFinder"/> request.
     /// </summary>
     public class MapLocationFinderResult
     {
@@ -15,7 +15,7 @@ namespace Microsoft.Maps.Unity.Search
         /// Location data returned in the result.
         /// </summary>
         /// <remarks>
-        /// If <see cref="Status"/> is not set to Success, the list will be empty.
+        /// If <see cref="Status"/> is not set to <see cref="MapLocationFinderStatus.Success"/>, the list will be empty.
         /// </remarks>
         public IReadOnlyList<MapLocation> Locations { get; }
 

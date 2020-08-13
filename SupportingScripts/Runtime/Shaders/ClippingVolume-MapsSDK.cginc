@@ -46,7 +46,7 @@ float ClipToVolume(float3 worldPosition, float isSkirt)
     for (uint planeId = 0; planeId < 2; planeId++)
     {
         float3 planeNormal = _ClippingVolumeNormals[planeId].xyz;
-        float distanceToPlane = abs(dot(planeNormal, planePositionToWorldPosition)) - _ClippingVolumeSize[planeId];
+        float distanceToPlane = abs(dot(planeNormal, planePositionToWorldPosition)) - _ClippingVolumeSize[planeId] + 0.005 * isSkirt * _ClippingVolumeSize[planeId];
         if (distanceToPlane > 0)
         {
             discard;

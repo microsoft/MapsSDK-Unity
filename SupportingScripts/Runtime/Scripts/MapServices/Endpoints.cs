@@ -9,14 +9,14 @@ namespace Microsoft.Maps.Unity.Services
     {
         public const string RestServiceDomain = "https://dev.virtualearth.net/REST/v1/";
 
-        internal static string BuildUrl(string restApi, string queryParameters)
+        internal static string BuildUrl(string restApi, MapSession mapSession, string queryParameters)
         {
             var url =
                 RestServiceDomain +
                 $"{restApi}?" +
                 (string.IsNullOrWhiteSpace(Uri.EscapeDataString(queryParameters)) ?
-                    $"key={MapSession.Current.DeveloperKey ?? ""}" :
-                    $"{queryParameters}&key={MapSession.Current.DeveloperKey ?? ""}");
+                    $"key={mapSession.DeveloperKey}" :
+                    $"{queryParameters}&key={mapSession.DeveloperKey}");
 
             // Useful for debugging.
             //UnityEngine.Debug.Log(url);

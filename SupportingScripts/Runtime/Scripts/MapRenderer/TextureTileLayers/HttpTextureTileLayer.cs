@@ -5,6 +5,8 @@ namespace Microsoft.Maps.Unity
 {
     using Microsoft.Geospatial;
     using System;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
@@ -15,6 +17,9 @@ namespace Microsoft.Maps.Unity
     /// </summary>
     public class HttpTextureTileLayer : TextureTileLayer
     {
+        private bool _hasWarnedMissingSubdomain;
+        private int _subdomainCounter;
+
         /// <summary>
         /// The UriFormat property accepts the following case-insensitive replacement strings:
         /// {x}, {y}, {zoomLevel}, and {quadKey}. For more info about these replacement strings,
@@ -41,6 +46,17 @@ namespace Microsoft.Maps.Unity
             }
         }
 
+        /// <summary>
+        /// A list of subdomains that can be formatted into the URL.
+        /// </summary>
+        [SerializeField]
+        private List<string> _subdomains = new List<string>();
+
+        /// <summary>
+        /// A list of subdomains that can be formatted into the URL.
+        /// </summary>
+        public IList<string> Subdomains => _subdomains;
+
         private void OnValidate()
         {
             SetDirty();
@@ -59,6 +75,11 @@ namespace Microsoft.Maps.Unity
             }
 
             var url = FormatUrl(tileId);
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                return TextureTile.FromNull();
+            }
+
             return Task.FromResult<TextureTile?>(TextureTile.FromUrl(new Uri(url)));
         }
 
@@ -74,27 +95,47 @@ namespace Microsoft.Maps.Unity
 
             if (url.Contains("{x}"))
             {
-                url = url.Replace("{x}", tilePosition.X.ToString());
+                url = url.Replace("{x}", tilePosition.X.ToString(CultureInfo.InvariantCulture));
             }
 
             if (url.Contains("{y}"))
             {
-                url = url.Replace("{y}", tilePosition.Y.ToString());
+                url = url.Replace("{y}", tilePosition.Y.ToString(CultureInfo.InvariantCulture));
             }
 
             if (url.Contains("{zoomLevel}"))
             {
-                url = url.Replace("{zoomLevel}", tilePosition.LevelOfDetail.Value.ToString());
+                url = url.Replace("{zoomLevel}", tilePosition.LevelOfDetail.Value.ToString(CultureInfo.InvariantCulture));
             }
 
             if (url.Contains("{z}"))
             {
-                url = url.Replace("{z}", tilePosition.LevelOfDetail.Value.ToString());
+                url = url.Replace("{z}", tilePosition.LevelOfDetail.Value.ToString(CultureInfo.InvariantCulture));
             }
 
             if (url.Contains("{quadKey}"))
             {
                 url = url.Replace("{quadKey}", tileId.ToKey());
+            }
+
+            if (url.Contains("{subdomain}"))
+            {
+                if (_subdomains != null && _subdomains.Count > 0)
+                {
+                    var subdomain = _subdomains[_subdomainCounter % _subdomains.Count];
+                    _subdomainCounter++;
+
+                    url = url.Replace("{subdomain}", subdomain);
+                }
+                else
+                {
+                    if (!_hasWarnedMissingSubdomain)
+                    {
+                        _hasWarnedMissingSubdomain = true;
+                        Debug.LogWarning("URL uses a {subdomain} format specified but no subdomains were provided: " + _urlFormatString);
+                    }
+                    return null;
+                }
             }
 
             return url;

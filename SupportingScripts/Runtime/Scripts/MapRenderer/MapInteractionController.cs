@@ -22,8 +22,8 @@ namespace Microsoft.Maps.Unity
         private readonly Stack<int> _rotationDirectionStack = new Stack<int>();
 
         private MapRenderer _mapRenderer;
-        private int _activeRotationDirection = 0;
-        private float _targetRotation = 0.0f;
+        private int _activeRotationDirection;
+        private float _targetRotation;
 
 
         [SerializeField]
@@ -221,7 +221,7 @@ namespace Microsoft.Maps.Unity
                 !(_mapRenderer.ZoomLevel <= _mapRenderer.MinimumZoomLevel && zoomLevelDelta < 0))
             {
                 // If we're not panning, detemrine where the ray is intersecting the map. If it's not intersecting the map,
-                // the center won't be adjusted, i.e. the logic will not cause us to zoom to the point under the cursor.
+                // MapRenderer.Center won't be adjusted, i.e. the logic will not cause us to zoom to the point under the cursor.
                 if (!targetCoordinateAndAltitude.HasValue)
                 {
                     if (_mapRenderer.Raycast(ray, out var hitInfo))

@@ -4,14 +4,13 @@
 namespace Microsoft.Maps.Unity
 {
     using Microsoft.Geospatial;
-    using Microsoft.Geospatial.VectorMath;
     using System;
     using System.Collections.Generic;
     using UnityEngine;
 
     /// <summary>
     /// A MapPin can be used to pin a <see cref="GameObject"/> to a <see cref="MapRendererBase"/> at a specified
-    /// <see cref="Geospatial.LatLon"/> and altitude.
+    /// <see cref="LatLon"/> and altitude in meters.
     /// </summary>
     [DisallowMultipleComponent]
     [ExecuteInEditMode]
@@ -36,20 +35,20 @@ namespace Microsoft.Maps.Unity
                 if (value != oldLocation)
                 {
                     _location = new LatLonWrapper(value);
-                    LocationChanged?.Invoke(this, value);
+                    MercatorCoordinate = _location.ToLatLon().ToMercatorCoordinate();
+                    LocationChanged?.Invoke(this, oldLocation); // Invoke action with the MapPin and old location.
                 }
             }
         }
 
         /// <summary>
-        /// Action that is invoked when the <see cref="Location"/> is changed.
+        /// <see cref="Action"/> that is invoked when the <see cref="Location"/> value has changed.
+        /// The <see cref="LatLon"/> specified in the arguments is the previous location.
         /// </summary>
         public Action<MapPin, LatLon> LocationChanged;
 
-        private MercatorCoordinate _mercatorCoordinate;
-
         /// <inheritdoc/>
-        public MercatorCoordinate MercatorCoordinate => _mercatorCoordinate;
+        public MercatorCoordinate MercatorCoordinate { get; private set; }
 
         [SerializeField]
         private double _altitude;
@@ -99,7 +98,7 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         protected virtual void Reset()
         {
-            _mercatorCoordinate = Location.ToMercatorCoordinate();
+            MercatorCoordinate = Location.ToMercatorCoordinate();
         }
 
         /// <summary>
@@ -107,7 +106,7 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         protected virtual void Awake()
         {
-            _mercatorCoordinate = Location.ToMercatorCoordinate();
+            MercatorCoordinate = Location.ToMercatorCoordinate();
         }
 
         /// <summary>
@@ -115,23 +114,33 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         protected virtual void OnEnable()
         {
-            _mercatorCoordinate = Location.ToMercatorCoordinate();
+            MercatorCoordinate = Location.ToMercatorCoordinate();
         }
 
         /// <summary>
         /// This method is called when the script is loaded or a value is changed in the inspector. Called in the editor only.
         /// </summary>
-        protected virtual void Validate()
+        protected virtual void OnValidate()
         {
-            _mercatorCoordinate = Location.ToMercatorCoordinate();
+            MercatorCoordinate = Location.ToMercatorCoordinate();
         }
 
         /// <summary>
         /// Synchronizes the <see cref="MapPin"/>'s layers (and any of it's children layers) with the <see cref="MapRenderer"/>'s layer.
-        /// Whether or not a <see cref="MapPin"/>'s layer is synchronized depends on the value of <see cref="MapPin.IsLayerSynchronized"/>.
+        /// Whether or not a <see cref="MapPin"/>'s layer is synchronized depends on the value of <see cref="IsLayerSynchronized"/>.
         /// </summary>
         public static void SynchronizeLayers(IReadOnlyList<MapPin> mapPins, MapRenderer mapRenderer)
         {
+            if (mapPins == null)
+            {
+                throw new ArgumentNullException(nameof(mapPins));
+            }
+
+            if (mapRenderer == null)
+            {
+                throw new ArgumentNullException(nameof(mapRenderer));
+            }
+
             var targetLayer = mapRenderer.gameObject.layer;
             foreach (var mapPin in mapPins)
             {
@@ -147,10 +156,20 @@ namespace Microsoft.Maps.Unity
         }
 
         /// <summary>
-        ///  Updates the <see cref="MapPin"/>s' scale based on <see cref="MapPin.ScaleCurve"/> and <see cref="MapPin.UseRealWorldScale"/>.
+        ///  Updates the <see cref="MapPin"/>s' scale based on <see cref="ScaleCurve"/> and <see cref="UseRealWorldScale"/>.
         /// </summary>
         public static void UpdateScales<T>(List<T> mapPins, MapRenderer mapRenderer) where T : MapPin
         {
+            if (mapPins == null)
+            {
+                throw new ArgumentNullException(nameof(mapPins));
+            }
+
+            if (mapRenderer == null)
+            {
+                throw new ArgumentNullException(nameof(mapRenderer));
+            }
+
             const double EquatorialCircumferenceInWgs84Meters = 40075016.685578488;
             var mapZoomLevel = mapRenderer.ZoomLevel;
             var mapTotalWidthInLocalSpace = Math.Pow(2, Math.Max(mapZoomLevel - 1.0, 0.0));
@@ -159,7 +178,7 @@ namespace Microsoft.Maps.Unity
 
             foreach (var mapPin in mapPins)
             {
-                if (mapPin.enabled && mapPin.gameObject.activeInHierarchy)
+                if (mapPin.enabled) // Skip MapPins that aren't enabled.
                 {
                     // Scale the pin depending on the scale curve and current ZoomLevel.
                     var mercatorScaleAtCoordinate = MercatorScale.AtMercatorLatitude(mapPin.MercatorCoordinate.Y);

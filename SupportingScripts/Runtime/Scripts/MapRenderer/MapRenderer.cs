@@ -45,7 +45,7 @@ namespace Microsoft.Maps.Unity
         /// <summary>
         /// The collider used for all map shape types although in the future may just apply to box mode.
         /// </summary>
-        private BoxCollider _mapBoxCollider = null;
+        private BoxCollider _mapBoxCollider;
 
         private IMapSceneAnimationController _activeMapSceneAnimationController;
 
@@ -68,6 +68,14 @@ namespace Microsoft.Maps.Unity
         /// have already been determined.
         /// </remarks>
         public event EventHandler AfterUpdate;
+
+        /// <summary>
+        /// Returns a yieldable object that can be used to wait until the map has completed loading.
+        /// </summary>
+        public WaitForMapLoaded WaitForLoad(float maxWaitDurationInSeconds = 30.0f)
+        {
+            return new WaitForMapLoaded(this, maxWaitDurationInSeconds);
+        }
 
         /// <summary>
         /// Sets the <see cref="MapRenderer"/>'s view to reflect the new <see cref="MapScene"/>.
@@ -101,6 +109,16 @@ namespace Microsoft.Maps.Unity
             MapSceneAnimationKind mapSceneAnimationKind = MapSceneAnimationKind.Bow,
             float animationTimeScale = 1.0f)
         {
+            if (mapScene == null)
+            {
+                throw new ArgumentNullException(nameof(mapScene));
+            }
+
+            if (mapSceneAnimationController == null)
+            {
+                throw new ArgumentNullException(nameof(mapSceneAnimationController));
+            }
+
             // If we were in the middle of a previous animation, make sure it has yielded and then reset it.
             CancelAnimation();
 

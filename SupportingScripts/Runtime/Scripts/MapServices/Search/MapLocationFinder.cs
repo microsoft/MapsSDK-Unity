@@ -24,8 +24,14 @@ namespace Microsoft.Maps.Unity.Search
         /// </summary>
         public async static Task<MapLocationFinderResult> FindLocations(string query, MapLocationOptions mapLocationOptions = null)
         {
-            var url = BuildUrl($"q={query}", mapLocationOptions);
-            return await Request(url);
+            var mapLocationOptionsForRequest = mapLocationOptions ?? new MapLocationOptions();
+            if (!ValidateMapSession(mapLocationOptionsForRequest))
+            {
+                return new MapLocationFinderResult(MapLocationFinderStatus.InvalidCredentials);
+            }
+
+            var url = await BuildUrl($"q={query}", mapLocationOptions ?? new MapLocationOptions()).ConfigureAwait(true);
+            return await Request(url).ConfigureAwait(true);
         }
 
         /// <summary>
@@ -37,10 +43,17 @@ namespace Microsoft.Maps.Unity.Search
             LatLon referenceLocation,
             MapLocationOptions mapLocationOptions = null)
         {
-            var url = BuildUrl($"q={query}", mapLocationOptions);
+            var mapLocationOptionsForRequest = mapLocationOptions ?? new MapLocationOptions();
+            if (!ValidateMapSession(mapLocationOptionsForRequest))
+            {
+                return new MapLocationFinderResult(MapLocationFinderStatus.InvalidCredentials);
+            }
+
+            var url = await BuildUrl($"q={query}", mapLocationOptions ?? new MapLocationOptions()).ConfigureAwait(true);
             url += $"&ul={ referenceLocation.LatitudeInDegrees},{ referenceLocation.LongitudeInDegrees}";
-            return await Request(url);
+            return await Request(url).ConfigureAwait(true);
         }
+
         /// <summary>
         /// Forms and sends a geocoding request to retrieve location infromation for the provided address query.
         /// The specified GeoBoundingBox helps improve the result's relevance.
@@ -50,10 +63,16 @@ namespace Microsoft.Maps.Unity.Search
             GeoBoundingBox referenceBoundingBox,
             MapLocationOptions mapLocationOptions = null)
         {
-            var url = BuildUrl($"q={query}", mapLocationOptions);
+            var mapLocationOptionsForRequest = mapLocationOptions ?? new MapLocationOptions();
+            if (!ValidateMapSession(mapLocationOptionsForRequest))
+            {
+                return new MapLocationFinderResult(MapLocationFinderStatus.InvalidCredentials);
+            }
+
+            var url = await BuildUrl($"q={query}", mapLocationOptionsForRequest).ConfigureAwait(true);
             url +=
                 $"&umv={referenceBoundingBox.BottomLeft.LatitudeInDegrees},{referenceBoundingBox.BottomLeft.LongitudeInDegrees},{referenceBoundingBox.TopRight.LatitudeInDegrees},{referenceBoundingBox.TopRight.LongitudeInDegrees}";
-            return await Request(url);
+            return await Request(url).ConfigureAwait(true);
         }
 
         /// <summary>
@@ -61,39 +80,69 @@ namespace Microsoft.Maps.Unity.Search
         /// </summary>
         public static async Task<MapLocationFinderResult> FindLocationsAt(LatLon location, MapLocationOptions mapLocationOptions = null)
         {
-            var url = BuildUrl("", mapLocationOptions, $"Locations/{location.LatitudeInDegrees},{location.LongitudeInDegrees}", false);
-            return await Request(url);
+            var mapLocationOptionsForRequest = mapLocationOptions ?? new MapLocationOptions();
+            if (!ValidateMapSession(mapLocationOptionsForRequest))
+            {
+                return new MapLocationFinderResult(MapLocationFinderStatus.InvalidCredentials);
+            }
+
+            var url =
+                await BuildUrl(
+                    string.Empty,
+                    mapLocationOptions ?? new MapLocationOptions(),
+                    $"Locations/{location.LatitudeInDegrees},{location.LongitudeInDegrees}",
+                    false)
+                .ConfigureAwait(true);
+
+            return await Request(url).ConfigureAwait(true);
         }
 
-        private static string BuildUrl(
+        private async static Task<string> BuildUrl(
             string baseQuery,
             MapLocationOptions mapLocationOptions,
             string resource = "Locations",
             bool startWithAmpersand = true)
         {
-            string url;
-            if (mapLocationOptions != null)
+            var culture = await mapLocationOptions.GetCulture().ConfigureAwait(true);
+            var region = await mapLocationOptions.GetRegion().ConfigureAwait(true);
+
+            if (string.IsNullOrWhiteSpace(region))
             {
-                var parameters =
-                    $"{baseQuery}" +
-                    (startWithAmpersand ? "&" : "") +
-                    $"maxRes={Math.Max(mapLocationOptions.MaxResults, 1)}" +
-                    (string.IsNullOrWhiteSpace(mapLocationOptions.Culture) ? "" : $"&c={mapLocationOptions.Culture}") +
-                    (string.IsNullOrWhiteSpace(mapLocationOptions.Region) ? "" : $"&ur={mapLocationOptions.Region}") +
-                    (mapLocationOptions.IncludeCountryCode ? "&incl=ciso2" : "") +
-                    (mapLocationOptions.IncludeNeighborhood ?"&inclnb=1" : "");
-                url = Endpoints.BuildUrl(resource, parameters);
+                Debug.LogWarning("No region has been specified for the MapLocationFinder request.");
             }
-            else
+
+            var parameters =
+                $"{baseQuery}" +
+                (startWithAmpersand ? "&" : "") +
+                $"maxRes={Math.Max(mapLocationOptions.MaxResults, 1)}" +
+                (string.IsNullOrWhiteSpace(culture) ? "" : $"&c={culture}") +
+                (string.IsNullOrWhiteSpace(region) ? "" : $"&ur={region}") +
+                (mapLocationOptions.IncludeCountryCode ? "&incl=ciso2" : "") +
+                (mapLocationOptions.IncludeNeighborhood ? "&inclnb=1" : "");
+
+            return Endpoints.BuildUrl(resource, mapLocationOptions.MapSession, parameters);
+        }
+
+        private static bool ValidateMapSession(MapLocationOptions mapLocationOptions)
+        {
+            if (mapLocationOptions.MapSession == null)
             {
-                url = Endpoints.BuildUrl(resource, $"{baseQuery}");
+                Debug.LogError("MapLocationFinder request failed: MapSession is not present.");
+                return false;
             }
-            return url;
+
+            if (string.IsNullOrWhiteSpace(mapLocationOptions.MapSession.DeveloperKey))
+            {
+                Debug.LogError("MapLocationFinder request failed: MapSession has missing developer key.");
+                return false;
+            }
+
+            return true;
         }
 
         private static async Task<MapLocationFinderResult> Request(string url)
         {
-            var webRequest = UnityWebRequest.Get(url);
+            var webRequest = UnityWebRequest.Get(new Uri(url));
             await webRequest.SendWebRequest();
 
             // Check error codes and parse the data. Note, we're on the Unity main thread here.
