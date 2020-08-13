@@ -24,8 +24,8 @@ A clear and concise description of what you expected to happen.
 If applicable, add screenshots to help explain your problem.
 
 **Environment (please complete the following information):**
- - Unity version: [e.g. 2018.3.1f1]
- - Maps SDK NuGet Package version: [e.g. 0.1.1]
+ - Unity version: [e.g. 2019.4.1f1]
+ - Maps SDK Package version: [e.g. 0.9.2]
 
 **Additional context**
 Add any other context about the problem here.
