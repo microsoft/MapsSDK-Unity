@@ -6,6 +6,26 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.9.2 - 2020-08-12
+
+### Maps SDK
+#### Added
+ - `IsLoaded` property on `MapRendererBase` to detect when map has completed loading all data for the current view. [#31](https://github.com/microsoft/MapsSDK-Unity/issues/31)
+#### Changed
+ - The language used for localiztaion of map content is now a property on the `MapSession`.
+#### Fixed
+ - Internal exception that prevents map from loading 2020.1. [#86](https://github.com/microsoft/MapsSDK-Unity/issues/86)
+ 
+### Supporting Scripts
+#### Added
+ - `WaitForMapLoaded` class to that can be yielded until the map has completed loading all data for the current view. [#31](https://github.com/microsoft/MapsSDK-Unity/issues/31)
+ - Subdomain variable for `HttpTextureTileLayer`. [#70](https://github.com/microsoft/MapsSDK-Unity/issues/70)
+#### Changed
+- Increased MRTK hover light count in standard terrain shaders from 1 to 2.
+#### Fixed
+- Mitigate side wall rendering glitch in `MapShape.Block` mode. [#72](https://github.com/microsoft/MapsSDK-Unity/issues/72)
+
+
 ## 0.9.1 - 2020-06-18
 ### Supporting Scripts
 #### Added
