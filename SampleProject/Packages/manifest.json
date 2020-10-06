@@ -6,10 +6,20 @@
       "scopes": [
         "com.microsoft.maps"
       ]
+    },
+    {
+      "name": "Microsoft Mixed Reality",
+      "url": "https://pkgs.dev.azure.com/aipmr/MixedReality-Unity-Packages/_packaging/Unity-packages/npm/registry/",
+      "scopes": [
+        "com.microsoft.mixedreality",
+        "com.microsoft.spatialaudio"
+      ]
     }
   ],
   "dependencies": {
     "com.microsoft.maps.unity": "0.9.2",
+    "com.microsoft.mixedreality.toolkit.foundation": "2.5.0",
+    "com.microsoft.mixedreality.toolkit.tools": "2.5.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.2d.tilemap": "1.0.0",
     "com.unity.ide.rider": "1.1.4",

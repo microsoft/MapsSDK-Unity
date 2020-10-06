@@ -1,3 +1,0 @@
-To start, add a MixedRealityToolkit to your scene using the menu:
-
-Mixed Reality Toolkit -> Add to Scene and Configure

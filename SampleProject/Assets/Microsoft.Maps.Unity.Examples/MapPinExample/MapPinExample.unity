@@ -518,10 +518,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 3
   _mapSession: {fileID: 1276686201}
-  _languageOverride: 42
-  _languageChanged:
-    m_PersistentCalls:
-      m_Calls: []
   _mapEdgeColor: {r: 0.31842372, g: 0.44599998, b: 0.264924, a: 1}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
@@ -661,6 +657,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerKey: 
   _showMapDataInEditor: 1
+  _languageOverride: 42
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _regionOverride: 
 --- !u!114 &1276686202
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -884,6 +885,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 671051969600022714, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 671051969840049980, guid: 1f6ba1d9694cc934fbab2ab6cfde88e5,
         type: 3}

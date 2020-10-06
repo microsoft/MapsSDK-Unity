@@ -3747,33 +3747,31 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_text
-      value: "This scene provides a basic mobile AR table top scenario.\n\nTo build
-        this scene to your mobile device, go to File - Build Settings, switch to
-        the corresponding platform (Android / iOS), plug in your phone, and hit Build
-        and Run.\n\nOnce built and launched on your device, try moving the map with
-        your fingers and tweaking its various settings.\n\nFeatures:\n* AR table
-        top scenario on a mobile device. \n* Move, zoom, and rotate map with touch
-        input.\n "
+      value: "This scene demonstrates an AR tabletop map.\n\nTo build this scene
+        to your mobile device, go to File - Build Settings, switch to the corresponding
+        platform (Android / iOS), plug in your phone, and hit Build and Run.\n\nOnce
+        built and launched on your device, the map can be positioned and zied with
+        touch controls. Use the menu to animate the map to different cities.\n\n "
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.characterCount
-      value: 445
+      value: 366
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.spaceCount
-      value: 84
+      value: 69
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.wordCount
-      value: 76
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -3793,7 +3791,7 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_fontSize
-      value: 69.7
+      value: 67.9
       objectReference: {fileID: 0}
     - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -4973,10 +4971,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 3
   _mapSession: {fileID: 2026101502}
-  _languageOverride: 42
-  _languageChanged:
-    m_PersistentCalls:
-      m_Calls: []
   _mapEdgeColor: {r: 0.28627455, g: 0.5784523, b: 1, a: 0.2784314}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 1
@@ -5038,6 +5032,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerKey: 
   _showMapDataInEditor: 1
+  _languageOverride: 42
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _regionOverride: 
 --- !u!114 &2026101503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5203,6 +5202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTetherWhenManipulating: 0
+  IsBoundsHandles: 0
 --- !u!82 &2026101506
 AudioSource:
   m_ObjectHideFlags: 0
