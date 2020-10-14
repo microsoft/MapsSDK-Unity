@@ -100,9 +100,6 @@ namespace Microsoft.Maps.Unity
 
             if (_isLinearAnimation)
             {
-                // Ease t to slow down the start and stop of animations.
-                t = (float)SmoothStep(0.0f, 1.0f, t);
-
                 LinearAnimation(t, out zoomLevel, out location);
             }
             else

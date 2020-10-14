@@ -63,7 +63,7 @@ namespace Microsoft.Maps.Unity
             foreach (var sceneFile in sceneFiles)
             {
                 output += ScrubAssets(sceneFile);
-                needsAssetReimport = needsAssetReimport || !string.IsNullOrEmpty(output);
+                needsAssetReimport = needsAssetReimport || !string.IsNullOrWhiteSpace(output);
             }
 
             // Prefabs
@@ -71,7 +71,7 @@ namespace Microsoft.Maps.Unity
             foreach (var prefabFile in prefabFiles)
             {
                 output += ScrubAssets(prefabFile);
-                needsAssetReimport = needsAssetReimport || !string.IsNullOrEmpty(output);
+                needsAssetReimport = needsAssetReimport || !string.IsNullOrWhiteSpace(output);
             }
 
             // Reimport assets if there were changes to the scene files.

@@ -118,7 +118,8 @@ namespace Microsoft.Maps.Unity.Search
                 (string.IsNullOrWhiteSpace(culture) ? "" : $"&c={culture}") +
                 (string.IsNullOrWhiteSpace(region) ? "" : $"&ur={region}") +
                 (mapLocationOptions.IncludeCountryCode ? "&incl=ciso2" : "") +
-                (mapLocationOptions.IncludeNeighborhood ? "&inclnb=1" : "");
+                (mapLocationOptions.IncludeNeighborhood ? "&inclnb=1" : "") +
+                "&sftr=teolin";
 
             return Endpoints.BuildUrl(resource, mapLocationOptions.MapSession, parameters);
         }

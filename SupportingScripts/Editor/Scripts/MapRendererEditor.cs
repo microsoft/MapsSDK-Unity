@@ -31,13 +31,11 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _castShadowsProperty;
         private SerializedProperty _receiveShadowsProperty;
         private SerializedProperty _enableMrtkMaterialIntegrationProperty;
-        private SerializedProperty _useCustomTerrainMaterialProperty;
-        private SerializedProperty _customTerrainMaterialProperty;
+        private SerializedProperty _terrainMaterialProperty;
         private SerializedProperty _isClippingVolumeWallEnabledProperty;
         private SerializedProperty _mapEdgeColorProperty;
         private SerializedProperty _mapEdgeColorFadeDistanceProperty;
-        private SerializedProperty _useCustomClippingVolumeMaterialProperty;
-        private SerializedProperty _customClippingVolumeMaterialProperty;
+        private SerializedProperty _clippingVolumeMaterialProperty;
         private SerializedProperty _clippingVolumeDistanceTextureResolution;
 
         private static bool _showQualityOptions = true;
@@ -48,11 +46,10 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _elevationTileLayersProperty;
         private SerializedProperty _hideTileLayerComponentsProperty;
 
-        private static bool _showLocalizationOptions = true;
-        private SerializedProperty _languageOverrideProperty;
-        private SerializedProperty _languageChangedProperty;
-
         private SerializedProperty _mapSessionProperty;
+
+        private bool _useCustomTerrainMaterial;
+        private bool _useCustomClippingVolumeMaterial;
 
         private GUIStyle _foldoutTitleStyle = null;
         private GUIStyle _boxStyle = null;
@@ -108,18 +105,16 @@ namespace Microsoft.Maps.Unity
             _maxZoomLevelProperty = serializedObject.FindProperty("_maximumZoomLevel");
             _mapTerrainType = serializedObject.FindProperty("_mapTerrainType");
             _mapShapeProperty = serializedObject.FindProperty("_mapShape");
-            _localMapDimensionProperty = serializedObject.FindProperty("LocalMapDimension");
-            _localMapRadiusProperty = serializedObject.FindProperty("LocalMapRadius");
+            _localMapDimensionProperty = serializedObject.FindProperty("_localMapDimension");
+            _localMapRadiusProperty = serializedObject.FindProperty("_localMapRadius");
             _localMapBaseHeightProperty = serializedObject.FindProperty("_localMapBaseHeight");
-            _useCustomTerrainMaterialProperty = serializedObject.FindProperty("_useCustomTerrainMaterial");
             _elevationScaleProperty = serializedObject.FindProperty("_elevationScale");
             _castShadowsProperty = serializedObject.FindProperty("_castShadows");
             _receiveShadowsProperty = serializedObject.FindProperty("_receiveShadows");
             _enableMrtkMaterialIntegrationProperty = serializedObject.FindProperty("_enableMrtkMaterialIntegration");
-            _customTerrainMaterialProperty = serializedObject.FindProperty("_customTerrainMaterial");
+            _terrainMaterialProperty = serializedObject.FindProperty("_terrainMaterial");
             _isClippingVolumeWallEnabledProperty = serializedObject.FindProperty("_isClippingVolumeWallEnabled");
-            _useCustomClippingVolumeMaterialProperty = serializedObject.FindProperty("_useCustomClippingVolumeMaterial");
-            _customClippingVolumeMaterialProperty = serializedObject.FindProperty("_customClippingVolumeMaterial");
+            _clippingVolumeMaterialProperty = serializedObject.FindProperty("_clippingVolumeMaterial");
             _clippingVolumeDistanceTextureResolution = serializedObject.FindProperty("_clippingVolumeDistanceTextureResolution");
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
@@ -128,9 +123,10 @@ namespace Microsoft.Maps.Unity
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
             _elevationTileLayersProperty = serializedObject.FindProperty("_elevationTileLayers");
             _hideTileLayerComponentsProperty = serializedObject.FindProperty("_hideTileLayerComponents");
-            _languageOverrideProperty = serializedObject.FindProperty("_languageOverride");
-            _languageChangedProperty = serializedObject.FindProperty("_languageChanged");
             _mapSessionProperty = serializedObject.FindProperty("_mapSession");
+
+            _useCustomTerrainMaterial = _terrainMaterialProperty.objectReferenceValue != null;
+            _useCustomClippingVolumeMaterial = _clippingVolumeMaterialProperty.objectReferenceValue != null;
 
             EditorApplication.update += QueuePlayerLoopUpdate;
         }
@@ -237,9 +233,9 @@ namespace Microsoft.Maps.Unity
             _showLocationOptions = EditorGUILayout.Foldout(_showLocationOptions, "Location", true, _foldoutTitleStyle);
             if (_showLocationOptions)
             {
-                var latitudeProperty = _centerProperty.FindPropertyRelative("Latitude");
+                var latitudeProperty = _centerProperty.FindPropertyRelative("_latitude");
                 latitudeProperty.doubleValue = EditorGUILayout.DoubleField("Latitude", latitudeProperty.doubleValue);
-                var longitudeProperty = _centerProperty.FindPropertyRelative("Longitude");
+                var longitudeProperty = _centerProperty.FindPropertyRelative("_longitude");
                 longitudeProperty.doubleValue = EditorGUILayout.DoubleField("Longitude", longitudeProperty.doubleValue);
 
                 EditorGUILayout.Slider(_zoomLevelProperty, MapConstants.MinimumZoomLevel, MapConstants.MaximumZoomLevel);
@@ -316,12 +312,24 @@ namespace Microsoft.Maps.Unity
                 EditorGUILayout.PropertyField(_castShadowsProperty, new GUIContent("Cast Shadows"));
                 EditorGUILayout.PropertyField(_receiveShadowsProperty, new GUIContent("Receive Shadows"));
                 EditorGUILayout.PropertyField(_enableMrtkMaterialIntegrationProperty, new GUIContent("Enable MRTK Integration"));
-                EditorGUILayout.PropertyField(_useCustomTerrainMaterialProperty, new GUIContent("Use Custom Terrain Material"));
-                if (_useCustomTerrainMaterialProperty.boolValue)
+
                 {
-                    EditorGUI.indentLevel++;
-                    EditorGUILayout.PropertyField(_customTerrainMaterialProperty, new GUIContent("Terrain Material"));
-                    EditorGUI.indentLevel--;
+                    var useCustomTerrainMaterial = EditorGUILayout.Toggle("Use Custom Terrain Material", _useCustomTerrainMaterial);
+                    if (_useCustomTerrainMaterial && !useCustomTerrainMaterial)
+                    {
+                        // If the we were previously using a custom material, and have switched back to the default materials,
+                        // reset the material to null which will cause the MapRenderer to reload the default material.
+                        _terrainMaterialProperty.objectReferenceValue = null;
+                    }
+
+                    if (useCustomTerrainMaterial)
+                    {
+                        EditorGUI.indentLevel++;
+                        EditorGUILayout.PropertyField(_terrainMaterialProperty, new GUIContent("Material"));
+                        EditorGUI.indentLevel--;
+                    }
+
+                    _useCustomTerrainMaterial = useCustomTerrainMaterial;
                 }
 
                 EditorGUILayout.PropertyField(_isClippingVolumeWallEnabledProperty, new GUIContent("Render Clipping Volume Wall"));
@@ -333,14 +341,24 @@ namespace Microsoft.Maps.Unity
                     _mapEdgeColorFadeDistanceProperty.floatValue =
                         EditorGUILayout.Slider(new GUIContent("Edge Fade"), _mapEdgeColorFadeDistanceProperty.floatValue, 0, 1);
 
-                    EditorGUILayout.PropertyField(
-                        _useCustomClippingVolumeMaterialProperty,
-                        new GUIContent("Use Custom Clipping Volume Material"));
-                    if (_useCustomClippingVolumeMaterialProperty.boolValue)
                     {
-                        EditorGUI.indentLevel++;
-                        EditorGUILayout.PropertyField(_customClippingVolumeMaterialProperty, new GUIContent("Clipping Volume Material"));
-                        EditorGUI.indentLevel--;
+                        var useCustomClippingVolumeMaterial =
+                            EditorGUILayout.Toggle("Use Custom Clipping Volume Material", _useCustomClippingVolumeMaterial);
+                        if (_useCustomClippingVolumeMaterial && !useCustomClippingVolumeMaterial)
+                        {
+                            // If the we were previously using a custom material, and have switched back to the default materials,
+                            // reset the material to null which will cause the MapRenderer to reload the default material.
+                            _clippingVolumeMaterialProperty.objectReferenceValue = null;
+                        }
+
+                        if (useCustomClippingVolumeMaterial)
+                        {
+                            EditorGUI.indentLevel++;
+                            EditorGUILayout.PropertyField(_clippingVolumeMaterialProperty, new GUIContent("Material"));
+                            EditorGUI.indentLevel--;
+                        }
+
+                        _useCustomClippingVolumeMaterial = useCustomClippingVolumeMaterial;
                     }
 
                     // Texture Camera Resolution
@@ -409,45 +427,6 @@ namespace Microsoft.Maps.Unity
                 EditorGUILayout.PropertyField(_elevationTileLayersProperty, true);
                 EditorGUILayout.PropertyField(_hideTileLayerComponentsProperty);
                 GUILayout.Space(12f);
-            }
-            EditorGUILayout.EndVertical();
-
-            // Localization
-            EditorGUILayout.BeginVertical(_boxStyle);
-            _showLocalizationOptions = EditorGUILayout.Foldout(_showLocalizationOptions, "Localization", true, _foldoutTitleStyle);
-            if (_showLocalizationOptions)
-            {
-                var previousIsLanguageAutoDetected = _languageOverrideProperty.intValue == (int)SystemLanguage.Unknown;
-                var newIsLanguageAutoDetected = EditorGUILayout.Toggle("Autodetect Language", previousIsLanguageAutoDetected);
-
-                // If we are switching from autodetected to override, initialize override property with the current system language.
-                if (!newIsLanguageAutoDetected && previousIsLanguageAutoDetected)
-                {
-                    _languageOverrideProperty.intValue = (int)Application.systemLanguage;
-                }
-
-                // If we are switching from overridden to autodetected, clear the override property to unknown.
-                if (newIsLanguageAutoDetected && !previousIsLanguageAutoDetected)
-                {
-                    _languageOverrideProperty.intValue = (int)SystemLanguage.Unknown;
-                }
-
-                if (newIsLanguageAutoDetected)
-                {
-                    EditorGUI.BeginDisabledGroup(true);
-                    EditorGUILayout.EnumPopup("Language", Application.systemLanguage);
-                    EditorGUI.EndDisabledGroup();
-                }
-                else
-                {
-                    EditorGUILayout.PropertyField(_languageOverrideProperty, new GUIContent("Language"));
-                }
-
-                GUILayout.Space(4);
-                EditorGUILayout.BeginHorizontal();
-                GUILayout.Space(12);
-                EditorGUILayout.PropertyField(_languageChangedProperty);
-                EditorGUILayout.EndHorizontal();
             }
             EditorGUILayout.EndVertical();
 

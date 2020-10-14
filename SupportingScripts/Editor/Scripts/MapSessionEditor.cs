@@ -13,6 +13,12 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _developerKeyProperty;
         private SerializedProperty _showMapDataInEditorProperty;
 
+        private static bool _showLocalizationOptions = true;
+        private SerializedProperty _languageOverrideProperty;
+        private SerializedProperty _languageChangedProperty;
+        private bool _autodetectRegion;
+        private SerializedProperty _regionOverrideProperty;
+
         private GUIStyle _baseStyle = null;
         private GUIStyle _hyperlinkStyle = null;
         private GUIStyle _iconStyle = null;
@@ -26,6 +32,10 @@ namespace Microsoft.Maps.Unity
         {
             _developerKeyProperty = serializedObject.FindProperty("_developerKey");
             _showMapDataInEditorProperty = serializedObject.FindProperty("_showMapDataInEditor");
+            _languageOverrideProperty = serializedObject.FindProperty("_languageOverride");
+            _languageChangedProperty = serializedObject.FindProperty("_languageChanged");
+            _regionOverrideProperty = serializedObject.FindProperty("_regionOverride");
+            _autodetectRegion = string.IsNullOrWhiteSpace(_regionOverrideProperty.stringValue);
             _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
         }
@@ -35,6 +45,9 @@ namespace Microsoft.Maps.Unity
             Initialize();
 
             serializedObject.UpdateIfRequiredOrScript();
+
+            var overrideRegion = !_autodetectRegion || !string.IsNullOrWhiteSpace(_regionOverrideProperty.stringValue);
+            _autodetectRegion = !overrideRegion;
 
             // This should just be done one time.
             {
@@ -92,6 +105,63 @@ namespace Microsoft.Maps.Unity
                         "Show Map Data in Editor",
                         "Map data usage in the editor will apply to the specified developer key."),
                     _showMapDataInEditorProperty.boolValue);
+
+            EditorGUI.indentLevel++;
+
+            // Localization
+            EditorGUILayout.BeginVertical(_boxStyle);
+            _showLocalizationOptions = EditorGUILayout.Foldout(_showLocalizationOptions, "Localization", true, _foldoutTitleStyle);
+            if (_showLocalizationOptions)
+            {
+                _autodetectRegion = EditorGUILayout.Toggle("Autodetect Region", _autodetectRegion);
+                EditorGUI.BeginDisabledGroup(_autodetectRegion);
+                EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(_regionOverrideProperty);
+                EditorGUI.indentLevel--;
+                EditorGUI.EndDisabledGroup();
+
+                if (_autodetectRegion)
+                {
+                    _regionOverrideProperty.stringValue = string.Empty;
+                }
+
+                var previousIsLanguageAutoDetected = _languageOverrideProperty.intValue == (int)SystemLanguage.Unknown;
+                var newIsLanguageAutoDetected = EditorGUILayout.Toggle("Autodetect Language", previousIsLanguageAutoDetected);
+
+                // If we are switching from autodetected to override, initialize override property with the current system language.
+                if (!newIsLanguageAutoDetected && previousIsLanguageAutoDetected)
+                {
+                    _languageOverrideProperty.intValue = (int)Application.systemLanguage;
+                }
+
+                // If we are switching from overridden to autodetected, clear the override property to unknown.
+                if (newIsLanguageAutoDetected && !previousIsLanguageAutoDetected)
+                {
+                    _languageOverrideProperty.intValue = (int)SystemLanguage.Unknown;
+                }
+
+                EditorGUI.indentLevel++;
+                if (newIsLanguageAutoDetected)
+                {
+                    EditorGUI.BeginDisabledGroup(true);
+                    EditorGUILayout.EnumPopup("Language", Application.systemLanguage);
+                    EditorGUI.EndDisabledGroup();
+                }
+                else
+                {
+                    EditorGUILayout.PropertyField(_languageOverrideProperty, new GUIContent("Language"));
+                }
+                EditorGUI.indentLevel--;
+
+                GUILayout.Space(4);
+                EditorGUILayout.BeginHorizontal();
+                GUILayout.Space(12);
+                EditorGUILayout.PropertyField(_languageChangedProperty);
+                EditorGUILayout.EndHorizontal();
+            }
+            EditorGUILayout.EndVertical();
+
+            EditorGUI.indentLevel--;
 
             serializedObject.ApplyModifiedProperties();
         }

@@ -9,9 +9,12 @@ namespace Microsoft.Maps.Unity
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
+    using UnityEngine.Events;
 
     /// <summary>
     /// This component provides a wrapper on top of a <see cref="MapRenderer"/> to help with interactions like pan, zoom, and rotate.
+    /// Provides callbacks for events to track when interactions have began and ended or when specific events occur, like double tap,
+    /// tap, or tap and hold. A <see cref="MapInteractionHandler"/> implementaiton can invoke these events.
     /// </summary>
     [RequireComponent(typeof(MapRenderer))]
     [DisallowMultipleComponent]
@@ -25,7 +28,6 @@ namespace Microsoft.Maps.Unity
         private int _activeRotationDirection;
         private float _targetRotation;
 
-
         [SerializeField]
         private float _rotationSpeed = 3.5f;
 
@@ -34,6 +36,38 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         [SerializeField]
         private float _panSpeed = 0.5f;
+
+        [SerializeField]
+        private LatLonAltUnityEvent _onTapAndHold = new LatLonAltUnityEvent();
+
+        /// <summary>
+        /// An event fired when a tap and hold occurs. Provides the location where the interaction takes place.
+        /// </summary>
+        public LatLonAltUnityEvent OnTapAndHold => _onTapAndHold;
+
+        [SerializeField]
+        private LatLonAltUnityEvent _onDoubleTap = new LatLonAltUnityEvent();
+
+        /// <summary>
+        /// An event fired when a double tap occurs. Provides the location where the interaction takes place.
+        /// </summary>
+        public LatLonAltUnityEvent OnDoubleTap => _onDoubleTap;
+
+        [SerializeField]
+        private UnityEvent _onInteractionStarted = new UnityEvent();
+
+        /// <summary>
+        /// An event fired when an interaction begins that manipulates the map, e.g. panning the map.
+        /// </summary>
+        public UnityEvent OnInteractionStarted => _onInteractionStarted;
+
+        [SerializeField]
+        private UnityEvent _onInteractionEnded = new UnityEvent();
+
+        /// <summary>
+        /// An event fired when an interaction ends that manipulated the map, e.g. panning the map.
+        /// </summary>
+        public UnityEvent OnInteractionEnded => _onInteractionEnded;
 
         private void Awake()
         {
@@ -49,8 +83,6 @@ namespace Microsoft.Maps.Unity
 
         private void Update()
         {
-            // TODO: Move to coroutine.
-
             const float rotationAngle = 45.0f;
 
             // Update rotation, if needed.
@@ -194,6 +226,23 @@ namespace Microsoft.Maps.Unity
         public void Zoom(float zoomLevelSpeed, Ray ray)
         {
             PanAndZoom(ray, null, zoomLevelSpeed);
+        }
+
+        /// <summary>
+        /// Performs a double tap zoom and invokes the <see cref="OnDoubleTap"/> event.
+        /// </summary>
+        public void DoubleTapZoom(LatLonAlt targetLatLonAlt, float zoomLevelOffset)
+        {
+            if (zoomLevelOffset == 0.0f)
+            {
+                return;
+            }
+
+            var newZoomLevel = _mapRenderer.ZoomLevel + zoomLevelOffset;
+            newZoomLevel = Mathf.Max(_mapRenderer.MinimumZoomLevel, Mathf.Min(_mapRenderer.MaximumZoomLevel, newZoomLevel));
+            _mapRenderer.SetMapScene(new MapSceneOfLocationAndZoomLevel(targetLatLonAlt.LatLon, newZoomLevel), MapSceneAnimationKind.Linear, 150.0f);
+
+            OnDoubleTap?.Invoke(targetLatLonAlt);
         }
 
         /// <summary>

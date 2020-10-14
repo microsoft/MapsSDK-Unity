@@ -45,13 +45,14 @@ namespace Microsoft.Maps.Unity
                 }
 
                 // Always wait through the frame where the map is loaded.
-                if (_mapRendererBase.IsLoaded && !_firstFrameLoadedFlag.HasValue)
+                var isLoaded = _mapRendererBase.IsLoaded;
+                if (isLoaded && !_firstFrameLoadedFlag.HasValue)
                 {
                     _firstFrameLoadedFlag = 0;
                     return true;
                 }
 
-                if (_firstFrameLoadedFlag.HasValue && !_mapRendererBase.IsLoaded)
+                if (_firstFrameLoadedFlag.HasValue && !isLoaded)
                 {
                     // Could happen when the map loads for one frame and is immediately dirtied for another reason.
                     // In this case, clear our frame loaded tracking (and keep waiting).
@@ -60,7 +61,7 @@ namespace Microsoft.Maps.Unity
                 }
 
                 // Otherwise, we keep waiting while the map has not loaded.
-                return !_mapRendererBase.IsLoaded;
+                return !isLoaded;
             }
         }
     }
