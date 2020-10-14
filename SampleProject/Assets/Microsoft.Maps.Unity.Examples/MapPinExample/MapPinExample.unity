@@ -189,7 +189,7 @@ PrefabInstance:
         of all barriers to fish migration in California's water sheds.\n\nThis is
         a data set with 5,363 points.\n\nFeatures:\n* MapPinLayer with clustering\n*
         Zoom and pan restrictions\n* Labeling\n* Contour Lines\n\nNavigation:\n *
-        Pan and drag with controller ray.\n * Zoom with right thumbstick. "
+        Pan and drag with the pointer ray.\n * Zoom with right thumbstick on controllers. "
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -234,12 +234,22 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_fontSize
-      value: 54.85
+      value: 70.15
       objectReference: {fileID: 0}
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_margin.w
       value: 153.06007
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -428,6 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebca30a924623a649b656cbbd4710be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
   _zoomSpeed: 0.5
   _panSmoothness: 0.5
 --- !u!114 &1276686189
@@ -522,25 +533,23 @@ MonoBehaviour:
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
   _center:
-    Latitude: 37.2779714028801
-    Longitude: -121.219809007815
+    _latitude: 37.2779714028801
+    _longitude: -121.219809007815
   _zoomLevel: 5.51
   _minimumZoomLevel: 5.51
   _maximumZoomLevel: 20
   _mapTerrainType: 0
   _mapShape: 0
-  LocalMapDimension: {x: 1, y: 1}
-  LocalMapRadius: 0.5
+  _localMapDimension: {x: 1, y: 1}
+  _localMapRadius: 0.5
   _localMapBaseHeight: 0.07
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
   _enableMrtkMaterialIntegration: 1
-  _useCustomTerrainMaterial: 0
-  _customTerrainMaterial: {fileID: 0}
+  _terrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
-  _useCustomClippingVolumeMaterial: 0
-  _customClippingVolumeMaterial: {fileID: 0}
+  _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
   _textureTileLayers:
     _list:
@@ -676,6 +685,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 3.5
   _panSpeed: 0.5
+  _onTapAndHold:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDoubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1539503973
 GameObject:
   m_ObjectHideFlags: 0

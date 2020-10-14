@@ -461,25 +461,23 @@ MonoBehaviour:
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
   _center:
-    Latitude: 47.620365
-    Longitude: -122.349305
+    _latitude: 47.620365
+    _longitude: -122.349305
   _zoomLevel: 17.82
   _minimumZoomLevel: 1
   _maximumZoomLevel: 20
   _mapTerrainType: 0
   _mapShape: 1
-  LocalMapDimension: {x: 1, y: 1}
-  LocalMapRadius: 0.5
+  _localMapDimension: {x: 1, y: 1}
+  _localMapRadius: 0.5
   _localMapBaseHeight: 0.1
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
   _enableMrtkMaterialIntegration: 1
-  _useCustomTerrainMaterial: 0
-  _customTerrainMaterial: {fileID: 0}
+  _terrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
-  _useCustomClippingVolumeMaterial: 0
-  _customClippingVolumeMaterial: {fileID: 0}
+  _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
   _textureTileLayers:
     _list:

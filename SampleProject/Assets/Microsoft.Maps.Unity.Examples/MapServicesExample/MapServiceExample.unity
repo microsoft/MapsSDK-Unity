@@ -141,23 +141,21 @@ PrefabInstance:
     - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_text
-      value: 'Clicking on the map will display the address information for the corresponding
-        location.
+      value: 'Tapping and holding the pointer on the map will display the address
+        information at the corresponding location.
 
 
-        This demonstrates how to use MRTK input to receive click
-        events on the MapRenderer. From the click event, the location of the click
-        on the map is determined in latitude and longitude. This LatLon is then used
-        by the MapLocationFinder to reverse geocode the coordinate to an address
-        string.
+        The MixedRealityMapInteractionHandler
+        component manages panning, zooming, and tapping on the map.  The MapLocationFinder
+        class is used to reverse geocode coordinates to address strings.
 
 
         Features:
 
-        * MapLocationFinder
+        *
+        MapLocationFinder
 
-        * MRTK
-        input integratioon
+        * MRTK input integratioon
 
 '
       objectReference: {fileID: 0}
@@ -200,6 +198,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_textInfo.pageCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4664680953719864532, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_textAlignment
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 7275052165779804132, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
@@ -367,11 +375,12 @@ GameObject:
   - component: {fileID: 1276686197}
   - component: {fileID: 1276686190}
   - component: {fileID: 1276686191}
-  - component: {fileID: 1276686198}
   - component: {fileID: 1276686199}
   - component: {fileID: 1276686188}
   - component: {fileID: 1276686196}
   - component: {fileID: 1276686189}
+  - component: {fileID: 1276686201}
+  - component: {fileID: 1276686198}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -484,25 +493,23 @@ MonoBehaviour:
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
   _center:
-    Latitude: 47.6148544965444
-    Longitude: -122.195821273054
+    _latitude: 47.6148544965444
+    _longitude: -122.195821273054
   _zoomLevel: 16
   _minimumZoomLevel: 1
   _maximumZoomLevel: 20
   _mapTerrainType: 0
   _mapShape: 0
-  LocalMapDimension: {x: 1, y: 1}
-  LocalMapRadius: 0.5
+  _localMapDimension: {x: 1, y: 1}
+  _localMapRadius: 0.5
   _localMapBaseHeight: 0.1
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
   _enableMrtkMaterialIntegration: 1
-  _useCustomTerrainMaterial: 0
-  _customTerrainMaterial: {fileID: 0}
+  _terrainMaterial: {fileID: 0}
   _isClippingVolumeWallEnabled: 1
-  _useCustomClippingVolumeMaterial: 0
-  _customClippingVolumeMaterial: {fileID: 0}
+  _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
   _textureTileLayers:
     _list:
@@ -564,34 +571,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1276686187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e736ec19b1c5543a9bb27c150f94fb, type: 3}
+  m_Script: {fileID: 11500000, guid: ebca30a924623a649b656cbbd4710be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFocusRequired: 1
-  MarkEventsAsUsed: 1
-  OnPointerDown:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerUp:
-    m_PersistentCalls:
-      m_Calls: []
-  OnPointerClicked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1276686191}
-        m_MethodName: OnMapClick
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnPointerDragged:
-    m_PersistentCalls:
-      m_Calls: []
+  _camera: {fileID: 0}
+  _zoomSpeed: 0.5
+  _panSmoothness: 0.5
 --- !u!114 &1276686199
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -628,6 +613,43 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _regionOverride: 
+--- !u!114 &1276686201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276686187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b303ffbed90191b4dbbf76b03bf83d80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationSpeed: 3.5
+  _panSpeed: 0.5
+  _onTapAndHold:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1276686191}
+        m_MethodName: OnTapAndHold
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onDoubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1387145239
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,7 @@ public class CustomElevationTileLayer : ElevationTileLayer
         var elevationDataFiles = Directory.GetFiles(ElevationDataDirectory, "*.et");
         foreach (var elevationDataFile in elevationDataFiles)
         {
-            var tileId = TileId.FromKey(Path.GetFileNameWithoutExtension(elevationDataFile));
+            var tileId = TileId.Parse(Path.GetFileNameWithoutExtension(elevationDataFile));
             _tiles.Add(tileId);
         }
     }
@@ -37,6 +37,11 @@ public class CustomElevationTileLayer : ElevationTileLayer
 
     public override Task<ElevationTile> GetElevationTileData(TileId tileId, CancellationToken cancellationToken = default)
     {
+        if (!_tiles.Contains(tileId))
+        {
+            return ElevationTile.FromNull();
+        }
+
         // Read the elevation data from the corresponding file in streaming assets. Files are named by the TileId's quadkey.
         var elevationTileData = File.ReadAllBytes(Path.Combine(ElevationDataDirectory, tileId.ToKey() + ".et"));
 

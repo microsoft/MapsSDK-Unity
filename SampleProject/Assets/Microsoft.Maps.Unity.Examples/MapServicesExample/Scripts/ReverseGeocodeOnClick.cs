@@ -1,11 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
 using Microsoft.Maps.Unity;
 using Microsoft.Maps.Unity.Search;
-using Microsoft.Maps.Unity.Services;
-using Microsoft.MixedReality.Toolkit;
-using Microsoft.MixedReality.Toolkit.Input;
 using TMPro;
 using UnityEngine;
 
@@ -38,7 +36,7 @@ public class ReverseGeocodeOnClick : MonoBehaviour
         Debug.Assert(_mapPinLayer != null);
     }
 
-    public async void OnMapClick(MixedRealityPointerEventData mixedRealityPointerEventData)
+    public async void OnTapAndHold(LatLonAlt latLonAlt)
     {
         if (ReferenceEquals(MapSession.Current, null) || string.IsNullOrEmpty(MapSession.Current.DeveloperKey))
         {
@@ -48,33 +46,23 @@ public class ReverseGeocodeOnClick : MonoBehaviour
             return;
         }
 
-        var focusProvider = CoreServices.InputSystem.FocusProvider;
-        if (focusProvider.TryGetFocusDetails(mixedRealityPointerEventData.Pointer, out var focusDetails))
+        var finderResult = await MapLocationFinder.FindLocationsAt(latLonAlt.LatLon);
+
+        string formattedAddressString = null;
+        if (finderResult.Locations.Count > 0)
         {
-            var location = _mapRenderer.TransformWorldPointToLatLon(focusDetails.Point);
-            var finderResult = await MapLocationFinder.FindLocationsAt(location);
-
-            string formattedAddressString = null;
-            if (finderResult.Locations.Count > 0)
-            {
-                formattedAddressString = finderResult.Locations[0].Address.FormattedAddress;
-            }
-
-            if (_mapPinPrefab != null)
-            {
-                // Create a new MapPin instance, using the location of the focus details.
-                var newMapPin = Instantiate(_mapPinPrefab);
-                newMapPin.Location = location;
-                var textMesh = newMapPin.GetComponentInChildren<TextMeshPro>();
-                textMesh.text = formattedAddressString ?? "No address found.";
-
-                _mapPinLayer.MapPins.Add(newMapPin);
-            }
+            formattedAddressString = finderResult.Locations[0].Address.FormattedAddress;
         }
-        else
+
+        if (_mapPinPrefab != null)
         {
-            // Unexpected.
-            Debug.LogWarning("Unable to get FocusDetails from Pointer.");
+            // Create a new MapPin instance at the specified location.
+            var newMapPin = Instantiate(_mapPinPrefab);
+            newMapPin.Location = latLonAlt.LatLon;
+            var textMesh = newMapPin.GetComponentInChildren<TextMeshPro>();
+            textMesh.text = formattedAddressString ?? "No address found.";
+
+            _mapPinLayer.MapPins.Add(newMapPin);
         }
     }
 }

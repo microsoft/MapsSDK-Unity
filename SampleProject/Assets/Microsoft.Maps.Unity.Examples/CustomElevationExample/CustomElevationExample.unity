@@ -1329,34 +1329,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _version: 3
   _mapSession: {fileID: 1886841733}
-  _languageOverride: 42
-  _languageChanged:
-    m_PersistentCalls:
-      m_Calls: []
   _mapEdgeColor: {r: 0.39168903, g: 0.44490546, b: 0.48900002, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 1
   _center:
-    Latitude: 34.0515130472406
-    Longitude: -116.201743280185
+    _latitude: 34.0515130472406
+    _longitude: -116.201743280185
   _zoomLevel: 16.91
   _minimumZoomLevel: 16
   _maximumZoomLevel: 20
   _mapTerrainType: 1
   _mapShape: 1
-  LocalMapDimension: {x: 1.5, y: 1.5}
-  LocalMapRadius: 0.75
+  _localMapDimension: {x: 1.5, y: 1.5}
+  _localMapRadius: 0.75
   _localMapBaseHeight: 0.1
   _elevationScale: 1
   _castShadows: 1
   _receiveShadows: 1
   _enableMrtkMaterialIntegration: 1
-  _useCustomTerrainMaterial: 1
-  _customTerrainMaterial: {fileID: 2100000, guid: 83179a805729e3549961f35ded58435a,
-    type: 2}
+  _terrainMaterial: {fileID: 2100000, guid: 83179a805729e3549961f35ded58435a, type: 2}
   _isClippingVolumeWallEnabled: 1
-  _useCustomClippingVolumeMaterial: 0
-  _customClippingVolumeMaterial: {fileID: 0}
+  _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
   _textureTileLayers:
     _list:
@@ -1407,6 +1400,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebca30a924623a649b656cbbd4710be4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _camera: {fileID: 0}
   _zoomSpeed: 0.5
   _panSmoothness: 0.5
 --- !u!114 &1886841731
@@ -1451,6 +1445,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _developerKey: 
   _showMapDataInEditor: 1
+  _languageOverride: 42
+  _languageChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  _regionOverride: 
 --- !u!114 &1886841734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1465,6 +1464,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rotationSpeed: 3.5
   _panSpeed: 0.5
+  _onTapAndHold:
+    m_PersistentCalls:
+      m_Calls: []
+  _onDoubleTap:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  _onInteractionEnded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1947735018
 GameObject:
   m_ObjectHideFlags: 0
