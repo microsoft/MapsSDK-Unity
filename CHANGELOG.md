@@ -6,6 +6,19 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.10.0 - 2020-10-14
+
+### Maps SDK
+#### Added
+ - Enhanced 3D coverage for various cities in Japan.
+ - Various code APIs for getting and setting render-related properties, e.g. terrain material, shadow casting, etc.
+#### Fixed
+ - Reduced runtime GC allocations.
+ 
+### Supporting Scripts
+#### Added
+ - New `MapInteractionHandler` components to handle touch and mouse interaction like pan, zoom, etc. Custom implementations can be derived for different input types. 
+
 ## 0.9.2 - 2020-08-12
 
 ### Maps SDK
@@ -25,7 +38,6 @@ Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/G
 - Increased MRTK hover light count in standard terrain shaders from 1 to 2.
 #### Fixed
 - Mitigate side wall rendering glitch in `MapShape.Block` mode. [#72](https://github.com/microsoft/MapsSDK-Unity/issues/72)
-
 
 ## 0.9.1 - 2020-06-18
 ### Supporting Scripts
