@@ -197,18 +197,27 @@ namespace Microsoft.Maps.Unity
         /// <summary>
         /// Given a ray, target coordinate and target altitude, adjust the map's center so the target coordinate aligns with the ray.
         /// </summary>
-        public void Pan(Ray ray, in MercatorCoordinate targetMercatorCoordinate, double targetAltitudeInMeters)
+        public void Pan(
+            Ray ray,
+            in MercatorCoordinate targetMercatorCoordinate,
+            double targetAltitudeInMeters,
+            bool requireRayHitForZoom = false)
         {
-            PanAndZoom(ray, (targetMercatorCoordinate, targetAltitudeInMeters), 0.0f);
+            PanAndZoom(ray, (targetMercatorCoordinate, targetAltitudeInMeters), 0.0f, requireRayHitForZoom);
         }
 
         /// <summary>
         /// Given a ray, target coordinate, and zoom level delta, adjust the map's center and zoom level so that at the new zoom level, the
         /// target coordinate aligns with the ray.
         /// </summary>
-        public void PanAndZoom(Ray ray, in MercatorCoordinate targetMercatorCoordinate, double targetAltitudeInMeters, float zoomLevelSpeed)
+        public void PanAndZoom(
+            Ray ray,
+            in MercatorCoordinate targetMercatorCoordinate,
+            double targetAltitudeInMeters,
+            float zoomLevelSpeed,
+            bool requireRayHitForZoom = false)
         {
-            PanAndZoom(ray, (targetMercatorCoordinate, targetAltitudeInMeters), zoomLevelSpeed);
+            PanAndZoom(ray, (targetMercatorCoordinate, targetAltitudeInMeters), zoomLevelSpeed, requireRayHitForZoom);
         }
 
         /// <summary>
@@ -223,9 +232,9 @@ namespace Microsoft.Maps.Unity
         /// <summary>
         /// Adjusts the map's zoom level by the specified magnitude per second. Zooms the map towards the specified ray.
         /// </summary>
-        public void Zoom(float zoomLevelSpeed, Ray ray)
+        public void Zoom(float zoomLevelSpeed, Ray ray, bool requireRayHitForZoom = false)
         {
-            PanAndZoom(ray, null, zoomLevelSpeed);
+            PanAndZoom(ray, null, zoomLevelSpeed, requireRayHitForZoom);
         }
 
         /// <summary>
@@ -262,7 +271,8 @@ namespace Microsoft.Maps.Unity
         private void PanAndZoom(
             Ray ray,
             ValueTuple<MercatorCoordinate, double>? targetCoordinateAndAltitude,
-            float zoomLevelSpeed)
+            float zoomLevelSpeed,
+            bool requireRayHitForZoom)
         {
             var zoomLevelDelta = ZoomLevelsPerSecond * Time.deltaTime * zoomLevelSpeed;
             if (zoomLevelDelta != 0 &&
@@ -270,7 +280,7 @@ namespace Microsoft.Maps.Unity
                 !(_mapRenderer.ZoomLevel <= _mapRenderer.MinimumZoomLevel && zoomLevelDelta < 0))
             {
                 // If we're not panning, detemrine where the ray is intersecting the map. If it's not intersecting the map,
-                // MapRenderer.Center won't be adjusted, i.e. the logic will not cause us to zoom to the point under the cursor.
+                // no zoom will occurr.
                 if (!targetCoordinateAndAltitude.HasValue)
                 {
                     if (_mapRenderer.Raycast(ray, out var hitInfo))
@@ -278,12 +288,12 @@ namespace Microsoft.Maps.Unity
                         targetCoordinateAndAltitude = (hitInfo.Location.LatLon.ToMercatorCoordinate(), hitInfo.Location.AltitudeInMeters);
                     }
                 }
-
-                _mapRenderer.ZoomLevel += zoomLevelDelta;
             }
 
             if (targetCoordinateAndAltitude.HasValue)
             {
+                _mapRenderer.ZoomLevel += zoomLevelDelta;
+
                 var targetCoordinate = targetCoordinateAndAltitude.Value.Item1;
                 var targetAltitude = targetCoordinateAndAltitude.Value.Item2;
 
@@ -302,6 +312,10 @@ namespace Microsoft.Maps.Unity
                     var newCenter = recoveredCenter.ToLatLon();
                     _mapRenderer.Center = newCenter;
                 }
+            }
+            else if (!requireRayHitForZoom)
+            {
+                _mapRenderer.ZoomLevel += zoomLevelDelta;
             }
         }
 

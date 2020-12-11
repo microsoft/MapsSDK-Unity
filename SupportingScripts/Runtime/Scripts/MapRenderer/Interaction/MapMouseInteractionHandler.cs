@@ -59,7 +59,7 @@ namespace Microsoft.Maps.Unity
                     }
 
                     var ray = Camera.ScreenPointToRay(mousePosition);
-                    MapInteractionController.Zoom(zoomSpeed, ray);
+                    MapInteractionController.Zoom(zoomSpeed, ray, true);
                 }
                 else
                 {

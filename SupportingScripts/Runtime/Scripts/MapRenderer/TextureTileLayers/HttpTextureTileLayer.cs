@@ -22,16 +22,14 @@ namespace Microsoft.Maps.Unity
 
         /// <summary>
         /// The UriFormat property accepts the following case-insensitive replacement strings:
-        /// {x}, {y}, {zoomLevel}, and {quadKey}. For more info about these replacement strings,
-        /// see Bing Maps Tile System. https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+        /// {x}, {y}, {zoomlevel}/{zoom}/{z}, {quadkey}, and {subdomain}.
         /// </summary>
         [SerializeField]
         private string _urlFormatString = "";
 
         /// <summary>
         /// The UriFormat property accepts the following case-insensitive replacement strings:
-        /// {x}, {y}, {zoomLevel}, and {quadKey}. For more info about these replacement strings,
-        /// see Bing Maps Tile System. https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+        /// {x}, {y}, {zoomlevel}/{zoom}/{z}, {quadkey}, and {subdomain}.
         /// </summary>
         public string UrlFormatString
         {
@@ -57,7 +55,10 @@ namespace Microsoft.Maps.Unity
         /// </summary>
         public IList<string> Subdomains => _subdomains;
 
-        private void OnValidate()
+        /// <summary>
+        /// This method is called when the script is loaded or a value is changed in the inspector. Called in the editor only.
+        /// </summary>
+        protected void OnValidate()
         {
             SetDirty();
         }
@@ -74,6 +75,11 @@ namespace Microsoft.Maps.Unity
                 return TextureTile.FromNull();
             }
 
+            if (string.IsNullOrWhiteSpace(_urlFormatString))
+            {
+                return TextureTile.FromNull();
+            }
+
             var url = FormatUrl(tileId);
             if (string.IsNullOrWhiteSpace(url))
             {
@@ -85,60 +91,80 @@ namespace Microsoft.Maps.Unity
 
         /// <summary>
         /// Can be overriden to apply custom URL formatting logic. The base implementation handles formatting
-        /// well known strings: {x}, {y}, {zoomLevel}, and {quadKey}. For more info about these replacement strings,
-        /// see Bing Maps Tile System. https://docs.microsoft.com/en-us/bingmaps/articles/bing-maps-tile-system
+        /// the following case-insensitive replacement strings: {x}, {y}, {zoomlevel}/{zoom}/{z}, {quadkey}, and {subdomain}.
         /// </summary>
         protected string FormatUrl(TileId tileId)
         {
-            var url = _urlFormatString;
             var tilePosition = tileId.ToTilePosition();
 
-            if (url.Contains("{x}"))
-            {
-                url = url.Replace("{x}", tilePosition.X.ToString(CultureInfo.InvariantCulture));
-            }
+            var urlStringBuilder = new System.Text.StringBuilder(_urlFormatString.Length);
 
-            if (url.Contains("{y}"))
+            var startIndex = 0;
+            var lastEndIndex = 0;
+            while ((startIndex = _urlFormatString.IndexOf('{', startIndex)) >= 0)
             {
-                url = url.Replace("{y}", tilePosition.Y.ToString(CultureInfo.InvariantCulture));
-            }
+                urlStringBuilder.Append(_urlFormatString, lastEndIndex, startIndex - lastEndIndex);
 
-            if (url.Contains("{zoomLevel}"))
-            {
-                url = url.Replace("{zoomLevel}", tilePosition.LevelOfDetail.Value.ToString(CultureInfo.InvariantCulture));
-            }
+                var placeholderStartIndex = startIndex + 1;
+                var endIndex = _urlFormatString.IndexOf('}', placeholderStartIndex);
+                var placeholderCount = endIndex - startIndex - 1;
 
-            if (url.Contains("{z}"))
-            {
-                url = url.Replace("{z}", tilePosition.LevelOfDetail.Value.ToString(CultureInfo.InvariantCulture));
-            }
-
-            if (url.Contains("{quadKey}"))
-            {
-                url = url.Replace("{quadKey}", tileId.ToKey());
-            }
-
-            if (url.Contains("{subdomain}"))
-            {
-                if (_subdomains != null && _subdomains.Count > 0)
+                if (endIndex == -1)
                 {
-                    var subdomain = _subdomains[_subdomainCounter % _subdomains.Count];
-                    _subdomainCounter++;
-
-                    url = url.Replace("{subdomain}", subdomain);
+                    // Couldn't find a closing '}'. Keep it in the resulting URL, but it's probably malformed already.
+                    lastEndIndex = startIndex;
+                    break;
                 }
-                else
+
+                if (placeholderCount > 0)
                 {
-                    if (!_hasWarnedMissingSubdomain)
+                    if (string.Compare(_urlFormatString, placeholderStartIndex, "x", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0)
                     {
-                        _hasWarnedMissingSubdomain = true;
-                        Debug.LogWarning("URL uses a {subdomain} format specified but no subdomains were provided: " + _urlFormatString);
+                        urlStringBuilder.Append(tilePosition.X.ToString(CultureInfo.InvariantCulture));
                     }
-                    return null;
+                    else if (string.Compare(_urlFormatString, placeholderStartIndex, "y", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        urlStringBuilder.Append(tilePosition.Y.ToString(CultureInfo.InvariantCulture));
+                    }
+                    else if (string.Compare(_urlFormatString, placeholderStartIndex, "z", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0 ||
+                        string.Compare(_urlFormatString, placeholderStartIndex, "zoom", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0 ||
+                        string.Compare(_urlFormatString, placeholderStartIndex, "zoomlevel", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        urlStringBuilder.Append(tilePosition.LevelOfDetail.Value.ToString(CultureInfo.InvariantCulture));
+                    }
+                    else if (string.Compare(_urlFormatString, placeholderStartIndex, "quadkey", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        urlStringBuilder.Append(tileId.ToKey());
+                    }
+                    else if (string.Compare(_urlFormatString, placeholderStartIndex, "subdomain", 0, placeholderCount, StringComparison.OrdinalIgnoreCase) == 0)
+                    {
+                        if (_subdomains != null && _subdomains.Count > 0)
+                        {
+                            var subdomain = _subdomains[_subdomainCounter % _subdomains.Count];
+                            _subdomainCounter++;
+
+                            urlStringBuilder.Append(subdomain);
+                        }
+                        else
+                        {
+                            if (!_hasWarnedMissingSubdomain)
+                            {
+                                _hasWarnedMissingSubdomain = true;
+                                Debug.LogWarning("URL uses a {subdomain} format specified but no subdomains were provided: " + _urlFormatString);
+                            }
+                            return null;
+                        }
+                    }
                 }
+
+                startIndex = endIndex + 1;
+                lastEndIndex = startIndex;
             }
 
-            return url;
+            urlStringBuilder.Append(_urlFormatString, lastEndIndex, _urlFormatString.Length - lastEndIndex);
+
+            var formattedUrl = urlStringBuilder.ToString();
+            return formattedUrl;
         }
     }
 }

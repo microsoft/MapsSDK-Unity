@@ -173,27 +173,25 @@ namespace Microsoft.Maps.Unity
             const double EquatorialCircumferenceInWgs84Meters = 40075016.685578488;
             var mapZoomLevel = mapRenderer.ZoomLevel;
             var mapTotalWidthInLocalSpace = Math.Pow(2, Math.Max(mapZoomLevel - 1.0, 0.0));
-            var mapElevationScale = mapRenderer.ElevationScale;
             var mapRealisticScale = mapTotalWidthInLocalSpace / EquatorialCircumferenceInWgs84Meters;
+            var mapElevationScale = mapRenderer.ElevationScale;
 
             foreach (var mapPin in mapPins)
             {
                 if (mapPin.enabled) // Skip MapPins that aren't enabled.
                 {
                     // Scale the pin depending on the scale curve and current ZoomLevel.
-                    var mercatorScaleAtCoordinate = MercatorScale.AtMercatorLatitude(mapPin.MercatorCoordinate.Y);
+                    var scale = mapPin.ScaleCurve.Evaluate(mapZoomLevel);
+
+                    var additionalYScale = 1.0f;
+                    if (mapPin.UseRealWorldScale)
                     {
-                        var scale = mapPin.ScaleCurve.Evaluate(mapZoomLevel);
-
-                        var additionalYScale = 1.0f;
-                        if (mapPin.UseRealWorldScale)
-                        {
-                            scale *= (float)(mercatorScaleAtCoordinate * mapRealisticScale);
-                            additionalYScale = mapElevationScale;
-                        }
-
-                        mapPin.transform.localScale = new Vector3(scale, scale * additionalYScale, scale);
+                        var mercatorScaleAtCoordinate = MercatorScale.AtMercatorLatitude(mapPin.MercatorCoordinate.Y);
+                        scale *= (float)(mercatorScaleAtCoordinate * mapRealisticScale);
+                        additionalYScale = mapElevationScale;
                     }
+
+                    mapPin.transform.localScale = new Vector3(scale, scale * additionalYScale, scale);
                 }
             }
         }
