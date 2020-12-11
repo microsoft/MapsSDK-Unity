@@ -6,6 +6,20 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.10.1 - 2020-12-11
+
+### Maps SDK
+#### Added
+ - `MapRenderer.ApplyClippingVolumePropertiesToMaterial` to allow synchronizing the values used to clip objects to the map bounds in a custom shader.
+ 
+### Supporting Scripts
+#### Added
+ - Overloads for `HttpTextureTileLayer`'s URL format placeholders. "Zoom level" can be specified using `{z}`, `{zoom}`, or `{zoomLevel}`.
+#### Changed
+ - `HttpTextureTileLayer`'s URL format placeholders are now case-insensitive.
+#### Fixed
+ - GC usage reduced in `HttpTextureTileLayer` requests.
+ 
 ## 0.10.0 - 2020-10-14
 
 ### Maps SDK
