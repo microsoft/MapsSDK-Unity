@@ -50,7 +50,10 @@ public class MixedRealityMapInteractionHandler : MapInteractionHandler, IMixedRe
     private void Update()
     {
         // First case handles when the map is selected and being dragged and/or zoomed.
-        if (_isInteracting && _pointer != null && CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(_pointer, out var focusDetails))
+        if (_isInteracting &&
+            _pointer != null &&
+            CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(_pointer, out var focusDetails) &&
+            focusDetails.Object == gameObject)
         {
             // The current point the ray is targeting has been calculated in OnPointerDragged. Smooth it here.
             var panSmoothness = Mathf.Lerp(0.0f, 0.5f, _panSmoothness);
@@ -149,7 +152,9 @@ public class MixedRealityMapInteractionHandler : MapInteractionHandler, IMixedRe
 
     public void OnPointerClicked(MixedRealityPointerEventData eventData)
     {
-        if (_pointer == eventData.Pointer)
+        if (_pointer == eventData.Pointer &&
+            CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(_pointer, out var focusDetails) &&
+            focusDetails.Object == gameObject)
         {
             if (!_isInteracting)
             {
@@ -182,7 +187,8 @@ public class MixedRealityMapInteractionHandler : MapInteractionHandler, IMixedRe
     public void OnPointerDown(MixedRealityPointerEventData eventData)
     {
         if (_isFocused &&
-            CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(eventData.Pointer, out var focusDetails))
+            CoreServices.InputSystem.FocusProvider.TryGetFocusDetails(eventData.Pointer, out var focusDetails) &&
+            focusDetails.Object == gameObject)
         {
             _pointer = eventData.Pointer;
             _lastPointerDownTime = Time.time;
@@ -247,7 +253,7 @@ public class MixedRealityMapInteractionHandler : MapInteractionHandler, IMixedRe
 
     public void OnFocusEnter(FocusEventData eventData)
     {
-        _isFocused = true;
+        _isFocused = eventData.NewFocusedObject == gameObject;
     }
 
     public void OnFocusExit(FocusEventData eventData)

@@ -19,5 +19,5 @@ MonoBehaviour:
         Microsoft.MixedReality.Toolkit.Providers.WindowsMixedReality
     componentName: Windows Mixed Reality Spatial Mesh Observer
     priority: 0
-    runtimePlatform: 296
-    observerProfile: {fileID: 11400000, guid: 104b96e7c2694384b9bd784cf4fc591b, type: 2}
+    runtimePlatform: 8
+    observerProfile: {fileID: 11400000, guid: 8be0bcd2117dd214da41ed98f0def2e3, type: 2}

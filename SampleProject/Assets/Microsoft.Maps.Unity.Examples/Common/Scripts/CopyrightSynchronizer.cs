@@ -34,13 +34,13 @@ public class CopyrightSynchronizer : MonoBehaviour
             var imageryType = _defaultTextureTileLayer.ImageryType;
             if (imageryType == MapImageryType.Aerial)
             {
-                _textMeshPro.faceColor = Color.white;
-                _textMeshPro.outlineColor = Color.black;
+                _textMeshPro.fontSharedMaterial.SetColor(ShaderUtilities.ID_FaceColor, Color.white);
+                _textMeshPro.fontSharedMaterial.SetColor(ShaderUtilities.ID_OutlineColor, Color.black);
             }
             else
             {
-                _textMeshPro.faceColor = Color.black;
-                _textMeshPro.outlineColor = Color.white;
+                _textMeshPro.fontSharedMaterial.SetColor(ShaderUtilities.ID_FaceColor, Color.black);
+                _textMeshPro.fontSharedMaterial.SetColor(ShaderUtilities.ID_OutlineColor, Color.white);
             }
         }
     }

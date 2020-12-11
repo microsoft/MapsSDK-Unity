@@ -16,7 +16,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class MapRaycastProvider : BaseCoreSystem, IMixedRealityRaycastProvider
 {
-    private List<MapRenderer> _mapRenderers = new List<MapRenderer>();
+    private readonly List<MapRenderer> _mapRenderers = new List<MapRenderer>();
 
     public MapRaycastProvider(MixedRealityInputSystemProfile profile) : base(profile)
     {
