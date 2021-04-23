@@ -6,6 +6,25 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.10.2 - 2020-04-22
+
+### Maps SDK
+#### Added
+ - Quality option to disable pre-caching of data around the current map.
+ - Quality slider for elevation level of detail.
+ - Classes for working with the WGS84: [`WGS84Datum`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Geospatial#wgs84datum), [`Vector3D`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Geospatial.VectorMath#vector3d)
+#### Fixed
+ - IL2CPP build errors in 2020.3. [#108](https://github.com/microsoft/MapsSDK-Unity/issues/108)
+### Supporting Scripts
+#### Added
+ - Linear map animation with smoothing at the start and end.
+ - Option to always show a `MapPin` even when it's outside the map's bounds.
+ - In scene view, Ctrl+Right-click on `MapRenderer` now provides a context menu to add a `MapPin` at the selected location.
+#### Changed
+ - Removed unused parameter in FilterNormals shader function.
+#### Fixed
+ - Editor UI now handles type load exception. [#113](https://github.com/microsoft/MapsSDK-Unity/issues/113)
+
 ## 0.10.1 - 2020-12-11
 
 ### Maps SDK
