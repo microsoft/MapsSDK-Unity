@@ -6,7 +6,7 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
-## 0.10.2 - 2020-04-22
+## 0.10.2 - 2021-04-22
 
 ### Maps SDK
 #### Added
