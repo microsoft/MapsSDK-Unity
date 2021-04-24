@@ -7,6 +7,7 @@ namespace Microsoft.Maps.Unity
     using System;
     using System.Collections.Generic;
     using UnityEngine;
+    using UnityEngine.Serialization;
 
     /// <summary>
     /// A MapPin can be used to pin a <see cref="GameObject"/> to a <see cref="MapRendererBase"/> at a specified
@@ -45,7 +46,7 @@ namespace Microsoft.Maps.Unity
         /// <see cref="Action"/> that is invoked when the <see cref="Location"/> value has changed.
         /// The <see cref="LatLon"/> specified in the arguments is the previous location.
         /// </summary>
-        public Action<MapPin, LatLon> LocationChanged;
+        public Action<MapPin, LatLon> LocationChanged { get; set; }
 
         /// <inheritdoc/>
         public MercatorCoordinate MercatorCoordinate { get; private set; }
@@ -80,18 +81,70 @@ namespace Microsoft.Maps.Unity
         /// If true, synchronizes this <see cref="GameObject"/>'s and it's childrens' layers to the same value as the
         /// associated <see cref="MapRendererBase"/>'s layer.
         /// </summary>
-        public bool IsLayerSynchronized = true;
+        [SerializeField]
+        [FormerlySerializedAs("IsLayerSynchronized")]
+        private bool _isLayerSynchronized = true;
+
+        /// <summary>
+        /// If true, synchronizes this <see cref="GameObject"/>'s and it's childrens' layers to the same value as the
+        /// associated <see cref="MapRendererBase"/>'s layer.
+        /// </summary>
+        public bool IsLayerSynchronized
+        {
+            get => _isLayerSynchronized;
+            set => _isLayerSynchronized = value;
+        }
 
         /// <summary>
         /// If true, the <see cref="ScaleCurve"/> is relative to the real-world scale at a given zoom level. As the map zooms out,
         /// size falls off exponentially. If false, the ScaleCurve represents the direct scale of the MapPin at a given zoom level.
         /// </summary>
-        public bool UseRealWorldScale;
+        [SerializeField]
+        [FormerlySerializedAs("UseRealWorldScale")]
+        private bool _useRealWorldScale;
+
+        /// <summary>
+        /// If true, the <see cref="ScaleCurve"/> is relative to the real-world scale at a given zoom level. As the map zooms out,
+        /// size falls off exponentially. If false, the ScaleCurve represents the direct scale of the MapPin at a given zoom level.
+        /// </summary>
+        public bool UseRealWorldScale
+        {
+            get => _useRealWorldScale;
+            set => _useRealWorldScale = value;
+        }
 
         /// <summary>
         /// The scale of the pin relative to the map's zoom level.
         /// </summary>
-        public AnimationCurve ScaleCurve = AnimationCurve.Linear(MapConstants.MinimumZoomLevel, 1, MapConstants.MaximumZoomLevel, 1);
+        [SerializeField]
+        [FormerlySerializedAs("ScaleCurve")]
+        private AnimationCurve _scaleCurve = AnimationCurve.Linear(MapConstants.MinimumZoomLevel, 1, MapConstants.MaximumZoomLevel, 1);
+
+        /// <summary>
+        /// The scale of the pin relative to the map's zoom level.
+        /// </summary>
+        public AnimationCurve ScaleCurve
+        {
+            get => _scaleCurve;
+            set => _scaleCurve = value;
+        }
+
+        /// <summary>
+        /// If true, when the <see cref="MapPin"/> is outside of the <see cref="MapRenderer"/>'s bounds, it will be hidden.
+        /// Otherwise, it will always be shown. Default is to hide when outside of map's bounds.
+        /// </summary>
+        [SerializeField]
+        private bool _showOutsideMapBounds = false;
+
+        /// <summary>
+        /// If true, when the <see cref="MapPin"/> is outside of the <see cref="MapRenderer"/>'s bounds, it will be shown.
+        /// Otherwise, it will be hidden. Default is to hide when outside of map's bounds.
+        /// </summary>
+        public bool ShowOutsideMapBounds
+        {
+            get => _showOutsideMapBounds;
+            set => _showOutsideMapBounds = value;
+        }
 
         /// <summary>
         /// Reset the component to default values.

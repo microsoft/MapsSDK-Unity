@@ -21,7 +21,7 @@ namespace Microsoft.Maps.Unity
         /// <see cref="Type"/> that has the <see cref="CustomTileLayerDrawer"/> 
         /// attribute.
         /// </summary>
-        private Lazy<Dictionary<Type, PropertyDrawer>> _propertyDrawerCache =
+        private readonly Lazy<Dictionary<Type, PropertyDrawer>> _propertyDrawerCache =
             new Lazy<Dictionary<Type, PropertyDrawer>>(
                 () =>
                 {
@@ -29,15 +29,22 @@ namespace Microsoft.Maps.Unity
 
                     foreach (Assembly assembly in AppDomain.CurrentDomain.GetAssemblies())
                     {
-                        foreach (Type type in assembly.GetTypes())
+                        try
                         {
-                            foreach (var attribute in type.GetCustomAttributes<CustomTileLayerDrawer>())
+                            foreach (Type type in assembly.GetTypes())
                             {
-                                if (typeof(PropertyDrawer).IsAssignableFrom(type))
+                                foreach (var attribute in type.GetCustomAttributes<CustomTileLayerDrawer>())
                                 {
-                                    result[attribute.TargetType] = (PropertyDrawer)Activator.CreateInstance(type);
+                                    if (typeof(PropertyDrawer).IsAssignableFrom(type))
+                                    {
+                                        result[attribute.TargetType] = (PropertyDrawer)Activator.CreateInstance(type);
+                                    }
                                 }
                             }
+                        }
+                        catch (ReflectionTypeLoadException e)
+                        {
+                            Debug.LogWarning($"{nameof(TileLayerDrawer)}: Unable to load types from {assembly.FullName}\r\n{e}");
                         }
                     }
 

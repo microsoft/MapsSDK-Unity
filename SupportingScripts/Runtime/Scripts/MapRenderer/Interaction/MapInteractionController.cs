@@ -247,9 +247,21 @@ namespace Microsoft.Maps.Unity
                 return;
             }
 
+            // Handle case where we've zoomed in to the max level already. If so, early out.
             var newZoomLevel = _mapRenderer.ZoomLevel + zoomLevelOffset;
             newZoomLevel = Mathf.Max(_mapRenderer.MinimumZoomLevel, Mathf.Min(_mapRenderer.MaximumZoomLevel, newZoomLevel));
-            _mapRenderer.SetMapScene(new MapSceneOfLocationAndZoomLevel(targetLatLonAlt.LatLon, newZoomLevel), MapSceneAnimationKind.Linear, 150.0f);
+            if (newZoomLevel == _mapRenderer.ZoomLevel)
+            {
+                return;
+            }
+
+            // Find center point of zoomed view and zoom to that.
+            var targetOffsetInLocalSpace = _mapRenderer.TransformLatLonAltToLocalPoint(targetLatLonAlt);
+            var zoomScale = 1.0 - 1.0 / Math.Pow(2, newZoomLevel - _mapRenderer.ZoomLevel);
+            var newCenterInLocalSpace = Vector3.Lerp(Vector3.zero, targetOffsetInLocalSpace, (float)zoomScale);
+            var newCenter = _mapRenderer.TransformLocalPointToMercator(newCenterInLocalSpace).ToLatLon();
+
+            _mapRenderer.SetMapScene(new MapSceneOfLocationAndZoomLevel(newCenter, newZoomLevel), MapSceneAnimationKind.Linear, 150.0f);
 
             OnDoubleTap?.Invoke(targetLatLonAlt);
         }
@@ -280,7 +292,7 @@ namespace Microsoft.Maps.Unity
                 !(_mapRenderer.ZoomLevel <= _mapRenderer.MinimumZoomLevel && zoomLevelDelta < 0))
             {
                 // If we're not panning, detemrine where the ray is intersecting the map. If it's not intersecting the map,
-                // no zoom will occurr.
+                // no zoom will occur.
                 if (!targetCoordinateAndAltitude.HasValue)
                 {
                     if (_mapRenderer.Raycast(ray, out var hitInfo))

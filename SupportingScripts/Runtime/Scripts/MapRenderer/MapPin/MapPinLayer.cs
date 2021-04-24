@@ -8,9 +8,12 @@ namespace Microsoft.Maps.Unity
     using UnityEngine.Profiling;
 
     /// <summary>
-    /// Maintains a collection of <see cref="MapPin"/>s. Supports clustering. This layer is queried by the associated MapRenderer to get the
-    /// MapPins or clusters in the map's current view. All associated MapPins are parented to a child GameObject with
-    /// the same name as this MapPinLayer.
+    /// Maintains a collection of <see cref="MapPin"/>s to efficient display large number of objects on the map. Supports clustering.
+    /// <br/><br/>
+    /// All instantiated <see cref="MapPin"/>s associated with this layer will be parented to a child <see cref="GameObject"/> with the
+    /// same name as this <see cref="MapPinLayer"/>.
+    /// <br/><br/>
+    /// <see cref="MapPin.ShowOutsideMapBounds"/> is not used by the layer. Any out of view pin will be hidden.
     /// </summary>
     [HelpURL("https://github.com/Microsoft/MapsSDK-Unity/wiki/Attaching-GameObjects-to-the-map")]
     public class MapPinLayer : MapLayer
@@ -116,12 +119,10 @@ namespace Microsoft.Maps.Unity
         private readonly HashSet<ClusterMapPin> _clusterMapPinsInViewThisFrame = new HashSet<ClusterMapPin>();
         private readonly HashSet<ClusterMapPin> _activeClusterMapPins = new HashSet<ClusterMapPin>();
 
-
         private void OnValidate()
         {
             _clusterThreshold = Math.Max(_clusterThreshold, 2);
         }
-
 
         private void Awake()
         {
@@ -130,7 +131,6 @@ namespace Microsoft.Maps.Unity
                 LayerName = "MapPinLayer";
             }
         }
-
 
         private void OnEnable()
         {

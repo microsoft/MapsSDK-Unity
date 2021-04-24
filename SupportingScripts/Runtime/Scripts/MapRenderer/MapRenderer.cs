@@ -58,7 +58,7 @@ namespace Microsoft.Maps.Unity
         private readonly List<MapPin> _mapPinChildrenToRemove = new List<MapPin>();
 
         /// <summary>
-        /// Called after the <see cref="MapRenderer"/> has exected Update().
+        /// Called after the <see cref="MapRenderer"/> has executed Update().
         /// </summary>
         /// <remarks>
         /// Use this callback when performing operations to a <see cref="MapLayer"/> that depend on various map properties.
@@ -416,7 +416,7 @@ namespace Microsoft.Maps.Unity
                         var mercatorBoundingBox = MercatorBoundingBox;
                         foreach (var mapPin in _mapPinChildrenSet)
                         {
-                            if (mercatorBoundingBox.Intersects(mapPin.Location))
+                            if (mapPin.ShowOutsideMapBounds || mercatorBoundingBox.Intersects(mapPin.Location))
                             {
                                 _mapPinsInView.Add(mapPin);
                             }
@@ -427,7 +427,7 @@ namespace Microsoft.Maps.Unity
                         var mercatorBoundingCircle = MercatorBoundingCircle;
                         foreach (var mapPin in _mapPinChildrenSet)
                         {
-                            if (mercatorBoundingCircle.Intersects(mapPin.MercatorCoordinate))
+                            if (mapPin.ShowOutsideMapBounds || mercatorBoundingCircle.Intersects(mapPin.MercatorCoordinate))
                             {
                                 _mapPinsInView.Add(mapPin);
                             }

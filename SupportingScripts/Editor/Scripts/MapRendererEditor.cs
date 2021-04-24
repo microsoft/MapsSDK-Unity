@@ -40,6 +40,8 @@ namespace Microsoft.Maps.Unity
 
         private static bool _showQualityOptions = true;
         private SerializedProperty _detailOffsetProperty;
+        private SerializedProperty _numElevationTileFallbackLodsProperty;
+        private SerializedProperty _requestTilesAroundViewProperty;
 
         private static bool _showTileLayerOptions = true;
         private SerializedProperty _textureTileLayersProperty;
@@ -53,6 +55,7 @@ namespace Microsoft.Maps.Unity
 
         private GUIStyle _foldoutTitleStyle = null;
         private GUIStyle _boxStyle = null;
+        private GUIStyle _subtextStyle = null;
 
         private readonly GUIContent[] _layerOptions =
             new GUIContent[]
@@ -91,6 +94,15 @@ namespace Microsoft.Maps.Unity
                 GUILayout.MaxWidth(52.0f)
             };
 
+        private GUIContent _castShadowsLabel = new GUIContent("Cast Shadows");
+        private GUIContent _receiveShadowsLabel = new GUIContent("Receive Shadows");
+        private GUIContent _enableMrtkIntegrationLabel = new GUIContent("Enable MRTK Integration");
+        private GUIContent _materialLabel = new GUIContent("Material");
+        private GUIContent _renderClippingVolumeWallLabel = new GUIContent("Render Clipping Volume Wall");
+        private GUIContent _colorLabel = new GUIContent("Color");
+        private GUIContent _edgeFageLabel = new GUIContent("Edge Fade");
+        private GUIContent _detailOffsetLabel = new GUIContent("Detail Offset");
+
         private readonly static int ControlIdHint = "MapRendererEditor".GetHashCode();
 
         private bool _isDragging = false;
@@ -119,6 +131,8 @@ namespace Microsoft.Maps.Unity
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
             _detailOffsetProperty = serializedObject.FindProperty("_detailOffset");
+            _numElevationTileFallbackLodsProperty = serializedObject.FindProperty("_numElevationTileFallbackLods");
+            _requestTilesAroundViewProperty = serializedObject.FindProperty("_requestTilesAroundView");
             _mapColliderTypeProperty = serializedObject.FindProperty("_mapColliderType");
             _textureTileLayersProperty = serializedObject.FindProperty("_textureTileLayers");
             _elevationTileLayersProperty = serializedObject.FindProperty("_elevationTileLayers");
@@ -179,9 +193,34 @@ namespace Microsoft.Maps.Unity
                     var ray = HandleUtility.GUIPointToWorldRay(Event.current.mousePosition);
                     if (mapRenderer.Raycast(ray, out var hitInfo))
                     {
-                        _startingHitPointInWorldSpace = hitInfo.Point;
-                        _startingCenterInMercator = mapRenderer.Center.ToMercatorCoordinate();
-                        _isDragging = true;
+                        if (Event.current.button == 1) // right-click
+                        {
+                            var menu = new GenericMenu();
+                            menu.AddItem(
+                                new GUIContent("Add MapPin"),
+                                false,
+                                (object o) =>
+                                {
+                                    var location = hitInfo.Location;
+                                    var gameObject = new GameObject();
+                                    gameObject.name = "MapPin";
+                                    gameObject.transform.parent = mapRenderer.transform;
+                                    var mapPin = gameObject.AddComponent<MapPin>();
+                                    mapPin.Location = location.LatLon;
+                                    mapPin.Altitude = location.AltitudeInMeters;
+                                    mapPin.AltitudeReference = AltitudeReference.Ellipsoid;
+                                    return;
+                                },
+                                0);
+                            menu.ShowAsContext();
+                            _isDragging = false;
+                        }
+                        else
+                        {
+                            _startingHitPointInWorldSpace = hitInfo.Point;
+                            _startingCenterInMercator = mapRenderer.Center.ToMercatorCoordinate();
+                            _isDragging = true;
+                        }
                         currentEvent.Use();
                     }
                 }
@@ -309,9 +348,9 @@ namespace Microsoft.Maps.Unity
                 GUILayout.EndHorizontal();
 
                 EditorGUILayout.PropertyField(_elevationScaleProperty);
-                EditorGUILayout.PropertyField(_castShadowsProperty, new GUIContent("Cast Shadows"));
-                EditorGUILayout.PropertyField(_receiveShadowsProperty, new GUIContent("Receive Shadows"));
-                EditorGUILayout.PropertyField(_enableMrtkMaterialIntegrationProperty, new GUIContent("Enable MRTK Integration"));
+                EditorGUILayout.PropertyField(_castShadowsProperty, _castShadowsLabel);
+                EditorGUILayout.PropertyField(_receiveShadowsProperty, _receiveShadowsLabel);
+                EditorGUILayout.PropertyField(_enableMrtkMaterialIntegrationProperty, _enableMrtkIntegrationLabel);
 
                 {
                     var useCustomTerrainMaterial = EditorGUILayout.Toggle("Use Custom Terrain Material", _useCustomTerrainMaterial);
@@ -325,21 +364,21 @@ namespace Microsoft.Maps.Unity
                     if (useCustomTerrainMaterial)
                     {
                         EditorGUI.indentLevel++;
-                        EditorGUILayout.PropertyField(_terrainMaterialProperty, new GUIContent("Material"));
+                        EditorGUILayout.PropertyField(_terrainMaterialProperty, _materialLabel);
                         EditorGUI.indentLevel--;
                     }
 
                     _useCustomTerrainMaterial = useCustomTerrainMaterial;
                 }
 
-                EditorGUILayout.PropertyField(_isClippingVolumeWallEnabledProperty, new GUIContent("Render Clipping Volume Wall"));
+                EditorGUILayout.PropertyField(_isClippingVolumeWallEnabledProperty, _renderClippingVolumeWallLabel);
                 if (_isClippingVolumeWallEnabledProperty.boolValue)
                 {
                     EditorGUI.indentLevel++;
 
-                    EditorGUILayout.PropertyField(_mapEdgeColorProperty, new GUIContent("Color"));
+                    EditorGUILayout.PropertyField(_mapEdgeColorProperty, _colorLabel);
                     _mapEdgeColorFadeDistanceProperty.floatValue =
-                        EditorGUILayout.Slider(new GUIContent("Edge Fade"), _mapEdgeColorFadeDistanceProperty.floatValue, 0, 1);
+                        EditorGUILayout.Slider(_edgeFageLabel, _mapEdgeColorFadeDistanceProperty.floatValue, 0, 1);
 
                     {
                         var useCustomClippingVolumeMaterial =
@@ -354,7 +393,7 @@ namespace Microsoft.Maps.Unity
                         if (useCustomClippingVolumeMaterial)
                         {
                             EditorGUI.indentLevel++;
-                            EditorGUILayout.PropertyField(_clippingVolumeMaterialProperty, new GUIContent("Material"));
+                            EditorGUILayout.PropertyField(_clippingVolumeMaterialProperty, _materialLabel);
                             EditorGUI.indentLevel--;
                         }
 
@@ -383,7 +422,7 @@ namespace Microsoft.Maps.Unity
                 var position = EditorGUILayout.GetControlRect(false, 2 * EditorGUIUtility.singleLineHeight);
                 position.height = EditorGUIUtility.singleLineHeight;
 
-                position = EditorGUI.PrefixLabel(position, new GUIContent("Detail Offset"));
+                position = EditorGUI.PrefixLabel(position, _detailOffsetLabel);
                 EditorGUI.indentLevel--;
 
                 _detailOffsetProperty.floatValue = EditorGUI.Slider(position, _detailOffsetProperty.floatValue, -1f, 1f);
@@ -397,24 +436,21 @@ namespace Microsoft.Maps.Unity
                     var color = GUI.color;
                     GUI.color = color * new Color(1f, 1f, 1f, 0.5f);
 
-                    GUIStyle style =
-                        new GUIStyle(GUI.skin.label)
-                        {
-                            alignment = TextAnchor.UpperLeft
-                        };
+                    _subtextStyle.alignment = TextAnchor.UpperLeft;
+                    EditorGUI.LabelField(position, "Low", _subtextStyle);
 
-                    EditorGUI.LabelField(position, "Low", style);
+                    _subtextStyle.alignment = TextAnchor.UpperCenter;
+                    EditorGUI.LabelField(position, "Default", _subtextStyle);
 
-                    style.alignment = TextAnchor.UpperCenter;
-                    EditorGUI.LabelField(position, "Default", style);
-
-                    style.alignment = TextAnchor.UpperRight;
-                    EditorGUI.LabelField(position, "High", style);
+                    _subtextStyle.alignment = TextAnchor.UpperRight;
+                    EditorGUI.LabelField(position, "High", _subtextStyle);
 
                     GUI.color = color;
                 }
 
                 EditorGUI.indentLevel++;
+                EditorGUILayout.PropertyField(_numElevationTileFallbackLodsProperty, new GUIContent("Elevation Tile Fallack LODs"));
+                EditorGUILayout.PropertyField(_requestTilesAroundViewProperty);
             }
             EditorGUILayout.EndVertical();
 
@@ -451,6 +487,15 @@ namespace Microsoft.Maps.Unity
             if (_boxStyle == null)
             {
                 _boxStyle = new GUIStyle(GUI.skin.box);
+            }
+
+            if (_subtextStyle == null)
+            {
+                _subtextStyle =
+                    new GUIStyle(GUI.skin.label)
+                    {
+                        alignment = TextAnchor.UpperLeft
+                    };
             }
         }
 

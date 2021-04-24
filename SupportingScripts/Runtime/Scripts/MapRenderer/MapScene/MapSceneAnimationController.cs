@@ -4,7 +4,6 @@
 namespace Microsoft.Maps.Unity
 {
     using Microsoft.Geospatial;
-    using Microsoft.Geospatial.VectorMath;
     using System;
     using UnityEngine;
 
@@ -23,7 +22,7 @@ namespace Microsoft.Maps.Unity
         private double _startHeightInMercator;
         private double _endHeightInMercator;
         private bool _isLinearAnimation;
-
+        private bool _isSmoothed;
         private float _runningTime;
 
         // The following are bow-animation specific fields as described in "Smooth and Efficient Zooming and Panning".
@@ -32,9 +31,7 @@ namespace Microsoft.Maps.Unity
         private double _u0;
         private double _u1;
         private double _w0;
-        private double _w1;
         private double _r0;
-        private double _r1;
         private double _S;
 
         /// <inheritdoc/>
@@ -62,6 +59,8 @@ namespace Microsoft.Maps.Unity
             _startMercatorCenter = mapRenderer.Center.ToMercatorCoordinate();
             _startZoomLevel = mapRenderer.ZoomLevel;
             mapScene.GetLocationAndZoomLevel(out var endLocation, out _endZoomLevel);
+            _endZoomLevel = _endZoomLevel < mapRenderer.MinimumZoomLevel ? mapRenderer.MinimumZoomLevel : _endZoomLevel;
+            _endZoomLevel = _endZoomLevel > mapRenderer.MaximumZoomLevel ? mapRenderer.MaximumZoomLevel : _endZoomLevel;
             _endMercatorCenter = endLocation.ToMercatorCoordinate();
             _startHeightInMercator = ZoomLevelToMercatorAltitude(_startZoomLevel);
             _endHeightInMercator = ZoomLevelToMercatorAltitude(_endZoomLevel);
@@ -70,7 +69,9 @@ namespace Microsoft.Maps.Unity
             // Simple rule for now: If the destination is already visible, use linear; otherwise, bow.
             _isLinearAnimation =
                 mapSceneAnimationKind == MapSceneAnimationKind.Linear ||
+                mapSceneAnimationKind == MapSceneAnimationKind.SmoothLinear ||
                 mapRenderer.Bounds.Intersects(endLocation);
+            _isSmoothed = mapSceneAnimationKind == MapSceneAnimationKind.SmoothLinear;
 
             // While linear animation doesn't follow the same code path as the bow animation, we can still use this function to compute
             // a reasonable duration for the linear animation.
@@ -80,9 +81,9 @@ namespace Microsoft.Maps.Unity
                 out _u0,
                 out _u1,
                 out _w0,
-                out _w1,
+                out _, // w1
                 out _r0,
-                out _r1,
+                out _, // r1
                 out _S,
                 out _animationTime);
 
@@ -100,6 +101,12 @@ namespace Microsoft.Maps.Unity
 
             if (_isLinearAnimation)
             {
+                if (_isSmoothed)
+                {
+                    // Ease t to slow down the start and stop of animations.
+                    t = (float)SmoothStep(0.0f, 1.0f, t);
+                }
+
                 LinearAnimation(t, out zoomLevel, out location);
             }
             else
@@ -128,7 +135,7 @@ namespace Microsoft.Maps.Unity
                     // Adjust t so that it depends on the zoom level. This keeps the position animating correctly at a logarthmic scale to
                     // match how zoom level is being calculated.
                     var adjustedT = (_startHeightInMercator - ZoomLevelToMercatorAltitude(zoomLevel)) / (_startHeightInMercator - _endHeightInMercator);
-                    var mercatorCoordinate = Interpolate(_startMercatorCenter, _endMercatorCenter, Math.Pow(adjustedT, 0.8));
+                    var mercatorCoordinate = Interpolate(_startMercatorCenter, _endMercatorCenter, adjustedT);
                     location = mercatorCoordinate.ToLatLon();
                 }
                 else

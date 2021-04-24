@@ -4,7 +4,6 @@
 namespace Microsoft.Maps.Unity
 {
     using Microsoft.Geospatial;
-    using Microsoft.Geospatial.VectorMath;
     using System;
     using UnityEditor;
     using UnityEngine;
@@ -19,6 +18,7 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _useRealworldScaleProperty;
         private SerializedProperty _scaleCurveProperty;
         private SerializedProperty _isLayerSynchronizedProperty;
+        private SerializedProperty _showOutsideMapBoundsProperty;
 
         private Vector3 _mouseDownMapPinPlanePositionInMapLocalSpace;
         private MercatorCoordinate _mouseDownMapPinPositionInMercatorSpace;
@@ -30,9 +30,10 @@ namespace Microsoft.Maps.Unity
             _locationProperty = serializedObject.FindProperty("_location");
             _altitude = serializedObject.FindProperty("_altitude");
             _altitudeReferenceProperty = serializedObject.FindProperty("_altitudeReference");
-            _useRealworldScaleProperty = serializedObject.FindProperty("UseRealWorldScale");
-            _scaleCurveProperty = serializedObject.FindProperty("ScaleCurve");
-            _isLayerSynchronizedProperty = serializedObject.FindProperty("IsLayerSynchronized");
+            _useRealworldScaleProperty = serializedObject.FindProperty("_useRealWorldScale");
+            _scaleCurveProperty = serializedObject.FindProperty("_scaleCurve");
+            _isLayerSynchronizedProperty = serializedObject.FindProperty("_isLayerSynchronized");
+            _showOutsideMapBoundsProperty = serializedObject.FindProperty("_showOutsideMapBounds");
         }
 
         public override void OnInspectorGUI()
@@ -45,6 +46,7 @@ namespace Microsoft.Maps.Unity
             EditorGUILayout.PropertyField(_useRealworldScaleProperty);
             EditorGUILayout.PropertyField(_scaleCurveProperty);
             EditorGUILayout.PropertyField(_isLayerSynchronizedProperty);
+            EditorGUILayout.PropertyField(_showOutsideMapBoundsProperty);
 
             // If childed to a MapRenderer, don't show the transform component since the MapRenderer is constantly overriding it.
             var mapPin = (MapPin)target;

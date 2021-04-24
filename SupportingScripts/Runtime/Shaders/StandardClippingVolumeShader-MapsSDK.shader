@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-Shader "MapsSDK/StandardClippingVolumeShader"
+Shader "Maps SDK/Standard Clipping Volume"
 {
     SubShader
     {
@@ -91,9 +91,9 @@ Shader "MapsSDK/StandardClippingVolumeShader"
                 // Clip the walls to the terrain.
                 float2 distanceToMapUV = i.cameraPosition.xy / _MapDimension + float2(0.5, 0.5);
                 float normalizedDistanceToMapSurface  = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
-                normalizedDistanceToMapSurface  *= _MapCurrentHeight;
+                normalizedDistanceToMapSurface *= _MapCurrentHeight;
                 float distanceToCurrentPoint = -i.cameraPosition.z;
-                if (distanceToCurrentPoint >= normalizedDistanceToMapSurface )
+                if (distanceToCurrentPoint - 0.001 >= normalizedDistanceToMapSurface )
                 {
                     discard;
                 }
@@ -173,7 +173,7 @@ Shader "MapsSDK/StandardClippingVolumeShader"
                 float normalizedDistanceToMapSurface  = tex2D(_TerrainDistanceTex, distanceToMapUV).r;
                 normalizedDistanceToMapSurface  *= _MapCurrentHeight;
                 float distanceToCurrentPoint = -i.cameraPosition.z;
-                if (distanceToCurrentPoint >= normalizedDistanceToMapSurface )
+                if (distanceToCurrentPoint - 0.001 >= normalizedDistanceToMapSurface )
                 {
                     discard;
                 }

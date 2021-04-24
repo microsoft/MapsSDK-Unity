@@ -4,7 +4,7 @@
 ///
 /// Basic 3D Text shader with proper z-sorting
 ///
-Shader "MapsSDK/Occludable3DTextShader"
+Shader "Maps SDK/Occludable 3D Text"
 {
     Properties
     {

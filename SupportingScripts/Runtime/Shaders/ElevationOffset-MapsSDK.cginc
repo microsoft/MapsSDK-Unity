@@ -9,6 +9,7 @@
 sampler2D _ElevationTex;
 float4 _ElevationTexScaleAndOffset;
 float4 _ElevationTileData; // x = min elevation for tile scaled; y = elevation range for tile scaled; z = elevation scale; w = z normal component.
+float _ElevationTileMetersPerPixel;
 
 // Unpacks the elevation stored in _ElevationTex to raw meters. Elevation scaling is also applied to the result.
 float UnpackElevation(float2 scaledAndOffsetUv)
@@ -34,7 +35,7 @@ float2 CalculateElevationOffset(float2 uv, float scale, float2 offset, float ele
             elevation / _ElevationTileData.z /* The actual elevation in meters. */);
 }
 
-float3 FilterNormal(float2 uv, float scale, float2 offset, float elevationScale, float texelSize, float texelScale)
+float3 FilterNormal(float2 uv, float scale, float2 offset, float texelSize, float texelScale)
 {
     texelSize *= texelScale;
 
