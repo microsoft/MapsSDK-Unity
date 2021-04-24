@@ -5,7 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Microsoft.Maps.Unity.Examples/UnityARMapExample/UnityARMapExample.unity
     guid: d94c9c1859f383d4eb2503dde6c282e7
   - enabled: 0
@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Microsoft.Maps.Unity.Examples/WeatherCubeExample/WeatherCubeExample.unity
     guid: d4d8c08f5ac87df45ac98bdf7482b624
-  - enabled: 1
+  - enabled: 0
     path: Assets/Microsoft.Maps.Unity.Examples/MapServicesExample/MapServiceExample.unity
     guid: d38d849ca281b6c419f19339d512b765
   - enabled: 0

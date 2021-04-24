@@ -177,6 +177,8 @@ MonoBehaviour:
   _mapEdgeColor: {r: 0.31468502, g: 0.4076432, b: 0.56700003, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
+  _numElevationTileFallbackLods: 2
+  _requestTilesAroundView: 1
   _center:
     _latitude: 47.6205
     _longitude: -122.3493
@@ -799,6 +801,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1100446394}
   m_maskType: 0
+  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &1100446392
@@ -974,6 +977,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1440352932}
   m_maskType: 0
+  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &1440352930
@@ -1193,6 +1197,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2058520369}
   m_maskType: 0
+  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &2058520367

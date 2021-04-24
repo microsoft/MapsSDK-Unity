@@ -23,6 +23,7 @@ obj/
 *.unityproj
 *.booproj
 .vscode
+.vsconfig
 
 # ============ #
 # OS generated #
@@ -43,3 +44,4 @@ Packages_/
 !*.meta
 Assets/Packages.meta
 Assets/WSATestCertificate.pfx.*
+Build/

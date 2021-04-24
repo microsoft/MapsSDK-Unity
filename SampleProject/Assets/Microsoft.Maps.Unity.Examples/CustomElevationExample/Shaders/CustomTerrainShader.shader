@@ -4,7 +4,7 @@
 // This shader is based on StandardTerrainShader-MapsSDK.shader, but instead of using explicit vertex and fragment definitions,
 // this shader uses the surface shader approach and adds normal data to elevation sources-- it does not work in areas with 3D model data!
 
-Shader "MapsSDK/CustomTerrainShader"
+Shader "Maps SDK/Custom Terrain Shader"
 {
     Properties
     {
@@ -131,7 +131,6 @@ Shader "MapsSDK/CustomTerrainShader"
                     IN.elevationTex,
                     _ElevationTexScaleAndOffset.x,
                     _ElevationTexScaleAndOffset.yz,
-                    _ElevationTexScaleAndOffset.w,
                     1.0 / 257.0,
                     1.0);
             float3 worldNormal = UnityObjectToWorldNormal(localNormal);
