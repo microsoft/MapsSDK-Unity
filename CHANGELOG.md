@@ -6,6 +6,14 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.11.0 - 2021-06-02
+### Maps SDK
+#### Changed
+- The clipping volume now requires a dedicated layer for rendering. The layer is set to 23 by default and can be changed via the MapRenderer inspector.
+### Supporting Scripts
+#### Changed
+- Various modifications to the cginc files to make code compatible with SRP HLSL shaders.
+
 ## 0.10.2 - 2021-04-22
 
 ### Maps SDK
