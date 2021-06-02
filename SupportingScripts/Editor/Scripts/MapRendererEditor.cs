@@ -36,7 +36,8 @@ namespace Microsoft.Maps.Unity
         private SerializedProperty _mapEdgeColorProperty;
         private SerializedProperty _mapEdgeColorFadeDistanceProperty;
         private SerializedProperty _clippingVolumeMaterialProperty;
-        private SerializedProperty _clippingVolumeDistanceTextureResolution;
+        private SerializedProperty _clippingVolumeDistanceTextureResolutionProperty;
+        private SerializedProperty _clippingDistanceLayerProperty;
 
         private static bool _showQualityOptions = true;
         private SerializedProperty _detailOffsetProperty;
@@ -127,7 +128,8 @@ namespace Microsoft.Maps.Unity
             _terrainMaterialProperty = serializedObject.FindProperty("_terrainMaterial");
             _isClippingVolumeWallEnabledProperty = serializedObject.FindProperty("_isClippingVolumeWallEnabled");
             _clippingVolumeMaterialProperty = serializedObject.FindProperty("_clippingVolumeMaterial");
-            _clippingVolumeDistanceTextureResolution = serializedObject.FindProperty("_clippingVolumeDistanceTextureResolution");
+            _clippingVolumeDistanceTextureResolutionProperty = serializedObject.FindProperty("_clippingVolumeDistanceTextureResolution");
+            _clippingDistanceLayerProperty = serializedObject.FindProperty("_clippingDistanceLayer");
             _mapEdgeColorProperty = serializedObject.FindProperty("_mapEdgeColor");
             _mapEdgeColorFadeDistanceProperty = serializedObject.FindProperty("_mapEdgeColorFadeDistance");
             _detailOffsetProperty = serializedObject.FindProperty("_detailOffset");
@@ -403,9 +405,11 @@ namespace Microsoft.Maps.Unity
                     // Texture Camera Resolution
                     GUILayout.BeginHorizontal();
                     EditorGUILayout.PrefixLabel("Clipping Edge Resolution");
-                    _clippingVolumeDistanceTextureResolution.enumValueIndex = GUILayout.Toolbar(
-                        _clippingVolumeDistanceTextureResolution.enumValueIndex, _clippingVolumeDistanceTextureResolutionOptions);
+                    _clippingVolumeDistanceTextureResolutionProperty.enumValueIndex = GUILayout.Toolbar(
+                        _clippingVolumeDistanceTextureResolutionProperty.enumValueIndex, _clippingVolumeDistanceTextureResolutionOptions);
                     GUILayout.EndHorizontal();
+
+                    EditorGUILayout.PropertyField(_clippingDistanceLayerProperty);
 
                     EditorGUI.indentLevel--;
                 }

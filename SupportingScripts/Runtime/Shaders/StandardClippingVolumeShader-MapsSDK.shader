@@ -29,11 +29,6 @@ Shader "Maps SDK/Standard Clipping Volume"
             #include "ClippingVolume-MapsSDK.cginc"
             #include "MRTKIntegration-MapsSDK.cginc"
 
-            sampler2D _TerrainDistanceTex;
-            float2 _MapDimension;
-            float4x4 _WorldToDistanceCameraMatrix;
-            float _MapCurrentHeight;
-
             struct appdata
             {
                 float3 vertex : POSITION;
@@ -49,7 +44,6 @@ Shader "Maps SDK/Standard Clipping Volume"
 #if ENABLE_MRTK_INTEGRATION
                 float3 worldPosition : POSITION2;
 #endif
-                float2 texcoord : TEXCOORD0;
                 float3 normal : NORMAL;
 
                 SHADOW_COORDS(1)
@@ -57,6 +51,11 @@ Shader "Maps SDK/Standard Clipping Volume"
 
                 UNITY_VERTEX_OUTPUT_STEREO
             };
+
+            sampler2D _TerrainDistanceTex;
+            float2 _MapDimension;
+            float4x4 _WorldToDistanceCameraMatrix;
+            float _MapCurrentHeight;
 
             v2f vert(appdata v)
             {
@@ -72,10 +71,10 @@ Shader "Maps SDK/Standard Clipping Volume"
 #if ENABLE_MRTK_INTEGRATION
                 o.worldPosition = worldPosition;
 #endif
-                o.cameraPosition = mul(_WorldToDistanceCameraMatrix, float4(worldPosition, 1.0));
+                o.cameraPosition = mul(_WorldToDistanceCameraMatrix, float4(worldPosition, 1.0)).xyz;
 
                 o.normal = UnityObjectToWorldNormal(v.normal);
-                
+
                 TRANSFER_SHADOW(o);
                 UNITY_TRANSFER_FOG(o, o.pos);
 
@@ -140,7 +139,6 @@ Shader "Maps SDK/Standard Clipping Volume"
             struct appdata
             {
                 float4 vertex : POSITION;
-                float2 uv: TEXCOORD;
                 float3 normal : NORMAL;
                 UNITY_VERTEX_INPUT_INSTANCE_ID
             };

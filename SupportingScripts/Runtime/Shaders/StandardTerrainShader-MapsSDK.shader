@@ -3,15 +3,6 @@
 
 Shader "Maps SDK/Standard Terrain"
 {
-    Properties
-    {
-        _Color("Color", Color) = (1,1,1,1)
-        _MainTex0("Albedo (RGB)", 2D) = "white" {}
-        _MainTex1("Color", Color) = (1,1,1,1)
-        _MainTex2("Color", Color) = (1,1,1,1)
-        _MainTex3("Color", Color) = (1,1,1,1)
-    }
-
     SubShader
     {
         Pass
@@ -83,7 +74,6 @@ Shader "Maps SDK/Standard Terrain"
                 UNITY_SETUP_INSTANCE_ID(v);
 
                 v2f o;
-
                 UNITY_INITIALIZE_OUTPUT(v2f, o);
                 UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
 
@@ -104,10 +94,10 @@ Shader "Maps SDK/Standard Terrain"
 #endif
 
                 o.pos = UnityObjectToClipPos(v.vertex);
-                if (_MainTexCount > 0) { o.uv = _TexScaleAndOffset[0].x * v.uv + _TexScaleAndOffset[0].yz; }
-                if (_MainTexCount > 1) { o.uv2 = _TexScaleAndOffset[1].x * v.uv + _TexScaleAndOffset[1].yz; }
-                if (_MainTexCount > 2) { o.uv3 = _TexScaleAndOffset[2].x * v.uv + _TexScaleAndOffset[2].yz; }
-                if (_MainTexCount > 3) { o.uv4 = _TexScaleAndOffset[3].x * v.uv + _TexScaleAndOffset[3].yz; }
+                if (_MainTexCount > 0) { o.uv = _TexScaleAndOffset[0].x * v.uv.xy + _TexScaleAndOffset[0].yz; }
+                if (_MainTexCount > 1) { o.uv2 = _TexScaleAndOffset[1].x * v.uv.xy + _TexScaleAndOffset[1].yz; }
+                if (_MainTexCount > 2) { o.uv3 = _TexScaleAndOffset[2].x * v.uv.xy + _TexScaleAndOffset[2].yz; }
+                if (_MainTexCount > 3) { o.uv4 = _TexScaleAndOffset[3].x * v.uv.xy + _TexScaleAndOffset[3].yz; }
 
                 float3 worldPosition = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1.0)).xyz;
                 o.worldPosition = worldPosition;
@@ -136,7 +126,6 @@ Shader "Maps SDK/Standard Terrain"
                 if (_MainTexCount > 1) { color = blend(color, tex2D(_MainTex1, i.uv2)); }
                 if (_MainTexCount > 2) { color = blend(color, tex2D(_MainTex2, i.uv3)); }
                 if (_MainTexCount > 3) { color = blend(color, tex2D(_MainTex3, i.uv4)); }
-                color *= _Color;
 
                 // Apply contours.
 #if ENABLE_ELEVATION_TEXTURE && ENABLE_CONTOUR_LINES
@@ -204,6 +193,13 @@ Shader "Maps SDK/Standard Terrain"
             {
                 UNITY_SETUP_INSTANCE_ID(v);
 
+                v2f o;
+                UNITY_INITIALIZE_OUTPUT(v2f, o);
+                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
+
+                // Extract skirt indicator from the third item in uv
+                o.isSkirt = v.uv.z;
+
 #if ENABLE_ELEVATION_TEXTURE
                 float elevationOffset =
                     CalculateElevationOffset(
@@ -214,12 +210,8 @@ Shader "Maps SDK/Standard Terrain"
                 v.vertex.y += elevationOffset;
 #endif
 
-                v2f o;
-                UNITY_INITIALIZE_VERTEX_OUTPUT_STEREO(o);
-
                 float3 worldPosition = mul(unity_ObjectToWorld, float4(v.vertex.xyz, 1.0)).xyz;
                 o.worldPosition = worldPosition;
-                o.isSkirt = v.uv.z;
 
                 TRANSFER_SHADOW_CASTER_NORMALOFFSET(o)
                 

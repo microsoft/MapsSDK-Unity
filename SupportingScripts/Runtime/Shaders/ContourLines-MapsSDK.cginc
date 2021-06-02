@@ -4,14 +4,14 @@
 #if ENABLE_CONTOUR_LINES
 
 // Assumes premultiplied alpha for colors.
-fixed4 _MajorContourLineColor;
-fixed4 _MinorContourLineColor;
+half4 _MajorContourLineColor;
+half4 _MinorContourLineColor;
 float _HalfMajorContourLinePixelSize;
 float _HalfMinorContourLinePixelSize;
 float _NumMinorContourIntervalSections;
 float _MinorContourLineIntervalInMeters;
 
-fixed4 ApplyContourLines(fixed4 color, float elevation /* in meters */)
+half4 ApplyContourLines(half4 color, float elevation /* in meters */)
 {
     // Compute the opacity of the contour line.
     float changeInIntervalForOnePixel = fwidth(elevation / _MinorContourLineIntervalInMeters);

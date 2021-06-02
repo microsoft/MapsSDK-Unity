@@ -54,12 +54,12 @@ Shader "Maps SDK/Clipping Distance"
             }
 
             // Writes the linear, normalized depth of the pixel to the render texture.
-#if SHADER_API_GLES
-            // Cannot return float directly in GLES API because float to fixed4 conversion fails.
-            fixed4 frag(v2f i) : SV_Target
+#if SHADER_API_GLES || SHADER_API_METAL
+            // Cannot return float directly in GLES API because float to float4 conversion fails.
+            float4 frag(v2f i) : SV_Target
             {
 #if UNITY_REVERSED_Z
-                return 1 - i.pos.zzzz;
+                return float4(1, 1, 1, 1) - i.pos.zzzz;
 #else
                 return i.pos.zzzz;
 #endif
