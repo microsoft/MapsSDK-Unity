@@ -4913,6 +4913,7 @@ MonoBehaviour:
   _isClippingVolumeWallEnabled: 1
   _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
+  _clippingDistanceLayer: 23
   _textureTileLayers:
     _list:
     - {fileID: 2026101498}

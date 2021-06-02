@@ -514,7 +514,7 @@ MonoBehaviour:
   moveLerpTime: 0.1
   rotateLerpTime: 0.1
   scaleLerpTime: 0
-  maintainScale: 1
+  maintainScaleOnInitialization: 1
   smoothing: 1
   lifetime: 0
   autoStart: 0
@@ -584,6 +584,8 @@ MonoBehaviour:
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
   _mapEdgeColorFadeDistance: 0.01
   _detailOffset: 0
+  _numElevationTileFallbackLods: 2
+  _requestTilesAroundView: 1
   _center:
     _latitude: 47.6148544965444
     _longitude: -122.195821273054
@@ -603,6 +605,7 @@ MonoBehaviour:
   _isClippingVolumeWallEnabled: 1
   _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
+  _clippingDistanceLayer: 23
   _textureTileLayers:
     _list:
     - {fileID: 1276686199}

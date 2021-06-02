@@ -1567,6 +1567,8 @@ MonoBehaviour:
   _mapEdgeColor: {r: 0.39168903, g: 0.44490546, b: 0.48900002, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 1
+  _numElevationTileFallbackLods: 2
+  _requestTilesAroundView: 1
   _center:
     _latitude: 34.0511830789976
     _longitude: -116.201788161759
@@ -1586,6 +1588,7 @@ MonoBehaviour:
   _isClippingVolumeWallEnabled: 1
   _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
+  _clippingDistanceLayer: 23
   _textureTileLayers:
     _list:
     - {fileID: 1886841721}

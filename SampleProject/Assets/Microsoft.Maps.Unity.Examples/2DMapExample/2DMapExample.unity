@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -242,10 +242,12 @@ MonoBehaviour:
   _mapEdgeColor: {r: 0.62352943, g: 0.64705884, b: 0.69411767, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
+  _numElevationTileFallbackLods: 2
+  _requestTilesAroundView: 1
   _center:
     _latitude: 47.6096481206096
     _longitude: -122.351074731585
-  _zoomLevel: 10.840002
+  _zoomLevel: 4.42
   _minimumZoomLevel: 1
   _maximumZoomLevel: 20
   _mapTerrainType: 2
@@ -261,6 +263,7 @@ MonoBehaviour:
   _isClippingVolumeWallEnabled: 0
   _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
+  _clippingDistanceLayer: 23
   _textureTileLayers:
     _list:
     - {fileID: 26182499}
@@ -2239,7 +2242,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2020 Microsoft"
+  m_text: "\xA9 2021 Microsoft"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 484364120}

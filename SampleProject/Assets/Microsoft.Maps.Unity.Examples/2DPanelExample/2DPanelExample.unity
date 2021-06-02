@@ -656,7 +656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2020 Microsoft"
+  m_text: "\xA9 2021 Microsoft"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 76533969}
@@ -725,6 +725,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 611363901}
   m_maskType: 0
+  _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
 --- !u!222 &611363899
@@ -1283,7 +1284,7 @@ MonoBehaviour:
   moveLerpTime: 0.1
   rotateLerpTime: 0.1
   scaleLerpTime: 0
-  maintainScale: 1
+  maintainScaleOnInitialization: 1
   smoothing: 1
   lifetime: 0
   autoStart: 0
@@ -2419,6 +2420,8 @@ MonoBehaviour:
   _mapEdgeColor: {r: 0.04705883, g: 0.5176471, b: 0.5176471, a: 1}
   _mapEdgeColorFadeDistance: 0
   _detailOffset: 0
+  _numElevationTileFallbackLods: 2
+  _requestTilesAroundView: 1
   _center:
     _latitude: 49.8457301182239
     _longitude: -110.734009177481
@@ -2438,6 +2441,7 @@ MonoBehaviour:
   _isClippingVolumeWallEnabled: 0
   _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
+  _clippingDistanceLayer: 23
   _textureTileLayers:
     _list:
     - {fileID: 1276686199}
