@@ -686,6 +686,7 @@ MonoBehaviour:
   m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _opacity: 1
   _imageryType: 1
   _areRoadsEnabled: 0
   _areLabelsEnabled: 0

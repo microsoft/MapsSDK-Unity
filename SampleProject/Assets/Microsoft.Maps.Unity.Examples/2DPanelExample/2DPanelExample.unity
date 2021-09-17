@@ -2361,6 +2361,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b43805b646baceb4d9f28507342754b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _opacity: 0.5
   _urlFormatString: http://mesonet.agron.iastate.edu/cache/tile.py/1.0.0/nexrad-n0q-900913/{zoomLevel}/{x}/{y}.jpg
   _subdomains: []
 --- !u!114 &1276686191
@@ -2523,6 +2524,7 @@ MonoBehaviour:
   m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _opacity: 1
   _imageryType: 0
   _areRoadsEnabled: 1
   _areLabelsEnabled: 1

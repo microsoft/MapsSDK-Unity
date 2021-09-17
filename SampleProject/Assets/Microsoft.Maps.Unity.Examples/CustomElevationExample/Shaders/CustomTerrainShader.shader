@@ -47,6 +47,7 @@ Shader "Maps SDK/Custom Terrain Shader"
         sampler2D _MainTex3;
         float4 _TexScaleAndOffset[4];
         float _UseSolidColor;
+        float4 _TexOpacity;
 
         struct Input
         {
@@ -91,8 +92,9 @@ Shader "Maps SDK/Custom Terrain Shader"
             v.tangent = float4(1, 0, 0, -1);
         }
 
-        fixed4 blend(fixed4 dst, fixed4 src)
+        fixed4 blend(fixed4 dst, fixed4 src, float additionalAlpha)
         {
+            src.a *= additionalAlpha;
             return fixed4(src.rgb * src.a + dst.rgb * (1.0 - src.a), 1);
         }
 
@@ -107,7 +109,7 @@ Shader "Maps SDK/Custom Terrain Shader"
                 color = tex2D(_MainTex0, IN.uv_MainTex);
                 if (_MainTexCount > 1)
                 {
-                    color = blend(color, tex2D(_MainTex1, IN.uv_MainTex1));
+                    color = blend(color, tex2D(_MainTex1, IN.uv_MainTex1), _TexOpacity.y);
                 }
             }
 
