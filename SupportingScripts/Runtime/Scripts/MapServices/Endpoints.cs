@@ -1,10 +1,10 @@
 ﻿// Copyright(c) Microsoft Corporation.All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+
 namespace Microsoft.Maps.Unity.Services
 {
-    using System;
-
     internal class Endpoints
     {
         public const string RestServiceDomain = "https://dev.virtualearth.net/REST/v1/";

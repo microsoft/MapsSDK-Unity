@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using UnityEngine;
-
     /// <summary>
     /// Helpers to transform between Unity's world and local spaces to the geographic coordinate system of the <see cref="MapRenderer"/>.
     /// </summary>
@@ -127,10 +127,10 @@ namespace Microsoft.Maps.Unity
                     mapRenderer,
                     pointInLocalSpace,
                     out var altitudeInMeters,
-                    out var mercatorScale);
+                    out _);
 
             var latLon = mercatorCoordinate.ToLatLon();
-            return new LatLonAlt(ref latLon, altitudeInMeters);
+            return new LatLonAlt(latLon, altitudeInMeters);
         }
 
         /// <summary>

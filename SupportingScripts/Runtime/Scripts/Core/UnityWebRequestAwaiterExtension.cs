@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using UnityEngine.Networking;
+
 namespace Microsoft.Maps.Unity
 {
-    using UnityEngine.Networking;
-
     /// <summary>
     /// Provides the ability to use await keyword with <see cref="UnityWebRequestAsyncOperation"/>.
     /// </summary>

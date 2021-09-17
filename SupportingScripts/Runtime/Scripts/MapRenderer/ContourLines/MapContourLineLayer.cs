@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using System;
-    using UnityEngine;
-
     /// <summary>
     /// Enables contour rendering on the map to show lines of constant elevation relative to the WGS84 ellipsoid.
     /// The interval, line width, and line color of the contour is configurable.

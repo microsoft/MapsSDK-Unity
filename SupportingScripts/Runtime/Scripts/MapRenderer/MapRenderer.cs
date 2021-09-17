@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Profiling;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.Profiling;
-
     /// <summary>
     /// Manages streaming and rendering of map data.
     /// </summary>

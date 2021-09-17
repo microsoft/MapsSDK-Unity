@@ -1,4 +1,7 @@
-﻿namespace Microsoft.Maps.Unity
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+namespace Microsoft.Maps.Unity
 {
     /// <summary>
     /// Specifies the animation to use when setting a MapScene.

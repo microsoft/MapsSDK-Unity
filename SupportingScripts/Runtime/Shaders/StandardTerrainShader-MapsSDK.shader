@@ -41,7 +41,7 @@ Shader "Maps SDK/Standard Terrain"
             sampler2D _MainTex2;
             sampler2D _MainTex3;
             float4 _TexScaleAndOffset[4];
-            fixed4 _Color;
+            float4 _TexOpacity;
 
             struct appdata
             {
@@ -108,8 +108,9 @@ Shader "Maps SDK/Standard Terrain"
                 return o;
             }
 
-            fixed4 blend(fixed4 dst, fixed4 src)
+            fixed4 blend(fixed4 dst, fixed4 src, float additionalAlpha)
             {
+                src.a *= additionalAlpha;
                 return fixed4(src.rgb * src.a + dst.rgb * (1.0 - src.a), 1);
             }
 
@@ -123,9 +124,9 @@ Shader "Maps SDK/Standard Terrain"
 
                 // Albedo comes from a texture tinted by color
                 fixed4 color = tex2D(_MainTex0, i.uv);
-                if (_MainTexCount > 1) { color = blend(color, tex2D(_MainTex1, i.uv2)); }
-                if (_MainTexCount > 2) { color = blend(color, tex2D(_MainTex2, i.uv3)); }
-                if (_MainTexCount > 3) { color = blend(color, tex2D(_MainTex3, i.uv4)); }
+                if (_MainTexCount > 1) { color = blend(color, tex2D(_MainTex1, i.uv2), _TexOpacity.y); }
+                if (_MainTexCount > 2) { color = blend(color, tex2D(_MainTex2, i.uv3), _TexOpacity.z); }
+                if (_MainTexCount > 3) { color = blend(color, tex2D(_MainTex3, i.uv4), _TexOpacity.w); }
 
                 // Apply contours.
 #if ENABLE_ELEVATION_TEXTURE && ENABLE_CONTOUR_LINES

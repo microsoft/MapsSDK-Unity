@@ -1,16 +1,16 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using Microsoft.Geospatial.VectorMath;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.Events;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using Microsoft.Geospatial.VectorMath;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using UnityEngine;
-    using UnityEngine.Events;
-
     /// <summary>
     /// This component provides a wrapper on top of a <see cref="MapRenderer"/> to help with interactions like pan, zoom, and rotate.
     /// Provides callbacks for events to track when interactions have began and ended or when specific events occur, like double tap,

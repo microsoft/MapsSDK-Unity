@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using UnityEngine;
-
     /// <summary>
     /// Animates a <see cref="MapRenderer"/> to the specified <see cref="MapScene"/>. Derives the animation duration and preforms a
     /// preceptually smooth animation, based on the work of van Wijk and Nuij, "Smooth and Efficient Zooming and Panning".

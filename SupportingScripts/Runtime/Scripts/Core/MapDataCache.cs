@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using System;
-    using UnityEngine;
-
     /// <summary>
     /// This component provides an interface to configure the cache size that is used to store <see cref="MapRenderer"/> data.
     /// Because the cache is global, multiple instances of this component are not needed.

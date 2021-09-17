@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using UnityEngine;
-
     /// <summary>
     /// Handles touch-screen based interactions like pan, pinch to zoom, double tap zoom, and tap-and-hold.
     /// </summary>

@@ -1,8 +1,10 @@
-﻿namespace Microsoft.Maps.Unity
-{
-    using System.Reflection;
-    using UnityEngine;
+﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
 
+using UnityEngine;
+
+namespace Microsoft.Maps.Unity
+{
     /// <summary>
     /// Used to suspend coroutine execution once the associated MapScene animation has been completed or cancelled.
     /// </summary>

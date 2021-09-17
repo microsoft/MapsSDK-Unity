@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using UnityEngine;
+using UnityEngine.EventSystems;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using UnityEngine;
-    using UnityEngine.EventSystems;
-
     /// <summary>
     /// Handles mouse and scroll wheel based interactions for pan, zoom, double tap zoom, and tap-and-hold.
     /// </summary>

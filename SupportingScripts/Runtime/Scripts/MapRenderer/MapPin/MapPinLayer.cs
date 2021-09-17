@@ -1,12 +1,13 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Profiling;
 
 namespace Microsoft.Maps.Unity
 {
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.Profiling;
-
     /// <summary>
     /// Maintains a collection of <see cref="MapPin"/>s to efficient display large number of objects on the map. Supports clustering.
     /// <br/><br/>

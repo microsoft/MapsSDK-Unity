@@ -1,15 +1,16 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
+// Licensed under the MIT License.
+
+using Microsoft.Geospatial;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+#if DEBUG
+using UnityEngine.Assertions;
+#endif
 
 namespace Microsoft.Maps.Unity
 {
-    using Geospatial;
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-#if DEBUG
-    using UnityEngine.Assertions;
-#endif
-
     internal class MapPinSpatialIndex
     {
         private class TileData

@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-
     /// <summary>
     /// Helpers to provide a map scale relative to Unity's world space.
     /// </summary>

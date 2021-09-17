@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using UnityEngine;
-
     /// <summary>
     /// Yields until <see cref="MapRendererBase.IsLoaded"/> returns true.
     /// </summary>

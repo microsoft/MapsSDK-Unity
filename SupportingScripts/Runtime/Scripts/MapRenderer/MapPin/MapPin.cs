@@ -1,14 +1,14 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Serialization;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using System.Collections.Generic;
-    using UnityEngine;
-    using UnityEngine.Serialization;
-
     /// <summary>
     /// A MapPin can be used to pin a <see cref="GameObject"/> to a <see cref="MapRendererBase"/> at a specified
     /// <see cref="LatLon"/> and altitude in meters.

@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+using UnityEngine;
+using UnityEngine.Rendering;
+
 namespace Microsoft.Maps.Unity
 {
-    using System;
-    using UnityEngine;
-    using UnityEngine.Rendering;
-
     /// <summary>
     /// Handles rendering and positioning of copyright text associated with the <see cref="MapRendererBase"/>.
     /// This layer is automatically added when the <see cref="MapRendererBase"/> component is added to a <see cref="GameObject"/>.

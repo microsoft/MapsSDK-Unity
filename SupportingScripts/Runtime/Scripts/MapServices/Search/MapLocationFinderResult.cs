@@ -1,11 +1,11 @@
 ﻿// Copyright(c) Microsoft Corporation.All rights reserved.
 // Licensed under the MIT License.
 
+using System;
+using System.Collections.Generic;
+
 namespace Microsoft.Maps.Unity.Search
 {
-    using System;
-    using System.Collections.Generic;
-
     /// <summary>
     /// Contains status code and result location data for a <see cref="MapLocationFinder"/> request.
     /// </summary>

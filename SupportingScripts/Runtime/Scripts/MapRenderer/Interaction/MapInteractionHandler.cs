@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using UnityEngine;
-
     /// <summary>
     /// The base class used for managing interactions with the <see cref="MapRenderer"/>. Implementions can handle a specific
     /// type of input, e.g. mouse-based input or touch-based input.

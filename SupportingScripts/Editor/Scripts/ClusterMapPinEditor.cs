@@ -15,9 +15,9 @@ namespace Microsoft.Maps.Unity
 
         internal void OnEnable()
         {
-            _scaleCurveProperty = serializedObject.FindProperty("ScaleCurve");
-            _useRealworldScaleProperty = serializedObject.FindProperty("UseRealWorldScale");
-            _isLayerSynchronizedProperty = serializedObject.FindProperty("IsLayerSynchronized");
+            _scaleCurveProperty = serializedObject.FindProperty("_scaleCurve");
+            _useRealworldScaleProperty = serializedObject.FindProperty("_useRealWorldScale");
+            _isLayerSynchronizedProperty = serializedObject.FindProperty("_isLayerSynchronized");
         }
 
         public override void OnInspectorGUI()

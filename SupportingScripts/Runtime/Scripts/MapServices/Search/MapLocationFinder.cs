@@ -1,15 +1,15 @@
 ﻿// Copyright(c) Microsoft Corporation.All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using Microsoft.Maps.Unity.Services;
+using System;
+using System.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.Networking;
+
 namespace Microsoft.Maps.Unity.Search
 {
-    using Microsoft.Geospatial;
-    using Microsoft.Maps.Unity.Services;
-    using System;
-    using System.Threading.Tasks;
-    using UnityEngine;
-    using UnityEngine.Networking;
-
     /// <summary>
     /// Handles geocoding and reverse geocoding requests. Based on the input query string, which can represent an address or landmark,
     /// or the input location represented by a latitude and longitude, the MapLocationFinder will provide richer address information.
@@ -50,7 +50,7 @@ namespace Microsoft.Maps.Unity.Search
             }
 
             var url = await BuildUrl($"q={query}", mapLocationOptions ?? new MapLocationOptions()).ConfigureAwait(true);
-            url += $"&ul={ referenceLocation.LatitudeInDegrees},{ referenceLocation.LongitudeInDegrees}";
+            url += FormattableString.Invariant($"&ul={referenceLocation.LatitudeInDegrees},{referenceLocation.LongitudeInDegrees}");
             return await Request(url).ConfigureAwait(true);
         }
 
@@ -71,7 +71,8 @@ namespace Microsoft.Maps.Unity.Search
 
             var url = await BuildUrl($"q={query}", mapLocationOptionsForRequest).ConfigureAwait(true);
             url +=
-                $"&umv={referenceBoundingBox.BottomLeft.LatitudeInDegrees},{referenceBoundingBox.BottomLeft.LongitudeInDegrees},{referenceBoundingBox.TopRight.LatitudeInDegrees},{referenceBoundingBox.TopRight.LongitudeInDegrees}";
+                FormattableString.Invariant(
+                    $"&umv={referenceBoundingBox.BottomLeft.LatitudeInDegrees},{referenceBoundingBox.BottomLeft.LongitudeInDegrees},{referenceBoundingBox.TopRight.LatitudeInDegrees},{referenceBoundingBox.TopRight.LongitudeInDegrees}");
             return await Request(url).ConfigureAwait(true);
         }
 
@@ -90,7 +91,7 @@ namespace Microsoft.Maps.Unity.Search
                 await BuildUrl(
                     string.Empty,
                     mapLocationOptions ?? new MapLocationOptions(),
-                    $"Locations/{location.LatitudeInDegrees},{location.LongitudeInDegrees}",
+                    FormattableString.Invariant($"Locations/{location.LatitudeInDegrees},{location.LongitudeInDegrees}"),
                     false)
                 .ConfigureAwait(true);
 
@@ -114,12 +115,11 @@ namespace Microsoft.Maps.Unity.Search
             var parameters =
                 $"{baseQuery}" +
                 (startWithAmpersand ? "&" : "") +
-                $"maxRes={Math.Max(mapLocationOptions.MaxResults, 1)}" +
+                FormattableString.Invariant($"maxRes={Math.Max(mapLocationOptions.MaxResults, 1)}") +
                 (string.IsNullOrWhiteSpace(culture) ? "" : $"&c={culture}") +
                 (string.IsNullOrWhiteSpace(region) ? "" : $"&ur={region}") +
                 (mapLocationOptions.IncludeCountryCode ? "&incl=ciso2" : "") +
-                (mapLocationOptions.IncludeNeighborhood ? "&inclnb=1" : "") +
-                "&sftr=teolin";
+                (mapLocationOptions.IncludeNeighborhood ? "&inclnb=1" : "");
 
             return Endpoints.BuildUrl(resource, mapLocationOptions.MapSession, parameters);
         }

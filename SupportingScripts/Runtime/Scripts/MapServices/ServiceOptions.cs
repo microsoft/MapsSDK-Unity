@@ -1,10 +1,10 @@
 ﻿// Copyright(c) Microsoft Corporation.All rights reserved.
 // Licensed under the MIT License.
 
+using System.Threading.Tasks;
+
 namespace Microsoft.Maps.Unity
 {
-    using System.Threading.Tasks;
-
     /// <summary>
     /// Options common to all REST-based Bing Maps services.
     /// </summary>

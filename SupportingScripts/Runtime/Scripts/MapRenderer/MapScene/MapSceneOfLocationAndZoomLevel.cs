@@ -1,10 +1,10 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-
     /// <summary>
     /// A basic <see cref="MapScene"/> that can be used to change the map's location and zoom level.
     /// </summary>

@@ -1,9 +1,9 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 
+using Microsoft.Geospatial;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-
     /// <summary>
     /// Animates a MapRenderer to the specified <see cref="MapScene"/>.
     /// </summary>

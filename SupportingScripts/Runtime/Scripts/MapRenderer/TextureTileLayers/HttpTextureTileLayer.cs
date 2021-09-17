@@ -1,16 +1,16 @@
 ﻿// Copyright(c) Microsoft Corporation.All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
+using System.Threading.Tasks;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using UnityEngine;
-
     /// <summary>
     /// Provides tiles for a <see cref="TextureTileLayer"/>. The tiles are fetched by using the HTTP or HTTPS protocol.
     /// Results are assumed to be JPEG or PNG, i.e. anything decodable by <see cref="ImageConversion.LoadImage(Texture2D, byte[])"/>.
