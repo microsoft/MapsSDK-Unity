@@ -74,6 +74,7 @@ Shader "Maps SDK/Universal Render Pipeline/Unlit Terrain"
 
             float _MainTexCount;
             float4 _TexScaleAndOffset[4];
+            float4 _TexOpacity;
 
             Varyings vert(Attributes v)
             {
@@ -112,8 +113,9 @@ Shader "Maps SDK/Universal Render Pipeline/Unlit Terrain"
                 return o;
             }
 
-            half4 blend(half4 dst, half4 src)
+            half4 blend(half4 dst, half4 src, float additionalAlpha)
             {
+                src.a *= additionalAlpha;
                 return half4(src.rgb * src.a + dst.rgb * (1.0 - src.a), 1);
             }
 
@@ -126,9 +128,9 @@ Shader "Maps SDK/Universal Render Pipeline/Unlit Terrain"
 
                 // Albedo comes from a texture tinted by color
                 half4 color = SAMPLE_TEXTURE2D(_MainTex0, sampler_MainTex0, i.uv);
-                if (_MainTexCount > 1) { color = blend(color, SAMPLE_TEXTURE2D(_MainTex1, sampler_MainTex1, i.uv2)); }
-                if (_MainTexCount > 2) { color = blend(color, SAMPLE_TEXTURE2D(_MainTex2, sampler_MainTex2, i.uv3)); }
-                if (_MainTexCount > 3) { color = blend(color, SAMPLE_TEXTURE2D(_MainTex3, sampler_MainTex3, i.uv4)); }
+                if (_MainTexCount > 1) { color = blend(color, SAMPLE_TEXTURE2D(_MainTex1, sampler_MainTex1, i.uv2), _TexOpacity.y); }
+                if (_MainTexCount > 2) { color = blend(color, SAMPLE_TEXTURE2D(_MainTex2, sampler_MainTex2, i.uv3), _TexOpacity.z); }
+                if (_MainTexCount > 3) { color = blend(color, SAMPLE_TEXTURE2D(_MainTex3, sampler_MainTex3, i.uv4), _TexOpacity.w); }
 
                 // Apply contours.
 #if ENABLE_ELEVATION_TEXTURE && ENABLE_CONTOUR_LINES
