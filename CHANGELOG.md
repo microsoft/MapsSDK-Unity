@@ -6,7 +6,20 @@ and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spe
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
 
+## 0.11.1 - 2021-09-17
+
+### Maps SDK
+#### Added
+- `Opacity` property for [`TextureTileLayer`](https://github.com/microsoft/MapsSDK-Unity/wiki/Microsoft.Maps.Unity#texturetilelayer).
+#### Fixed
+- Network request errors affecting Unity 2021.
+### Supporting Scripts
+#### Fixed
+- ClusterMapPinEditor throws exceptions on new projects.
+- String parsing issue causing service requests to fail.
+
 ## 0.11.0 - 2021-06-02
+
 ### Maps SDK
 #### Changed
 - The clipping volume now requires a dedicated layer for rendering. The layer is set to 23 by default and can be changed via the MapRenderer inspector.
