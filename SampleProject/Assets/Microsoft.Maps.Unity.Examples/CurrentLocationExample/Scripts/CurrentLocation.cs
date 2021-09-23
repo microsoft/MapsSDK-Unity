@@ -1,8 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
-using Microsoft.Maps.Unity;
+#if UNITY_WSA && !UNITY_EDITOR
+using Windows.Devices.Geolocation;
+#endif
 using TMPro;
+using Microsoft.Maps.Unity;
+using Microsoft.Geospatial;
 
 /// <summary>
 /// This class retrieves the current location of the user via the connected network and returns the latitude and longitude to the MapRenderer.
