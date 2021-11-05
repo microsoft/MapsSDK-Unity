@@ -17,32 +17,34 @@ using Microsoft.Geospatial;
 /// </summary>
 public class CurrentLocation : MonoBehaviour
 {
-    public MapRenderer mapRenderer;
-    
-    public TextMeshPro debugText;
+    [SerializeField]
+    private MapRenderer _mapRenderer=null;
+
+    [SerializeField] 
+    private TextMeshPro _debugText = null;
     
     private uint _desireAccuracyInMetersValue = 0;
     async void Start()
     {
-        debugText.text = "Initialization.";
+        _debugText.text = "Initialization.";
        
 #if UNITY_WSA && !UNITY_EDITOR
         var accessStatus = await Geolocator.RequestAccessAsync();
         switch (accessStatus)
         {
             case GeolocationAccessStatus.Allowed:
-                debugText.text = "Waiting for update...";
+                _debugText.text = "Waiting for update...";
                 Geolocator geolocator = new Geolocator { DesiredAccuracyInMeters = _desireAccuracyInMetersValue };
-                Geoposition pos = await geolocator.GetGeopositionAsync();
-                UpdateLocationData(pos);
+                Geoposition position = await geolocator.GetGeopositionAsync();
+                UpdateLocationData(position);
                 break;
 
             case GeolocationAccessStatus.Denied:
-                debugText.text = "Access to location is denied.";
+                _debugText.text = "Access to location is denied.";
                 break;
 
             case GeolocationAccessStatus.Unspecified:
-                debugText.text = "Unspecified error.";
+                _debugText.text = "Unspecified error.";
                 UpdateLocationData(null);
                 break;
         }
@@ -50,16 +52,17 @@ public class CurrentLocation : MonoBehaviour
     }
 
 #if UNITY_WSA && !UNITY_EDITOR
-    private void UpdateLocationData(Geoposition position)
+    private void UpdateLocationData(Geoposition geoposition)
     {
-        if (position == null)
+        if (geoposition == null)
         {
-            debugText.text = "No data";
+            _debugText.text = "No data";
         }
         else
         {
-            debugText.text = position.Coordinate.Point.Position.Latitude.ToString() + "\n" + position.Coordinate.Point.Position.Longitude.ToString();
-            mapRenderer.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(position.Coordinate.Point.Position.Latitude, position.Coordinate.Point.Position.Longitude), 17f));
+            var pointPosition = geoposition.Coordinate.Point.Position;
+            _debugText.text = pointPosition.Latitude.ToString() + "\n" + pointPosition.Longitude.ToString();
+            _mapRenderer.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(pointPosition.Latitude, pointPosition.Longitude), 17f));
         }
     }
 #endif
