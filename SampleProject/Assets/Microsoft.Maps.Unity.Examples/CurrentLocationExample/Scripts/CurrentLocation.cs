@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using UnityEngine;
 #if UNITY_WSA && !UNITY_EDITOR
+using System;
 using Windows.Devices.Geolocation;
+using Microsoft.Geospatial;
 #endif
 using TMPro;
 using Microsoft.Maps.Unity;
-using Microsoft.Geospatial;
 
 /// <summary>
 /// This class retrieves the current location of the user via the connected network and returns the latitude and longitude to the MapRenderer.
@@ -22,12 +19,13 @@ public class CurrentLocation : MonoBehaviour
 
     [SerializeField] 
     private TextMeshPro _debugText = null;
-    
+
     private uint _desireAccuracyInMetersValue = 0;
-    async void Start()
+
+    private async void Start()
     {
         _debugText.text = "Initialization.";
-       
+
 #if UNITY_WSA && !UNITY_EDITOR
         var accessStatus = await Geolocator.RequestAccessAsync();
         switch (accessStatus)
@@ -48,6 +46,8 @@ public class CurrentLocation : MonoBehaviour
                 UpdateLocationData(null);
                 break;
         }
+#else
+        await Task.Delay(0);
 #endif
     }
 
