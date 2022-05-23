@@ -14,7 +14,7 @@ namespace Microsoft.Maps.Unity
     /// <summary>
     /// This component provides a wrapper on top of a <see cref="MapRenderer"/> to help with interactions like pan, zoom, and rotate.
     /// Provides callbacks for events to track when interactions have began and ended or when specific events occur, like double tap,
-    /// tap, or tap and hold. A <see cref="MapInteractionHandler"/> implementaiton can invoke these events.
+    /// tap, or tap and hold. A <see cref="MapInteractionHandler"/> implementation can invoke these events.
     /// </summary>
     [RequireComponent(typeof(MapRenderer))]
     [DisallowMultipleComponent]
