@@ -1,4 +1,6 @@
-﻿using System.Threading.Tasks;
+﻿#pragma warning disable 0414
+
+using System.Threading.Tasks;
 using UnityEngine;
 #if UNITY_WSA && !UNITY_EDITOR
 using System;
@@ -15,7 +17,7 @@ using Microsoft.Maps.Unity;
 public class CurrentLocation : MonoBehaviour
 {
     [SerializeField]
-    private MapRenderer _mapRenderer=null;
+    private MapRenderer _mapRenderer = null;
 
     [SerializeField] 
     private TextMeshPro _debugText = null;
