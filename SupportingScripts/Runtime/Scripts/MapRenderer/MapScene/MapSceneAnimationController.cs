@@ -58,7 +58,7 @@ namespace Microsoft.Maps.Unity
 
             _startMercatorCenter = mapRenderer.Center.ToMercatorCoordinate();
             _startZoomLevel = mapRenderer.ZoomLevel;
-            mapScene.GetLocationAndZoomLevel(out var endLocation, out _endZoomLevel);
+            mapScene.GetLocationAndZoomLevel(mapRenderer, out var endLocation, out _endZoomLevel);
             _endZoomLevel = _endZoomLevel < mapRenderer.MinimumZoomLevel ? mapRenderer.MinimumZoomLevel : _endZoomLevel;
             _endZoomLevel = _endZoomLevel > mapRenderer.MaximumZoomLevel ? mapRenderer.MaximumZoomLevel : _endZoomLevel;
             _endMercatorCenter = endLocation.ToMercatorCoordinate();

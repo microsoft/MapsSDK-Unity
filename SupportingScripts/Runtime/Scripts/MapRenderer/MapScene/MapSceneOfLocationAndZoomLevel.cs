@@ -30,7 +30,7 @@ namespace Microsoft.Maps.Unity
         }
 
         /// <inheritdoc/>
-        public override void GetLocationAndZoomLevel(out LatLon location, out double zoomLevel)
+        public override void GetLocationAndZoomLevel(MapRendererBase mapRenderer, out LatLon location, out double zoomLevel)
         {
             location = Location;
             zoomLevel = ZoomLevel;

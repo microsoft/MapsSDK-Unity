@@ -45,9 +45,9 @@ namespace Microsoft.Maps.Unity
         {
             _isClusteringEnabled = isClusteringEnabled;
 
-            if (clusterThreshold < 2)
+            if (clusterThreshold < 1)
             {
-                throw new ArgumentException("clusterThreshold should be greater than 1.", nameof(clusterThreshold));
+                throw new ArgumentException("clusterThreshold should be greater than 0.", nameof(clusterThreshold));
             }
 
             ClusterThreshold = clusterThreshold;

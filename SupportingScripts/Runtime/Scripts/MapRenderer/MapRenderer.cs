@@ -122,7 +122,7 @@ namespace Microsoft.Maps.Unity
             // If we were in the middle of a previous animation, make sure it has yielded and then reset it.
             CancelAnimation();
 
-            mapScene.GetLocationAndZoomLevel(out var finalCenter, out var finalZoomLevel);
+            mapScene.GetLocationAndZoomLevel(this, out var finalCenter, out var finalZoomLevel);
 
             animationTimeScale = Mathf.Max(0, animationTimeScale);
 

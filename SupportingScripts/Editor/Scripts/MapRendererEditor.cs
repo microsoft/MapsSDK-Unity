@@ -1,13 +1,13 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using Microsoft.Geospatial;
+using System;
+using UnityEditor;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using Microsoft.Geospatial;
-    using System;
-    using UnityEditor;
-    using UnityEngine;
-
     [CustomEditor(typeof(MapRenderer))]
     [CanEditMultipleObjects]
     internal class MapRendererEditor : Editor

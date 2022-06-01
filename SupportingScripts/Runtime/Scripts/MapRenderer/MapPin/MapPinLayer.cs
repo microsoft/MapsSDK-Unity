@@ -64,23 +64,23 @@ namespace Microsoft.Maps.Unity
         }
 
         /// <summary>
-        /// If the number of pins in a spatial region exceed the ClusterThreshold, a single cluster MapPin will be rendered instead.
+        /// If the number of pins in a spatial region exceed the ClusterThreshold, a single <see cref="ClusterMapPin"/> will be rendered instead.
         /// </summary>
         [SerializeField]
         private int _clusterThreshold = 5;
 
         /// <summary>
-        /// If the number of pins in a spatial region exceed the ClusterThreshold, a single cluster MapPin will be rendered instead.
+        /// If the number of pins in a spatial region exceed the ClusterThreshold, a single <see cref="ClusterMapPin"/> will be rendered instead.
         /// </summary>
         /// <remarks>
-        /// Modifying during ruintime will cause the MapPinLayer to rebuild, which may be expensive.
+        /// Modifying this value during runtime will cause the <see cref="MapPinLayer"/> to rebuild, which may be expensive.
         /// </remarks>
         public int ClusterThreshold
         {
             get => _clusterThreshold;
             set
             {
-                value = Math.Max(2, value);
+                value = Math.Max(1, value);
                 if (_clusterThreshold != value)
                 {
                     _clusterThreshold = value;
@@ -99,7 +99,7 @@ namespace Microsoft.Maps.Unity
         /// The prefab to use for clusters.
         /// </summary>
         /// <remarks>
-        /// Modifying during ruintime will cause the MapPinLayer to rebuild, which may be expensive.
+        /// Modifying during ruintime will cause the <see cref="MapPinLayer"/> to rebuild, which may be expensive.
         /// </remarks>
         public ClusterMapPin ClusterMapPinPrefab
         {
@@ -122,7 +122,7 @@ namespace Microsoft.Maps.Unity
 
         private void OnValidate()
         {
-            _clusterThreshold = Math.Max(_clusterThreshold, 2);
+            _clusterThreshold = Math.Max(_clusterThreshold, 1);
         }
 
         private void Awake()
@@ -154,7 +154,7 @@ namespace Microsoft.Maps.Unity
 
         private void OnDisable()
         {
-            _mapPinSpatialIndex.DestroyClusterMapPins();
+            _mapPinSpatialIndex?.DestroyClusterMapPins();
             _activeClusterMapPins.Clear();
 
             foreach (var mapPin in _activeMapPins)

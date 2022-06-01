@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using UnityEditor;
+
 namespace Microsoft.Maps.Unity
 {
-    using UnityEditor;
-
     [CustomEditor(typeof(ClusterMapPin))]
     [CanEditMultipleObjects]
     class MapClusterPinEditor : Editor

@@ -141,18 +141,35 @@ namespace Microsoft.Maps.Unity.Search
             return true;
         }
 
+        private static bool IsNetworkError(UnityWebRequest webRequest)
+        {
+#if UNITY_2021_1_OR_NEWER
+            return webRequest.result == UnityWebRequest.Result.ConnectionError;
+#else
+            return webRequest.isNetworkError;
+#endif
+        }
+
+        private static bool IsHttpError(UnityWebRequest webRequest)
+        {
+#if UNITY_2021_1_OR_NEWER
+            return webRequest.result == UnityWebRequest.Result.ProtocolError;
+#else
+            return webRequest.isHttpError;
+#endif
+        }
+
         private static async Task<MapLocationFinderResult> Request(string url)
         {
             var webRequest = UnityWebRequest.Get(new Uri(url));
             await webRequest.SendWebRequest();
 
             // Check error codes and parse the data. Note, we're on the Unity main thread here.
-
-            if (webRequest.isNetworkError)
+            if (IsNetworkError(webRequest))
             {
                 return new MapLocationFinderResult(MapLocationFinderStatus.NetworkFailure);
             }
-            else if (webRequest.isHttpError)
+            else if (IsHttpError(webRequest))
             {
                 if (webRequest.responseCode == 401)
                 {

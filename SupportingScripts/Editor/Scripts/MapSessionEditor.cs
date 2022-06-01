@@ -1,15 +1,16 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using UnityEditor;
+using UnityEngine;
+
 namespace Microsoft.Maps.Unity
 {
-    using UnityEditor;
-    using UnityEngine;
-
     [CustomEditor(typeof(MapSession))]
     [CanEditMultipleObjects]
     internal class MapSessionEditor : Editor
     {
+        private SerializedProperty _developerKeySourceProperty;
         private SerializedProperty _developerKeyProperty;
         private SerializedProperty _showMapDataInEditorProperty;
 
@@ -22,14 +23,18 @@ namespace Microsoft.Maps.Unity
         private GUIStyle _baseStyle = null;
         private GUIStyle _hyperlinkStyle = null;
         private GUIStyle _iconStyle = null;
-        private GUIContent _warnIcon = null;
+        private GUIContent _infoIcon = null;
         private GUIStyle _foldoutTitleStyle = null;
         private GUIStyle _boxStyle = null;
         private Texture2D _bannerWhite = null;
         private Texture2D _bannerBlack = null;
 
-        private void OnEnable()
+        private string[] _resourceFileKeySourcePostMessages = null;
+        private string[] _noKeySourcePostMessages = null;
+
+    private void OnEnable()
         {
+            _developerKeySourceProperty = serializedObject.FindProperty("_developerKeySource");
             _developerKeyProperty = serializedObject.FindProperty("_developerKey");
             _showMapDataInEditorProperty = serializedObject.FindProperty("_showMapDataInEditor");
             _languageOverrideProperty = serializedObject.FindProperty("_languageOverride");
@@ -38,6 +43,20 @@ namespace Microsoft.Maps.Unity
             _autodetectRegion = string.IsNullOrWhiteSpace(_regionOverrideProperty.stringValue);
             _bannerWhite = (Texture2D)Resources.Load("MapsSDK-EditorBannerWhite");
             _bannerBlack = (Texture2D)Resources.Load("MapsSDK-EditorBannerBlack");
+
+            _resourceFileKeySourcePostMessages =
+                new string[] {
+                    "2. In the \"Assets\" directory, create a directory named \"Resources\".",
+                    "3. In the \"Resources\" directory, create a file named \"MapSessionConfig.txt\".",
+                    "4. Copy the developer key into this file.",
+                    "5. Ignore this file from source control e.g., add to gitignore."
+                };
+            _noKeySourcePostMessages =
+                new string[]
+                {
+                    "2. Decide how you want to store and retrieve the key e.g., loading from file, using Azure Functions, etc.",
+                    "3. Use a script to retrieve the key and set the value on MapSession.DeveloperKey property."
+                };
         }
 
         public override void OnInspectorGUI()
@@ -46,12 +65,13 @@ namespace Microsoft.Maps.Unity
 
             serializedObject.UpdateIfRequiredOrScript();
 
+            var mapSession = target as MapSession;
+
             var overrideRegion = !_autodetectRegion || !string.IsNullOrWhiteSpace(_regionOverrideProperty.stringValue);
             _autodetectRegion = !overrideRegion;
 
-            // This should just be done one time.
+            // Move the MapSession to the top of the component UI stack. This should just be done one time.
             {
-                var mapSession = target as MapSession;
                 var components = mapSession.gameObject.GetComponents<Component>();
 
                 var mapRendererIndex = -1;
@@ -88,15 +108,51 @@ namespace Microsoft.Maps.Unity
             RenderBanner();
 
             // Setup and key.
-            _developerKeyProperty.stringValue = EditorGUILayout.PasswordField("Developer Key", _developerKeyProperty.stringValue);
-            if (string.IsNullOrWhiteSpace(_developerKeyProperty.stringValue))
+            EditorGUILayout.PropertyField(_developerKeySourceProperty);
+            if (mapSession.DeveloperKeySource == MapDeveloperKeySource.Scene)
             {
-                EditorGUI.indentLevel++;
-                Help(
-                    "Provide a developer key to enable Bing Maps services.",
-                    "Sign up for a key at the Bing Maps Dev Center.",
-                    "https://www.bingmapsportal.com/");
-                EditorGUI.indentLevel--;
+                mapSession.DeveloperKey = EditorGUILayout.PasswordField("Developer Key", mapSession.DeveloperKey);
+                if (string.IsNullOrWhiteSpace(mapSession.DeveloperKey))
+                {
+                    EditorGUI.indentLevel++;
+                    Help(
+                        "Provide a developer key to enable Bing Maps services.",
+                        "Sign up for a key at the Bing Maps Dev Center.",
+                        "https://www.bingmapsportal.com/");
+                    EditorGUI.indentLevel--;
+                }
+            }
+            else if (mapSession.DeveloperKeySource == MapDeveloperKeySource.ResourceConfigFile)
+            {
+                _developerKeyProperty.stringValue = string.Empty;
+                if (string.IsNullOrWhiteSpace(mapSession.DeveloperKey))
+                {
+                    EditorGUI.indentLevel++;
+                    Help(
+                        "",
+                        "1. Sign up for a key at the Bing Maps Dev Center.",
+                        "https://www.bingmapsportal.com/",
+                        _resourceFileKeySourcePostMessages);
+                    EditorGUI.indentLevel--;
+                }
+            }
+            else if (mapSession.DeveloperKeySource == MapDeveloperKeySource.None)
+            {
+                _developerKeyProperty.stringValue = string.Empty;
+                if (string.IsNullOrWhiteSpace(mapSession.DeveloperKey))
+                {
+                    EditorGUI.indentLevel++;
+                    Help(
+                        "",
+                        "1. Sign up for a key at the Bing Maps Dev Center.",
+                        "https://www.bingmapsportal.com/",
+                        _noKeySourcePostMessages);
+                    EditorGUI.indentLevel--;
+                }
+            }
+            else
+            {
+                // Unknown enum.
             }
 
             _showMapDataInEditorProperty.boolValue =
@@ -166,7 +222,7 @@ namespace Microsoft.Maps.Unity
             serializedObject.ApplyModifiedProperties();
         }
 
-        private void Help(string message, string urlMessage, string url)
+        private void Help(string message, string urlMessage, string url, string[] postMessages = null)
         {
             EditorGUI.indentLevel--;
             EditorGUILayout.BeginHorizontal();
@@ -175,14 +231,18 @@ namespace Microsoft.Maps.Unity
             {
                 EditorGUILayout.BeginVertical();
                 GUILayout.Space(8);
-                var iconWidth = _warnIcon.image.width;
-                EditorGUILayout.LabelField(_warnIcon, _iconStyle, GUILayout.Width(iconWidth));
+                var iconWidth = _infoIcon.image.width;
+                EditorGUILayout.LabelField(_infoIcon, _iconStyle, GUILayout.Width(iconWidth));
                 EditorGUILayout.EndVertical();
 
                 EditorGUILayout.BeginVertical();
                 {
                     GUILayout.Space(8);
-                    EditorGUILayout.LabelField(message, _baseStyle);
+
+                    if (!string.IsNullOrEmpty(message))
+                    {
+                        EditorGUILayout.LabelField(message, _baseStyle);
+                    }
 
                     EditorGUILayout.BeginHorizontal();
                     {
@@ -201,6 +261,18 @@ namespace Microsoft.Maps.Unity
                         }
                     }
                     EditorGUILayout.EndHorizontal();
+
+                    if (postMessages != null)
+                    {
+                        foreach (var postMessage in postMessages)
+                        {
+                            if (!string.IsNullOrEmpty(postMessage))
+                            {
+                                EditorGUILayout.LabelField(postMessage, _baseStyle);
+                            }
+                        }
+                    }
+
                     GUILayout.Space(4);
                 }
                 EditorGUILayout.EndVertical();
@@ -227,9 +299,9 @@ namespace Microsoft.Maps.Unity
                 _baseStyle.margin = new RectOffset();
             }
 
-            if (_warnIcon == null)
+            if (_infoIcon == null)
             {
-                _warnIcon = EditorGUIUtility.TrIconContent("console.warnicon");
+                _infoIcon = EditorGUIUtility.TrIconContent("console.infoicon");
             }
 
             if (_iconStyle == null)
@@ -239,8 +311,8 @@ namespace Microsoft.Maps.Unity
                     {
                         stretchHeight = false,
                         alignment = TextAnchor.MiddleLeft,
-                        fixedWidth = _warnIcon.image.width,
-                        fixedHeight = _warnIcon.image.height,
+                        fixedWidth = _infoIcon.image.width,
+                        fixedHeight = _infoIcon.image.height,
                         stretchWidth = false,
                         wordWrap = false
                     };
@@ -256,7 +328,7 @@ namespace Microsoft.Maps.Unity
                 _hyperlinkStyle.normal.textColor = new Color(0x00 / 255f, 0x78 / 255f, 0xDA / 255f, 1f);
                 _hyperlinkStyle.stretchWidth = false;
                 _hyperlinkStyle.padding = new RectOffset();
-                _hyperlinkStyle.alignment = TextAnchor.UpperLeft;
+                _hyperlinkStyle.alignment = TextAnchor.MiddleLeft;
             }
 
             if (_foldoutTitleStyle == null)
