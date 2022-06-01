@@ -17,6 +17,6 @@
     },
     "type": "library",
     "dependencies": {
-      "com.microsoft.maps.unity":  "0.11.1"
+      "com.microsoft.maps.unity":  "0.11.2"
     }
 }
