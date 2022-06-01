@@ -17,7 +17,7 @@
     }
   ],
   "dependencies": {
-    "com.microsoft.maps.unity": "0.11.1",
+    "com.microsoft.maps.unity": "0.11.2",
     "com.microsoft.mixedreality.toolkit.examples": "2.7.2",
     "com.microsoft.mixedreality.toolkit.foundation": "2.7.2",
     "com.microsoft.mixedreality.toolkit.tools": "2.7.2",

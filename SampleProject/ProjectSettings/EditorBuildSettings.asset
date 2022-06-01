@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Microsoft.Maps.Unity.Examples/MapPinExample/MapPinExample.unity
     guid: 04c6dce4c43d9cd47b3b974b0e1c4f4c
+  - enabled: 0
+    path: Assets/Microsoft.Maps.Unity.Examples/2DMapExample/2DMapExample.unity
+    guid: 11ab9c7d82fe5e542baa1191e12bc378
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: a68f851ea77061e4bad16c4c303927ee,
       type: 2}

@@ -158,8 +158,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.1575, z: 1}
-  m_Center: {x: 0, y: 0.07875, z: 0}
+  m_Size: {x: 1, y: 1.3045672, z: 1}
+  m_Center: {x: 0, y: 0.6522836, z: 0}
 --- !u!114 &220598121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,9 @@ MonoBehaviour:
   oneHandRotationModeNear: 1
   oneHandRotationModeFar: 1
   releaseBehavior: 3
+  transformSmoothingLogicType:
+    reference: Microsoft.MixedReality.Toolkit.Utilities.DefaultTransformSmoothingLogic,
+      Microsoft.MixedReality.Toolkit.SDK
   smoothingFar: 1
   smoothingNear: 1
   moveLerpTime: 0.001
@@ -303,6 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _opacity: 1
   _imageryType: 1
   _areRoadsEnabled: 0
   _areLabelsEnabled: 0
@@ -347,6 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _developerKey: 
+  _developerKeySource: 1
   _showMapDataInEditor: 1
   _languageOverride: 42
   _languageChanged:

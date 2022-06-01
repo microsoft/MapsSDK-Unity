@@ -45,3 +45,8 @@ Packages_/
 Assets/Packages.meta
 Assets/WSATestCertificate.pfx.*
 Build/
+
+# This file stores the Bing Maps dev key used by this Unity project.
+# See <repo-root>/Readme.md for setup instructions.
+Resources.meta
+MapSessionConfig.*

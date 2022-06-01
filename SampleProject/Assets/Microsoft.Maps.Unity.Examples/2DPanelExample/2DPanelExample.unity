@@ -656,7 +656,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2021 Microsoft"
+  m_text: "\xA9 2022 Microsoft, \xA9 2022 TomTom"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 76533969}
@@ -2426,7 +2426,7 @@ MonoBehaviour:
   _center:
     _latitude: 49.8457301182239
     _longitude: -110.734009177481
-  _zoomLevel: 1.8800001
+  _zoomLevel: 3.25
   _minimumZoomLevel: 1
   _maximumZoomLevel: 20
   _mapTerrainType: 2
@@ -2543,6 +2543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _developerKey: 
+  _developerKeySource: 1
   _showMapDataInEditor: 1
   _languageOverride: 42
   _languageChanged:

@@ -1889,8 +1889,8 @@ Camera:
   m_GameObject: {fileID: 528144770}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -1904,7 +1904,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.1
-  far clip plane: 50
+  far clip plane: 1000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -4828,8 +4828,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.105, z: 1}
-  m_Center: {x: 0, y: 0.0525, z: 0}
+  m_Size: {x: 1, y: 0.8020034, z: 1}
+  m_Center: {x: 0, y: 0.4010017, z: 0}
 --- !u!114 &2026101497
 MonoBehaviour:
   m_ObjectHideFlags: 2
@@ -4854,6 +4854,7 @@ MonoBehaviour:
   m_Script: {fileID: 1124163735, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _opacity: 1
   _imageryType: 1
   _areRoadsEnabled: 0
   _areLabelsEnabled: 0
@@ -4950,6 +4951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _developerKey: 
+  _developerKeySource: 1
   _showMapDataInEditor: 1
   _languageOverride: 42
   _languageChanged:

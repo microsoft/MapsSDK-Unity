@@ -871,6 +871,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _developerKey: 
+  _developerKeySource: 1
   _showMapDataInEditor: 1
   _languageOverride: 42
   _languageChanged:
