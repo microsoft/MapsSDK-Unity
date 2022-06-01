@@ -1,10 +1,22 @@
 # Changelog
-All notable changes to the SDK NuGet package and it's supporting scripts will be documented in this file.
+All notable changes to the SDK and it's supporting scripts will be documented in this file.
 
-The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
-and the SDK NuGet package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/) and the SDK package adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 Refer to the [Getting Started](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-started) documentation for instructions about how to import and upgrade the SDK.
+
+## 0.11.2 - 2022-05-31
+
+### Maps SDK
+#### Added
+- Various `MapDeveloperKeySource` options for `MapSession`.
+### Supporting Scripts
+#### Added
+ - MapSceneOfBoundingBox.
+#### Fixed
+ - Deprecation warnings related to UnityWebRequest.
+#### Changed
+ - Minimum cluster pin size is now two instead of three.
 
 ## 0.11.1 - 2021-09-17
 
