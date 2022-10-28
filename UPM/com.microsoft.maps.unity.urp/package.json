@@ -1,7 +1,7 @@
 {
     "name": "com.microsoft.maps.unity.urp",
-    "version": "0.11.1",
-    "displayName": "Maps SDK, a Microsoft Garage Project - Universal RP Support",
+    "version": "0.11.2",
+    "displayName": "Maps SDK, a Microsoft Garage Project - URP Support",
     "description": "Provides shaders for the universal render pipeline.",
     "unity": "2019.4",
     "keywords": [
@@ -15,8 +15,5 @@
       "name": "Microsoft",
       "url": "https://github.com/Microsoft/MapsSDK-Unity"
     },
-    "type": "library",
-    "dependencies": {
-      "com.microsoft.maps.unity":  "0.11.2"
-    }
+    "type": "library"
 }
