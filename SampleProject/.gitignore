@@ -50,3 +50,4 @@ Build/
 # See <repo-root>/Readme.md for setup instructions.
 Resources.meta
 MapSessionConfig.*
+*.DS_Store
