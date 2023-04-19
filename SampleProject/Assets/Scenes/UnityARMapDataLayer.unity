@@ -3768,6 +3768,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneDescriptionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7306429974960097550, guid: 27b61b9d6ab998c44a776ef01ce35298,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7310373757289826114, guid: 27b61b9d6ab998c44a776ef01ce35298,
         type: 3}
       propertyPath: m_RootOrder
@@ -4810,6 +4815,7 @@ GameObject:
   - component: {fileID: 2026101504}
   - component: {fileID: 2026101505}
   - component: {fileID: 2026101507}
+  - component: {fileID: 2026101508}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -4828,23 +4834,23 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.7806993, z: 1}
-  m_Center: {x: 0, y: 0.39034966, z: 0}
+  m_Size: {x: 1, y: 0.105, z: 1}
+  m_Center: {x: 0, y: 0.0525, z: 0}
 --- !u!114 &2026101497
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026101495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 243684798, guid: f58183a31672bf641bbeeaef3d4759c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &2026101498
 MonoBehaviour:
-  m_ObjectHideFlags: 2
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -4896,32 +4902,33 @@ MonoBehaviour:
   _numElevationTileFallbackLods: 2
   _requestTilesAroundView: 1
   _center:
-    _latitude: 47.62051
-    _longitude: -122.349303
-  _zoomLevel: 17.5
+    _latitude: 0
+    _longitude: 0
+  _zoomLevel: 1
   _minimumZoomLevel: 1
-  _maximumZoomLevel: 20
-  _mapTerrainType: 0
-  _mapShape: 1
+  _maximumZoomLevel: 8
+  _mapTerrainType: 2
+  _mapShape: 0
   _localMapDimension: {x: 1, y: 1}
   _localMapRadius: 0.5
   _localMapBaseHeight: 0.1
   _elevationScale: 1
-  _castShadows: 1
-  _receiveShadows: 1
+  _castShadows: 0
+  _receiveShadows: 0
   _enableMrtkMaterialIntegration: 1
   _terrainMaterial: {fileID: 0}
-  _isClippingVolumeWallEnabled: 1
+  _isClippingVolumeWallEnabled: 0
   _clippingVolumeMaterial: {fileID: 0}
   _clippingVolumeDistanceTextureResolution: 2
   _clippingDistanceLayer: 23
   _textureTileLayers:
     _list:
     - {fileID: 2026101498}
+    - {fileID: 2026101508}
   _elevationTileLayers:
     _list:
     - {fileID: 2026101497}
-  _hideTileLayerComponents: 1
+  _hideTileLayerComponents: 0
   _mapColliderType: 2
   _mapCollider: {fileID: 2026101496}
 --- !u!4 &2026101501
@@ -4965,7 +4972,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2026101495}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23f9be7a3cb53794ead8b55e784b65aa, type: 3}
   m_Name: 
@@ -5232,8 +5239,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ef50f6f9318ded40b230c1eefb7f968, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _percentUtilization: 0.3
+  _percentUtilization: 0.751
   _maxCacheSizeInBytes: 2147483648
+--- !u!114 &2026101508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2026101495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a668fd8c5d76942d0b06820cfeccf88c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _opacity: 0.346
+  _urlFormatString: 
+  _subdomains: []
 --- !u!1 &2047487681
 GameObject:
   m_ObjectHideFlags: 0
