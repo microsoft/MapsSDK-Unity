@@ -22,7 +22,7 @@ public class MyDataLayer : HttpTextureTileLayer
 
     public override async Task<TextureTile?> GetTexture(TileId tileId, CancellationToken cancellationToken = default)
     {
-        var z = _mapRenderer.ZoomLevel; // tileId.CalculateLevelOfDetail().Value;
+        var z = Mathf.RoundToInt(_mapRenderer.ZoomLevel);
         var x = tileId.ToTilePosition().X;
         var y = tileId.ToTilePosition().Y;
 
