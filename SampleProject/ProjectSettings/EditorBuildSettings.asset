@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/UnityARMapDataLayer.unity
+    guid: 618e00bf7569e48d28e9a5eeb1aa5b02
   - enabled: 0
     path: Assets/Microsoft.Maps.Unity.Examples/UnityARMapExample/UnityARMapExample.unity
     guid: d94c9c1859f383d4eb2503dde6c282e7
@@ -26,7 +29,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Microsoft.Maps.Unity.Examples/MapPinExample/MapPinExample.unity
     guid: 04c6dce4c43d9cd47b3b974b0e1c4f4c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Microsoft.Maps.Unity.Examples/2DMapExample/2DMapExample.unity
     guid: 11ab9c7d82fe5e542baa1191e12bc378
   m_configObjects:
