@@ -12,6 +12,7 @@ using System.Text;
 
 public class MyDataLayer : HttpTextureTileLayer
 {
+    public string param;
     private MapRenderer _mapRenderer;
 
     protected override void Awake()
@@ -30,15 +31,17 @@ public class MyDataLayer : HttpTextureTileLayer
         // @1x.png?taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly
         // @1x.png?taxonKey=212&bin=hex&hexPerTile=30&style=classic-noborder.poly
         string baseUrl = "https://api.gbif.org/v2/map/occurrence/density/";
-        string param = "@2x.png?taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly";
+        param = "taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly";
 
         var url = Path.Combine(baseUrl, z.ToString(), x.ToString(), y.ToString());
         StringBuilder sb = new StringBuilder(url);
+        sb.Append("@2x.png?");
         sb.Append(param);
 
-        Debug.Log(sb.ToString());
+        //Debug.Log(sb.ToString());
 
-        Task<byte[]> task = LoadImageAsync(sb.ToString());
+        //Task<byte[]> task = LoadImageAsync(sb.ToString());
+        Task<byte[]> task = LoadImageAsync(UrlFormatString);
         byte[] imageData = await task;
 
         return TextureTile.FromImageData(imageData);
