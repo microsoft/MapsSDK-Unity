@@ -35,9 +35,11 @@ EditorBuildSettings:
   m_configObjects:
     Unity.XR.WindowsMR.Settings: {fileID: 11400000, guid: a68f851ea77061e4bad16c4c303927ee,
       type: 2}
-    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: c898bcb95f3eb41d186a0e9538320f59,
+    UnityEditor.XR.ARCore.ARCoreSettings: {fileID: 11400000, guid: b5b2c1c549628434fa312e245cfb2f30,
       type: 2}
-    com.unity.xr.arkit.PlayerSettings: {fileID: 11400000, guid: 26035b948738e44a1a37b05370f30291,
+    UnityEditor.XR.ARKit.ARKitSettings: {fileID: 11400000, guid: 26035b948738e44a1a37b05370f30291,
+      type: 2}
+    com.unity.xr.arcore.PlayerSettings: {fileID: 11400000, guid: c898bcb95f3eb41d186a0e9538320f59,
       type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 9adf96fbaf06f7a4abdbad3307e32268,
       type: 2}

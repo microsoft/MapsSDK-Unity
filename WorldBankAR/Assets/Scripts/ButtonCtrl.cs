@@ -33,7 +33,17 @@ public class ButtonCtrl : MonoBehaviour
         Debug.Log(string.Format("### input field text= {0}; nubKey= {1}",
             queryText, nubKey));
 
+        StartCoroutine(AdjustDataLayer(nubKey));
+
+    }
+
+    private IEnumerator AdjustDataLayer(int nubKey)
+    {
         _myDataLayer.SetTaxonKey(nubKey);
+        _myDataLayer.enabled = false;
+        yield return new WaitForSeconds(.5f);
+        _myDataLayer.enabled = true;
+
     }
 
     private void OnDisable()

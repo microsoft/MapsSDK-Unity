@@ -13,13 +13,13 @@ public class MyDataLayer : HttpTextureTileLayer
 {
     public string param, baseUrl;
     private int _taxonKey;
+    private TileId _currentTileId;
     private MapRenderer _mapRenderer;
 
     // "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3575&publishingCountry=SE&basisOfRecord=PRESERVED_SPECIMEN&basisOfRecord=FOSSIL_SPECIMEN&basisOfRecord=LIVING_SPECIMEN&year=1600,1899&bin=square&squareSize=128&style=red.poly";
     // @1x.png?taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly
     // @1x.png?taxonKey=212&bin=hex&hexPerTile=30&style=classic-noborder.poly
     //../../../map/occurrence/density/{z}/{x}/{y}@2x.png?srs=EPSG:4326&bin=hex&hexPerTile=154&taxonKey=2480505&style=classic.poly
-
 
     protected override void Awake()
     {
@@ -33,25 +33,14 @@ public class MyDataLayer : HttpTextureTileLayer
     public void SetTaxonKey(int nubKey)
     {
         _taxonKey = nubKey;
-        _mapRenderer.ZoomLevel = 2f;
+        UrlFormatString = ComposeUrl();
     }
 
     public override async Task<TextureTile?> GetTexture(TileId tileId, CancellationToken cancellationToken = default)
     {
-        var z = Mathf.RoundToInt(_mapRenderer.ZoomLevel);
-        var x = tileId.ToTilePosition().X;
-        var y = tileId.ToTilePosition().Y;
+        _currentTileId = tileId;
 
-        var url = Path.Combine(baseUrl, z.ToString(), x.ToString(), y.ToString());
-        StringBuilder sb = new StringBuilder(url);
-        sb.Append("@1x.png?taxonKey=");
-        sb.Append(_taxonKey);
-        sb.Append(param);
-
-        //UrlFormatString = sb.ToString();
-        Debug.Log("### UrlFormatString " + UrlFormatString);
-
-        Task<byte[]> task = LoadImageAsync(UrlFormatString);
+        Task<byte[]> task = LoadImageAsync(ComposeUrl());
         byte[] imageData = await task;
 
         return TextureTile.FromImageData(imageData);
@@ -73,5 +62,19 @@ public class MyDataLayer : HttpTextureTileLayer
         }
     }
 
+    private string ComposeUrl()
+    {
+        var z = Mathf.RoundToInt(_mapRenderer.ZoomLevel);
+        var x = _currentTileId.ToTilePosition().X;
+        var y = _currentTileId.ToTilePosition().Y;
 
+        var url = Path.Combine(baseUrl, z.ToString(), x.ToString(), y.ToString());
+        StringBuilder sb = new StringBuilder(url);
+        sb.Append("@1x.png?taxonKey=");
+        sb.Append(_taxonKey);
+        sb.Append(param);
+
+        Debug.Log("### url " + sb.ToString());
+        return sb.ToString();
+    }
 }
