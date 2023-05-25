@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 using Microsoft.Maps.Unity;
 using System.Threading.Tasks;
 using Microsoft.Geospatial;
@@ -12,13 +11,29 @@ using System.Text;
 
 public class MyDataLayer : HttpTextureTileLayer
 {
-    public string param;
+    public string param, baseUrl;
+    private int _taxonKey;
     private MapRenderer _mapRenderer;
+
+    // "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3575&publishingCountry=SE&basisOfRecord=PRESERVED_SPECIMEN&basisOfRecord=FOSSIL_SPECIMEN&basisOfRecord=LIVING_SPECIMEN&year=1600,1899&bin=square&squareSize=128&style=red.poly";
+    // @1x.png?taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly
+    // @1x.png?taxonKey=212&bin=hex&hexPerTile=30&style=classic-noborder.poly
+    //../../../map/occurrence/density/{z}/{x}/{y}@2x.png?srs=EPSG:4326&bin=hex&hexPerTile=154&taxonKey=2480505&style=classic.poly
+
 
     protected override void Awake()
     {
         base.Awake();
         _mapRenderer = GetComponent<MapRenderer>();
+        baseUrl = "https://api.gbif.org/v2/map/occurrence/density/";
+        _taxonKey = 1;
+        param = "&bin=hex&hexPerTile=30&style=purpleYellow-noborder.poly";
+    }
+
+    public void SetTaxonKey(int nubKey)
+    {
+        _taxonKey = nubKey;
+        _mapRenderer.ZoomLevel = 2f;
     }
 
     public override async Task<TextureTile?> GetTexture(TileId tileId, CancellationToken cancellationToken = default)
@@ -27,20 +42,15 @@ public class MyDataLayer : HttpTextureTileLayer
         var x = tileId.ToTilePosition().X;
         var y = tileId.ToTilePosition().Y;
 
-        // "https://api.gbif.org/v2/map/occurrence/density/{z}/{x}/{y}@1x.png?srs=EPSG:3575&publishingCountry=SE&basisOfRecord=PRESERVED_SPECIMEN&basisOfRecord=FOSSIL_SPECIMEN&basisOfRecord=LIVING_SPECIMEN&year=1600,1899&bin=square&squareSize=128&style=red.poly";
-        // @1x.png?taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly
-        // @1x.png?taxonKey=212&bin=hex&hexPerTile=30&style=classic-noborder.poly
-        string baseUrl = "https://api.gbif.org/v2/map/occurrence/density/";
-        param = "taxonKey=212&basisOfRecord=MACHINE_OBSERVATION&years=2015,2017&bin=square&squareSize=128&style=purpleYellow-noborder.poly";
-
         var url = Path.Combine(baseUrl, z.ToString(), x.ToString(), y.ToString());
         StringBuilder sb = new StringBuilder(url);
-        sb.Append("@2x.png?");
+        sb.Append("@1x.png?taxonKey=");
+        sb.Append(_taxonKey);
         sb.Append(param);
 
-        //Debug.Log(sb.ToString());
+        //UrlFormatString = sb.ToString();
+        Debug.Log("### UrlFormatString " + UrlFormatString);
 
-        //Task<byte[]> task = LoadImageAsync(sb.ToString());
         Task<byte[]> task = LoadImageAsync(UrlFormatString);
         byte[] imageData = await task;
 

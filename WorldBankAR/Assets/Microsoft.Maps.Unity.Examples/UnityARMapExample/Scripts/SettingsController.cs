@@ -30,23 +30,23 @@ public class SettingsController : MonoBehaviour
     {
         if (location == "Space Needle")
         {
-            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(47.62051, -122.349303), 17.5f));
+            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(47.62051, -122.349303), 4f));
         }
         else if (location == "NYC")
         {
-            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(40.708707, -74.010632), 15.0f));
+            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(40.708707, -74.010632), 4f));
         }
         else if (location == "Golden Gate")
         {
-            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(37.81869, -122.4787177), 14.5f));
+            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(37.81869, -122.4787177), 4f));
         }
         else if (location == "Colosseum")
         {
-            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(41.890153, 12.492332), 17.5f));
+            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(41.890153, 12.492332), 4f));
         }
         else if (location == "Atomium")
         {
-            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(50.894928, 4.341533), 18.0f));
+            map.SetMapScene(new MapSceneOfLocationAndZoomLevel(new LatLon(50.894928, 4.341533), 4f));
         }
     }
 }

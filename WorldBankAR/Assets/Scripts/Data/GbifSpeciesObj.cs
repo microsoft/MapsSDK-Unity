@@ -10,7 +10,6 @@ public class GbifRoot
     public List<GbifSpeciesObj> results { get; set; }
 }
 
-
 // Root myDeserializedClass = JsonConvert.DeserializeObject<Root>(myJsonResponse);
 [Serializable]
 public class GbifSpeciesObj : Poco

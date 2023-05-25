@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class JsonSerializerBC
 {
-
     // save to local file persistent data path
     public async static UniTask SaveToFileAsync(List<Poco> data, string savePath)
     {

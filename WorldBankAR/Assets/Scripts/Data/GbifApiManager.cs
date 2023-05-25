@@ -11,6 +11,7 @@ public class GbifApiManager : MonoBehaviour
     public bool debug;
     public string baseUrlSpecies = "https://api.gbif.org/v1/species?";
     public string paramString = "name=Aquila%20pomarina&limit=1";
+    //https://www.gbif.org/occurrence/map?taxon_key=3113414
 
     private string _json;
 
@@ -33,11 +34,12 @@ public class GbifApiManager : MonoBehaviour
             if (list.Count > 0)
             {
                 var speciesObj = list[0];
-                Debug.Log(string.Format("### species {0}; nub key = {1}", speciesObj.species, speciesObj.nubKey));
+                //Debug.Log(string.Format("### species {0}; nub key = {1}", speciesObj.species, speciesObj.nubKey));
                 return speciesObj.nubKey;
             }
+            else return -1;
         }
-        return -1;
+        else return -1;
     }
 
     public async Task<GbifRoot> FetchGbifRoot(string query)
@@ -71,4 +73,5 @@ public class GbifApiManager : MonoBehaviour
             }
         }
     }
+
 }
