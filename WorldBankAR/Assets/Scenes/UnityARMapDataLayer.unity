@@ -9391,9 +9391,9 @@ MonoBehaviour:
   _center:
     _latitude: 53.4963426767049
     _longitude: 27.9081130631195
-  _zoomLevel: 1.9
+  _zoomLevel: 2
   _minimumZoomLevel: 1
-  _maximumZoomLevel: 4
+  _maximumZoomLevel: 3
   _mapTerrainType: 2
   _mapShape: 0
   _localMapDimension: {x: 1, y: 1}
@@ -9589,11 +9589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a668fd8c5d76942d0b06820cfeccf88c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _opacity: 0.443
+  _opacity: 0.76
   _urlFormatString: https://api.gbif.org/v2/map/occurrence/density/2/0/0@1x.png?taxonKey=1&bin=hex&hexPerTile=30&style=purpleYellow-noborder.poly
   _subdomains: []
   param: '&bin=hex&hexPerTile=30&style=purpleYellow-noborder.poly'
-  baseUrl: https://api.gbif.org/v2/map/occurrence/density/
+  baseUrl: https://api.gbif.org/v2/map/occurrence/adhoc/
 --- !u!114 &2026101509
 MonoBehaviour:
   m_ObjectHideFlags: 0

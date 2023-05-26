@@ -25,7 +25,7 @@ public class MyDataLayer : HttpTextureTileLayer
     {
         base.Awake();
         _mapRenderer = GetComponent<MapRenderer>();
-        baseUrl = "https://api.gbif.org/v2/map/occurrence/density/";
+        baseUrl = "https://api.gbif.org/v2/map/occurrence/density/"; // or use adhoc; density is for precalculated tiles
         _taxonKey = 1;
         param = "&bin=hex&hexPerTile=30&style=purpleYellow-noborder.poly";
     }
@@ -70,7 +70,7 @@ public class MyDataLayer : HttpTextureTileLayer
 
         var url = Path.Combine(baseUrl, z.ToString(), x.ToString(), y.ToString());
         StringBuilder sb = new StringBuilder(url);
-        sb.Append("@1x.png?taxonKey=");
+        sb.Append("@2x.png?taxonKey=");
         sb.Append(_taxonKey);
         sb.Append(param);
 
