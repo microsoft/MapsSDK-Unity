@@ -246,6 +246,7 @@ public class MixedRealityMapInteractionHandler : MapInteractionHandler, IMixedRe
     {
         if (_isFocused && eventData.MixedRealityInputAction.Description == "Zoom Map")
         {
+            Debug.Log("+++ OnInputChanged Zoom Map");
             _currentZoomValue = eventData.InputData;
             _zoomPointer = eventData.InputSource.Pointers.First(x => x.IsActive);
             eventData.Use();

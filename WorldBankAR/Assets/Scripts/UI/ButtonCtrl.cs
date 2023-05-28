@@ -60,6 +60,7 @@ public class ButtonCtrl : MonoBehaviour
         _mapRaycastProvider.enabled = !_canDragMapGameObject;
         _mapInteractionCtrl.enabled = !_canDragMapGameObject; //<--
         _mapInteractionHandler.enabled = !_canDragMapGameObject;
+
         _mapZoomManipulator.enabled = !_canDragMapGameObject;
 
         _objectManipulator.enabled = _canDragMapGameObject;
