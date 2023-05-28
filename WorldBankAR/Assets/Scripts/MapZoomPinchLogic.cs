@@ -13,7 +13,7 @@ using UnityEngine;
 public class MapZoomPinchLogic
 {
     private float _startMapZoomFactor;
-    private float startHandDistance = 1;
+    private float _startTouchDelta = 1;
 
     /// <summary>
     /// Initialize system with source info from controllers/hands
@@ -22,7 +22,7 @@ public class MapZoomPinchLogic
     /// <param name="manipulationRoot">Transform of gameObject to be manipulated</param>
     public virtual void Setup(Vector3[] handsPressedArray, float mapZoom)
     {
-        startHandDistance = GetDistanceBetweenTouches(handsPressedArray);
+        _startTouchDelta = GetDistanceBetweenTouches(handsPressedArray);
         _startMapZoomFactor = mapZoom;
     }
 
@@ -34,20 +34,18 @@ public class MapZoomPinchLogic
     public virtual float GetZoomFactor(Vector3[] touchesArray)
     {
         var delta = GetDistanceBetweenTouches(touchesArray);
-        var multiplier = delta / startHandDistance;
+        var multiplier = delta / _startTouchDelta;
         multiplier = Mathf.Clamp(_startMapZoomFactor * multiplier, 1f, 8f);
 
-        if (delta < startHandDistance)
+        if (delta < _startTouchDelta)
             multiplier *= -1;
-        startHandDistance = delta;
-        //Debug.Log("+++ multiplier= " + multiplier);
+        _startTouchDelta = delta;
         return multiplier;
     }
 
 
     private float GetDistanceBetweenTouches(Vector3[] touchesArray)
     {
-        if (touchesArray.Length < 2) return 1;
         return Vector3.Distance(touchesArray[0], touchesArray[1]);
     }
 }

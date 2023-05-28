@@ -18,6 +18,11 @@ public class MapZoomManipulator : MonoBehaviour
             _mapZoomPinchLogic = new MapZoomPinchLogic();
     }
 
+    private void OnDisable()
+    {
+        _mapZoomPinchLogic = null;
+    }
+
     public void ZoomByPinch()
     {
         if (Input.touchCount >= 2)
@@ -33,6 +38,8 @@ public class MapZoomManipulator : MonoBehaviour
     {
         if (Input.touchCount >= 2 && isPinching)
         {
+            handPositionArray[0] = Input.touches[0].position;
+            handPositionArray[1] = Input.touches[1].position;
             HandleTwoHandManipulationUpdated();
         }
         else
@@ -44,7 +51,7 @@ public class MapZoomManipulator : MonoBehaviour
     private void HandleTwoHandManipulationUpdated()
     {
         float zoomFactor = _mapZoomPinchLogic.GetZoomFactor(handPositionArray);
-        Debug.Log("+++ HandleTwoHandManipulationUpdated() zoom= " + zoomFactor);
+        //Debug.Log("+++ HandleTwoHandManipulationUpdated() zoom= " + zoomFactor);
         _mapInteractionCtrl.Zoom(zoomFactor);
     }
     #endregion
