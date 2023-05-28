@@ -203,6 +203,7 @@ public class MixedRealityMapInteractionHandler : MapInteractionHandler, IMixedRe
             _smoothedPointInLocalSpace = _targetPointInLocalSpace;
 
             eventData.Use();
+            Debug.Log("+++ OnPointerDown handler " + _pointer.PointerId);
         }
     }
 

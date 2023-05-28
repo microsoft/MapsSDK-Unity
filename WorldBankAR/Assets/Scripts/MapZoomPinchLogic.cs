@@ -35,7 +35,7 @@ public class MapZoomPinchLogic
     {
         var delta = GetDistanceBetweenTouches(touchesArray);
         var multiplier = delta/ startHandDistance;
-        Debug.Log("+++ multiplier= " + multiplier);
+        //Debug.Log("+++ multiplier= " + multiplier);
         return Mathf.Clamp(_startMapZoomFactor * multiplier, 1f, 8f);
     }
 

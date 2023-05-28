@@ -74,7 +74,6 @@ public class MyDataLayer : HttpTextureTileLayer
         sb.Append(_taxonKey);
         sb.Append(param);
 
-        Debug.Log("### url " + sb.ToString());
         return sb.ToString();
     }
 }

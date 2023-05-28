@@ -4,7 +4,7 @@ using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.Input.UnityInput;
 using UnityEngine;
 
-public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler
+public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler, IMixedRealityInputHandler<Vector2>
 {
     [SerializeField] MapRenderer _mapRenderer;
     [SerializeField] MapInteractionController _mapInteractionCtrl;
@@ -46,13 +46,12 @@ public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler
 
     public void OnPointerClicked(MixedRealityPointerEventData eventData)
     {
-        
+        //Debug.Log("+++ OnPointerClicked " + eventData.Pointer.PointerId);
     }
 
     public virtual void OnPointerDown(MixedRealityPointerEventData eventData)
     {
-        //Debug.Log("+++ OnPointerDown " + eventData.Pointer.PointerId);
-        if (//eventData.used ||
+        if (eventData.used ||
             eventData.Pointer == null ||
             eventData.Pointer.Result == null)
         {
@@ -121,7 +120,7 @@ public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler
     private void HandleTwoHandManipulationUpdated()
     {
         Vector3[] handPositionArray = GetHandPositionArray();
-        Debug.Log("+++ handPositionArray length= " + handPositionArray.Length);
+        //Debug.Log("+++ handPositionArray length= " + handPositionArray.Length);
 
         float zoomFactor = _mapZoomPinchLogic.GetZoomFactor(handPositionArray);
         Debug.Log("+++ HandleTwoHandManipulationUpdated() zoom= " + zoomFactor);
@@ -143,6 +142,11 @@ public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler
             _handPositionMap[index++] = pointerDataList[i].Pointer.Position;
         }
         return _handPositionMap;
+    }
+
+    public void OnInputChanged(InputEventData<Vector2> eventData)
+    {
+        //Debug.Log("+++ onInputChanged " + eventData.InputData);
     }
 
     #endregion
