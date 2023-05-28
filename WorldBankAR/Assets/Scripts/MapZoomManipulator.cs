@@ -38,9 +38,10 @@ public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler
         public Vector3 GrabPoint => (Pointer.Rotation * initialGrabPointInPointer) + Pointer.Position;
     }
 
-    private void Awake()
+    private void OnEnable()
     {
-        _mapZoomPinchLogic = new MapZoomPinchLogic();
+        if(_mapZoomPinchLogic == null)
+            _mapZoomPinchLogic = new MapZoomPinchLogic();
     }
 
     public void OnPointerClicked(MixedRealityPointerEventData eventData)
@@ -78,8 +79,6 @@ public class MapZoomManipulator : MonoBehaviour, IMixedRealityPointerHandler
 
     public virtual void OnPointerDragged(MixedRealityPointerEventData eventData)
     {
-        Debug.Log("+++ eventData.pointerID " + eventData.Pointer.PointerId);
-
         if (_hasFirstPointerDraggedThisFrame)
         {
             HandleTwoHandManipulationUpdated();

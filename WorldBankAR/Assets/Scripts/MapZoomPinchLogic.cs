@@ -13,7 +13,7 @@ using UnityEngine;
 public class MapZoomPinchLogic
 {
     private float _startMapZoomFactor;
-    private float startHandDistance;
+    private float startHandDistance = 1;
 
     /// <summary>
     /// Initialize system with source info from controllers/hands
@@ -35,6 +35,7 @@ public class MapZoomPinchLogic
     {
         var delta = GetDistanceBetweenTouches(touchesArray);
         var multiplier = delta/ startHandDistance;
+        Debug.Log("+++ multiplier= " + multiplier);
         return Mathf.Clamp(_startMapZoomFactor * multiplier, 1f, 8f);
     }
 

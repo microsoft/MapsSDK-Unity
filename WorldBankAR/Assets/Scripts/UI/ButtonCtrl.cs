@@ -20,6 +20,7 @@ public class ButtonCtrl : MonoBehaviour
     private MapInteractionController _mapInteractionCtrl;
     private MapInteractionHandler _mapInteractionHandler;
     private ObjectManipulator _objectManipulator;
+    private MapZoomManipulator _mapZoomManipulator;
 
     private void Awake()
     {
@@ -27,10 +28,12 @@ public class ButtonCtrl : MonoBehaviour
         _mapInteractionCtrl = _mapGObj.GetComponent<MapInteractionController>();
         _mapInteractionHandler = _mapGObj.GetComponent<MapInteractionHandler>();
         _objectManipulator = _mapGObj.GetComponent<ObjectManipulator>();
+        _mapZoomManipulator = _mapGObj.GetComponent<MapZoomManipulator>();
 
         _mapRaycastProvider.enabled = false;
         _mapInteractionCtrl.enabled = false;
         _mapInteractionHandler.enabled = false;
+        _mapZoomManipulator.enabled = false;
     }
 
     private void OnEnable()
@@ -57,7 +60,10 @@ public class ButtonCtrl : MonoBehaviour
         _mapRaycastProvider.enabled = !_canDragMapGameObject;
         //_mapInteractionCtrl.enabled = !_canDragMapGameObject;
         _mapInteractionHandler.enabled = !_canDragMapGameObject;
+        _mapZoomManipulator.enabled = !_canDragMapGameObject;
+
         _objectManipulator.enabled = _canDragMapGameObject;
+
 
         text.text = _canDragMapGameObject ? "Pan & Zoom" : "Place Map";
     }
