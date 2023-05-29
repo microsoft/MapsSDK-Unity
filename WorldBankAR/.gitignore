@@ -1,14 +1,14 @@
 # =============== #
 # Unity generated #
 # =============== #
-WorldBankAR/Library
-WorldBankAR/Temp
-WorldBankAR/Build
-WorldBankAR/Library/
-WorldBankAR/Packages/
-WorldBankAR/obj/
-WorldBankAR/Logs
-WorldBankAR/.vs
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/.vs
 
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -30,7 +30,7 @@ WorldBankAR/obj/
 # ============ #
 # OS generated #
 # ============ #
-.DS_Store
+*.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
