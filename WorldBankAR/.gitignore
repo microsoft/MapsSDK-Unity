@@ -13,8 +13,8 @@
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
-WorldBankAR/ExportedObj/
-WorldBankAR/obj/
+/ExportedObj/
+/obj/
 *.svd
 *.userprefs
 *.csproj
@@ -44,12 +44,12 @@ Thumbs.db
 
 Packages_/
 !*.meta
-WorldBankAR/Assets/Packages.meta
-WorldBankAR/Assets/WSATestCertificate.pfx.*
-WorldBankAR/Build/
+/Assets/Packages.meta
+/Assets/WSATestCertificate.pfx.*
+/Build/
 
 # This file stores the Bing Maps dev key used by this Unity project.
 # See <repo-root>/Readme.md for setup instructions.
-WorldBankAR/Resources.meta
-WorldBankAR/Resources/MapSessionConfig.*
+/Resources.meta
+/Resources/MapSessionConfig.*
 *.DS_Store
