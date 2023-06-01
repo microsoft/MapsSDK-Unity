@@ -1,0 +1,1392 @@
+﻿{
+  "offset": 0,
+  "limit": 20,
+  "endOfRecords": false,
+  "count": 38317981,
+  "results": [
+    {
+      "key": 0,
+      "nameKey": 97528424,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 0,
+      "kingdom": "incertae sedis",
+      "kingdomKey": 0,
+      "scientificName": "incertae sedis",
+      "canonicalName": "incertae sedis",
+      "authorship": "",
+      "nameType": "PLACEHOLDER",
+      "taxonomicStatus": "DOUBTFUL",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 14870,
+      "numOccurrences": 0,
+      "habitats": [],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 1,
+      "nameKey": 96916018,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 1,
+      "kingdom": "Animalia",
+      "kingdomKey": 1,
+      "scientificName": "Animalia",
+      "canonicalName": "Animalia",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 2941691,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [
+        { "description": "We include details on diversity for Central American representatives of 10 arachnid orders, excluding hyperdivrse mites & ticks. Individual taxa (families, genus, species) can be explored under taxonomy tab, using the dropdown hierarchical menu on the left, either directly or starting by the links below. AMBLYPYGI: http://arachnids.myspecies.info/taxonomy/term/12 ARANEAE: http://arachnids.myspecies.info/taxonomy/term/18 OPILIONES: http://arachnids.myspecies.info/taxonomy/term/20 PALPIGRADI: http://arachnids.myspecies.info/taxonomy/term/15 PSEUDOSCORPIONIDA: http://arachnids.myspecies.info/taxonomy/term/13 RICINULEI: http://arachnids.myspecies.info/taxonomy/term/14 SCHIZOMIDA: http://arachnids.myspecies.info/taxonomy/term/17 SCORPIONES: http://arachnids.myspecies.info/taxonomy/term/16 SOLIFUGAE: http://arachnids.myspecies.info/taxonomy/term/19 THELYPHONIDA: http://arachnids.myspecies.info/taxonomy/term/11" },
+        { "description": "REGNUM ANIMALE. ANIMALIA organisatione viva, nervis sentiunt, percipiunt, seque ex arbitrio movent motu possibili. VIVENTIA singula, in multiplicatione prodiga Natura, orditur a minimis, generat in fluido, incipit in ovi liquido, cum omne vivum ex ovo. OVUM intra Tunicas, saepe includentes Albumen, continet Vitellum, cujus lateri emergenti insertum Punctum saliens, vegetans in Embryonem, caulescentem Funiculo umbilicali, radicatum placenta vitellina. MATER prolifera promit ante generationem vivum compendium novi animalis suique simillimi, tamquam plumulam intra semen vegetabile; hoc Patris polline spermatico electrisatum calore excluditur; Punctum saliens enim Ovi incubantis Avis ostendit primum Cor micans Cerebrumque cum Medulla; corculum hoc, cessans a frigore, excitatur calido halitu, premitque Bulla a � rea, sensim dilatata, liquores secundum canales fluxiles. Punctum vitalitatis itaque in viventibus est tantum a prima creatione continuata vitae ramificatio, cum ovum sit gemma matris ab exordio viva, licet non sentiens ante foecundationem; sic Generatio Aequivoca nulla. CORPUS Animantium composita est machina: Naturalis, vegetat e cranii Tubere crustato, Caule verticali, articulato, rigido, opposite ramoso, cui insident Folia carnosa, fibrosa, sparsa, apicibus etiam affixa in Musculos, prodeunte Fructificatione genitalium e dichotomia ultima caulis. Vitalis, e Bulbo Cordis perpetuo mobili, radicata vasis lacteis intra tubi intestinalis sterquilinium, ramificatur ad caulem naturalem duplici canali circulante, ne succus alimentaris quavis tempestate & statu deficiat. Animalis, e Bulbo Cerebri repentisque Medullae, indolis incognitae, sedis cogitantis, Fila simplicissima, electrica ad fibras omnes irritabiles exserit, per quae cogitans sentit & movet. ORGANA sensuum machinae sunt physicae, insertae extremitati nervi, sensorio cerebri proximi, quibus divina arte percipit Animal: Oculus: Camera obscura im ginem proportione, figura, colore depingens. Auris: Tympanum membranae corda tensae super cochleam, a motu aetheris tremens. Nasus: Membrana latissima, humida, contortuplicata, a � ris perreptantis volatilia figens. Lingva: Spongiolae bibulae, sparsae, humido solutum atrahentes. Tactus: Papillae molliusculae, figuram impressam brevi assumentes. His gaudent plurima Animalia, sed non omnia. Plura si Creatori addere placuisset, plura percepissent; uti Magnete praesentiam Ferri, Electro electricitatis phaenomena. Antennas Insectis solis concessit, nobis aeque ignotas ac illis Aures. Indicat Oculus ex luce, Auris ex aethere appropinquantia; percipit Tactus ex unione solida praesentia; examinat Nasus volatilia nervis, Lingua solubilia fibris, assumenda: s. concessa salutaria, s. vetita noxia. COGITANS allicit ad velle gratum, aut nolle ingratum. Gaudium puerile, sanguineum, rubrum, oleosum, spongiosum, tepidum, libere pulsans, anhelans, ridens, transpirans, promtum. Vita. Metus juvenilis, phlegmatic. pallescens, aquosus, laxus, horrens, debile pulsans, dyspnoicus, fuffocans, cacans, tremens. Morbus. Ira virilis, cholerica, fusca, spirituosa, stricta, fervens, dure pulsans, asthmatica, stertens, micturiens, agitans. Medicina. Moeror senilis, melancholic. ater, acidus, rigidus, frigidus, tarde pulsans, orthopnoicus, suspirans, obstipans, quiescens. Mors. Sic Gaudium bonis fruitur, Metus fuga eripit, Ira armis defendit, Moeror amissa luget. IMPERANTIUM caussa quemadmodum Populi non sunt nati, sed subditorum ordini servando Imperantes constituti, ita Vegetabilium caussa Animalia Phytiphaga, phytiphagorum Carnivora, & ex his Majora ob parva, Homo (qua animal in oeconomia naturae) ob maxima & singula, sese vero praecipue, saeva mercede conducta tyrannidem exercent, ut Proportio cum nitore Reipublicae naturae perennet. Vicissim singuli cives conspirant in Majestatem Hominis rationalis imperantis, cujus est summum Reipublicae auctorem agnoscere. RES PUBLICA Naturae, tanquam Aqua e Fontibus in Rivulos, Amnes, Fluvios ad Mare tranans, e numerosissima Plebe in pauciores Nobiles, paucissimosque Magnates ad Imperantem adscendit, dum Animalia minima, numero, vi, potentia facile infinita, in usum cedant majoribus, inertioribus, praestantioribus, cum natura nunquam magis quam in minimis tota sit. Operationes incolarum praecipuae sunt: 1. Multiplicare Speciem, ut negotiis sufficiant. 2. Auferre immunda, cadavera, languida, conspurcata, stagnantia, acida, putrida, ut nitor aulae fulgeat. 3. Detondere quotannis vegetabilia, ut renovetur annuum theatrum; 4. Aequilibrium inter Species Animalium & Vegetabilium servare, ut proportio perennet. 5. Vindicare se ipsos ab interitu, ne vacet administratio. Ministri, propriis muniis praefixi, tot sunt, quot animalium Species, singuli ad officia proprio commodo allecti, qvum ex labore sustentationem suam reportent; ne quidquam deficiat, ubi nihil supervacaneum. Ne autem alter alterius negotiis sese immisceat, simulque lucrum alteri praeripiat; sub poena capitali sancita Lex, ipsa sensibus, Olfactus imprimis & Gustus, inscripta, ne transgressores excusabiles evaderent. Sic rapina rerum omnium est, quam Armis, Fulcris, Munimentis, Halitu eludunt vivaciora, dum Languida succumbant, & Vegetiora in motu festinent, ut opus naturae perenni flore rideat. Impulsores etiam praefixi ad munera promte peragenda: blanda Venus ad propagationem irritat; avara Fames ad sustentationem impellit; atrox Dolor ad conservationem cogit; neque haec sine Numine. DIVISIO Naturalis Animalium ab interna structura indicatur: COR biloculare, biauritum;? viviparis Mammalibus. Sangvine calido, rubro.? oviparis Avibus. COR uniloculare, uniauritum;? pulmone arbitrario Amphibiis. Sangvine frigido, rubro.? branchiis externis Piscibus. COR uniloculare, inauritum;? antennatis Insectis. Sanie frigida, albida.? tentaculatis Vermibus. I. MAMMALIA. Cor biloculare, biauritum; Sanguine calido, rubro. (*) Pulmones respirantes reciproce. Maxillae incumbentes, tectae. Penis intrans viviparas, lactantes. Sensus: Lingua, Nares, Tactus, Oculi, Aures. Tegmenta: Pili, pauci indicis, paucissimi aquaticis. Fulcra: Pedes quatuor, exceptis mere aquaticis, in quibus pedes posteriores in caudae pinnam coaliti. II. AVES. Cor biloculare, biauritum; Sanguine calido, rubro. Pulmones respirantes reciproce. Maxillae incumbentes, nudae, exsertae, edentulae. Penis subintrans absque scroto oviparas crusta calcarea. Sensus: Lingua, Nares, Oculi, Aures absque auriculis. Tegmenta: Pennae incumbentes, imbricatae. Fulcra: Pedes duo. Alae duae. III. AMPHIBIA. Cor uniloculare, uniauritum; Sanguine frigido, rubro. Pulmones spirantes arbitrarie. Maxillae incumbentes. Penes bini. Ova plerisque membranacea. Sensus: Lingua, Nares, Oculi, multis Aures. Tegmenta coriacea nuda. Fulcra varia variis, quibusdam nulla. IV. PISCES. Cor uniloculare, uniauritum; Sanguine frigido, rubro. Branchiae extus comprimendae. Maxillae incumbentes. Penes nulli. Ova absque albumine. Sensus: Lingua, Nares? Oculi (non Aures). Tegmenta: Squamae imbricatae. Fulcra: Pinnae natantes. V. INSECTA. Cor uniloculare, inauritum; Sanie frigida. Spiracula: Pori laterales corporis. Maxillae laterales. Penes intrantes. Sensus: Lingua, Oculi, Antennae in capite absque cerebro. (non Aures, Nares). Tegmenta: cataphracta cute ossea sustentante. Fulcra: Pedes, quibusdam Alae. VI. VERMES. Cor uniloculare, inauritum; Sanie frigida. Spiracula nulla? Maxillae multifariae, variae variis. Penes varii Hermaphroditis Androgynis. Sensus: Tentacula, caput nullum (vix Oculi, non Aures, Nares). Tegmenta interdum calcarea vel nulla, nisi Spinae. Fulcra: nulli Pedes aut Pinnae. CLASSIS I." },
+        { "description": "DESCRIPTION Numerous postcranial remains have been found in Gueran. These include five procoelous vertebrae and several fragments of osteoderms. FSAC Bouj- 410 is a posterior cervical vertebra (Fig. 7 A). It bears a long hypapophysis, and the location of the diapophysis and parapophysis suggests that it could be the ninth cervical vertebra. Bouj- 1 b is a more anterior cervical (Fig. 7 B), but it is not possible to determine its exact location in the vertebral column. FSAC Bouj- 400 is an isolated procoelous centrum lacking most of the neural arch (Fig. 7 C). The transverse process is high on the centrum, which indicates that it is a dorsal vertebra. A first caudal vertebra with a biconvex centrum is preserved (Fig. 7 D). The osteoderm fragments have their dorsal surfaces densely ornamented with deep pits (Fig. 7 F-H). Bouj- 96 is a fragment of large and thick osteoderm with a smooth anterior articular surface." },
+        { "description": "Eusuchia indet." },
+        { "description": "EXAMINED MATERIAL. — FSAC Bouj- 410, could be the (?) ninth cervical vertebra; FSAC Bouj- 1 b, anterior? cervical vertebra; 400, posterior dorsal vertebra; 1 a, first caudal vertebra; 124, caudal vertebra; 96, two fragments of large dorsal osteoderms; 94, fragment of osteoderm." },
+        { "description": "(Figs 24 A-X; 25 B, C; 26; 27) DESCRIPTION Sauropod remains are especially abundant in the Early Cretaceous of Angeac-Charente. The locality has yielded many teeth (N = 146), bones (N = 784), and track casts of this group of dinosaurs (Néraudeau et al. 2012; Rozada et al. 2021). All parts of the skeleton are represented including the braincase, some skull bones, teeth, cervical, dorsal and caudal vertebrae, chevrons, pelvic girdle and all the limb bones (Figs 24 - 27). Based on the number of femurs and their size, as well as the teeth, there are at least seven different individuals preserved in the site. With the exception of two teeth (see below), all this material belongs to a single taxon. All remaining teeth are reminiscent of the Turiasauria clade (Allain et al. 2013, 2017). We can classify them based on a small number of diagnostic characters. Teeth are heart-shaped in labial and lingual views, with an asymmetric shape induced by a concave distal margin towards the apex (Royo-Torres et al. 2006, 2017; Royo-Torres & Upchurch 2012; Mocho et al. 2016). This feature has been observed in most of the sauropod teeth that have been collected from Angeac-Charente (Figs 24; 25 B, C). A second character permits referral of these teeth to Turiasauria. When the root is well preserved, several long longitudinal grooves are visible in Turiasaurus, Losillasaurus (Royo-Torres et al. 2021) and Moabosaurus (Britt et al. 2017 and RRT personal observation). These grooves are also present in the Angeac-Charente taxon (Fig. 24 I-P, U-X) and may be diagnostic for Turiasauria (Royo-Torres et al. 2021). Moreover, the teeth of Angeac-Charente show a range of crown morphotypes and this variability of forms has also been described in turiasaur teeth from Portugal (Mocho et al. 2016) and in Mierasaurus (Royo-Torres et al. 2017) and Losillasaurus (Royo-Torres et al. 2021). Teeth, in private collections, identical in every way to those of Angeac-Charente, are also present in the Berriasian of Cherves-de-Cognac (RA, TL pers. obs.). The caudal vertebrae are also useful in determining the systematic position of the Angeac-Charente sauropod (Fig. 26). The anterior caudal vertebrae are procoelous with a slightly convex posterior articulation (Fig. 26 A-I) whereas the middle become amphicoelous or amphyplatyan (Fig. 26 J-L). The presence of a convex posterior articulation on sauropod caudal vertebrae was acquired several times during sauropod evolution (Wilson 2002; Upchurch et al. 2004; D’Emic 2012; Mannion et al. 2017, 2019) and can be seen in diplodocids, titanosaurs and mamenchisaurids. The procoelous condition was also acquired in Turiasauria, as described for the Late Jurassic Turiasaurus and Losillasaurus (Casanovas et al. 2001; Royo-Torres et al. 2006, 2021). It has also been reported in the posterior series of Early Cretaceous Mierasaurus and Moabosaurus (Royo-Torres et al. 2017; Britt et al. 2017). This feature is considered to be synapomorphic for Turiasauria in some phylogenetic analyses (Carballido & Sander 2014). The neural arch of anterior caudal vertebrae is restricted to the anterior half of the centrum. This character is shared with Turiasaurus, Losillasaurus, Moabosaurus, Mierasaurus, Cetiosaurus and the Titanosauriformes (Upchurch et al. 2004; D’Emic 2012; Britt et al. 2017; Royo-Torres et al. 2017). The presence in the Angeac-Charente taxon of caudal vertebrae with short lateral processes (‘ caudal ribs’) that do not extend beyond the posterior end of the centrum suggests affinities with Titanosauriformes (Mannion et al. 2019; Royo-Torres et al. 2021). Two additional possible synapomorphic characters for Turiasauria seen in specimens from Angeac-Charente include slightly opisthocoelous posterior dorsal centra, as well as a high neural arch below the postzygapophyses of the posterior dorsal vertebrae (Carballido & Sander 2014)." },
+        { "description": "DESCRIPTION Ornithomimosaurs are by far the most commonly represented vertebrates in Angeac-Charente, with more than 3800 macroremains collected (Figs 29 - 30), accounting for more than 50 % of the identified vertebrate material (Rozada et al. 2021). The minimum number of individuals (MNI) is approximately 70 based on the distal end of left tibiae. Ornithomimosaur remains are mainly concentrated in the CG 1 and CG 3 loci, in which they represent 70 % of all the ornithomimosaur remains identified. Such a concentration and high number of individuals are congruent with a mass mortality event of an ornithomimosaur herd (Allain et al. 2011, 2014; Néraudeau et al. 2012; Rozada et al. 2021). However, no articulated skeletons have been observed due to the intense trampling (dinoturbation) affecting this area (Rozada et al. 2021). The only articulated remains of ornithomimosaurs found so far come from the northwestern part of the quarry (CG 9 plot) and they include the zeugopod and the autopod of the forelimb of a single individual, as well as the the zeugopod and autopod of the hindlimb of another single individual. Except for the most fragile elements such as the maxillary and palate bones, which have probably suffered from trampling and have not yet been identified, the skeleton of the Angeac-Charente ornithomimosaur is virtually complete (Fig. 31). A complete description of the entire skeleton of this new taxon is beyond the scope of this study. Nevertheless, it seems important to highlight here key anatomical features of the Angeac-Charente ornithomimosaur: first, because this clade was hitherto unknown in Europe at the beginning of the Cretaceous (Allain et al. 2014); secondly because it may be the oldest known ornithomimosaur to date (Choiniere et al. 2012; Cerroni et al. 2019); thirdly, because it shows very close anatomical similarities to Limusaurus, which is a Late Jurassic Chinese theropod that is not considered a member of the Ornithomimosauria, but a ceratosaurian (Xu et al. 2009). These similarities include a very large external mandibular fenestra and short forelimbs with manual digit reduction (RA pers. obs.). Relationships between ceratosaurians and ornithomimosaurs have long been confusing (e. g. Marsh 1895; Janensch 1925; Galton 1982; Holtz 1994; Rauhut 2003). Some taxa, including Elaphrosaurus, Deltadromeus, Limusaurus, Nqwebasaurus and probably the Angeac-Charente taxon do not have a clearly established phylogenetic position, and their anatomy may also reflect unexpected and unrecognized relationships between ceratosaurians and ornithomimosaurs. Pending a comparative and detailed phylogenetic study, we provide herein some anatomical features that clearly indicate the ornithomimosaurian affinity of Angeac-Charente material. Besides the features already mentioned byAllain et al. (2014), we mainly used the anatomical characters discussed in the recent reappraisal of the phylogenetic position of Afromimus byCerroni et al. (2019). The edentulous and downturned dentary (Fig. 29 A) is an ornithomimosaurian synapomorphy convergently acquired by numerous other coelurosaurian groups (Zanno & Makovicky 2010). It is worth noting that outside coelurosaurs only Limusaurus displays a toothless skull and mandible in mature individuals (Wang et al. 2017). The pedal unguals of the Angeac-Charente theropod have a weak longitudinal curvature and exhibit the reduction of the flexor tubercle to a ventral platform seen in ornithomimosaurs, but also in abelisauroids (Fig. 29 B, C; Cerroni et al. 2019: fig. 7). Nevertheless, they are more reminiscent of ornithomimosaurs, being slender, and having a triangular cross-section and a single ventral groove (Longrich 2008), whereas pedal unguals of Afromimus and Masiakasaurus are shorter and possess a dorsal vascular groove. The centrum of the middle and distal caudal vertebrae is long and low (Fig. 29 D-L). The anterior and posterior articular surfaces are slightly wider than tall, with a reniform contour (Fig. 29 H, L). A broad and shallow sulcus is present on the ventral surface, and it is laterally delimited by two prominent ridges (Fig. 29 E, J). All these features are present in ornithomimosaurs (Osmolska et al. 1972; Longrich 2008) but also in Elaphrosaurus (Rauhut & Carrano 2016). As in all ornithomimosaurs, the robust and tongue-shaped prezygapophyses of the Angeac-Charente taxon are elongated anteroposteriorly, up to three-quarters the length of the centrum. They are horizontally directed (Fig. 29 F, K) and do not diverge laterally from the sagittal plane (Fig. 29 D, I). Conversely, the zygapophyses of ceratosaurs are slender, shorter and directed anterodorsally (Carrano et al. 2002; O’Connor 2007, Cerroni et al. 2019). The tibia of the Angeac-Charente ornithomimosaur has already been described in detail (Allain et al. 2014). Here, we figure new material to highlight the features that best differentiate it from a ceratosaur tibia (Fig. 30 A-D). The proximal end of the tibia is markedly different from that of Ceratosaurus, Masiakasaurus, Carnotaurus, Majungasaurus, Afromimus and Elaphrosaurus having a fibular crest clearly separated from the proximal articular surface (Fig. 30 A-C), as in tetanuran theropods and thus all the ornithomimosaurs. The elliptical scar present on the posterior surface of the proximal end of the tibia of some ceratosaurs is not visible in the Angeac-Charente taxon (Cerroni et al. 2019). As in all ornithomimosaurs, the anterior surface of the distal end of the tibia of the Angeac-Charente taxon bears a tall and transversely expanded flat articular surface for the ascending process of the astragalus (Fig. 30 D). There is no medial buttress to accommodate the ascending process as in many basal tetanurans and ceratosaurs, including Berberosaurus, Masiakasaurus, Majungasaurus and Ceratosaurus. The medial face of the fibula bears a deep and proximodistally elongate elliptical fossa for the insertion of musculus popliteus. This fossa opens medially and is anteriorly and posteriorly bounded by sharp rims (Fig. 30 E). Such a condition is only known in coelurosaurs and Elaphrosaurus, and markedly differs from the condition seen in coelophysoids and ceratosaurs, in which the fossa is covered anterodorsally by the tibial crest and thus opens posteriorly (Rauhut 2003; Allain et al. 2007; Rauhut & Carrano 2016; Cerroni et al. 2019). In common with the tibia and fibula, the astragalus has a morphology typical of the coelurosaurs and very different from that of the ceratosaurs (Fig. 30 F-H). In contrast to Ceratosaurus, Elaphrosaurus, Masiakasaurus, and abelisaurids, the astragalus is fused neither to the calcaneum nor the tibia or fibula (Fig. 30 H). The height of the blade-like ascending process of the astragalus is more than twice the height of astragalar body and the process arises from the complete breadth of the astragalar body (Fig. 30 F-G). In contrast, all ceratosaurs exhibit a low and narrow ascending process. In addition, the fibular facet on the astragalus is strongly reduced on the lateral side of the ascending process of the astragalus (Fig. 30 H). In contrast, the distal end of the fibula of numerous abelisauroids including Berberosaurus, Masiakasaurus, Afromimus and Majungasaurus is transversely expanded and the flared distal end partially overlaps the ascending process of astragalus, the fibular facet of which is large. As previously stated (Néraudeau et al. 2012, Allain et al. 2013, 2014), all surveyed anatomical features agree with assignment of the Angeac-Charente theropod to Ornithomimosauria." },
+        { "description": "Cerroni et al. (2019) have recently questioned the ornithomimosaurian phylogenetic affinities of the Early Cretaceous African Nqwebasaurus (Choiniere et al. 2012). If confirmed, it would imply that the Charentais taxon is the oldest known ornithomimosaur, based on the Berriasian age of the Lägerstatte of Angeac-Charente (Benoit et al. 2017; Polette et al. 2018). Moreover, ornithomimosaurs would then have an exclusively Laurasian distribution. Nevertheless, based on first hand examination of fossil specimens by one of us (R. A.), the phylogenetic affinities of Limusaurus and Deltadromeus are far from certain. More detailed descriptions regarding their anatomy are required to draw conclusions regarding the origin and evolution of ornithomimosaurs." },
+        { "description": "(Figs 24 Y-AA; 25 A) DESCRIPTION In addition to the turiasaur, a second sauropod taxon may be present at Angeac-Charente site. It is only represented by a single abraded tooth and a tooth recovered from microremains (Figs 24 Y-AA; 25 A). They are spatulate and characterized by straight and subparallel distal and mesial edges at the base of the crown, and by the presence of a convex labial and concave lingual surface. Based on these features, these teeth are assigned to a macronarian sauropod probably close to Camarasaurus (Wilson 2002; Upchurch et al. 2004; Mocho et al. 2017). Sauropod track casts have also been recorded at Angeac-Charente. Thay are represented by casts of pes and manus footprints (Rozada et al. 2021). In 2018, a sauropod footprint cast was observed above and in contact with an in-situ broken sauropod radius. It represents a spectacular “ instantaneous ” preservation of the action of a sauropod pes or manus crushing a sauropod long bone, and inducing bone modifications (breakage, displacement and reorientation) and sediment deformations (Rozada et al. 2021). The footprints are identified as Sauropoda indet. because of the general circular morphology of the pes, the characteristic tubular metacarpal arrangement of the manus and also the huge size of the prints (Carrano & Wilson 2001; Wilson 2005)." },
+        { "description": "PRELIMINARY STATEMENT Turtles are well represented in Angeac-Charente, notably by numerous isolated shell plates and bones of the axial and appendicular skeletons, and more rarely by articulated shell material (see Table 1; Fig. 35 A). Only a few pieces of skulls, including a maxillary and a mandible, have been recovered. Néraudeau et al. (2012) have previously reported the presence of three distinct turtle taxa in Angeac-Charente: a pleurosternid, a solemydid (now helochelydrid), and a third taxon characterized by shell bones without surface ornamentation (Figs 12; 13). Since then, additional and more complete material confirms these preliminary conclusions (see below). The third taxon is now identified as a thalassochelydian." },
+        { "description": "Material examined Specimen FMNH-P 30431, from Profilstranda section, adjacent to Hinlopenstretet, Spitsbergen, from bed PO 131, 128 m above base of Olenidsletta Member, V 2 b trilobite zone, Blackhillsian, Floian." },
+        { "description": "Remarks The combination of a large, eccentric, but not marginal siphuncle with relatively narrowly spaced septa, partly concave connecting rings and short orthochoanitic septal necks are arguments to place this specimen in the Cyptendoceratidae. A combination of ventrally expanded and dorsally contracted siphuncular segments is not known from other cyptendoceratids. However, the limited information available from this species, based on a single relatively small fragment, does not allow for a better determination." },
+        { "description": "Description The specimen is a 20 mm long, nearly tubular fragment of a phragmocone with a circular conch cross section, 20 mm in diameter. Eight chambers occur in the length of the fragment and the sutures are straight and directly transverse. The conch surface is poorly preserved but was apparently smooth. The chambers are internally imploded and crushed, preserving only a small part of the siphuncle. This is 7 mm in diameter and positioned between the conch center and conch margin at a distance of ca 4 mm from the conch margin. The septal necks are orthochoanitic and 0.7 mm long, where the septal distance is 3 mm. The connecting ring is relatively thin compared to the septa and septal necks and concave on the dorsal side (the side directed toward the conch center), but convex on the ventral side." },
+        { "description": "Figs 9 C, 31 A – B, 32 B" },
+        { "description": "DESCRIPTION Measures (mm): maximum width (w) of osteoderms ranges between 1.1 and 3.9 mm. The osteoderms, when complete, are oval, suboval or subrectangular elements with more or less irregular margins. Gliding surfaces are absent. All bear a prominent medial keel that extends the full length of the osteoderm. A slight concavity on the underside of some osteoderms reflects the form of the keel. From the keel a pattern of deep pits or grooves and marked ridges radiates. The dorsal surface of most osteoderms is flat but a few have a rather strongly vaulted shape which certainly reflect different positions on the body." },
+        { "description": "COMPARISONS AND DISCUSSION Some characters are traditionally used to separate anguimorph taxa (and more specifically anguid genera) by their osteoderms (Hoffstetter 1962 a; Meszoely 1970; Bochaton et al. 2015, 2016), including the presence of a gliding surface and of a keel. For example, Gauthier (1982) considered keeled body osteoderms to be the plesiomorphic state for Anguimorpha. Referral of the osteoderms from Montchenot to Pan - Shinisaurus (sensu Smith & Gauthier 2013) follows from the combination of the features described above. These osteoderms are similar in shape to those of other fossil pan-shinisaurs, particularly Provaranosaurus fatuus Smith & Gauthier, 2013 (Smith & Gauthier 2013, early Eocene of the Wasatch Formation, Wyoming, United States), Merkurosaurus ornatus Klembara, 2008 (Klembara 2008, early Miocene, Orleanian, MN 3, Bohemia) and an indeterminate pan-shinisaur from Messel (Smith 2017, middle Eocene, Germany). Crocodile-tailed lizards (Chinese crocodile lizard) or shinisaurs are represented by a single living species, Shinisaurus crocodilurus Ahl, 1930. It is worth noting that similar osteoderms have already been reported in the European Paleocene and early Eocene, in particular in the localities of Cernay (MP 6, Hoffstetter 1943), Dormaal and Le Quesnoy (early Eocene, MP 7, Hecht & Hoffstetter 1962; Augé 1990) and perhaps at Rivecourt- Petit Pâtis (Smith et al. 2014). Hecht & Hoffstetter (1962) and Augé (2005) suggested that these osteoderms could be attributed to the genus Necrosaurus as they are also similar to those of Palaeovaranus cayluxi (Ex Necrosaurus), see figs. in Rage 1978; Estes 1983; Augé & Smith 2009; Klembara & Green 2010. However, the taxonomic status and phylogenetic affinities of these lizards are a complex matter. Georgalis (2017) pointed out that the name Necrosaurus, as established by Filhol (1876) is a nomina nuda and that Zittel (1887 - 1890) was the first author to make the name Palaeovaranus cayluxi available. The phylogenetic affinities of Palaeovaranus are a moot point: briefly, McDowell & Bogert (1954) noted significant morphological differences between Palaeovaranus and members of the Platynota (sensu Pregill et al. 1986) and they referred it to xenosaurid lizards, an option first adopted by Hoffstetter (1954). Later this author returned Palaeovaranus to the Platynota (Hoffstetter 1962 b). Lee (1997) rejected this taxon as paraphyletic. The phylogenetic position of Palaeovaranus is still a matter of discussion, although several derived characters suggest Platynotan relationships (see discussion in Smith 2017). In contrast, the attribution of Provaranosaurus fatuus and specimen SMF ME 11403 (an autotomized tail) from Messel to pan-shinisaur is a settled matter as they show no Platynotan derived characters (Smith & Gauthier 2013; Smith 2017). The fossils from Dormaal (osteoderms, vertebrae and an undescribed dentary) previously attributed to Necrosaurus (Palaeovaranus) show no Platynotan features and are nearly identical to the material of Provaranosaurus fatuus described by Smith & Gauthier 2013. In particular, Provaranosaurus has both rectangular and oval osteoderms, as in the material from Monchenot, while Palaeovaranus bears only ovoid osteoderms. On the basis of these resemblances, the osteoderms from Monchenot may be referred to pan- Shinisaurus and the presence of rectangular osteoderms seems to exclude an attribution to Palaeovaranus." },
+        { "description": "MATERIAL EXAMINED. — MNHN. F. MTC 240 - MTC 242, MTC 243, nearly fifty osteoderms, a few complete, most more or less severely damaged by digestive processes or post-burial damages (Fig. 9)." }
+      ],
+      "vernacularNames": [
+        {
+          "vernacularName": "Dyreriget",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "dieren",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "animals",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "animaux",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "Animal",
+          "language": "por"
+        },
+        {
+          "vernacularName": "dyreriket",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "dyreriket",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "Animals",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "Tiere",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "animals",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "animaux",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "dieren",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "動物界",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "Tiere",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "animals",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "animaux",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "dieren",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "動物界",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "Тварини",
+          "language": "ukr"
+        },
+        {
+          "vernacularName": "Тварини",
+          "language": "ukr"
+        },
+        {
+          "vernacularName": "Тварини",
+          "language": "ukr"
+        },
+        {
+          "vernacularName": "Тварини",
+          "language": "ukr"
+        },
+        {
+          "vernacularName": "Animals",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "djur",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 2,
+      "nameKey": 97064091,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 2,
+      "kingdom": "Archaea",
+      "kingdomKey": 2,
+      "scientificName": "Archaea",
+      "canonicalName": "Archaea",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 4356,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "erkebakterier",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "archaea",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "arkebakterier",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "arkéer",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 3,
+      "nameKey": 97064093,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 3,
+      "kingdom": "Bacteria",
+      "kingdomKey": 3,
+      "scientificName": "Bacteria",
+      "canonicalName": "Bacteria",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 66909,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Bakterieriget",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "bakterier",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "bacteria",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "bacteria",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "bactéries",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "bactérias",
+          "language": "por"
+        },
+        {
+          "vernacularName": "bacterias",
+          "language": "spa"
+        },
+        {
+          "vernacularName": "bacteria",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "真正細菌ドメイン",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "bacteria",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "真正細菌ドメイン",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "eubakterier",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "bacteria",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "bactéries",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "bactérias",
+          "language": "por"
+        },
+        {
+          "vernacularName": "bacterias",
+          "language": "spa"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 4,
+      "nameKey": 97072620,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 4,
+      "kingdom": "Chromista",
+      "kingdomKey": 4,
+      "scientificName": "Chromista",
+      "canonicalName": "Chromista",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 162812,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Riget Chromista",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "kelp, diatoms, and allies",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "det gule riket",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "det gule riket",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "gulbrune alger",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "kromistar",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "kromister",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "kromister",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 5,
+      "nameKey": 97080802,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 5,
+      "kingdom": "Fungi",
+      "kingdomKey": 5,
+      "scientificName": "Fungi",
+      "canonicalName": "Fungi",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 479625,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Svamperiget",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "schimmels",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "Fungi Including Lichens",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "fungi",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "guobbarat",
+          "language": "sme"
+        },
+        {
+          "vernacularName": "soppriket",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "soppriket",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "fungi",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "champignons",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "Fungo",
+          "language": "por"
+        },
+        {
+          "vernacularName": "fungi",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "svampar",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "菌界",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "svampar",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 6,
+      "nameKey": 97394585,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 6,
+      "kingdom": "Plantae",
+      "kingdomKey": 6,
+      "scientificName": "Plantae",
+      "canonicalName": "Plantae",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 738040,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [
+        { "description": "(Fig. 20 A-F)" },
+        { "description": "(Fig. 20 G-J)" },
+        { "description": "AGE. — Upper lower to lowermost middle Miocene. DESCRIPTION Wood diffuse-porous. Growth rings distinct, marked by marginal parenchyma (Fig. 20 A). Vessels mostly solitary (80 %) or in groups of 2, rarely 3 (Fig. 20 A), oval in shape, 1 - 7 per mm ² (average: 3); tangential diameter 120 - 200 µm (average 160 µm). Tyloses absent. Vessel elements 190 - 430 µm (average: 310 µm) long. Perforation plates simple. Intervessel pits alternate, 3 - 6 µm in diameter (average: 5 µm). Vessel-ray pits maybe of the same nature as intervessel pits. Parenchyma scanty paratracheal or vasicentric (Fig. 20 A), in (2 - 6 cells wide?) marginal bands, also around canals; parenchyma cells 60 - 130 µm long (mean 90 µm), 20 - 50 µm wide (average: 35 µm) in tangential section (Fig. 20 D), 2 - 5 cells per parenchyma strand; the epithelial parenchyma around the canals possibly contains crystals in chambered cells. Rays 1 - to 4 - seriate (mostly 3 - seriate) (Fig. 20 B, C), uniseriate rays about 10 - 20 % of the rays, 2 - 12 cells high, 4 - 7 rays per mm (average: 6), multiseriate rays 310 - 1260 µm (average: 720 µm) high or 11 - 44 cells (average: 24 cells), heterocellular made of procumbent cells with 1 - 8 (or more) upright cells at the ends (Fig. 20 B, C), sheath cells sometimes present, some rays appear with mixed procumbent and upright cells in radial section (Fig. 20 F), ray cells possibly containing prismatic crystals. Fibres non-septate, 11 - 26 µm in diameter (average: 20 µm). Canals diffuse or in short tangential lines, tangentially as big as vessels, radially longer up to 500 µm (average: 350 µm) (Fig. 20 A, E)." },
+        { "description": "AGE. — Upper lower to lowermost middle Miocene. DESCRIPTION Wood diffuse-porous. Growth rings indistinct. Vessels solitary (55 %), often grouped by 2 but also up to 4 (Fig. 20 G), round to oval, 4 - 12 per mm ² (average: 7); tangential diameter 90 - 200 µm (average: 150 µm). Tyloses absent. Vessel elements 210 - 420 µm (average: 330 µm) long. Perforation plates simple. Intervessel pits alternate, 3 - 6 µm in diameter (average: 5 µm). Parenchyma vasicentric possibly aliform; parenchyma cells 60 - 100 µm long (average: 80 µm), 12 - 30 µm wide (average: 20 µm) in tangential section. Rays 1 - to 5 - seriate (mostly 3 - seriate) (Fig. 20 H, I), 5 - 8 rays per mm (average: 6), 270 - 1130 µm (average: 650 µm) or 6 - 36 cells high, heterocellular made of procumbent cells with 1 - 2 upright cells at the ends (Fig. 20 J); some sheath cells present (Fig. 20 I). Fibres nonseptate, 8 - 20 µm in diameter (mean 15 µm). Secretory canals possibly present as some ducts without perforation plates seem to be filled with an orange content (Fig. 20 G), also coloring the surrounding cells, recalling a resin." },
+        { "description": "DISCUSSION The most diagnostic character of the fossil is the presence of wide pores (tangentially the same size as vessels but radially longer) that are often 2 - 6 tangentially grouped. In tangential section, these pores do not show any perforation plate and are surrounded by parenchyma, as expected for secretory canals. The presence of solitary secretory canals or in short tangential lines in diffuse-porous wood are only found in Dipterocarpaceae and Fabaceae (in the Detarioideae subfamily, more specifically in the Prioria, Detarieae and some of the Daniellia clades) (InsideWood 2004 - onward; De la Estrella et al. 2018; Choo et al. 2020). The specimen displays the same ray arrangement as modern Dipterocarpaceae; it also has marginal or seemingly marginal parenchyma bands without tyloses, as found within the Fabaceae family. We note a close affinity with extant Dipterocarpus, as the presence of short tangential lines is very characteristic of this genus (Schweitzer 1958), but the attribution to Dipterocarpaceae is uncertain because we can not observe vasicentric tracheids or simple vessel-ray pits. In addition, vessels are not exclusively solitary as expected for Dipterocarpus. For the second family, short tangential lines of canals are mostly found in the genera: Prioria Griseb., Daniellia Benn., Copaifera L., Detarium Juss., Eperua Aubl. and Sindora Miq. (Gasson 1994). Canals at least as big as vessels are only reported in Prioria (synonyms: Kingiodendron Harms, Gossweilerodendron Harms, Oxystigma Harms, Pterogopodium Harms and Eriander H. J. P. Winkl.) and especially in Prioria copaifera Griseb., which is described with parenchyma scanty to aliform and in 3 - 4 (6) cells wide bands; 2 - 4 cells per parenchyma strands, rays mostly 1 - 3 - seriate up to 37 cells high with many uniseriate rays and upright marginal cells. Parenchyma can also contain crystals especially in the epithelial cells of canals (Banks & Gasson 2000; Gasson et al. 2003). The former genus Kingiodendron share similar characteristics (Banks & Gasson 2000; Gasson et al. 2003). However, Prioria is not reported with sheath cells and have vessel-ray pits similar to intervessel pits, as well as mostly diffuse canals. Fossils described with diffuse and short lines of secretory canals belonging to Dipterocarpaceae or Fabaceae, with the particularity of bigger canals than vessels are relatively few. They are reported bigger or of the same size as vessels in Dipterocarpoxylon surangei Prakash (1981), D. premacrocarpum Prakash (1975) and D. arcotense Awasthi (1980), but their vessels are almost exclusively solitary, and their rays are broader (up to 5 - or 7 - seriate). Bancroft described fossil specimens from Africa twice (Bancroft 1933, 1935) under the name D. africanum Bancroft. They share many features of our fossil, including 1 - 4 - seriate rays (mostly 3 - seriate) with many upright cells in rays with up to 6 - cells in marginal rows (mostly for biseriate rays) and up to 30 cells high. Bancroft (1935) mentioned structures that looked like vasicentric tracheids which suggests an affinity to Dipterocarpaceae, though the author still mentions a possible affinity with Detarioideae, as vesselray pits are still not visible. Many fossil species related to Detarioideae have no canals. Among those with canals, Hopeoxylon Awasthi (1977) has often banded parenchyma and canals in short to often long lines, smaller than vessels. Several specimens of Kingiodendron (Awasthi & Prakash 1987; Awasthi 1992; Guleria et al. 2002; Pérez-Lara et al. 2021) have the same size and arrangement of canals than the present fossil, but rays are much shorter and less heterocellular or canals are smaller than vessels. Ramos et al. (2017) described two fossil genera: Paraoxystigma Ramos et al. which has only diffuse canals and only one row of marginal ray cells; and Gossweilerodendroxylon Ramos et al. which has no uniseriate rays, only weakly heterocellular rays and canals much smaller than vessels. Two fossil wood specimens of Prioria are described by Rodríguez-Reyes et al. (2017): P. hodgesii Rodríguez-Reyes et al. which has smaller canals than vessels and P. canalensis Rodríguez-Reyes, Gasson, Falcon-Lang & Collinson, which shares most of the features of our fossil except that it displays long lines of canals, parenchyma is sometimes aliform and strands of parenchyma are composed of 3 - 8 cells (down to 2 cells for our fossil). As it is not possible to determine precisely the nature of vessel-ray pits nor if there are any vasicentric tracheids or common crystals in our specimen, the attribution to a given family is difficult. As a consequence, we consider this specimen as undetermined. Modern Dipterocarpus are mainly tropical trees growing in evergreen, sometimes present in semi-evergreen forests or dry deciduous dipterocarp forests, mostly in lowlands and occasionally up to 1400 m. (Ashton 1982; Soerianegara & Lemmens 1993; Ghazoul 2016). Prioria s. l. is a genus of large trees adapted to seasonally-flooded riparian environments (Rodríguez-Reyes et al. 2017). Prioria s. s. is an American tropical tree growing in lowlands often in coastal forests, sometimes swamps and along estuaries (Rodríguez-Reyes et al. 2017), whereas Kingiodendron is found in Asia in evergreen rainforests at low elevation, and flood-plains up to 800 m altitude (Hou et al. 1996; Pascal et al. 2004)." },
+        { "description": "DISCUSSION This fossil recalls Dipterocarpaceae because of: 1) ray heigth, strongly heterocellular; and 2) ducts filled with orange content and without any trace of perforation plates, which could be secretory canals, in tangential sections. Unfortunately, these potential canals are not observable in transverse section, nor any vasicentric tracheids. This specimen resembles Shoreoxylon sp. 1 or Shoreoxylon cf. deomaliense for ray size and arrangement, as well as vessel size. The state of preservation of this specimen is not good enough for a conclusive determination; it is impossible to clearly distinguish parenchyma, fibres and pore outlines, suggesting that the specimen has been degraded (see part 5.1)." },
+        { "description": "MATERIAL. — MNHN. F. 50199 (field number: 17 FN 08). Estimated minimal diameter: 33 cm. LOCALITY. — Kalewa Township, Sagaing Region, Myanmar." },
+        { "description": "MATERIAL. — MNHN. F. 50200 (field number: NAT 17 - 5). Estimated minimal diameter: 11 cm. LOCALITY. — Kalewa Township, Sagaing Region, Myanmar." },
+        { "description": "The taxonomy of fossil plants from the Fruitland and Kirtland For ­ mations is confused. Most work has been based on the taxonomy of F. H. Knowlton, a preeminent paleobotanist of the early twentieth century. However. Knowlton, as was customary in his time, placed many Cretaceous specimens in modem taxa on the basis of gross mor ­ phological similarities (e. g .. Ficus, Laurus) and with no regard to variability of the foliage on one plant. Initial collections were made by Bauer and his party (Knowlton, 1916) and later, smaller samples were reported by other USGS geologists (Lee. I 9 I 7; O ’ Sullivan et. al., 1972). Specimens were collected more recently by Kues et al. (1977), Tidwell et al. (1981) and Robison et al. (1982). Large undescribed collections, principally made by J. McClammer, are at NMMNH and YPM. Most recent workers (e. g., Kues et al .. 1977; Tidwell et al .. 1981) considered the Fruitland and Kirtland floras as one entity. We present separate floral lists for both formations (Tables 1, 2) because they represent such different environmental settings and different ages. No megafossil plant specimens have been recovered from the Naashoibito Member of the Kirtland Formation. All early collections of plant fossils from the “ Ojo Alamo Sandstone \" of older usage were from the upper conglomerate or Ojo Alamo Sandstone of modem workers and not from the Naashoibito Member of the Kirtland, which earlier workers con ­ sidered to be part of the “ Ojo Alamo. \" Additional specimens reported by Lee (1917) are from an undivided Fruitland-Kirtland sequence (“ Laramie ”) near Dulce, but it is clear that they are from the lower Fruitland Formation (Lee, 1917, plate 25 A). It is not clear if other floras reported by Lee (1917), for example from near Durango, are from the Fruitland or Kirtland. O’ Sullivan et al .. (1972) listed specimens from an undivided Fruitland-Kirtland sequence, and these occurrences are not re ­ peated in Table 1. Kues et al. (1977) and Tidwell et al. (1981) both reported new occurrences but did not report, with a few exceptions, which of the two formations their specimens came from. Taxa that could not be assigned to either formation were not included and this, unfortunately, includes most of the palm diversity. There are no recent detailed studies of the floras of the Fruitland and Kirtland Formations. Therefore, interpretations of differences in diversity must be considered preliminary, but we think that such comparisons are of some utility. It is clear that although the floras of the Fruitland and Kirtland Formation are of about equal diversity, there are major differences between the two floras (Tables 1, 2). Ferns are more common in the Kirtland, which reflects the fact that modem fems in the tropics are more common in upland and better drained areas (Berry, 1924). The genus Anema has modern species that are restricted to swamps (Tidwell et al., 1981) and is restricted to the Fruitland. Conifers are more diverse in the Fruitland flora, and taxa that are important in swamp communities, such as Brachyphyllum macrocarpum and Sequoia cuneata (Parker, 1976; Tidwell et al., 1981) are restricted to the Fruitland. The Kirtland flora (Table 2) contains fewer monocots, which are represented by several families not found in the Fruitland (e g., Cyperaceae, Araceae. Cannaceae). Palms arc only present in the Fruitland. The dicots form the majority of plant specimens in both the Fruitland and Kirtland floras (Tidwell et al., 1981). Dicots are more diverse at Scizaeaceae Anemia hesperia Anemia sp. Polypodiaceae? Asplenium coloradense Coniferophyta Araucariaceae Araucaria sp. Araucaria longifolia Cupressaceae Brachyphyllum macrocarpum Taxodiaceae Sequoia reichenbachii Sequoia obovata? Sequoia cuneata Cunninghamites pulchellus Anthophyta Monocotyledonae Palmae Sabalites imperialis Sabalites montana Sabalites sp. Pontederiaceae Heteranthera cretacea Dicotyledonae Saliceae Salix baueri Salix sp. Fagaceae Quercus baueri Moraceae Ficus squarrosa? Ficus rhamnoides Ficus planicostata Ficus praetrinervis Ficus starkvillensis? Ficus praelatifolia Ficus curta? Ficus wardii Ficus baueri Ficus leei Ficus sp. Nymphaeceae Nelumbo sp. Cercidiphylluaceae? Cercidiphyllum sp. Menispermaceae Menispermites sp. Magnoliacea Magnolia cordifolia Lauraceae Laurus baueri Laurus coloradensis Cinnamomum sezannense Saxifragaceae Ribes neomexicana Leguminosae? Leguminosites neomexicana Rhamnaceae Rhamnus goldianus? Zizyphus sp. Myrtacea Myrtophyllum torreyi Incertae sedis Phyllites neomexicanus Phyllites petiolatus Pterospermites undulatus Pterospermites sp. Carpites baueri Carpites sp. Filicophyta Filicophyta Asplenium neomexicana Asplenium sp. Onoclea neomexicana Woodwarthia crenata Salyinaceae Salvinia sp. Coniferophyta Araucariaceae Araucaria sp. Taxodiaceae Sequoia cuneata Anthophyta Monocotyledonae Cyperaceae Cyperacites sp. Araceae Pistia corrugata Cannaceae? Canna maqnifolia Dicotyledonae Salicaceae Salix lancensis Juglandaceae Carya antiquorum Fagaceae Dryophyllum subfalcatum Moraceae Ficus crossii Ficus leei Menispermaceae Menispermites belli Magnoliacea Maqnifolia berryi Lauraceae Laurus coloradensis Laurophyllum salcifolium Laurophyllum wardiana Laurophyllum sp. Platanaceae Platanus nobilis Platanus raynoldsi Leguminosae? Leguminosites neomexicana Rhamnaceae Rhamnus goldianus Rhamnus minutus? Zizyphus sp. Vitaceae Vitis lobata Cissus marginata Dillenaceae Dillenites cleburni Myrtacea Myrtophyllum torreyi Myrtophyllum neomexicanum Caprifoliaceeae Viburnum antiquum Incertae sedis Pterospermites sp. Carpites baueri Carpites lancensis Carpites sp.? Ficus trineruis unidentified flowers and fruit the family level in the Fruitland, being represented by 14 families as opposed to 12 in the Fruitland. However, the specific diversity is apparently greater in the Fruitland flora, particularly within the Moraceae (Table 1). The floral evidence agrees with a general increase in drainage from the Fruitland to Kirtland. The abundance of medium-sized angiospermous leaves with entire or nearly entire margins and drip points suggests a warm-temperature to subtropical climate during deposition of both formations by analogy with modern floras (Lucas, 1981; Tidwell et al., 1981; Robison et al., 1982)." }
+      ],
+      "vernacularNames": [
+        {
+          "vernacularName": "planten",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "Planteriget",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "plants",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "plants",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "plantes",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "Planta",
+          "language": "por"
+        },
+        {
+          "vernacularName": "Vegetal",
+          "language": "por"
+        },
+        {
+          "vernacularName": "egentliga växter",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "planten",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "plants",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "植物界",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "planteriket",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "planteriket",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "šattut",
+          "language": "sme"
+        },
+        {
+          "vernacularName": "Plant",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "Plants",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "egentliga växter",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 7,
+      "nameKey": 97526282,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 7,
+      "kingdom": "Protozoa",
+      "kingdomKey": 7,
+      "scientificName": "Protozoa",
+      "canonicalName": "Protozoa",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 10166,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Protozoriget",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "protozoans",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "Protozoen",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "protozoans",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "protistriket",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "encelliga djur",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "protozoer",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "urdjur",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 8,
+      "nameKey": 97528322,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "nubKey": 8,
+      "kingdom": "Viruses",
+      "kingdomKey": 8,
+      "scientificName": "Viruses",
+      "canonicalName": "Viruses",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "KINGDOM",
+      "origin": "SOURCE",
+      "numDescendants": 734,
+      "numOccurrences": 0,
+      "habitats": [],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "viruses",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "virus",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": {}
+    },
+    {
+      "key": 9,
+      "nameKey": 6689984,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "daacce49-b206-469b-8dc2-2257719f3afa",
+      "nubKey": 9,
+      "parentKey": 6,
+      "parent": "Plantae",
+      "kingdom": "Plantae",
+      "phylum": "Marchantiophyta",
+      "kingdomKey": 6,
+      "phylumKey": 9,
+      "scientificName": "Marchantiophyta",
+      "canonicalName": "Marchantiophyta",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 15914,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Levermosser",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "liverwort",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "liverworts",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "liverworts",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "levermosar",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "muoksesámmálat",
+          "language": "sme"
+        },
+        {
+          "vernacularName": "Liverwort",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "cuilse aibheach",
+          "language": "gla"
+        },
+        {
+          "vernacularName": "cuilsean aibheach",
+          "language": "gla"
+        },
+        {
+          "vernacularName": "duilleagag a' chruithneachd",
+          "language": "gla"
+        },
+        {
+          "vernacularName": "lus an àirneig",
+          "language": "gla"
+        },
+        { "vernacularName": "hepatics" },
+        { "vernacularName": "liverwort" },
+        { "vernacularName": "liverworts" },
+        {
+          "vernacularName": "levermossor",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": { "6": "Plantae" }
+    },
+    {
+      "key": 11,
+      "nameKey": 4696769,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "daacce49-b206-469b-8dc2-2257719f3afa",
+      "nubKey": 11,
+      "parentKey": 6,
+      "parent": "Plantae",
+      "acceptedKey": 7707728,
+      "accepted": "Tracheophyta",
+      "kingdom": "Plantae",
+      "phylum": "Tracheophyta",
+      "kingdomKey": 6,
+      "phylumKey": 7707728,
+      "scientificName": "Ginkgophyta",
+      "canonicalName": "Ginkgophyta",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "SYNONYM",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 0,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [],
+      "synonym": true,
+      "higherClassificationMap": {
+        "6": "Plantae",
+        "7707728": "Tracheophyta"
+      }
+    },
+    {
+      "key": 12,
+      "nameKey": 6531877,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "daacce49-b206-469b-8dc2-2257719f3afa",
+      "nubKey": 12,
+      "parentKey": 6,
+      "parent": "Plantae",
+      "acceptedKey": 7707728,
+      "accepted": "Tracheophyta",
+      "kingdom": "Plantae",
+      "phylum": "Tracheophyta",
+      "kingdomKey": 6,
+      "phylumKey": 7707728,
+      "scientificName": "Lycopodiophyta",
+      "canonicalName": "Lycopodiophyta",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "SYNONYM",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 0,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [],
+      "synonym": true,
+      "higherClassificationMap": {
+        "6": "Plantae",
+        "7707728": "Tracheophyta"
+      }
+    },
+    {
+      "key": 13,
+      "nameKey": 747615,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+      "nubKey": 13,
+      "parentKey": 6,
+      "parent": "Plantae",
+      "kingdom": "Plantae",
+      "phylum": "Anthocerotophyta",
+      "kingdomKey": 6,
+      "phylumKey": 13,
+      "scientificName": "Anthocerotophyta",
+      "canonicalName": "Anthocerotophyta",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 443,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Hornkapsler",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "hornworts",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "nállogoahtesámmálat",
+          "language": "sme"
+        },
+        {
+          "vernacularName": "nålkapselmosar",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "a hornwort",
+          "language": "eng"
+        },
+        { "vernacularName": "hornworts" },
+        {
+          "vernacularName": "nålfruktsmossor",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "skidmossor",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": { "6": "Plantae" }
+    },
+    {
+      "key": 14,
+      "nameKey": 11029912,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+      "nubKey": 14,
+      "parentKey": 1,
+      "parent": "Animalia",
+      "kingdom": "Animalia",
+      "phylum": "Tardigrada",
+      "kingdomKey": 1,
+      "phylumKey": 14,
+      "scientificName": "Tardigrada",
+      "canonicalName": "Tardigrada",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 2149,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [ { "description": "Key to species known from The Bieszczady Mts. 1. Dorsal side of body covered with cuticular plates, lateral cirrus A present................. 2 ­ Dorsal side of body without plates, lateral cirrus A absent.......................................... 5 2. Pseudosegmental plate present................... Pseudechiniscus suillus (Ehrenberg, 1853) ­ Pseudosegmental plate absent..................................................................................... 3 3. Lacking any lateral and dorsal appendages other than cirrus A, dorsal plates covered by circular or hexagonal pattern........................... Echiniscus reticulatus Murray, 1905 ­ There are other lateral or dorsal appendages, dorsal plates with small pores or granules..................................................................................................................................... 4 4. Filamentosus appendages present in positions: A, C, Cd, D and spine is present in position Dd................................................................... Echiniscus trisetosus Cuénot, 1932 ­ Filamentosus appendages present in positions: A, C, D and E, in position Cd and Dd filaments or spines are present................................. Echiniscus merokensis Richters, 1904 5. Two cephalic papillae present............................ Milnesium tardigradum Doyére, 1840 ­ Cephalic papillae absent............................................................................................... 6 6. Claws symmetrical; external and internal claw identically developed (the same in size and shape)..................................................................................................................... 7 ­ Claws different........................................................................................................... 13 7. Claws of hufelandi type............................................................................................... 8 ­ Claws of pullari type............................................. Murrayon hibernicus Murray, 1911 8. Peribuccal lamellae present, peribuccal papulae absent, stylet supports inserted more than 73 % of buccal tube length, buccal tube wide (>12 % of buccal tube length)..... 9 ­ Peribuccal lamellae absent, peribuccal papulae present, stylet supports inserted at 54% of the buccal tube length, buccal tube narrow (6.8% or less of buccal tube length).................................................................................... Minibiotus intermedius (Plate, 1888) 9. Pharynx with 2 macroplacoids................................................................................... 10 ­ Pharynx with 3 macroplacoids.................................................................................. 12 10. Lunules of IV pair of leg dentate, eggs with conical processes, surface between processes smooth................................................... Macrobiotus crenulatus Richters, 1904 ­ Lunules of IV pair of leg smooth, eggs with mushroom­shaped processes, surface between processes with ornamentation..................................................................... 11 11. Margin of dishes of processes smooth, base of processes surrounded by ring of pits...................................................... Macrobiotus macrocalix Bertolani & Rebecchi, 1993 ­ Margin of dishes of processes with small regular teeth, surface between processes covered by reticular pattern..................................... Macrobiotus hufelandi Schultze, 1833 12. Cuticle without pores, eyes present, lunules smooth, eggs white with processes in the shape of cones covered by fine reticular pattern, surface between cones smooth or with fine punctation................................................. Macrobiotus harmsworthi Murray, 1907 ­ Cuticle with small pores, eyes almost always absent, lunules smooth or little crenate, eggs white, processes in shape of flattened cones covered by reticular design, surface between cones with areolation.............................. Macrobiotus richtersi Murray, 1911 13. Claws of Calohypsibius type, very small (less then 5 µm long)............................... 14 ­ Claws different.......................................................................................................... 15 14. Dorsal side of the body covered by 8 transversal bands with spines........................................................................................................ Calohypsibius ornatus (Richters, 1900) ­ Dorsal side of the body covered by star­like tubercles........................................................................................................ Calohypsibius schusteri Nelson & McGlothlin, 1996 15. Claws of Hypsibius type............................................................................................ 16 ­ Claws different............................................................................................................ 25 16. Buccal tube rigid (lack of pharyngeal tube with spiral thickenings).......................... 17 ­ Buccal tube divided into a rigid anterior part (buccal tube) and a flexible posterior part (pharyngeal tube) with spiral thickenings................................................................. 20 17. Microplacoid or septula present................................................................................. 18 ­ Microplacoid and septula absent................................................................................ 19 18. Microplacoid present............................................... Hypsibius sp. (‘ convergens group’) ­ Septula present....................................................... Hypsibius dujardini (Doyére, 1840) 19. Macroplacoids rod­shaped, clearly longer then wide, I macroplacoid with constriction in the middle, small transversal bar on IV pair of legs present, eyes usually absent............................................................................. Hypsibius convergens Urbanowicz, 1925 ­ Macroplacoids rounded or granular, I macroplacoid without constriction, small transversal bar on IV pair of legs absent, large eyes present......................................................................................................................................... Hypsibius pallidus Thulin, 1911 20. Pharynx with one very slender macroplacoid....... Astatumen bartosi Węglarska, 1959 ­ Pharynx with more than one macroplacoid............................................................... 21 21. Apophyses for insertion of stylet muscles in the shape of a wide, flat ridge........................................................................................ Mesocrista spitsbergense (Richters, 1903) ­ Apophyses for insertion of stylet muscles in the shape of a semilunar hook............ 22 22. Drop­like structure between buccal and pharyngeal tube present.............................. 23 ­ Drop­like structure between buccal and pharyngeal tube absent............................... 24 23. Pharynx with 3 macroplacoids, microplacoid and septula; cuticle smooth, eyes absent............................................................. Diphascon (Diphascon) pingue (Marcus, 1936) ­ Pharynx with 2 macroplacoids and septula; cuticle with fine granulation on the caudal part of the body, eyes present............. Diphascon (Diphascon) oculatum Murray, 1906 24. Pharynx with 3 macroplacoids increasing in length from 1 st to 3 rd, microplacoid and septula absent...................................... Diphascon (Adropion) prosirostre Thulin, 1928 ­ Pharynx with 3 macroplacoids (the 2 nd the shortest) and microplacoid........................................................................................ Diphascon (Adropion) scoticum Murray, 1905 25. Claws of Isohypsibius type........................................................................................ 26 ­ Claws of Ramazzottius type....................... Ramazzottius oberhaeuseri (Doyére, 1840) 26. Cuticle without gibbosities......................................................................................... 27 ­ Cuticle with gibbosities............................................................................................. 28 27. Pharynx with 3 macroplacoids increasing in length from 1 st to 3 rd, microplacoid absent (or very small); mouth opening ventral, cuticular bars on legs absent.................................................................................................... Isohypsibius schaudinni (Richters, 1909) ­ Pharynx with 3 macroplacoids (1 st and 2 nd equal in length, 3 rd slightly longer) and microplacoid; mouth opening terminal, cuticular bars on legs present..................................................................................................... Isohypsibius prosostomus Thulin, 1928 28. Gibbosities in the caudal part of the body conical with short, tiny spines.................................................................................................... Isohypsibius sattleri (Richters, 1902) ­ Gibbosities in the caudal part of the body without spines......................................... 29 29. Dorsal side of the body with 8 rows of gibbosities: 1 st, 3 rd, 5 th, 7 th, 8 th row with 2 gibbosities, 2 nd, 4 th, 6 th with 3.................. Isohypsibius ronsisvallei (Binda & Pilato, 1969) ­ Dorsal side of the body with 10 rows of gibbosities: 3 rd, 5 th, 7 th row with 6 gibbosities; 2 nd, 4 th, 6 th, 8 th, 9 th with 4; 1 st, 10 th with 2.................. Isohypsibius pappi (Iharos, 1966)" } ],
+      "vernacularNames": [
+        {
+          "vernacularName": "Bjørnedyr",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "water bear",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "water bear",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "tardigrades",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "water bears",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "tardigrades",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "tardígrado",
+          "language": "por"
+        },
+        {
+          "vernacularName": "Bärentierchen",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Bärtierchen",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Tardigraden",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "mosbeertjes",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "orsetti d'acqua",
+          "language": "ita"
+        },
+        {
+          "vernacularName": "tardigrades",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "trögkrypare",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "water bears",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "waterbears",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "緩歩動物門",
+          "language": "jpn"
+        },
+        {
+          "vernacularName": "Bärtierchen",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Tardigrade",
+          "language": "eng"
+        },
+        { "vernacularName": "tardigrades" },
+        { "vernacularName": "water bears" },
+        {
+          "vernacularName": "björndjur",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "tardigrader",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "trögkrypare",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "tardigrades",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "water bears",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "tardigrades",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "tardígrado",
+          "language": "por"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": { "1": "Animalia" }
+    },
+    {
+      "key": 18,
+      "nameKey": 4730254,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+      "nubKey": 18,
+      "parentKey": 5,
+      "parent": "Fungi",
+      "kingdom": "Fungi",
+      "phylum": "Glomeromycota",
+      "kingdomKey": 5,
+      "phylumKey": 18,
+      "scientificName": "Glomeromycota",
+      "canonicalName": "Glomeromycota",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 8314,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "Arbuskelsvampe",
+          "language": "dan"
+        },
+        {
+          "vernacularName": "endomykorrhizasoppar",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "endomykorrhizasopper",
+          "language": "nob"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": { "5": "Fungi" }
+    },
+    {
+      "key": 19,
+      "nameKey": 8623041,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+      "nubKey": 19,
+      "parentKey": 1,
+      "parent": "Animalia",
+      "kingdom": "Animalia",
+      "phylum": "Phoronida",
+      "kingdomKey": 1,
+      "phylumKey": 19,
+      "scientificName": "Phoronida",
+      "canonicalName": "Phoronida",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 57,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "MARINE" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "horseshoe worm",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "horseshoe worms",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "phoronid worms",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "phoronids",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "hesteskoormar",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "horseshoe worms",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "phoronids",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "phoronidiens",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "hufeisenwürmer",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "foronidei",
+          "language": "ita"
+        },
+        {
+          "vernacularName": "foronidas",
+          "language": "por"
+        },
+        {
+          "vernacularName": "foronídeos",
+          "language": "spa"
+        },
+        {
+          "vernacularName": "Hufeisenwurm",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Hufeisenwürmer",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "hoefijzerwormen",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "horseshoe worm",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "horseshoe worms",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "hästskomaskar",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "phoronid worms",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "phoronidien",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "phoronids",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "snorwormen",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "箒虫動物門",
+          "language": "jpn"
+        },
+        { "vernacularName": "phoronid worms" },
+        {
+          "vernacularName": "hästskomaskar",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": { "1": "Animalia" }
+    },
+    {
+      "key": 22,
+      "nameKey": 4614232,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "7ddf754f-d193-4cc9-b351-99906754a03b",
+      "nubKey": 22,
+      "parentKey": 1,
+      "parent": "Animalia",
+      "kingdom": "Animalia",
+      "phylum": "Gastrotricha",
+      "kingdomKey": 1,
+      "phylumKey": 22,
+      "scientificName": "Gastrotricha",
+      "canonicalName": "Gastrotricha",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "ACCEPTED",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 1263,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [ "NOT_EVALUATED" ],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "bukhårsdyr",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "bukhårsdyr",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "gastrotrikar",
+          "language": "nno"
+        },
+        {
+          "vernacularName": "gastrotriker",
+          "language": "nob"
+        },
+        {
+          "vernacularName": "gastrotrichs",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "gastrotriches",
+          "language": "fra"
+        },
+        {
+          "vernacularName": "gastrótrico",
+          "language": "por"
+        },
+        {
+          "vernacularName": "Bauchhaarlinge",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Bauchhärlinge",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Flaschentierchen",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Gastrotrichen",
+          "language": "deu"
+        },
+        {
+          "vernacularName": "Gastrotrichi",
+          "language": "ita"
+        },
+        {
+          "vernacularName": "buikharigen",
+          "language": "nld"
+        },
+        {
+          "vernacularName": "bukhårsdjur",
+          "language": "swe"
+        },
+        {
+          "vernacularName": "gastrotrichs",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "hairy-backs",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "hairybacks",
+          "language": "eng"
+        },
+        {
+          "vernacularName": "腹毛動物",
+          "language": "jpn"
+        },
+        { "vernacularName": "gastrotrichs" },
+        {
+          "vernacularName": "bukhårsdjur",
+          "language": "swe"
+        }
+      ],
+      "synonym": false,
+      "higherClassificationMap": { "1": "Animalia" }
+    },
+    {
+      "key": 25,
+      "nameKey": 136597,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "aa1bc573-f338-482d-b6aa-f371d57f20f5",
+      "nubKey": 25,
+      "parentKey": 3,
+      "parent": "Bacteria",
+      "acceptedKey": 10841181,
+      "accepted": "Acidobacteriota",
+      "kingdom": "Bacteria",
+      "phylum": "Acidobacteriota",
+      "kingdomKey": 3,
+      "phylumKey": 10841181,
+      "scientificName": "Acidobacteria",
+      "canonicalName": "Acidobacteria",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "SYNONYM",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 0,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "MARINE" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "acidobacteria",
+          "language": "eng"
+        }
+      ],
+      "synonym": true,
+      "higherClassificationMap": {
+        "3": "Bacteria",
+        "10841181": "Acidobacteriota"
+      }
+    },
+    {
+      "key": 26,
+      "nameKey": 204444,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "aa1bc573-f338-482d-b6aa-f371d57f20f5",
+      "nubKey": 26,
+      "parentKey": 3,
+      "parent": "Bacteria",
+      "acceptedKey": 10813635,
+      "accepted": "Actinobacteriota",
+      "kingdom": "Bacteria",
+      "phylum": "Actinobacteriota",
+      "kingdomKey": 3,
+      "phylumKey": 10813635,
+      "scientificName": "Actinobacteria",
+      "canonicalName": "Actinobacteria",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "SYNONYM",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 0,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "FRESHWATER", "MARINE", "TERRESTRIAL" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [
+        {
+          "vernacularName": "actinobacteria",
+          "language": "eng"
+        }
+      ],
+      "synonym": true,
+      "higherClassificationMap": {
+        "3": "Bacteria",
+        "10813635": "Actinobacteriota"
+      }
+    },
+    {
+      "key": 28,
+      "nameKey": 3337252,
+      "datasetKey": "d7dddbf4-2cf0-4f39-9b2a-bb099caae36c",
+      "constituentKey": "aa1bc573-f338-482d-b6aa-f371d57f20f5",
+      "nubKey": 28,
+      "parentKey": 3,
+      "parent": "Bacteria",
+      "acceptedKey": 10831091,
+      "accepted": "Deferribacterota",
+      "kingdom": "Bacteria",
+      "phylum": "Deferribacterota",
+      "kingdomKey": 3,
+      "phylumKey": 10831091,
+      "scientificName": "Deferribacteres",
+      "canonicalName": "Deferribacteres",
+      "authorship": "",
+      "nameType": "SCIENTIFIC",
+      "taxonomicStatus": "SYNONYM",
+      "rank": "PHYLUM",
+      "origin": "SOURCE",
+      "numDescendants": 0,
+      "numOccurrences": 0,
+      "extinct": false,
+      "habitats": [ "MARINE" ],
+      "nomenclaturalStatus": [],
+      "threatStatuses": [],
+      "descriptions": [],
+      "vernacularNames": [],
+      "synonym": true,
+      "higherClassificationMap": {
+        "3": "Bacteria",
+        "10831091": "Deferribacterota"
+      }
+    }
+  ],
+  "facets": []
+}

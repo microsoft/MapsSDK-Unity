@@ -7,7 +7,7 @@ using Microsoft.MixedReality.Toolkit.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 public class ButtonCtrl : MonoBehaviour
 {
     public InputField queryInputField;
@@ -71,6 +71,7 @@ public class ButtonCtrl : MonoBehaviour
     public async void QueryButtonClick()
     {
         string queryText = queryInputField.text;
+        Debug.Log("inside QueryButtonClick : " + queryText);
         if (string.IsNullOrEmpty(queryText) ) return;
         //queryText.Replace(' ', "%20");
 
@@ -78,18 +79,16 @@ public class ButtonCtrl : MonoBehaviour
         StringBuilder sb = new StringBuilder(baseUrl);
         sb.Append(queryText);
         sb.Append("&limit=1");
-
         int nubKey = await GbifApiManager.Instance.GetNubKey(sb.ToString());
         StartCoroutine(AdjustDataLayer(nubKey));
     }
 
-    private IEnumerator AdjustDataLayer(int nubKey)
+    public IEnumerator AdjustDataLayer(int nubKey)
     {
         _myDataLayer.SetTaxonKey(nubKey);
         _myDataLayer.enabled = false;
         yield return new WaitForSeconds(.25f);
         _myDataLayer.enabled = true;
-
     }
 
     private void OnDisable()

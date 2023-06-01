@@ -52,8 +52,9 @@ android {
         abortOnError false
     }
 
-    aaptOptions {
-        ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
-    }**PACKAGING_OPTIONS**
+aaptOptions {
+    noCompress = ['.ress', '.resource', '.obb'] + unityStreamingAssets.tokenize(', ')
+    ignoreAssetsPattern = "!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~"
+}
 }**REPOSITORIES****SOURCE_BUILD_SETUP**
 **EXTERNAL_SOURCES**
