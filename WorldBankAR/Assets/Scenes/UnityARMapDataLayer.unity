@@ -5997,11 +5997,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d94de45b2dfa4974d909c7b7a3dff206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6508484856283792756, guid: f9bb2f0fa7303714e8456dceb0f9bb29, type: 3}
+  _prefab: {fileID: 6508484856283792756, guid: f9bb2f0fa7303714e8456dceb0f9bb29, type: 3}
   _myHierarchyDeserializerList: {fileID: 1864720550}
-  ButtonHeightInCell: 40
-  Spacing: 5
-  backButton: {fileID: 1999735568}
+  _buttonHeightInCell: 40
+  _spacing: 5
+  _backButton: {fileID: 1999735568}
   _buttonCtrl: {fileID: 830191932}
 --- !u!1 &1200258216
 GameObject:
@@ -9647,6 +9647,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6508484856283792754, guid: f9bb2f0fa7303714e8456dceb0f9bb29,
+        type: 3}
+      propertyPath: m_TagString
+      value: Back
       objectReference: {fileID: 0}
     - target: {fileID: 6508484856283792755, guid: f9bb2f0fa7303714e8456dceb0f9bb29,
         type: 3}

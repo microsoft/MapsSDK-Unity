@@ -6,17 +6,17 @@ using static ButtonCtrl;
 
 public class GenerateButtons : MonoBehaviour
 {
-    public Button prefab;
+    public Button _prefab;
     [SerializeField]
     private HierarchyDeserializerList _myHierarchyDeserializerList;
-    private bool isInitialized = false;
-    private int iterationCounts = 0;
+    private bool _isInitialized = false;
+    private int _iterationCounts = 0;
     [SerializeField]
-    private int ButtonHeightInCell = 40;
+    private int _buttonHeightInCell = 40;
     [SerializeField]
-    private int Spacing = 5;
+    private int _spacing = 5;
     [SerializeField]
-    private Button backButton;
+    private Button _backButton;
     [SerializeField]
     private ButtonCtrl _buttonCtrl;
 
@@ -24,47 +24,45 @@ public class GenerateButtons : MonoBehaviour
     {
         if (HierarchyDeserializerList._isAccessible)
         {
-            if(!isInitialized)
+            if(!_isInitialized)
             {
                 GenButtons("KINGDOM", null);
-                isInitialized = true;
+                _isInitialized = true;
             }
         }
     }
 
-    public void GenButtons(string Rank, string Kingdom)
+    public void GenButtons(string rank, string kingdom)
     {
         DeleteButtons();
-        if (Kingdom != null)
+        if (!string.IsNullOrEmpty(kingdom)) 
         {
-            backButton.gameObject.SetActive(true);
-            iterationCounts++;
+            _backButton.gameObject.SetActive(true);
+            _iterationCounts++;
         }
-        foreach (Rank rank in _myHierarchyDeserializerList.getRankList())
+        IEnumerator<Rank> _buttonList = _myHierarchyDeserializerList.GetRankList();
+        while(_buttonList.MoveNext())
         {
-            if (rank.rank == Rank && (rank.kingdom == Kingdom || Kingdom == null))
+            if (_buttonList.Current.rank == rank && (string.Equals(_buttonList.Current.kingdom, kingdom) || string.IsNullOrEmpty(kingdom)))
             {
-                iterationCounts++;
-                GenButton(rank.scientificName,  rank.nubKey, (Kingdom == null ? true : false));//if rank has children, then add listener with GenButton()
+                _iterationCounts++;
+                GenButton(_buttonList.Current.scientificName, _buttonList.Current.nubKey, (string.IsNullOrEmpty(kingdom)));//if rank has children, then add listener with GenButton()
             }
         }
         float x = this.GetComponent<RectTransform>().sizeDelta.x;
-        this.GetComponent<RectTransform>().sizeDelta = new Vector2(x, iterationCounts * (ButtonHeightInCell + Spacing));
-        iterationCounts = 0;
+        this.GetComponent<RectTransform>().sizeDelta = new Vector2(x, _iterationCounts * (_buttonHeightInCell + _spacing));
+        _iterationCounts = 0;
     }
 
-
-
-
-    private void GenButton(string ButtonText, int nubKey, bool hasChildren)
+    private void GenButton(string buttonText, int nubKey, bool hasChildren)
     {
-        Button button = Instantiate(prefab, Vector3.zero, Quaternion.identity, this.transform);
-        button.GetComponentInChildren<Text>().text = ButtonText;
-        if (hasChildren) button.onClick.AddListener(() => { ButtonPress(button); callButtonCtrlTaxon(nubKey); });
-        else button.onClick.AddListener(() => { ButtonPress(button); callButtonCtrlTaxon(nubKey); });
+        Button button = Instantiate(_prefab, Vector3.zero, Quaternion.identity, this.transform);
+        button.GetComponentInChildren<Text>().text = buttonText;
+        if (hasChildren) button.onClick.AddListener(() => { ButtonPress(button); CallButtonCtrlTaxon(nubKey); });
+        else button.onClick.AddListener(() => { ButtonPress(button); CallButtonCtrlTaxon(nubKey); });
     }
 
-    private void callButtonCtrlTaxon(int taxon)
+    private void CallButtonCtrlTaxon(int taxon)
     {
         _buttonCtrl.StartCoroutine(_buttonCtrl.AdjustDataLayer(taxon));
     }
@@ -72,10 +70,9 @@ public class GenerateButtons : MonoBehaviour
     {
         foreach(Button B in this.GetComponentsInChildren<Button>())
         {
-            B.gameObject.SetActive(false);
+            if (!string.Equals(B.tag, "Back"))  Destroy(B.gameObject); // onDestroy() function is attached to B prefab
         }
     }
-
     public void ButtonPress(Button button)
     {
         string input = button.GetComponentInChildren<Text>().text;

@@ -5,15 +5,14 @@ using UnityEngine.Networking;
 
 public class HierarchyDeserializerList : MonoBehaviour
 {
-    private string[] LocaljsonString;
-    private string NetworkjsonString;
-    //private List<Rank> list;
+    //private string[] _localJsonString; // kept for future local use
+    private string _networkJsonString;
     private bool _isListReceived = false;
     public static bool _isAccessible = false;
-    private jsonDataClass jsonData;
+    private jsonDataClass _jsonData;
     void Start()
     {
-        LocaljsonString = System.IO.File.ReadAllLines(@"Assets/Resources/Species.json");
+        //LocaljsonString = System.IO.File.ReadAllLines(@"Assets/Resources/Species.json"); //kept for future local use
         StartCoroutine(GetText());
     }
 
@@ -21,13 +20,10 @@ public class HierarchyDeserializerList : MonoBehaviour
     {
         if(_isListReceived)
         {
-            processJsonData(NetworkjsonString);
+            ProcessJsonData(_networkJsonString);
             _isAccessible = true;
             _isListReceived = !_isListReceived;
-            /*foreach(Rank rank in jsonData.results)
-            {
-                Debug.Log(rank.scientificName);
-            }*/
+
         }
     }
     IEnumerator GetText()
@@ -43,7 +39,7 @@ public class HierarchyDeserializerList : MonoBehaviour
             else
             {
                 // Show results as text
-                NetworkjsonString = www.downloadHandler.text;
+                _networkJsonString = www.downloadHandler.text;
 
                 // Or retrieve results as binary data
                 byte[] results = www.downloadHandler.data;
@@ -53,15 +49,14 @@ public class HierarchyDeserializerList : MonoBehaviour
         }
     }
 
-    private void processJsonData(string _url)
+    private void ProcessJsonData(string url)
     {
-        jsonData = JsonUtility.FromJson<jsonDataClass>(_url);
+        _jsonData = JsonUtility.FromJson<jsonDataClass>(url);
        
     }
 
-    public List<Rank> getRankList()
+    public List<Rank>.Enumerator GetRankList()
     {
-        //Debug.Log(jsonData.results);
-        return jsonData.results;
+        return _jsonData.results.GetEnumerator();
     }
 }
