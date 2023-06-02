@@ -749,7 +749,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -762,20 +762,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 209007582}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1881743102}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1044586957}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1157522208}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -1017,7 +1017,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 995259be68dc4fa98ed72600bc3cc149, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2047,7 +2047,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 995259be68dc4fa98ed72600bc3cc149, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2170,31 +2170,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 380082320}
   m_Mesh: {fileID: 4300000, guid: 3d93f7219bba0634a9ee26865f9d6a3c, type: 3}
---- !u!114 &392748135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36981d974b5546a4cbfa0b4bfa0c0ecb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  handleMaterial: {fileID: 2100000, guid: 986558eab447a9847bbe138149edc1b4, type: 2}
-  handleGrabbedMaterial: {fileID: 2100000, guid: bf37b5eab60b288498d02fd524325d10,
-    type: 2}
-  handlePrefab: {fileID: 3868891704370700786, guid: 969c9b04d1b1848489de0d6efe6250fc,
-    type: 3}
-  handleSize: 0.016
-  colliderPadding: {x: 0.016, y: 0.016, z: 0.016}
-  drawTetherWhenManipulating: 1
-  handlesIgnoreCollider: {fileID: 0}
-  handlePrefabColliderType: 1
-  showHandleForX: 1
-  showHandleForY: 1
-  showHandleForZ: 1
 --- !u!1 &401723756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2558,7 +2533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -2571,20 +2546,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 84634786}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 2623734}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 563581030}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 944050400}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2862,7 +2837,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 995259be68dc4fa98ed72600bc3cc149, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3291,7 +3266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -3304,20 +3279,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 474164661}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 955480895}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1361205484}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1347758819}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -3985,7 +3960,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -20, y: 140}
+  m_AnchoredPosition: {x: -20, y: 70}
   m_SizeDelta: {x: 80, y: 24}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &778836458
@@ -4070,21 +4045,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 778836456}
   m_CullTransparentMesh: 0
---- !u!114 &804241731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 240d9483db94993408ff1d02335ea212, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxMaterial: {fileID: 2100000, guid: 4a9aae3094118f44593e7f8000e24c31, type: 2}
-  boxGrabbedMaterial: {fileID: 2100000, guid: 7e4095c5609075846b657c8917aae797, type: 2}
-  flattenAxisDisplayScale: 0
 --- !u!1 &830191927
 GameObject:
   m_ObjectHideFlags: 0
@@ -4241,8 +4201,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -5}
-  m_SizeDelta: {x: -64, y: -14}
+  m_AnchoredPosition: {x: 0, y: -3}
+  m_SizeDelta: {x: -24, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844094432
 MonoBehaviour:
@@ -4266,10 +4226,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
-    m_FontSize: 32
+    m_FontSize: 16
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 2
+    m_BestFit: 1
+    m_MinSize: 1
     m_MaxSize: 48
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -4456,8 +4416,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -304}
-  m_SizeDelta: {x: 1158, y: 120}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 40}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &893221126
 MonoBehaviour:
@@ -4479,7 +4439,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5593,20 +5553,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 170949369}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 11400000, guid: 21b48b4f2a2ca4524b0db052308eb854, type: 2}
+    - {fileID: 11400000, guid: 21b48b4f2a2ca4524b0db052308eb854, type: 2}
   - Target: {fileID: 199747915}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 11400000, guid: 6f78723035def694e8a739df25142435, type: 2}
+    - {fileID: 11400000, guid: 6f78723035def694e8a739df25142435, type: 2}
   - Target: {fileID: 1594896332}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 11400000, guid: 6f78723035def694e8a739df25142435, type: 2}
+    - {fileID: 11400000, guid: 6f78723035def694e8a739df25142435, type: 2}
   - Target: {fileID: 380082320}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 11400000, guid: 3874b82a903073747850f1bf3c9464a5, type: 2}
+    - {fileID: 11400000, guid: 3874b82a903073747850f1bf3c9464a5, type: 2}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -5712,7 +5672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -52.000004, y: 140}
+  m_AnchoredPosition: {x: -52.000004, y: 70}
   m_SizeDelta: {x: -136, y: 24}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1156539673
@@ -6503,7 +6463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -6516,20 +6476,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 1352474649}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 855475541}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 326731254}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1201440842}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -6760,7 +6720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -6773,20 +6733,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 282379080}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 401723756}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 55051643}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1200258216}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7052,7 +7012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -7065,20 +7025,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 404341978}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1725585504}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 151778132}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 958743781}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -7421,7 +7381,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 995259be68dc4fa98ed72600bc3cc149, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7502,27 +7462,6 @@ MonoBehaviour:
   OnSelectionEvents:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &1462860917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ae6b815054539c4cbce3013daf8f276, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  proximityEffectActive: 1
-  objectMediumProximity: 0.1
-  objectCloseProximity: 0.03
-  farScale: 0
-  mediumScale: 1
-  closeScale: 1.5
-  farGrowRate: 0.3
-  mediumGrowRate: 0.2
-  closeGrowRate: 0.3
 --- !u!1 &1466347815
 GameObject:
   m_ObjectHideFlags: 0
@@ -7665,10 +7604,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -7890,6 +7829,7 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527859737}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+
 --- !u!114 &1545487450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8023,6 +7963,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583607994}
   m_CullTransparentMesh: 1
+
 --- !u!1 &1594896332
 GameObject:
   m_ObjectHideFlags: 0
@@ -8098,7 +8039,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 995259be68dc4fa98ed72600bc3cc149, type: 2}
+  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9120,7 +9061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -9133,20 +9074,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 1615110858}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 713221403}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 445701013}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1735974983}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -9530,22 +9471,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1941520120}
   m_Mesh: {fileID: 4300000, guid: 3d93f7219bba0634a9ee26865f9d6a3c, type: 3}
---- !u!114 &1944181150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b80d41f9007c4b948b0808690195e77c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  wireframeMaterial: {fileID: 0}
-  wireframeEdgeRadius: 0.001
-  wireframeShape: 0
-  showWireframe: 0
 --- !u!1 &1984462546
 GameObject:
   m_ObjectHideFlags: 0
@@ -10287,12 +10212,12 @@ MonoBehaviour:
   flattenAxis: 0
   uniformScaleOnFlattenedAxis: 1
   boxPadding: {x: 0, y: 0, z: 0}
-  boxDisplayConfiguration: {fileID: 804241731}
-  linksConfiguration: {fileID: 1944181150}
-  scaleHandlesConfiguration: {fileID: 1545487450}
-  rotationHandlesConfiguration: {fileID: 392748135}
+  boxDisplayConfiguration: {fileID: 0}
+  linksConfiguration: {fileID: 0}
+  scaleHandlesConfiguration: {fileID: 0}
+  rotationHandlesConfiguration: {fileID: 0}
   translationHandlesConfiguration: {fileID: 0}
-  handleProximityEffectConfiguration: {fileID: 1462860917}
+  handleProximityEffectConfiguration: {fileID: 0}
   hideElementsInInspector: 0
   smoothingActive: 0
   rotateLerpTime: 0.001
@@ -10602,7 +10527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2047487682
 Transform:
   m_ObjectHideFlags: 0
@@ -10636,7 +10561,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2070094027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10653,11 +10578,11 @@ RectTransform:
   m_Father: {fileID: 830191931}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_SizeDelta: {x: 0, y: 60}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &2081504868
 GameObject:
   m_ObjectHideFlags: 0
@@ -10718,10 +10643,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 24
+    m_FontSize: 10
     m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 2
+    m_MinSize: 1
     m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
@@ -11036,7 +10961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1410eac1ae94b4d4492a09cc368e152c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5eac1712038236e4b8ffdb3893804fe1, type: 2}
+  states: {fileID: 0}
   InputActionId: 0
   isGlobal: 0
   Dimensions: 2
@@ -11049,20 +10974,20 @@ MonoBehaviour:
   profiles:
   - Target: {fileID: 1599510328}
     Themes:
-    - {fileID: 11400000, guid: 5753d89c205814542ba3fef191dc4682, type: 2}
-    - {fileID: 11400000, guid: 25fd4afc60b411a4899da8c48e287906, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 299468146}
     Themes:
-    - {fileID: 11400000, guid: 6c08928bdf950d54390c1346d23d422b, type: 2}
-    - {fileID: 11400000, guid: cb5abaa7279811d409e5bac06ad02a1f, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1081229768}
     Themes:
-    - {fileID: 11400000, guid: 0eea8a8be0e42494083a2dc52fab717f, type: 2}
-    - {fileID: 11400000, guid: 077f50c510dd803449e2247b7fbe3122, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   - Target: {fileID: 1941520120}
     Themes:
-    - {fileID: 11400000, guid: c5fe122d2d821434894bbf06f71057d3, type: 2}
-    - {fileID: 11400000, guid: dae413b1fffbbf841ae1176deb55d3c0, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
   OnClick:
     m_PersistentCalls:
       m_Calls:
