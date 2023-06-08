@@ -7,7 +7,6 @@ using System;
 public class jsonDataClass
 {
     public List<Rank> results;
-   
 }
 
 [Serializable]

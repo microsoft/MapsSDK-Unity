@@ -1,0 +1,117 @@
+{
+  "range": "Sheet1!A1:Z996",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Global Wetlands",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/World_WetlandV2_2016_CIFOR/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Hurricane Katrina",
+      "https://bingmapsisdk.blob.core.windows.net/katrinatiles/{quadkey}.png"
+    ],
+    [
+      "Railways",
+      "http://a.tiles.openrailwaymap.org/standard/{z}/{x}/{y}.png"
+    ],
+    [
+      "Accessibility_Travel_time_to_Major_Cities",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/Accessibility_Travel_time_to_Major_Cities/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Topography",
+      "http://a.tile.opentopomap.org/{z}/{x}/{y}.png"
+    ],
+    [
+      "Imagery",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Ocean",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/Ocean_Basemap/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "TotalAnnualPrecipitation",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/TotalAnnualPrecipitation/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Annual Temp",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/Annual_Temp/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Global Population 2010",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/Population_Global_2010/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Banana Harvested Area",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/Banana_HarvestedArea/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Human Footprint",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/HumanFootprint/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "SoilConstraints_HighErosion",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/SoilConstraints_HighErosion/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "ESRI StreetMap",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "ESRI Topography",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "ESRI Imagery",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Shaded Relief",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Historical Precipitation",
+      "https://api.resourcewatch.org/v1/layer/e1c771af-d38c-439e-ae6d-76270f6d3078/tile/gee/9/362/213"
+    ],
+    [
+      "National Geographic",
+      "http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Carto Light",
+      "http://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png"
+    ],
+    [
+      "Carto Dark",
+      "http://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png"
+    ],
+    [
+      "Cassava Suitability",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/Cassava_Suitability/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Potato GapRichness",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/Potato_GapRichness/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Bean Suitability",
+      "https://tiles.arcgis.com/tiles/P8Cok4qAP1sTVE59/arcgis/rest/services/bean_Suitability/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Specialty/World_Navigation_Charts",
+      "https://services.arcgisonline.com/arcgis/rest/services/Specialty/World_Navigation_Charts/MapServer/tile/{z}/{y}/{x}"
+    ],
+    [
+      "Military 1",
+      "http://www.chartae-antiquae.cz/TMS/Military1/{z}/{x}/{y}"
+    ],
+    [
+      "Windy",
+      "https://wms.transas.com/TMS/1.0.0/utt/{z}/{x}/{y}.png"
+    ],
+    [
+      "Bryan's Layer"
+    ]
+  ]
+}

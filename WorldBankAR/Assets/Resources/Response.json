@@ -1,0 +1,45 @@
+﻿{
+  "treeCover": {
+    "mapId1": "projects/earthengine-legacy/maps/14b3910396327178026bfbb21613854d-d66f06855b58296e0cded0372eb15899",
+    "token1": "",
+    "legend": {
+      "min": 0,
+      "max": 100,
+      "palette": "f7fcf5,e5f5e0,c7e9c0,a1d99b,74c476,41ab5d,238b45,006d2c,00441b,00330b,002200",
+      "values": "0,10,20,30,40,50,60,70,80,90,100"
+    }
+  },
+  "loss": {
+    "mapId1": "projects/earthengine-legacy/maps/fad1d6151773199ece0ac0d10f3f5270-f485900392eb6c655477e6d86e641451",
+    "token1": "",
+    "legend": {
+      "min": 0,
+      "max": 1,
+      "palette": "FFFFFF,FF0000",
+      "values": "",
+      "discreteValues": "0,1"
+    }
+  },
+  "gain": {
+    "mapId1": "projects/earthengine-legacy/maps/59d951f92df8e3f0b5e7e9d46bc38da3-66a567c0c58ed5db967176009a640edc",
+    "token1": "",
+    "legend": {
+      "min": 0,
+      "max": 1,
+      "palette": "FFFFFF,0000FF",
+      "values": "",
+      "discreteValues": "0,1"
+    }
+  },
+  "lossGain": {
+    "mapId1": "projects/earthengine-legacy/maps/b6b1047616be5b5b7b6ac9349ca4452d-fad411d8fbb05bc83dc2258709573131",
+    "token1": "",
+    "legend": {
+      "min": 0,
+      "max": 1,
+      "palette": "FFFFFF,9900ff",
+      "values": "",
+      "discreteValues": "0,1"
+    }
+  }
+}

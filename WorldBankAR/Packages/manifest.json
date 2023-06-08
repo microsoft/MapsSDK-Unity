@@ -17,6 +17,7 @@
     }
   ],
   "dependencies": {
+    "com.esri.arcgis-maps-sdk": "file:E:/Unity/XRG/arcgis-maps-sdk-unity-1.2.0.tgz",
     "com.microsoft.maps.unity": "0.11.2",
     "com.microsoft.mixedreality.toolkit.examples": "2.8.3",
     "com.microsoft.mixedreality.toolkit.foundation": "2.7.2",

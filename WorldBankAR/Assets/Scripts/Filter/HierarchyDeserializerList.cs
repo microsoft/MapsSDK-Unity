@@ -51,8 +51,10 @@ public class HierarchyDeserializerList : MonoBehaviour
 
     private void ProcessJsonData(string url)
     {
-        _jsonData = JsonUtility.FromJson<jsonDataClass>(url);
+        //Debug.Log(url);
        
+        _jsonData = JsonUtility.FromJson<jsonDataClass>(url);
+        //Debug.Log(_jsonData.results.Count);
     }
 
     public List<Rank>.Enumerator GetRankList()
