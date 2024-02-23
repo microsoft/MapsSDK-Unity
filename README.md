@@ -1,11 +1,13 @@
+Maps SDK, a Microsoft Garage project, is ending. As of February 22, 2024, the SDK is deprecated.
+**The SDK will be available until June 30, 2024, and the service will shut down March 1, 2025.**
+Our team learned a lot during this experiment, and we appreciate the community's involvement with this Microsoft Garage project.
+
+-----------
+
 <img src="https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/Banner.png">
 
 | [![Getting Started](https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/Plates/GettingStarted.png)](https://github.com/microsoft/MapsSDK-Unity/wiki/Getting-Started) | [![Feature Guides](https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/Plates/FeatureGuides.png)](#Feature-Guides) | [![Sample Project](https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/Plates/SampleProject.png)](https://github.com/microsoft/MapsSDK-Unity/wiki/Sample-project) | [![API Reference](https://github.com/Microsoft/MapsSDK-Unity/wiki/Content/Plates/APIReference.png)](https://github.com/microsoft/MapsSDK-Unity/wiki/API-Reference) |
 |:-- |:-- |:-- | :-- |
-
-> The SDK is currently in preview: Feature requests and bug reports are very much welcome at the [issues page](https://github.com/Microsoft/MapsSDK-Unity/issues).
->
-> We want to hear what features you want in order to accomplish mixed reality mapping scenarios!
 
 # Overview
 **Maps SDK, a Microsoft Garage project** provides the ability to visualize a 3D map within Unity-based projects. The SDK handles streaming and rendering of 3D terrain data with world-wide coverage.
